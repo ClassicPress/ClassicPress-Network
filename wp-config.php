@@ -84,12 +84,6 @@ $table_prefix = getenv( 'DB_TABLE_PREFIX' );
  */
 define( 'WP_DEBUG', filter_var( getenv( 'WP_DEBUG' ), FILTER_VALIDATE_BOOLEAN ) );
 
-/**
- * Site URL constants
- */
-define( 'WP_HOME',    getenv( 'WP_HOME' ) );
-define( 'WP_SITEURL', getenv( 'WP_SITEURL' ) );
-
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the ClassicPress directory. */
