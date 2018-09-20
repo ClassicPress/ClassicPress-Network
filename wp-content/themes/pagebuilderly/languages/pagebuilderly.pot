@@ -1,0 +1,209 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pagebuilderly\n"
+"POT-Creation-Date: 2017-05-19 17:20+0700\n"
+"PO-Revision-Date: 2017-05-19 17:22+0700\n"
+"Last-Translator: \n"
+"Language-Team: ThemeEverest\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: esc_html_e;esc_html__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: .\n"
+
+#: 404.php:17
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: 404.php:21
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: 404.php:33
+msgid "Most Used Categories"
+msgstr ""
+
+#: 404.php:51
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: comments.php:53 comments.php:74
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:56 comments.php:77
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:57 comments.php:78
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:91
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:42
+#, php-format
+msgid "Crafted with %1$s by %2$s."
+msgstr ""
+
+#: functions.php:48
+msgid "Primary"
+msgstr ""
+
+#: functions.php:156 inc/customizer.php:31
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:158
+msgid "Add widgets here."
+msgstr ""
+
+#: functions.php:165
+msgid "Instagram Footer"
+msgstr ""
+
+#: header.php:24
+msgid "Skip to content"
+msgstr ""
+
+#: inc/customizer.php:23
+msgid "Theme Options"
+msgstr ""
+
+#: inc/customizer.php:47
+msgid "Disable Sidebar on Home Page, Archive Page"
+msgstr ""
+
+#: inc/customizer.php:61
+msgid "Disable Sidebar on Single Post"
+msgstr ""
+
+#: inc/customizer.php:75
+msgid "Disable Sidebar on Single Page"
+msgstr ""
+
+#: inc/customizer.php:83
+msgid "Social Media Settings"
+msgstr ""
+
+#: inc/customizer.php:84
+msgid "Enter your social media(URL). Icons will not show if left blank."
+msgstr ""
+
+#: inc/customizer.php:181
+msgid "Facebook"
+msgstr ""
+
+#: inc/customizer.php:194
+msgid "Twitter"
+msgstr ""
+
+#: inc/customizer.php:207
+msgid "Instagram"
+msgstr ""
+
+#: inc/customizer.php:220
+msgid "Pinterest"
+msgstr ""
+
+#: inc/customizer.php:233
+msgid "Bloglovin"
+msgstr ""
+
+#: inc/customizer.php:246
+msgid "Google Plus"
+msgstr ""
+
+#: inc/customizer.php:259
+msgid "Tumblr"
+msgstr ""
+
+#: inc/customizer.php:272
+msgid "Youtube"
+msgstr ""
+
+#: inc/customizer.php:286
+msgid "Soundcloud"
+msgstr ""
+
+#: inc/customizer.php:299
+msgid "Vimeo"
+msgstr ""
+
+#: inc/customizer.php:312
+msgid "Linkedin"
+msgstr ""
+
+#: inc/customizer.php:325
+msgid "Rss"
+msgstr ""
+
+#: inc/customizer.php:339
+msgid "Upgrade to Black Pro"
+msgstr ""
+
+#: inc/customizer.php:354
+msgid "Black Features"
+msgstr ""
+
+#: inc/template-tags.php:50 inc/template-tags.php:56
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:52
+#, php-format
+msgid "Posted in %1$s"
+msgstr ""
+
+#: inc/template-tags.php:58
+#, php-format
+msgid "Tagged %1$s"
+msgstr ""
+
+#: inc/template-tags.php:72
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: search.php:19
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/content-none.php:25
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: template-parts/content-none.php:31
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: template-parts/content-page.php:19
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/content-page.php:23
+msgid "Page"
+msgstr ""
+
+#: template-parts/content.php:50
+msgid "Continue Reading"
+msgstr ""
