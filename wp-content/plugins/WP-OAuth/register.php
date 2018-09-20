@@ -50,8 +50,8 @@ if ($_SESSION["WPOA"]["USER_ID"] != "") {
   if ($err) {
     echo "cURL Error #:" . $err;
   } else {
-    $repsone = json_decode($response, true);
-    $username = $repsone['email'];
+    $response = json_decode($response, true);
+    $username = $response['email'];
     $password = wp_generate_password();
   }
 }
