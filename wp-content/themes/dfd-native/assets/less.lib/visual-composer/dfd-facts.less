@@ -1,0 +1,228 @@
+/* 
+    Created on : 27.07.2016
+    Author     : DFD
+	Styles for : Facts shortcode
+*/
+
+	/*Odometer couner style*/
+.odometer.odometer-auto-theme {
+	display: -moz-inline-box;
+	-moz-box-orient: vertical;
+	display: inline-block;
+	vertical-align: top;
+	*vertical-align: auto;
+	position: relative;
+}
+.odometer.odometer-auto-theme {
+	*display: inline;
+}
+.odometer.odometer-auto-theme .odometer-digit {
+	display: -moz-inline-box;
+	-moz-box-orient: vertical;
+	display: inline-block;
+	*vertical-align: auto;
+	position: relative;
+}
+.odometer.odometer-auto-theme .odometer-digit {
+	*display: inline;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-spacer {
+	display: -moz-inline-box;
+	-moz-box-orient: vertical;
+	display: inline-block;
+	vertical-align: top;
+	*vertical-align: auto;
+	visibility: hidden;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-spacer {
+	*display: inline;
+}
+.odometer-inside {
+	position: relative;
+	overflow: hidden;
+	padding: 0 3px;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner {
+	text-align: left;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+//	overflow: hidden;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-ribbon {
+	display: block;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-ribbon-inner{
+	display: block;
+	-webkit-backface-visibility: hidden;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-value {
+	display: block;
+	-webkit-transform: translateZ(0);
+	text-align: center;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-value.odometer-last-value {
+	position: absolute;
+}
+.odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner {
+	-webkit-transition: -webkit-transform 2s;
+	-moz-transition: -moz-transform 2s;
+	-o-transition: -o-transform 2s;
+	transition: transform 2s;
+}
+.odometer.odometer-auto-theme.odometer-animating-up.odometer-animating .odometer-ribbon-inner {
+	-webkit-transform: translateY(-100%);
+	-moz-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
+.odometer.odometer-auto-theme.odometer-animating-down .odometer-ribbon-inner {
+	-webkit-transform: translateY(-100%);
+	-moz-transform: translateY(-100%);
+	-ms-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
+.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+	-webkit-transition: -webkit-transform 2s;
+	-moz-transition: -moz-transform 2s;
+	transition: transform 2s;
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	transform: translateY(0);
+}
+
+.odometer-formatting-mark {display:none;}
+
+.dfd-facts-counter {
+	.rel();
+	text-align: center;
+	&.text-left {text-align: left;}
+	&.text-right {text-align: right;}
+	.dfd-content-title-big {
+		font-size: 15px;
+	}
+	.facts-number {
+		font-size: 60px;
+		line-height: 1;
+		div {
+			font-family: inherit;
+			font-size: inherit;
+			font-style: inherit;
+			font-weight: inherit;
+			text-transform: inherit;
+			line-height: inherit;
+			letter-spacing: inherit;
+			color: inherit;
+		}
+	}
+	.title-wrap {
+		.dfd-content-subtitle {
+			font-size: 13px;
+			color: #b5b5b5;
+			line-height: 1.6;
+		}
+		.facts-subtitle {
+			padding-top: 5px;
+		}
+	}
+	.module-icon {
+		font-size: 30px;
+		color: #e5e5e5;
+		span {
+			line-height: 1;
+		}
+	}
+	.number-wrap {
+		.rel();
+		padding-bottom: 5px;
+	}
+	.stat-count {
+		line-height: 1;
+	}
+	&.style-1 {
+		padding-top: 25px;
+		.module-icon {
+			.abs();
+			top: 50%;
+			width: 100%;
+			font-size: 110px;
+			.transform(translateY(-50%));
+		}
+		.title-wrap {
+			.rel();
+		}
+		.number-wrap {
+			width: 100%;
+		}
+	}
+	&.style-2 {
+		.module-icon {
+			padding-bottom: 5px;
+		}
+	}
+	&.style-3 {
+		.title-container {
+			padding-bottom: 20px;
+		}
+	}
+	&.style-4 {
+		.title-wrap {
+			.inline-block();
+		}
+		.module-icon {
+			display: table-cell;
+			vertical-align: middle;
+			padding-right: 20px;
+		}
+		.title-container {
+			display: table-cell;
+			vertical-align: middle;
+			text-align: left;
+		}
+	}
+	&.style-5 {
+		.facts-number {
+			font-size: 35px;
+		}
+		.number-wrap {
+			padding-bottom: 0;
+		}
+		.head-container {
+			.inline-block();
+			.head-container {
+				padding-bottom: 5px;
+			}
+		}
+		.module-icon {
+			display: table-cell;
+			vertical-align: middle;
+			padding-right: 20px;
+		}
+		.number-wrap {
+			display: table-cell;
+			vertical-align: middle;
+		}
+	}
+	&.style-6 {
+		.number-wrap {
+			padding-bottom: 0;
+		}
+		.title-wrap .facts-subtitle {
+			padding-top: 0;
+		}
+		&.text-left {
+			.number-wrap {
+				float: left;
+				padding-right: 20px;
+			}
+		}
+		&.text-right {
+			.number-wrap {
+				float: right;
+				padding-left: 20px;
+			}
+		}
+	}
+}

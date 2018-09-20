@@ -1,0 +1,68 @@
+/*  Box Shadow - Param   */
+.vc_shortcode-param.vc_wrapper-param-type-dfd_box_shadow_param {
+	position: relative;
+	* {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-o-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.dfd-box-shadow-param-container {
+		> div {
+			&:not(:last-child) {
+				position: relative;
+				padding-bottom: 15px;
+				margin-bottom: 15px;
+				&:before {
+					content: "";
+					display: block;
+					height: 0;
+					position: absolute;
+					bottom: 0;
+					left: -15px;
+					right: -15px;
+					border-bottom: 1px dashed #e1e1e1;
+				}
+				&.dfd-box-shadow-enable {
+					-webkit-transition: padding .3s ease, margin-bottom .3s ease;
+					-moz-transition: padding .3s ease, margin-bottom .3s ease;
+					-ms-transition: padding .3s ease, margin-bottom .3s ease;
+					-o-transition: padding .3s ease, margin-bottom .3s ease;
+					transition: padding .3s ease, margin-bottom .3s ease;
+					&:not(.expanded) {
+						padding-bottom: 0;
+						margin-bottom: 0;
+						&:before {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		.dfd-box-shadow-sizes {
+			.inputs-block {
+				overflow: hidden;
+				position: relative;
+				margin: 0 -10px;
+				> .input-wrap {
+					overflow: hidden;
+					float: left;
+					width: 25%;
+					padding: 0 10px;
+				}
+			}
+		}
+		.dfd-param-colorpicker-section {
+			* {
+				-webkit-box-sizing: content-box;
+				-moz-box-sizing: content-box;
+				-o-box-sizing: content-box;
+				box-sizing: content-box;
+			}
+		}
+	}
+}

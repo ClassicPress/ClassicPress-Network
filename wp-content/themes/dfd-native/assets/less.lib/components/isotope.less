@@ -1,0 +1,147 @@
+/*------------------------------------------------------------------
+[Isotop styles]
+-------------------------------------------------------------------*/
+.dfd-isotope {
+	.clearfix();
+	article {
+		float: left;
+	}
+}
+.dfd-isotope:not(.layout-justified) {
+	&.isotope-columns-1 {
+		> article,
+		.grid-sizer {
+			width: 100%;
+		}
+	}
+	&.isotope-columns-2 {
+		&.layout-metro,
+		&.layout-shortcode_metro {
+			> article {
+				&.dfd-side-image {
+					width: 100%;
+				}
+			}
+		}
+		> article,
+		.grid-sizer {
+			width: 49.999%;
+		}
+	}
+	&.isotope-columns-3 {
+		&.layout-metro,
+		&.layout-shortcode_metro {
+			> article {
+				&.dfd-side-image {
+					width: 66.667%;
+				}
+			}
+		}
+		> article,
+		.grid-sizer {
+			width: 33.333%;
+		}
+	}
+	&.isotope-columns-4 {
+		&.layout-metro,
+		&.layout-shortcode_metro {
+			> article {
+				&.dfd-side-image {
+					width: 50%;
+				}
+			}
+		}
+		> article,
+		.grid-sizer {
+			width: 24.99999%;
+		}
+	}
+	&.isotope-columns-5 {
+		&.layout-metro,
+		&.layout-shortcode_metro {
+			> article {
+				&.dfd-side-image {
+					width: 40%;
+				}
+			}
+		}
+		> article,
+		.grid-sizer {
+			width: 20%;
+		}
+	}
+}
+
+@media only screen and (max-width: @screen-x-large - 1) {
+	.dfd-isotope:not(.layout-justified) {
+		&.isotope-columns-5 {
+			&.layout-metro,
+			&.layout-shortcode_metro {
+				> article {
+					&.dfd-side-image {
+						width: 50%;
+					}
+				}
+			}
+			> article,
+			.grid-sizer {
+				width: 25%;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 1100px) {
+	.dfd-isotope:not(.layout-justified) {
+		&.isotope-columns-4,
+		&.isotope-columns-5 {
+			&.layout-metro,
+			&.layout-shortcode_metro {
+				> article {
+					&.dfd-side-image {
+						width: 66.667%;
+					}
+				}
+			}
+			> article,
+			.grid-sizer {
+				width: 33.333%;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: @screen-normal - 1) {
+	.dfd-isotope:not(.layout-justified) {
+		&.isotope-columns-3,
+		&.isotope-columns-4,
+		&.isotope-columns-5 {
+			&.layout-metro,
+			&.layout-shortcode_metro {
+				> article {
+					&.dfd-side-image {
+						width: 100%;
+					}
+				}
+			}
+			> article,
+			.grid-sizer {
+				width: 50%;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.dfd-isotope:not(.layout-justified) {
+		&.isotope-columns-2,
+		&.isotope-columns-3,
+		&.isotope-columns-4,
+		&.isotope-columns-5 {
+			> article,
+			.grid-sizer {
+				width: 100%;
+			}
+		}
+	}
+}

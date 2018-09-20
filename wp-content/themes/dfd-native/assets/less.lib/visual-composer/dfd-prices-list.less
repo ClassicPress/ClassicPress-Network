@@ -1,0 +1,51 @@
+/* 
+    Created on : 17.12.2016, 13:00:00
+    Author     : DFD
+	Styles for : Pricing List shortcode
+*/
+
+.dfd-price-wrap {
+	margin: 0 auto;
+	.dfd-content-title-big,
+	.dfd-content-subtitle {
+		line-height: 1.6;
+	}
+	.small-img {
+		.rel();
+		top: 50%;
+		.transform(translateY(-50%));
+	}
+	.dfd-price-block {
+		margin-top: 15px;
+		overflow: hidden;
+		&:first-child {
+			margin-top: 0 !important;
+		}
+		.thumb-wrap {
+			float: left;
+			margin-right: 20px;
+			img {
+				.block();
+				width: 100px;
+				height: 100px;
+			}
+		}
+		.dfd-price-cover {
+			overflow: hidden;
+			.rel();
+			.price-title {
+				float: left;
+			}
+			.price-delimeter {
+				.abs();
+				margin: 0 10px;
+				border-bottom-width: 1px;
+				border-color: @border-color;
+			}
+			.amount {
+				float: right;
+			}
+		}
+	}
+}
+

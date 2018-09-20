@@ -1,0 +1,32 @@
+/* -----------------------------------------
+   Language drop-down select
+----------------------------------------- */
+.dfd-header-buttons-wrap{ 
+	line-height : inherit;
+	height : inherit;
+
+	@import "../../../../../../../../../themes/dfd-native/assets/less.lib/header/header-lang-sel.less";
+	.lang-sel {
+		> ul {
+			margin-top: 0px;
+		}
+
+		&:hover {
+			> ul {
+				margin-top: 0;
+				margin-left: 0px; 
+			}
+		}
+	}
+}
+#dfd_header_t_preview{
+	&:not(.side-header){
+		.dfd-header-buttons-wrap{ 
+			.lang-sel {
+				> a{
+					letter-spacing: 0px; 
+				}
+			}
+		}
+	}
+}

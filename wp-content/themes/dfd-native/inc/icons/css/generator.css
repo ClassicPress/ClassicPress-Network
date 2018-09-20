@@ -1,0 +1,59 @@
+/* Generator button */
+a, a:hover, a:active, a:focus{outline: 0;}
+#dfd-generator-button{padding-left:3px;}
+.dfd-button-icon{display: inline-block; width: 14px; height: 12px; margin: 0px 5px 0px 2px; background:url('../inc/images/dfd-icon-button.png') no-repeat; vertical-align: middle;}
+
+/* Generator box */
+#dfd-generator-overlay{width:100%; height:100%; left:0px; position:fixed; top:0px; z-index: 159900;}
+.dfd-overlay-bg{background-color: #000000; opacity: 0.75;}
+
+#dfd-generator-wrap {top:30px; right:30px; left:30px; bottom:30px; display: none; position: fixed; background: #fff; min-width:660px; min-height:600px; z-index: 160000;}
+#dfd-generator {margin:0; padding:20px; overflow: auto;}
+#dfd-generator-shell {padding:0px;}
+#dfd-generator-close{height:13px; width: 13px; position:absolute; right:20px; top:20px; z-index: 1000;}
+#dfd-generator-close-html{height:13px; width: 13px; position:absolute; right:10px; top:10px; z-index: 1010;}
+#dfd-generator-close span, #dfd-generator-close-html span{display: block; width:13px; height:13px;}
+#dfd-generator-close .dfd-close-icon, #dfd-generator-close-html .dfd-close-icon{background:url('../inc/images/dfd-close.png') no-repeat;}
+
+#dfd-generator-shell table tr td {padding: 10px 0;}
+#dfd-generator-shell .generator-title {font-family: Arial, Helvetica, sans-serif; font-size:12px; color:#444; font-weight:bold;}
+#dfd-generator-shell table tr td.generator-title {padding-right:5px; width:90px;}
+#dfd-generator-shell table tr td.size-info {padding-left:20px; width:61px;}
+#dfd-generator-shell table tr td.size-info input {border:0; color:#222; font-weight:bold; width:61px !important; color:#9F9F9F !important;}
+#dfd-generator-shell .dfd-generator-select-color input[type="text"] {padding: 5px 8px; width: 100%;}
+
+.dfd-generator-select-pack, .dfd-generator-select-style, .dfd-generator-select-hover{width:100%;}
+
+.dfd-generator-note{font-size:11px; color:#9A9A9A; display:block; padding-top:10px;}
+#dfd-generator-insert{float:right;}
+#dfd-generator-show-html{float:left;}
+.dfd-clear{clear:both;}
+
+/* Get HTML */
+#dfd-shortcode-html {position: absolute; top: 20%; left: 50%; margin-left:-200px; background:#fff; width:400px; min-height:200px; padding:30px 20px 20px; border:10px solid #2B2B2B; }
+#dfd-shortcode-html textarea{width:100%; min-height:100px;}
+
+/* Color picker */
+.dfd-generator-select-color {position: relative;}
+.dfd-generator-select-color-wheel {position: absolute; left: 0; top: 23px; display: none; background: #fff; border: 1px solid #aaa; z-index: 99999; box-shadow: 0 2px 5px #ccc; -moz-box-shadow: 0 2px 5px #ccc; -webkit-box-shadow: 0 2px 5px #ccc;}
+
+/* Icons list */
+.dfd-generator-icon-select ul {width:100%; min-height:250px; max-height:350px; overflow:auto; display:inline-block; margin-top:10px; padding:5px 0;}
+.dfd-generator-icon-select li{display:inline-block; list-style:none; padding:0;}
+.dfd-generator-icon-select li.no-icon {display: none;}
+.dfd-generator-icon-select li label {color:#777777; display:inline-block !important; float:none !important; width:auto !important; font-size:23px !important; font-weight:normal !important; padding:5px !important; border:1px solid #eee !important;}
+.dfd-generator-icon-select li label:hover {background:#eee; border:1px solid #ccc !important;}
+.dfd-generator-icon-select li input[type="radio"]:checked+label {background: #E1FF95; border: 1px solid #96BF0B !important; color:#225803;}
+.dfd-generator-icon-select input{display: none;visibility:hidden; margin: 0; padding:0; width: 1px; height: 1px; filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0; opacity: 0; cursor: pointer; }
+
+/* Retina */
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+	
+	.dfd-button-icon{background:url('../inc/images/dfd-icon-button@2x.png') no-repeat; background-size: 14px 12px;}
+	#dfd-generator-close .dfd-close-icon, #dfd-generator-close-html .dfd-close-icon{background:url('../inc/images/dfd-close@2x.png') no-repeat; background-size: 13px 13px;}
+
+	
+}

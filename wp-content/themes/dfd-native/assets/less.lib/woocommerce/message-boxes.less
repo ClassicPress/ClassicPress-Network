@@ -1,0 +1,62 @@
+/* 
+    Created on : 10.01.2015, 14:36:52
+    Author     : DFD
+	Styles for : Woocommerce message boxes
+*/
+
+	/* Woocommerce message */
+
+.woocommerce-thankyou-order-received,
+.woocommerce-message,
+.woocommerce-error,
+.woocommerce-info {
+    .rel();
+	background: #eaf9f4;
+    padding: 11px 20px;
+	.rounded(4px);
+    line-height: 1.6;
+    margin-bottom: 35px;
+    width: auto;
+    list-style: none outside;
+	z-index: 1;
+	&:before {
+		content: " ";
+		.block();
+	}
+	&:after {
+		content: "";
+		.block();
+		clear: both;
+	}
+	.button,
+	.button.wc-backward {
+		margin-right: 15px;
+	}
+	a,
+	.button,
+	.button.wc-backward {
+		text-decoration: underline;
+		overflow: visible;
+		height: 1.6em;
+		line-height: 1.9;
+		padding: 0;
+		color: @title-color;
+		background: transparent;
+		border-width: 0;
+		.rounded(0);
+		.transition(~"color .3s ease-in-out, border-bottom-color .3s ease-in-out");
+		&:hover {
+			background: transparent;
+			border-width: 0;
+			color: @main-site-light-color;
+		}
+	}
+	.button.wc-backward {
+		color: @title-color;
+	}
+	li {
+		list-style: none outside;
+		padding-left: 0;
+		margin-left: 0;
+	}
+}

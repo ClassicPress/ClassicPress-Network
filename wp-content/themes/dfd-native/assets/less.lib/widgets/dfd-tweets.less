@@ -1,0 +1,128 @@
+/* 
+    Created on : 30.05.2016, 9:46:25
+    Author     : dfd
+	Styles for : Widgets Custom: Latest Tweets
+*/
+
+.widget_dfd_latest_tweets {
+	.twitter-container {
+		&:not(.transparent-bg) {
+			background: #1da1f2;//twitter color
+			.rounded(6px);
+			padding: 25px 20px;
+			.tweet-list {
+				.tweet {
+					&:before {
+						left: -20px;
+						right: -20px;
+					}
+				}
+			}
+		}
+		&.transparent-bg {
+			.tweet-list {
+				.tweet {
+					&:before {
+						left: 0;
+						right: 0;
+					}
+				}
+			}
+		}
+		&:not(.bg-light) {
+			.dfd-widget-post-title {
+				color: @white-color;
+			}
+			.dfd-widget-content-title {
+				color: fade(@white-color, 60%);//#82daff
+			}
+			.tweet-inner {
+				color: @white-color;
+				a {
+					color: fade(@white-color, 60%);//#82daff
+				}
+				.time {
+					color: fade(@white-color, 60%);//#82daff
+				}
+			}
+			.tweets-author {
+				i {
+					color: @white-color;
+				}
+			}
+		}
+		&.bg-light {
+			.tweet-list {
+				.tweet {
+					&:before {
+						background: @border-color;
+					}
+				}
+			}
+			.tweets-author {
+				i {
+					color: #1da1f2;
+				}
+			}
+		}
+		.tweets-author {
+			.rel();
+			padding-bottom: 20px;
+			overflow: hidden;
+			i {
+				.rel();
+				float: left;
+				font-size: 25px;
+				padding-right: 25px;
+			}
+		}
+		.tweet-list {
+			.tweet {
+				.rel();
+				padding: 25px 0;
+				&:first-child {
+					padding-top: 0;
+					&:before {
+						.hide();
+					}
+				}
+				&:last-child {
+					padding-bottom: 0;
+				}
+				.time {
+					.rel();
+					padding-left: 20px;
+					margin-top: 20px;
+					i {
+						font-size: 13px;
+						font-weight: normal;
+						line-height: 1;
+						.abs();
+						left: 0;
+						top: 50%;
+						.transform(translateY(-50%));
+					}
+				}
+				&:before {
+					content: "";
+					.abs();
+					top: 0;
+					height: 1px;
+					background: fade(@white-color, 20%);
+				}
+			}
+		}
+		.entry-meta * {
+			float: none;
+		}
+		&.with-load-more {
+			margin-bottom: 120px;
+		}
+		.ajax-pagination {
+			position: absolute;
+			width: 100%;
+			left: 0;
+			top: 100%;
+		}
+	}
+}

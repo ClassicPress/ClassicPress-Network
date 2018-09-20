@@ -1,0 +1,31 @@
+.widget.widget_dfd_tags,
+.widget.widget_tag_cloud {
+	@widget-tags-distance: 7px;
+	.tags-widget,
+	.tagcloud {
+		overflow: hidden;
+		padding: 20px;
+		margin: -20px;
+		a {
+			.rel();
+			float: left;
+			font-size: 10px !important;
+			margin-top: 0;
+			margin-bottom: @widget-tags-distance;
+			margin-right: @widget-tags-distance;
+			background: @border-color;
+			.rounded(4px);
+			line-height: 30px;
+			padding: 0px 15px;
+			.box-shadow(0 8px 20px 3px transparent);
+			.transform(perspective(0) translateY(0));
+			.transition(all .3s ease-in-out);
+			&:hover {
+				background: @white-color;
+				.box-shadow(0 8px 20px 0 fade(@black-color, 20%));
+				.transform(perspective(400px) translateY(-2px));
+				z-index: 1;
+			}
+		}
+	}
+}

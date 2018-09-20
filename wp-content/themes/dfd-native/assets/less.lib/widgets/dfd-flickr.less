@@ -1,0 +1,42 @@
+/* 
+    Created on : 30.05.2016, 14:10:06
+    Author     : dfd
+	Styles for : Widgets Custom: Flickr Photos
+*/
+
+.flickr-widget {
+	.rel();
+	.clearfix();
+	
+	a {
+		.rel();
+		float: left;
+		.block();
+		overflow: hidden;
+		
+		&.full-width {
+			width: 100%;
+		}
+		&.half-size {
+			width: 50%;
+		}
+		&.third-size {
+			width: 33.33%;
+		}
+		.overflow-box {
+			.block();
+			overflow: hidden;
+			> img {
+				.block();
+				margin: 0 auto;
+				.scale(1);
+				.transition-transform(.3s ease);
+			}
+		}
+		&:hover {
+			img {
+				.scale(1.1);
+			}
+		}
+	}
+}

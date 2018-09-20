@@ -1,0 +1,23 @@
+/* 
+    Created on : 11.04.2016, 13:18:20
+    Author     : DFD
+	Styles for : VC inline
+*/
+.compose-mode .vc_element,
+.view-mode .vc_element {
+	.vc-row-wrapper {
+		&.equal-height-columns.aligh-content-verticaly {
+			.vc_element.columns {
+				> div:not(.dfd-vertical-aligned) {
+					height: inherit;
+					> div {
+						height: inherit;
+						> div {
+							height: inherit;
+						}
+					}
+				}
+			}
+		}
+	}
+}

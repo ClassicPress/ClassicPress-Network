@@ -1,0 +1,61 @@
+/*------------------------------------------------------------------
+[Woocommerce styles]
+
+1. Product categories carousel
+-------------------------------------------------------------------*/
+.product-categories-carousel {
+	.carousel();
+	cursor: move;
+	
+	.cat-item {
+		text-align: center;
+		
+		.cover {
+			.rel();
+			overflow: hidden;
+			padding: 0 10px;
+			
+			.img-wrap {
+				.block();
+				.rel();
+				float: left;
+				overflow: hidden;
+
+				img {
+					vertical-align: top;
+					.scale(1);
+					.transition(all .3s ease-in-out);
+				}
+			}
+
+			.cat-meta {
+				.block();
+				width: 100%;
+				.abs();
+				left: 0;
+				bottom: 20px;
+				padding: 0 30px;
+				
+				.box-name {
+					.block();
+					font-size: @default-text-font-size;
+					font-weight: 700;
+					text-align: left;
+					text-transform: uppercase;
+					margin-bottom: 5px;
+				}
+				.dopinfo {
+					text-align: left;
+				}
+			}
+			&:hover {
+				.cat-meta .box-name {
+					color: @white-color;
+				}
+				.img-wrap img {
+					.scale(1.1);
+				}
+			}
+		}
+	}
+}

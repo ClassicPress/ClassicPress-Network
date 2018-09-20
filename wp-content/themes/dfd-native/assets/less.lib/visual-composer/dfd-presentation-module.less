@@ -1,0 +1,129 @@
+/* 
+    Created on : 18.06.2015, 17:08:26
+    Author     : DFD
+	Styles for : Presentation module
+*/
+.dfd-presentation-module-wrap {
+	.dfd-presentation-box {
+		.rel();
+		&.active {
+			.dfd-presentation-back {
+				.opacity(1);
+				visibility: visible;
+				.scale(1);
+			}
+		}
+		&.active-left-info {
+			.dfd-presentation-back {
+				left: auto;
+				right: 0;
+			}
+		}
+		.dfd-presentation-front {
+			.rel();
+			cursor: pointer;
+			.opacity(1);
+			.transition(opacity .3s ease);
+			&:hover {
+				.opacity(.7);
+			}
+			img {
+				.block();
+				margin: 0 auto;
+			}
+		}
+		.dfd-presentation-back {
+			@s: 40px;
+			.abs();
+			left: 0;
+			top: 0;
+			.block();
+			width: 200%;
+			height: 100%;
+			.opacity(0);
+			visibility: hidden;
+			z-index: 2;
+			.clearfix();
+			.scale(.7);
+			.transition(all .3s ease);
+			.dfd-presentation-heading {
+				margin-bottom: 35px;
+			}
+			.dfd-open-close-box {
+				.block();
+				width: @s;
+				height: @s;
+				.abs();
+				top: -@s;
+				right: -@s;
+				background: @dark-color;
+				z-index: 3;
+				&:before,
+				&:after {
+					content: "";
+					.block();
+					width: @s / 2;
+					height: 1px;
+					.abs();
+					top: 50%;
+					left: 50%;
+					margin-left: -@s/4;
+					background: @white-color;
+				}
+				&:before {
+					.rotate(-45deg);
+				}
+				&:after {
+					.rotate(45deg);
+				}
+			}
+			.dfd-presentation-background {
+				.abs();
+				top: -@s;
+				bottom: -@s;
+				left: -@s;
+				right: -@s;
+				.block();
+				background: @white-color;
+				z-index: -1;
+				.box-shadow(0px 0px 25px 15px fade(@black-color, 10%));
+			}
+			.dfd-presentation-link {
+				float: left;
+				width: 50%;
+				height: 100%;
+			}
+			.dfd-presentation-content {
+				.rel();
+				float: left;
+				width: 50%;
+				height: 100%;
+				padding-left: 45px;
+				padding-bottom: @default-button-line-height + 20;
+				.content {
+					overflow: hidden;
+				}
+			}
+			div.block-title {
+				font-size: @block-title-font-size + 2;
+				text-transform: uppercase;
+			}
+			a.button {
+				.abs();
+				left: 45px;
+				right: 0;
+				bottom: 0;
+				.block();
+				text-align: center;
+				padding: 0;
+				color: @white-color;
+				background: @dark-color;
+				border-color: @dark-color;
+				&:hover {
+					background: lighten(@dark-color, 5%);
+					border-color: lighten(@dark-color, 5%);
+				}
+			}
+		}
+	}
+}

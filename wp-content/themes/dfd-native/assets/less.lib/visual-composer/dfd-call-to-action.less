@@ -1,0 +1,178 @@
+/* 
+    Created on : 22.08.2016, 9:58:52
+    Author     : DFD
+	Styles for : Call To Action shortcode
+*/
+
+.dfd-call-to-action-wrap {
+	overflow: hidden;
+	.rounded(6px);
+	.rel();
+	z-index: 1;
+	.main-alligned-container,
+	.call-to-action-container {
+		display: table;
+		width: 100%;
+	}
+	.call-to-action-container {
+		.rounded(inherit);
+	}
+	.icon-wrap,
+	.title-wrap,
+	.content-block,
+	.button-block {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.content-block,
+	.button-block {
+		.rel();
+		padding: 35px;
+		.rounded(inherit);
+	}
+	.content-block {
+		width: 100%;
+	}
+	.main-tilted-decoration,
+	.button-tilted-decoration {
+		.abs();
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		.rounded(inherit);
+		&:before {
+			content: "";
+			.abs();
+			height: 100%;
+			width: 125%;
+			top: 0;
+			.rounded(inherit);
+		}
+	}
+	.main-tilted-decoration {
+		&:before {
+			background: @main-site-light-color;
+		}
+	}
+	.button-tilted-decoration {
+		&:before {
+			background: @background-grey;
+		}
+	}
+	.main-alligned-container {
+		.rel();
+	}
+	.icon-wrap {
+		font-size: 40px;
+		padding-right: 30px;
+		color: @white-color;
+		.featured-icon {
+			.block();
+			line-height: 1;
+		}
+		img {
+			.block();
+		}
+		.icon-text {
+			line-height: 1;
+		}
+		&.selector {
+			width: 1%;
+		}
+		&.custom {
+			min-width: 70px;
+		}
+	}
+	.title-wrap {
+		width: 100%;
+		.dfd-content-title-big {
+			font-size: 21px;
+			color: @white-color;
+			line-height: 1.2;
+			
+		}
+		.call-to-action-subtitle {
+			padding-top: 7px;
+		}
+		.dfd-content-subtitle {
+			color: rgba(255,255,255,.4);
+			font-size: 14px;
+			line-height: 1.6;
+		}
+	}
+	.button-container {
+		.rel();
+		.button {
+			.rel();
+			white-space: nowrap;
+			padding-left: 40px;
+			padding-right: 40px;
+		}
+		.bt-icon-wrap {
+			.abs();
+			left: 20px;
+			height: 100%;
+			top: 0;
+			i {
+				.rel();
+				.block();
+				top: 50%;
+				height: 1em;
+				line-height: 1;
+				margin-top: -0.5em;
+				font-size: 15px;
+				color: #ffffff;
+				.transition(color .3s ease);
+			}
+		}
+	}
+	.button-block {
+		text-align: center;
+	}
+	&.with_icon {
+		.button-container .button {
+			padding-left: 50px;
+		}
+	}
+	&.style-1 {
+		.content-block {padding-right: 40px}
+		.button-block {padding-left: 40px}
+		.main-tilted-decoration,
+		.button-tilted-decoration {
+			.transform(skew(-15deg));
+		}
+		.main-tilted-decoration {
+			margin-right: 6px;
+			&:before {
+				right: 0;
+			}
+		}
+		.button-tilted-decoration {
+			margin-left: 6px;
+			&:before {
+				left: 0;
+			}
+		}
+	}
+	&.style-2 {
+		.content-block {padding-left: 40px}
+		.button-block {padding-right: 40px}
+		.main-tilted-decoration,
+		.button-tilted-decoration {
+			.transform(skew(15deg));
+		}
+		.main-tilted-decoration {
+			margin-left: 6px;
+			&:before {
+				left: 0;
+			}
+		}
+		.button-tilted-decoration {
+			margin-right: 6px;
+			&:before {
+				right: 0;
+			}
+		}
+	}
+}

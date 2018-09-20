@@ -1,0 +1,196 @@
+/* 
+    Created on : 30.05.2016, 14:53:49
+    Author     : DFD
+	Styles for : Side area
+*/
+
+#side-area {
+	@size: 110px;
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: @side-area-width;
+	background-color: #1d1e20;
+	will-change: transform;
+	.transform(translateX(@side-area-width + 30));
+	.transition-transform(.3s ease-in-out .0s);
+	.dfd-side-area-mask {
+		content: "";
+		width: 9000px;
+		height: 9000px;
+		.abs();
+		top: 0;
+		left: -9000px;
+		visibility: hidden;
+		background: transparent;
+		.transition(~"background .3s ease .3s, visibility .3s ease .3s");
+	}
+	.dfd-side-area-close-button {
+		font-size: 18px;
+		.abs();
+		top: 0;
+		right: 100%;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		color: @white-color;
+		z-index: 9999;
+		opacity: 1;
+		.transition(opacity .3s ease);
+		&:hover {
+			opacity: .4;
+		}
+	}
+	.widget-vertical-scroll {
+		.abs();
+		top: 0;
+		right: 0;
+		bottom: -17px;
+		left: 0;
+		width: @side-area-width + 17;
+		padding: 20px;
+		overflow-y: scroll;
+	}
+	> .widget {
+		padding: 35px 0;
+	}
+}
+
+body.admin-bar #side-area {
+	top: 32px;
+	&.dfd-frame-border {
+		top: @layout-white-space-size + 32;
+	}
+}
+
+@-webkit-keyframes dfdHamburgerButton {
+	0% { -webkit-transform: scaleX(1); }
+	25% { -webkit-transform: scaleX(.9); }
+	50% { -webkit-transform: scaleX(1); }
+	75% { -webkit-transform: scaleX(1.1); }
+	100% { -webkit-transform: scaleX(1); }
+}
+@-moz-keyframes dfdHamburgerButton {
+	0% { -moz-transform: scaleX(1); }
+	25% { -moz-transform: scaleX(.9); }
+	50% { -moz-transform: scaleX(1); }
+	75% { -moz-transform: scaleX(1.1); }
+	100% { -moz-transform: scaleX(1); }
+}
+@-o-keyframes dfdHamburgerButton {
+	0% { -o-transform: scaleX(1); }
+	25% { -o-transform: scaleX(.9); }
+	50% { -o-transform: scaleX(1); }
+	75% { -o-transform: scaleX(1.1); }
+	100% { -o-transform: scaleX(1); }
+}
+@keyframes dfdHamburgerButton {
+	0% { transform: scaleX(1); }
+	25% { transform: scaleX(.9); }
+	50% { transform: scaleX(1); }
+	75% { transform: scaleX(1.1); }
+	100% { transform: scaleX(1); }
+}
+
+.dl-menuwrapper,
+.dfd-click-menu-activation-button,
+.dfd-side-slide-header-button-wrap {
+	@block-s: 36px;
+	@s: 24px;
+	
+	.rel();
+	width: @block-s;
+    height: inherit;
+	margin: 0 auto;
+	z-index: 1003;
+	.transform(translate3d(0,0,0));
+	
+	a {
+		overflow: hidden;
+		.abs();
+		top: 50%;
+		left: 50%;
+		.block();
+		width: @block-s - 4;
+		height: @block-s;
+		margin-top: -@block-s/2;
+		margin-left: -@block-s/2;
+		.transition(~"background .3s ease, border-color .3s ease");
+		
+		.icon-wrap {
+			@line-s: 2px;
+			.abs();
+			.block();
+			width: @s;
+			height: @line-s;
+			top: 50%;
+			right: 0;
+			margin-left: -@s / 2;
+			background: @dark-color;
+			.transition(all .3s ease);
+			.transform-origin(100% 50%);
+			&.dfd-top-line {
+				margin-top: -5px;
+			}
+			&.dfd-middle-line {
+				width: @s - 4;
+				margin-right: 0;
+			}
+			&.dfd-bottom-line {
+				margin-top: 5px;
+			}
+		}
+		
+		&:hover {
+			.icon-wrap {
+				&.dfd-top-line {
+					-webkit-animation: dfdHamburgerButton .8s linear infinite;
+					-moz-animation: dfdHamburgerButton .8s linear infinite;
+					-o-animation: dfdHamburgerButton .8s linear infinite;
+					-ms-animation: dfdHamburgerButton .8s linear infinite;
+					animation: dfdHamburgerButton .8s linear infinite;
+				}
+				&.dfd-middle-line {
+					-webkit-animation: dfdHamburgerButton 1.2s ease-in infinite;
+					-moz-animation: dfdHamburgerButton 1.2s ease-in infinite;
+					-o-animation: dfdHamburgerButton 1.2s ease-in infinite;
+					-ms-animation: dfdHamburgerButton 1.2s ease-in infinite;
+					animation: dfdHamburgerButton 1.2s ease-in infinite;
+				}
+				&.dfd-bottom-line {
+					-webkit-animation: dfdHamburgerButton .6s ease-out infinite;
+					-moz-animation: dfdHamburgerButton .6s ease-out infinite;
+					-o-animation: dfdHamburgerButton .6s ease-out infinite;
+					-ms-animation: dfdHamburgerButton .6s ease-out infinite;
+					animation: dfdHamburgerButton .6s ease-out infinite;
+				}
+			}
+		}
+	}
+	&.active {
+		a {
+			.icon-wrap {
+				&.dfd-middle-line {
+				}
+				&.dfd-top-line {
+				}
+				&.dfd-bottom-line {
+				}
+			}
+		}
+	}
+}
+body.side-area-opened {
+	#side-area {
+		.transform(translateX(0));
+		.transition-transform(.3s ease-in-out .3s);
+		.dfd-side-area-mask {
+			visibility: visible;
+			background: fade(@black-color, 50%);
+			.transition(~"background .3s ease .0s, visibility .3s ease .0s");
+		}
+	}
+}

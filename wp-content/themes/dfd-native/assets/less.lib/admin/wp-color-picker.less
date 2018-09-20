@@ -1,0 +1,108 @@
+/* 
+    Created on : 26.10.2016, 9:57:10
+    Author     : DFD
+	Styles for : WP colorpicker
+*/
+.redux-main,
+.cmb_metabox,
+.vc_ui-panel {
+	.wp-picker-container {
+		.inline-block();
+		&.wp-picker-active {
+			.wp-color-result {
+				width: 0;
+				.wp-color-result-text,
+				&:after {
+					.hide();
+				}
+			}
+		}
+		.wp-color-result {
+			height: @admin-input-height - 2;
+			padding-left: @admin-input-height;
+			margin-right: 5px;
+			margin-bottom: 0;
+			border-style: solid;
+			.box-shadow(none);
+			.transition(all .3s ease);
+			.wp-color-result-text,
+			&:after {
+				line-height: @admin-input-height - 2;
+				padding: 0 15px;
+				background: #ffffff;
+				border-left-style: solid;
+			}
+			&:hover {
+				border-color: #52d298;
+				.wp-color-result-text,
+				&:after {
+					border-color: #ccc;
+				}
+			}
+			&.button:focus {
+				border-color: #e2e2e2;
+			}
+			+ .wp-picker-input-wrap {
+				> label {
+					margin: 0 !important;
+				}
+			}
+		}
+		.wp-picker-input-wrap {
+			input[type="text"] {
+				.box-sizing(border-box);
+				height: @admin-input-height;
+				padding: 0 10px;
+				background: #f3f3f3;
+				border: 1px solid #e2e2e2;
+				.rounded(3px);
+				.box-shadow(none);
+				.transition(~"background-color .3s ease 0s, border-color .3s ease 0s");
+				&:hover,
+				&:focus {
+					background-color: #ffffff;
+					border-color: #52d298;
+				}
+			}
+			input[type="button"] {
+				font-size: 13px;
+				font-weight: 600;
+				height: @admin-input-height;
+				line-height: @admin-input-height;
+				margin-left: 2px;
+				padding: 0 20px;
+				color: #ffffff;
+				background: #3498db;
+				border: none;
+				.rounded(4px);
+				.box-shadow(none);
+				.hide();
+			}
+		}
+		.wp-picker-holder {
+		}
+	}
+}
+.vc_ui-panel {
+	.wp-picker-container .wp-color-result {
+		.box-sizing(content-box);
+	}
+}
+#advanced-sortables {
+	.dfd-metaboxes-wrap .button.wp-color-result {
+		height: @admin-input-height - 2;
+		padding-left: @admin-input-height;
+		padding-right: 0;
+		border: 1px solid #e2e2e2;
+		font-weight: 400;
+		.transition(all .3s ease);
+		&:hover {
+			border-color: #52d298;
+		}
+		+ .wp-picker-input-wrap {
+			input[type="text"] {
+				.box-sizing(border-box);
+			}
+		}
+	}
+}

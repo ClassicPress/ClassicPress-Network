@@ -1,0 +1,94 @@
+/* 
+    Created on : 24.10.2016, 9:41:30
+    Author     : DFD
+	Styles for : Delimier VC param
+*/
+.wpb_el_type_dfd_delimiter {
+	* {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-o-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	> .wpb_element_label {
+		font-size: 14px;
+		font-weight: 600;
+		text-transform: none;
+		padding: 15px;
+		margin-top: -5px;
+		margin-left: -15px;
+		margin-right: -15px;
+		background: transparent;
+		border-bottom: 1px dashed #52d298;
+	}
+	.dfd-delimiter-param-container {
+		.clearfix();
+		margin: 0 -10px;
+		> div {
+			float: left;
+			width: 100%;
+			padding: 0 10px;
+			&.dfd-delimiter-width {
+				width: 66.6667%;
+			}
+			&.dfd-param-colorpicker-section {
+				width: 33.3333%;
+			}
+			&:not(:last-child) {
+				position: relative;
+				padding-bottom: 15px;
+				margin-bottom: 15px;
+				&:before {
+					content: "";
+					display: block;
+					height: 0;
+					position: absolute;
+					bottom: 0;
+					left: -15px;
+					right: -15px;
+					border-bottom: 1px dashed #e1e1e1;
+				}
+				&.dfd-delimiter-style {
+					-webkit-transition: padding .3s ease, margin-bottom .3s ease;
+					-moz-transition: padding .3s ease, margin-bottom .3s ease;
+					-ms-transition: padding .3s ease, margin-bottom .3s ease;
+					-o-transition: padding .3s ease, margin-bottom .3s ease;
+					transition: padding .3s ease, margin-bottom .3s ease;
+					&:not(.expanded) {
+						padding-bottom: 0;
+						margin-bottom: 0;
+						&:before {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		.dfd-delimiter-style {
+			
+		}
+		.dfd-delimiter-width {
+			.delimiter-size-block {
+				overflow: hidden;
+				margin: 0 -10px;
+				.input-wrap {
+					float: left;
+					width: 50%;
+					padding: 0 10px;
+				}
+			}
+		}
+		.dfd-param-colorpicker-section {
+			* {
+				-webkit-box-sizing: content-box;
+				-moz-box-sizing: content-box;
+				-o-box-sizing: content-box;
+				box-sizing: content-box;
+			}
+		}
+	}
+}

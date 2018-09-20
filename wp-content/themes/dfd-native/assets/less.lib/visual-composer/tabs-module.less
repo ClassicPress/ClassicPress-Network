@@ -1,0 +1,70 @@
+/* 
+    Created on : 04.03.2015, 10:42:10
+    Author     : DFD
+	Styles for : Tabs module
+*/
+.wpb_tabs.wpb_content_element {
+	.wpb_tour_tabs_wrapper {
+		.wpb_tabs_nav {
+			overflow: hidden;
+			li {
+				.rel();
+				border: 1px solid transparent;
+				background-color:transparent;
+				margin: 0;
+				.transition(border-color .3s ease-in-out);
+
+				&.ui-tabs-active {
+					border-color: @border-color;
+					.ui-tabs-anchor {
+						&:before {
+							background: transparent;
+						}
+					}
+					+ li {
+						.ui-tabs-anchor {
+							&:before {
+								background: transparent;
+							}
+						}
+					}
+				}
+				.ui-tabs-anchor {
+					.rel();
+					font-family: @box-name-font-family;
+					font-size: @box-name-font-size - 2;
+					font-weight: @box-name-font-weight;
+					color: @box-name-color;
+					text-transform: uppercase;
+					line-height: 40px;
+					padding: 0px 30px;
+					&:before {
+						content: "";
+						.abs();
+						width: 1px;
+						height: @box-name-font-size;
+						background: @border-color;
+						top: 50%;
+						left: 0;
+						.transform(translateY(-50%) rotate(45deg));
+						.transition(background .3s ease-in-out);
+					}
+				}
+				&:first-child {
+					.ui-tabs-anchor {
+						&:before {
+							.hide();
+						}
+					}
+					
+				}
+			}
+		}
+		.wpb_tab {
+			padding: 30px 0;
+		}
+	}
+}
+.wpb_content_element.wpb_tabs .wpb_tour_tabs_wrapper .wpb_tab{
+	background-color:transparent;
+}

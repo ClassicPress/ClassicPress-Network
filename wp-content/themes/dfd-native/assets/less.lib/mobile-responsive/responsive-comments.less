@@ -1,0 +1,51 @@
+/* 
+    Created on : 28.10.2016, 9:50:04
+    Author     : DFD
+	Styles for : Responsive comments
+*/
+@media only screen
+and (max-width : 1100px) {
+	#comments .commentlist .comment div.clearfix {
+		.avatar-box {
+			.hide();
+		}
+		.comment-content {
+			margin-left: 0;
+			.comment-author {
+				.reply {
+					.comment-reply-link,
+					.comment-edit-link {
+						width: 40px;
+						height: 40px;
+						text-align: center;
+						padding: 0;
+						> i {
+							float: none;
+							margin-right: 0;
+						}
+						> span {
+							.hide();
+						}
+					}
+					.comment-reply-link {
+						> i {
+							font-size: 17px;
+						}
+					}
+					.comment-edit-link {
+						margin-left: 5px;
+						> i {
+							font-size: 12px;
+						}
+					}
+				}
+				.entry-meta {
+					height: 1.5em;
+					line-height: 1;
+					margin-bottom: 15px;
+					clear: both;
+				}
+			}
+		}
+	}
+}

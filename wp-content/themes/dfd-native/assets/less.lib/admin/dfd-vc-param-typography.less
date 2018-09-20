@@ -1,0 +1,62 @@
+/* 
+    Created on : 24.10.2016, 10:57:04
+    Author     : DFD
+	Styles for : Typography param container
+*/
+.wpb_el_type_dfd_font_container {
+	.dfd-typo-tag-container {
+		ul.vc_font_container_form_field-tag-select {
+			.radio-advanced-style();
+			> li {
+				width: 14.28571%;
+				label {
+					padding: 0;
+				}
+			}
+		}
+	}
+	.vc_font_container_form_field-font_style-container {
+		height: @admin-input-height;
+		line-height: @admin-input-height;
+		.checkbox-wrap {
+			.rel();
+			input[type="checkbox"] {
+				opacity: 0;
+				&:checked {
+					+ span.dfd-font-param-deco {
+						background: #52d298;
+						border-color: #52d298;
+					}
+				}
+				+ span.dfd-font-param-deco {
+					.block();
+					width: 18px;
+					height: 18px;
+					.abs();
+					left: 0;
+					top: 50%;
+					margin-top: -9px;
+					background: #f3f3f3;;
+					border: 1px solid #e4e4e4;
+					.rounded(50%);
+					.transition(~"background .3s ease, border-color .3s ease");
+				}
+			}
+			span.vc_font_container_form_field-font_style-label {
+				color: #3b3b3b;
+				&.italic {
+					font-style: italic;
+				}
+				&.underline {
+					text-decoration: underline;
+				}
+				&.bold {
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	.vc_font_container_form_field-font_family-select {
+		.radio-advanced-style();
+	}
+}

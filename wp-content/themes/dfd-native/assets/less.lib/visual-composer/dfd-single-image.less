@@ -1,0 +1,82 @@
+/* 
+    Created on : 11.05.2015, 17:26:27
+    Author     : DFD
+	Styles for : Single image module
+*/
+.dfd-single-image-module {
+	.rel();
+	.clearfix();
+	img {
+		.block();
+		.rounded(inherit);
+	}
+	a {
+		.rounded(inherit);
+	}
+	&.image-left img {
+		float: left;
+	}
+	&.image-right img {
+		float: right;
+	}
+	&.image-center img {
+		margin: 0 auto;
+	}
+	&.dfd-image-fade-in img {
+		.opacity(1);
+		.transition(opacity .3s ease);
+		&:hover {
+			.opacity(.7);
+		}
+	}
+	&.dfd-image-fade-out img {
+		.opacity(.7);
+		.transition(opacity .3s ease);
+		&:hover {
+			.opacity(1);
+		}
+	}
+	&.dfd-image-blur img {
+		.blur(0);
+		.transition(all .7s ease-in-out);
+		&:hover {
+			.blur(5px);
+		}
+	}
+	&.dfd-image-scale {
+		overflow: hidden;
+		img {
+			.scale(1);
+			.transition-transform(.7s ease-in-out);
+			&:hover {
+				.scale(1.06);
+			}
+		}
+	}
+	&.dfd-image-scale-rotate {
+		overflow: hidden;
+		img {
+			.transform(scale(1) rotate(0));
+			.transition-transform(.7s ease-in-out);
+			&:hover {
+				.transform(scale(1.06) rotate(2deg));
+			}
+		}
+	}
+	&.panr {
+		overflow: hidden;
+	}
+	&.dfd-image-shadow {
+		.transform(perspective(0));
+		.transition(all .3s ease-in-out);
+		img {
+			.transition(box-shadow .3s ease-in-out);
+		}
+		&:hover {
+			.transform(perspective(400px));
+		}
+	}
+	&.dfd-img-lazy-load:not(.image-loaded) {
+		background: transparent;
+	}
+}

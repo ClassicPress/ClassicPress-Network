@@ -1,0 +1,61 @@
+/* 
+    Created on : 28.10.2016, 9:55:24
+    Author     : DFD
+	Styles for : Responsive CallToAction shortcode
+*/
+@media only screen
+and (max-width : @screen-medium - 1) {
+	/*Call To Action Native shortcode*/
+	.dfd-call-to-action-wrap {
+		.content-block,
+		.button-block {
+			.block();
+			overflow: hidden;
+		}
+		&.style-1,
+		&.style-2 {
+			.content-block {padding-left: 35px}
+			.button-block {padding-right: 35px}
+			.main-tilted-decoration,
+			.button-tilted-decoration {
+				.transform(skew(0));
+				margin: 0;
+			}
+		}
+		&.style-1 {
+			.content-block {
+				margin-bottom: 20px;
+			}
+		}
+		&.style-2 {
+			.button-block {
+				margin-bottom: 20px;
+			}
+		}
+	}
+}
+
+@media only screen
+and (max-width : @screen-small) {
+	.dfd-call-to-action-wrap {
+		.icon-wrap {
+			.block();
+			width: 100%;
+			padding-right: 0;
+			padding-bottom: 20px;
+			text-align: center;
+			vertical-align: initial;
+			img {
+				margin: 0 auto;
+			}
+			&.selector {
+				width: 100%;
+			}
+		}
+		.title-wrap {
+			display: block;
+			text-align: center;
+			vertical-align: initial;
+		}
+	}
+}

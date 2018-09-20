@@ -1,0 +1,93 @@
+/* 
+    Created on : 28.07.2015, 10:24:02
+    Author     : DFD
+	Styles for : Horizontal Scroll Module
+*/
+.dfd-horizontal-scroll-wrap {
+	.rel();
+	overflow: hidden;
+	.dfd-horizontal-scroll-container {
+		.rel();
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		> ul {
+			height: 100%;
+			overflow: hidden;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			> li {
+				float: left;
+				height: 100%;
+				margin: 0;
+				.cover {
+					> div {
+						height: 100%;
+					}
+				}
+				img {
+					max-height: 100%;
+				}
+			}
+		}
+	}
+	.scrollbar {
+		width: 100%;
+		height: 7px;
+		margin-top: 20px;
+		.opacity(.5);
+		.transition(opacity .3s ease);
+		.handle {
+			height: 100%;
+			background: @border-color;
+		}
+	}
+	.dfd-navbar {
+		.sly-prev,
+		.sly-next {
+			font-size: 25px;
+			.block();
+			width: 42px;
+			height: 48px;
+			line-height: 48px;
+			.abs();
+			top: 50%;
+			text-align: center;
+			margin-top: -24px;
+			color: @white-color;
+			visibility: hidden;
+			i {
+				line-height: inherit;
+			}
+			&.disabled {
+				.opacity(.5);
+			}
+		}
+		.sly-prev {
+			left: 0;
+			margin-left: -42px;
+			.transition(~"margin-left .3s ease, visibility .3s ease");
+		}
+		.sly-next {
+			right: 0;
+			margin-right: -42px;
+			.transition(~"margin-right .3s ease, visibility .3s ease");
+		}
+	}
+	&:hover {
+		.dfd-navbar {
+			.sly-prev {
+				visibility: visible;
+				margin-left: 0;
+			}
+			.sly-next {
+				visibility: visible;
+				margin-right: 0;
+			}
+		}
+		.scrollbar {
+			.opacity(1);
+		}
+	}
+}

@@ -1,0 +1,139 @@
+/* 
+    Created on : 24.05.2016, 18:49:48
+    Author     : DFD
+	Styles for : Widget Calendar
+*/
+
+.widget.widget_calendar {
+	.calendar_wrap {
+		#wp-calendar {
+			.rel();
+			background: transparent;
+			margin: 0;
+			border: none;
+			border-collapse: collapse;
+			caption {
+				text-align: center;
+				height: 36px;
+				line-height: 36px;
+			}
+			thead th,
+			tbody td {
+				width: 36px;
+				height: 36px;
+				line-height: 36px;
+				text-align: center;
+				padding: 0;
+				vertical-align: middle;
+			}
+			thead {
+				background: transparent;
+				th {
+					color: #c3c3c3;
+				}
+			}
+			tbody {
+				tr {
+					background: transparent;
+					td {
+						.rel();
+						a {
+							.block();
+							.rel();
+							z-index: 2;
+							&:before {
+								content: "";
+								.abs();
+								width: 36px;
+								height: 36px;
+								top: 50%;
+								left: 50%;
+								.translate(-50%; -50%);
+								background: @border-color;
+								.rounded(50%);
+								.transition(background .3s ease);
+								z-index: -1;
+							}
+							&:hover {
+								color: @white-color;
+								&:before {
+									background: @main-site-light-color;
+								}
+							}
+						}
+					}
+				}
+			}
+			tfoot {
+				background: transparent;
+				.abs();
+				top: 0;
+				width: 100%;
+				height: 36px;
+				line-height: 36px;
+				#prev,
+				#next {
+					.abs();
+					width: 36px;
+					top: 50%;
+					.translate(0; -50%);
+					padding: 0;
+					a {
+						.block();
+						.rel();
+						margin: 0 auto;
+						color: transparent;
+						width: 28px;
+						height: 28px;
+						line-height: 24px;
+						text-align: center;
+						border: 2px solid transparent;
+						.rounded(50%);
+						.transition(border-color .3s ease);
+						&:before {
+							color: @title-color;
+							font-family: FontAwesome;
+							.block();
+						}
+						&:hover {
+							border-color: @border-color;
+						}
+					}
+					&.pad {
+						text-align: center;
+						&:before {
+							color: @border-color;
+							font-family: FontAwesome;
+						}
+					}
+				}
+				#prev {
+					left: 0;
+					a {
+						&:before {
+							content: "\f104";
+						}
+					}
+					&.pad {
+						&:before {
+							content: "\f104";
+						}
+					}
+				}
+				#next {
+					right: 0;
+					a {
+						&:before {
+							content: "\f105";
+						}
+					}
+					&.pad {
+						&:before {
+							content: "\f105";
+						}
+					}
+				}
+			}
+		}
+	}
+}

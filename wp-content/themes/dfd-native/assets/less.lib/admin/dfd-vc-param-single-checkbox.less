@@ -1,0 +1,53 @@
+/* 
+    Created on : 27.10.2016, 8:28:41
+    Author     : DFD
+	Styles for : VC param single checkbox
+*/
+.dfd_single_checkbox_wrap {
+	margin-bottom: 15px;
+	.dfd_single_checkbox {
+		@s: 32px;
+		.inline-block();
+		width: 58px;
+		height: @s;
+		position: relative;
+		.button-animation {
+			.block();
+			width: 100%;
+			height: 100%;
+			background: #52d298;
+			border-radius: 32px;
+			z-index: 0;
+			-webkit-transition: background .3s ease 0s;
+			-moz-transition: background .3s ease 0s;
+			transition: background .3s ease 0s;
+			&:before {
+				content: "";
+				display: block;
+				width: @s+2;
+				height: @s+2;
+				position: absolute;
+				left: auto;
+				right: -1px;
+				top: -1px;
+				background: #ffffff;
+				border-radius: 50%;
+				-webkit-box-shadow: 0px 5px 9px 2px fade(#000000, 10%);
+				-moz-box-shadow: 0px 5px 9px 2px fade(#000000, 10%);
+				box-shadow: 0px 5px 9px 2px fade(#000000, 10%);
+				-webkit-transition: right .3s ease 0s;
+				-moz-transition: right .3s ease 0s;
+				transition: right .3s ease 0s;
+			}
+			&.right-active {
+				background: #f2f2f2;
+				&:before {
+					right: 24px;
+				}
+			}
+		}
+	}
+	label.param-title {
+		margin-left: 5px;
+	}
+}

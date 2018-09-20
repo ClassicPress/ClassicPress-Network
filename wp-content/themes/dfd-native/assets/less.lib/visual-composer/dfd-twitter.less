@@ -1,0 +1,132 @@
+/* 
+    Created on : 03.08.2016, 16:28:29
+    Author     : DFD
+	Styles for : Twitter shortcode
+*/
+
+.dfd-twitter {
+	.rel();
+	text-align: center;
+	margin: 0 -10px;
+	.tweets-author {
+		padding: 0 10px 20px;
+	}
+	.icon-wrap {
+		font-size: 25px;
+		line-height: 1;
+		color: #3498db;
+		i {
+			.block();
+		}
+	}
+	.author-title {
+		font-size: 15px;
+		padding-bottom: 5px;
+	}
+	&.text-left {
+		.tweets-author {
+			text-align: left;
+		}
+		.tweets-author {
+			text-align: left;
+		}
+	}
+	&.text-right {
+		.tweets-author {
+			text-align: right;
+		}
+	}
+	.tweet-item {
+		.rel();
+		padding-top: 10px;
+		.tweet {
+			padding: 0 10px;
+		}
+		.date {
+			.inline-block();
+			padding-top: 15px;
+			white-space: nowrap;
+		}
+		.tweet-content {
+			overflow: hidden;
+		}
+		&:before {
+			content: "";
+			.abs();
+			height: 1px;
+			left: 10px;
+			right: 10px;
+			top: 0;
+			background: @border-color;
+		}
+	}
+	&.style-1 {
+		.icon-wrap {
+			padding-bottom: 20px;
+		}
+	}
+	&.style-2 {
+		.tweets-author {
+			padding-bottom: 0;
+		}
+		.title-wrap {
+			padding-bottom: 20px;
+			margin-bottom: 10px;
+		}
+		.icon-wrap {
+			.abs();
+			bottom: 0;
+			left: 10px;
+			right: 10px;
+		}
+		&.dots-enable {
+			.dfd-slick-dots {
+				padding-top: 60px;
+			}
+			.icon-wrap {
+				bottom: 50px;
+			}
+		}
+		&.dots-disable {
+			padding-bottom: 40px;
+		}
+	}
+	&.style-3 {
+		text-align: left;
+		.tweets-author {
+			overflow: hidden;
+		}
+		.icon-wrap {
+			float: left;
+		}
+		.title-wrap {
+			margin-left: 50px;
+		}
+		&.text-right {
+			text-align: right;
+			.icon-wrap {
+				float: right;
+			}
+			.title-wrap {
+				margin-left: 0;
+				margin-right: 50px;
+			}
+		}
+	}
+	.dfd-slick-dots {
+		padding-top: 15px;
+		margin: 0;
+		li {
+			.rel();
+			.inline-block();
+			line-height: 1;
+			margin: 0 10px;
+			.box-shadow(none);
+			.opacity(1);
+			span {
+				.block();
+				cursor: pointer;
+			}
+		}
+	}
+}

@@ -1,0 +1,123 @@
+@import "../../../../../../../../themes/dfd-native/assets/less.lib/variables.less";
+@import "../../../../../../../../themes/dfd-native/assets/less.lib/sb_mixins.less";
+
+.mega-menu {
+	color: inherit;
+	.nav-menu{
+		color: inherit;
+	}
+	.nav-item {
+		color: inherit;
+		.main-menu-link.item-title{
+			color: inherit;
+		} 
+	}
+	.no-menu-box.nav-menu{
+		line-height: inherit;
+		height: inherit; 
+	}
+	> ul {
+		height:inherit;
+		> li{
+			height: inherit;
+			> a{
+				line-height: inherit;
+				height: inherit;
+			}
+			&:hover {
+				&.menu-item-language > a,
+				> a > span {
+					opacity: .7;
+					.transition(opacity .5s ease);
+				}
+			}
+		}
+	}
+}
+
+&.side-header{ 
+	.header-builder-wrraper{
+		&.desktop{
+			.mega-menu{
+				text-align: left;
+				> ul {
+					> li{
+						display: block;
+						float: none;
+						&.current-menu-item,&.current-menu-ancestor{
+							&:before{
+								display: none;
+							}
+						}
+					}
+				}
+			}
+			.mega-menu {
+				margin: 0 -40px;
+				> ul {
+					margin: 0;
+					display: block;
+					> li {
+						padding: 0px 40px;
+						ul.submenu-languages,
+						div.sub-nav {
+							top: 0;
+							left: 100%;
+							margin-top: -19px;
+							&:before,
+								&:after {
+								content: "";
+								display: block;
+								position: absolute;
+								right: 100%;
+							}
+							&:before {
+								width: 20px;
+								height: 100%;
+								top: 0;
+								background: transparent;
+							}
+							&:after {
+								top: 33px;
+								border-top: 7px solid transparent;
+								border-bottom: 7px solid transparent;
+							}
+							> ul {
+								background-image: none !important;
+								ul {
+									left: 100%;
+									margin-left: 14px;
+									transform: none !important;
+									&:before,
+										&:after {
+										content: "";
+										display: block;
+										position: absolute;
+										right: 100%;
+									}
+									&:before {
+										width: 20px;
+										height: 100%;
+										top: 0;
+										background: transparent;
+									}
+									&:after {
+										top: 33px;
+										border-top: 7px solid transparent;
+										border-bottom: 7px solid transparent;
+									}
+								}
+							}
+						}
+						&.menu-item-language {
+							> a {
+								color: inherit;
+								.transition(color .3s ease);
+							}
+						}
+					}
+				}
+			}
+		}
+	} 
+}

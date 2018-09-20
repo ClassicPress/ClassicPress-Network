@@ -1,0 +1,56 @@
+@import "../../../../../../../../../themes/dfd-native/assets/less.lib/header/mega-menu.less";
+.mega-menu {
+	height: inherit;
+	color: inherit;
+	.nav-menu{
+		color: inherit;
+	}
+	.nav-item {
+		color: inherit;
+		.main-menu-link.item-title {
+			color: inherit;
+		} 
+	}
+	> ul {
+		height: inherit;
+		display: table;
+		line-height: inherit;
+		margin-top: 0px;
+		> li {
+			float: none; 
+			display: table-cell;
+			vertical-align: middle;
+			height: 100%;
+			&.current-menu-item,
+			&.current-menu-ancestor {
+				&:before {
+					content: "";
+					.block();
+					width: 100%;
+					height: 2px;
+					.abs();
+					top: 0;
+					left: 0;
+					background: @main-site-light-color;
+				}
+			}
+		}
+	}
+}
+#dfd_header_t_preview{
+	&.side-header{
+		.mega-menu {
+			> ul {
+				> li {
+					padding:0 10px;
+					&.current-menu-item,
+					&.current-menu-ancestor {
+						&:before {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}

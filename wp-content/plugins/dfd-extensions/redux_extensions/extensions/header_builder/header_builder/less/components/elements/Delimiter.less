@@ -1,0 +1,44 @@
+.dfd-header-delimiter{
+	height: inherit;
+	line-height: inherit;
+	/*border-left: 1px solid #e7e7e7;*/
+	position: relative;
+	min-width:1px;
+	&:before{
+		content: "";
+		position: absolute;
+		/*width: 1px;*/
+		left: 50%;
+		bottom: 1px;
+		top: 0px;
+		border-right: 1px solid;
+		border-color: inherit;
+	}
+}
+
+#dfd_header_t_preview{
+	&.side-header{
+		.Delimiter {
+			display: table;
+			height: 20px;
+			line-height: 20px;
+			/*margin-left:-10px;*/
+			.dfd-header-delimiter{
+				&:before{
+					display: none;
+				}
+			}
+			&:after{
+				content: "";
+				position: absolute;
+				border-bottom-width: 1px;
+				border-bottom-color: inherit;
+				border-bottom-style: solid;
+				top: 50%;
+				width: 100%;
+				right: 0%;
+				left: -30px;
+			}
+		}
+	}
+}

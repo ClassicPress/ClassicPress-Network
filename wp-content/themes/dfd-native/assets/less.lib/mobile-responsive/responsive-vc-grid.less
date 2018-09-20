@@ -1,0 +1,203 @@
+/* 
+    Created on : 01.04.2015, 16:06:25
+    Author     : DFD
+	Styles for : Responsive vc grid
+*/
+@grid-columns: 12;
+
+.vc_calc-grid-column(@index, @class, @type) when (@type = width) and (@index > 0) {
+    .dfd_col-@{class}-@{index} {
+		float: left;
+		clear: none;
+        width: percentage((@index / @grid-columns));
+    }
+}
+.vc_calc-grid-column(@index, @class, @type) when (@type = push) and (@index > 0) {
+    .dfd_col-@{class}-push-@{index} {
+        left: percentage((@index / @grid-columns));
+    }
+}
+.vc_calc-grid-column(@index, @class, @type) when (@type = push) and (@index = 0) {
+    .dfd_col-@{class}-push-0 {
+        left: auto;
+    }
+}
+.vc_calc-grid-column(@index, @class, @type) when (@type = pull) and (@index > 0) {
+    .dfd_col-@{class}-pull-@{index} {
+        right: percentage((@index / @grid-columns));
+    }
+}
+.vc_calc-grid-column(@index, @class, @type) when (@type = pull) and (@index = 0) {
+    .dfd_col-@{class}-pull-0 {
+        right: auto;
+    }
+}
+.vc_calc-grid-column(@index, @class, @type) when (@type = offset) {
+    .dfd_col-@{class}-offset-@{index} {
+        margin-left: percentage((@index / @grid-columns));
+    }
+}
+
+// Basic looping in LESS
+.vc_loop-grid-columns(@index, @class, @type) when (@index >= 0) {
+    .vc_calc-grid-column(@index, @class, @type);
+    // next iteration
+    .vc_loop-grid-columns((@index - 1), @class, @type);
+}
+
+// Create grid for specific class
+.dfd_make-grid(@class) {
+    .vc_loop-grid-columns(@grid-columns, @class, width);
+    .vc_loop-grid-columns(@grid-columns, @class, pull);
+    .vc_loop-grid-columns(@grid-columns, @class, push);
+    .vc_loop-grid-columns(@grid-columns, @class, offset);
+}
+// Extra small grid
+//
+// Columns, offsets, pushes, and pulls for extra small devices like
+// smartphones.
+
+@media (max-width: @screen-medium - 1) {
+	.row {
+		.dfd_make-grid(mobile);
+	}
+}
+
+@media (min-width: @screen-medium) {
+	.row {
+		.dfd_make-grid(tablet);
+	}
+}
+
+
+// Medium grid
+//
+// Columns, offsets, pushes, and pulls for the desktop device range.
+
+@media (min-width: @screen-normal) {
+	.row {
+		.dfd_make-grid(laptop);
+	}
+}
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+
+@media (min-width: @screen-x-large + 1) {
+	.row {
+		.dfd_make-grid(tabletop);
+	}
+}
+@media (min-width: @screen-medium) and (max-width: @screen-normal - 1) {
+	.dfd_vc_hidden-sm {
+		display: none !important;
+	}
+}
+@media (min-width: @screen-normal) and (max-width: @screen-x-large - 1) {
+	.dfd_vc_hidden-md {
+		display: none !important;
+	}
+}
+@media (min-width: @screen-x-large) {
+	.dfd_vc_hidden-lg {
+		display: none !important;
+	}
+}
+
+@media (min-width: @screen-medium) {
+	.dfd-mobile-hide {
+		.block();
+	}
+	.dfd-mobile-show {
+		.hide();
+	}
+}
+@media (max-width: @screen-medium - 1) {
+	.dfd-mobile-hide {
+		.hide();
+	}
+	.dfd-mobile-show {
+		.block();
+	}
+}
+
+.dfd-responsive-column-classes(@class) {
+	.vc-row-wrapper.@{class},
+	.vc-row-wrapper .columns.@{class} {
+		&.dfd-remove-left-border {
+			border-left: none !important;
+		}
+		&.dfd-remove-right-border {
+			border-right: none !important;
+		}
+		&.dfd-remove-top-border {
+			border-top: none !important;
+		}
+		&.dfd-remove-bottom-border {
+			border-bottom: none !important;
+		}
+		&.dfd-remove-all-borders {
+			border-left: none !important;
+			border-right: none !important;
+			border-top: none !important;
+			border-bottom: none !important;
+		}
+		&.dfd-remove-left-padding {
+			padding-left: 0 !important;
+		}
+		&.dfd-remove-right-padding {
+			padding-right: 0 !important;
+		}
+		&.dfd-remove-top-padding {
+			padding-top: 0 !important;
+		}
+		&.dfd-remove-bottom-padding {
+			padding-bottom: 0 !important;
+		}
+		&.dfd-remove-all-paddings {
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+			> .row {
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+				padding-top: 0 !important;
+				padding-bottom: 0 !important;
+			}
+		}
+		&.dfd-remove-left-margin {
+			margin-left: 0 !important;
+		}
+		&.dfd-remove-right-margin {
+			margin-right: 0 !important;
+		}
+		&.dfd-remove-top-margin {
+			margin-top: 0 !important;
+		}
+		&.dfd-remove-bottom-margin {
+			margin-bottom: 0 !important;
+		}
+		&.dfd-remove-all-margins {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+			margin-top: 0 !important;
+			margin-bottom: 0 !important;
+		}
+	}
+}
+
+
+@media (max-width: @screen-medium - 1) {
+	.dfd-responsive-column-classes(dfd-apply-mobile);
+}
+
+@media (min-width: @screen-medium) and (max-width: @screen-normal - 1) {
+	.dfd-responsive-column-classes(dfd-apply-tablet);
+}
+@media (min-width: @screen-normal) and (max-width: @screen-x-large) {
+	.dfd-responsive-column-classes(dfd-apply-laptop);
+}
+@media (min-width: @screen-x-large) and (max-width: 1600px) {
+	.dfd-responsive-column-classes(dfd-apply-desktop);
+}

@@ -1,0 +1,64 @@
+/* 
+    Created on : 16.11.2015
+    Author     : DFD
+	Styles for : Announcement shortcode
+*/
+
+.dfd-announce-module-wrap {
+	.rel();
+	line-height: 0;
+	.dfd-announce-module {
+		.rel();
+		.inline-block();
+		.rounded(4px);
+		overflow: hidden;
+		&:before {
+			content: "";
+			.abs();
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			.rounded(inherit);
+			background: rgba(0,0,0,.05);
+			border-width: 0;
+		}
+		i {
+			font-size: 14px;
+			margin-right: 15px;
+			float: left;
+			width: 44px;
+			height: 44px;
+			line-height: 44px;
+			text-align: center;
+			.rounded(inherit);
+			margin-top: -8px;
+			margin-left: -15px;
+		}
+		.module-text {
+			.rel();
+			padding: 8px 15px;
+			text-align: left;
+			.rounded(inherit);
+			line-height: 2em;
+		}
+	}
+	&.style-1 {
+		i {
+			color: #464646;
+			margin-right: 0;
+		}
+	}
+	&.style-2 {
+		i {
+			background: @main-site-light-color;
+			color: @white-color;
+		}
+	}
+	&.full-width-bg {
+		.dfd-announce-module {
+			.block();
+		}
+	}
+}
+

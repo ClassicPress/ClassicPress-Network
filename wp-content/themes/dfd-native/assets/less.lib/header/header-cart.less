@@ -1,0 +1,56 @@
+/* -----------------------------------------
+   Shopping Cart Total
+----------------------------------------- */
+.total_cart_header {
+	@s: 28px;
+	.rel();
+	height: inherit;
+	line-height: inherit;
+	padding-right: 25px;
+	z-index: 1002;
+	.woo-cart-contents {
+		* {
+			height: inherit;
+			line-height: inherit;
+		}
+		.woo-cart-items {
+			font-size: 20px;
+			float: left;
+			opacity: 1;
+		}
+		.woo-cart-details {
+			.rel();
+			font-size: 11px;
+			float: left;
+			margin-left: 10px;
+			color: @white-color;
+			&:before {
+				@s: 20px;
+				content: "";
+				.block();
+				width: @s;
+				height: @s;
+				.abs();
+				top: 50%;
+				left: 50%;
+				margin-top: -@s/2;
+				margin-left: -@s/2;
+				background: @main-site-light-color;
+				.rounded(50%);
+				z-index: -1;
+			}
+		}
+	}
+	&:hover {
+		.woo-cart-contents {
+			.woo-cart-items {
+				opacity: .7;
+				.transition(opacity .8s ease);
+			}
+		}
+		.shopping-cart-box {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}

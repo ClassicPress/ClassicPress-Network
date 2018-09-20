@@ -1,0 +1,215 @@
+/* 
+    Created on : 09.07.2016, 12:08:05
+    Author     : DFD
+	Styles for : Progress Bar shortcode
+*/
+
+@-webkit-keyframes progress-bar-stripes {
+	from {background-position: 14px 0;}
+	to {background-position: 0 0;}
+}
+@-o-keyframes progress-bar-stripes {
+	from {background-position: 14px 0;}
+	to {background-position: 0 0;}
+}
+@keyframes progress-bar-stripes {
+	from {background-position: 14px 0;}
+	to {background-position: 0 0;}
+}
+
+.dfd-progressbar {
+	&.text-top {
+		.title-wrap {
+			margin-bottom: 10px;
+		}
+	}
+	&.text-bottom {
+		.title-wrap {
+			margin-top: 8px;
+		}
+	}
+	&.title-percents-left {
+		.progressbar-title {
+			float: left;
+		}
+		.progressbar-number {
+			float: left;
+			padding-left: 10px;
+		}
+	}
+	&.no-animation {
+		.meter {
+			.transition(width 0s ease 0s);
+		}
+	}
+	&.lines-decoration {
+		.meter:before {
+			content: "";
+			.abs();
+			.dfd-diagonal-bg(fade(@background-grey, 10%), fade(@white-color, 10%));
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			.block();
+		}
+	}
+	&.move-lines {
+		.meter:before {
+			-webkit-animation: progress-bar-stripes .5s linear infinite;
+			-o-animation: progress-bar-stripes .5s linear infinite;
+			animation: progress-bar-stripes .5s linear infinite;
+		}
+	}
+	&.enable-icon {
+		.progressbar-title {
+			padding-left: 25px;
+		}
+		&.layout-3 {
+			.title-wrap .progressbar-title {
+				padding-left: 45px;
+				.featured-icon {
+					left: 15px;
+					color: @white-color;
+				}
+			}
+		}
+	}
+	.title-wrap {
+		display: table;
+		width: 100%;
+		p {
+			margin: 0;
+		}
+	}
+	.progressbar-title {
+		font-size: 13px;
+		.rel();
+		.featured-icon {
+			.abs();
+			.block();
+			top: 50%;
+			.transform(translateY(-50%));
+			left: 0;
+			line-height: inherit;
+			font-size: 14px;
+			color: @title-color;
+		}
+	}
+	.progressbar-number {
+		display: table-cell;
+		text-align: right;
+	}
+	.progress-bar-line {
+		clear: both;
+		.rel();
+		.meter-decoration {
+			border-width: 1px;
+			border-color: @border-color;
+			.rounded(inherit);
+		}
+		.meter {
+			.rounded(inherit);
+		}
+	}
+	.meter {
+		.abs();
+		background: @main-site-light-color;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 0;
+		z-index: 1;
+		.transition(width 1s linear);
+	}
+	&.layout-1 {
+		.progress-bar-line {
+			height: 9px;
+			.meter-decoration {
+				height: inherit;
+				background: @border-color;
+			}
+		}
+	}
+	&.layout-2 {
+		.progress-bar-line {
+			height: 5px;
+			.meter-decoration {
+				height: inherit;
+				background: transparent;
+				&:before {
+					content: "";
+					.abs();
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: 1px;
+					background: @border-color;
+				}
+			}
+		}
+	}
+	&.layout-3 {
+		.rel();
+		height: 33px;
+		line-height: 33px;
+		.title-wrap {
+			.abs();
+			margin: 0;
+			color: @white-color;
+			height: inherit;
+			line-height: inherit;
+			z-index: 2;
+			.featured-icon {
+				left: 15px;
+			}
+			.progressbar-title,
+			.progressbar-number {
+				height: inherit;
+				line-height: inherit;
+			}
+			.progressbar-title {
+				color: inherit;
+				padding-left: 15px;
+			}
+			.progressbar-number {
+				padding-right: 15px;
+				padding-left: 10px;
+			}
+		}
+		.progress-bar-line {
+			height: inherit;
+			line-height: inherit;
+			.meter-decoration {
+				height: inherit;
+				background: @border-color;
+			}
+		}
+		&.percents-center:not(.no-animation),
+		&.percents-left:not(.no-animation) {
+			.title-wrap {
+				visibility: hidden;
+				.opacity(0);
+				.transition(~"opacity .3s ease, visibility .3s ease");
+				&.active {
+					visibility: visible;
+					.opacity(1);
+				}
+			}
+		}
+		&.percents-center {
+			.progressbar-number {
+				.abs();
+				color: @white-color;
+				top: 0;
+			}
+		}
+		&.percents-left {
+			.progressbar-title,
+			.progressbar-number {
+				float: left;
+				color: @white-color;
+			}
+		}
+	}
+}

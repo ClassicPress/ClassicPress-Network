@@ -1,0 +1,202 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+
+Project:	Ronneby theme
+Version:	1.0
+Last change:	16/06/15
+Assigned to:	DFD
+Primary use:	Mobile responsive styles are located here
+-------------------------------------------------------------------*/
+/*---------------------------------
+/* foundation framework responsive
+---------------------------------*/
+
+
+@media only screen and (max-width: (@screen-x-large - 1)) and (min-width: @screen-medium) { .touch table.hide-for-xlarge, .touch table.hide-for-large, .touch table.hide-for-small, .touch table.show-for-medium { display: table !important; } }
+/* 1280 tablet ------------ */
+@media only screen and (max-device-width: @screen-x-large) { /* NavBar --- */
+    /*            */
+    .touch .nav-bar li.has-flyout > a { padding-right: 36px !important; } }
+/* Covering almost all ----- */
+@media only screen and (max-device-width: @screen-x-medium), only screen and (device-width: @screen-normal) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: @screen-medium - 1) { .flex-video { padding-top: 0; } }
+/* Between Medium and Small */
+@media only screen and (max-width: (@screen-x-large - 1)) and (min-width: @screen-medium) { /* NavBar --- */
+    /*            */
+    .touch .nav-bar li a { font-size: 13px; }
+    .touch .nav-bar li.has-flyout > a.flyout-toggle { padding: 20px !important; }
+    .touch .nav-bar li.has-flyout > a { padding-right: 36px !important; }
+    /* Clearing --- */
+    /*              */
+    .clearing-main-right, .clearing-main-left { height: 100%; width: 40px; top: 0; border: none; }
+    .clearing-main-right:before, .clearing-main-left:before { position: absolute; top: 50%; }
+    .clearing-main-left { left: 0; }
+    .clearing-main-left:before { left: 5px; content: ""; display: block; width: 0; height: 0; border: solid 16px; border-color: transparent white transparent transparent; }
+    .clearing-main-right { height: 100%; right: 0; }
+    .clearing-main-right:before { content: ""; display: block; width: 0; height: 0; border: solid 16px; border-color: transparent transparent transparent white; } }
+/* Small Devices ------------ */
+@media only screen
+and (min-width : @screen-medium) {
+	.mobile-show { display: none !important; }
+}
+
+/*---------------------------------
+/* Theme responsive
+---------------------------------*/
+
+/* iPads (portrait) ----------- */
+@media only screen
+and (min-width : @screen-medium)
+and (max-width : @screen-normal) {
+
+    /*Feature boxes*/
+    .feature-box.al-left .block-title {
+        padding-top: 30px;
+        clear: both;
+    }
+    .intagram-gallery .normal-item:first-child {
+        display: none;
+    }
+    .four.columns.columns-with-border {
+	    width: 100%;
+    }
+}
+
+@media only screen
+and (max-width : @screen-large) {
+	.large-hide { display: none !important; }
+
+    #top-panel .top-info {
+        width: auto;
+    }
+	.ls-inner .button, .ls-inner .button.white  {
+        font-size: 12px;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .tw-slider {
+        padding: 5px 30px 0 105px;
+    }
+    .recent-posts-list .sticky-post .entry-title, .recent-posts-list .entry-title {
+        margin-top: 0;
+    }
+    .intagram-gallery {
+        text-align: center;
+    }
+    .intagram-gallery .big-item {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 3px;
+    }
+    .intagram-gallery .big-item img{
+        min-width: 92%;
+    }
+    .instagram-autor {
+        display: none;
+    }
+    .intagram-gallery .normal-item:first-child {
+        display: none;
+    }
+
+    .tiles-block .tile-item {
+        width: 125px;
+        height: 125px;
+    }
+}
+
+@media only screen
+and (min-width : @screen-normal) {
+	.normal-show { display: none !important; }
+}
+
+@media only screen
+and (max-width : @screen-normal) {
+	.normal-hide { display: none !important; }
+	
+	// Spacer
+	.spacer {
+		padding-right: 10px;
+	}
+	
+	#header-container #header .header-wrap .header-info-panel .top-info,#header-container .header .header-wrap .header-info-panel .top-info {
+		.spacer {
+			padding-right: 5px;
+		}
+	
+		i {
+			margin-right: 0px;
+		}
+	}
+	#header-container .header .header-wrap .header-info-panel .header-wishlist-button,
+	#header-container #header .header-wrap .header-info-panel .header-wishlist-button,
+	#header-container .header .header-wrap .header-info-panel .lang-sel,
+	#header-container #header .header-wrap .header-info-panel .lang-sel {
+		padding: 0 0 0 5px;
+	}
+	
+    /*Promo row*/
+    .promo_row_module .ten.columns {
+        width: 100%;
+    }
+
+    /*Charts module*/
+    .charts-box.normal .chart-wrapper, .charts-box.large .chart-wrapper {
+        width: 100%;
+    }
+    .charts-box {
+        margin-right: 0;
+    }
+    .charts-box.large canvas {
+        margin-left: -15px;
+    }
+    .charts-box.large.chart-wrapper i {
+        margin-left: -15px;
+    }
+    .charts-box canvas {
+        margin: 0 auto 0 auto;
+
+    }
+
+    /*news thumb hover*/
+    .news-row article .entry-thumb a.link:before {
+        line-height: 65%;
+    }
+
+    /*four tiles*/
+    .tiles-block .tile-item {
+        width: 115px;
+        height: 120px;
+    }
+	
+	#crum-slider .item .entry-title,
+	#crum-slider .item .entry-meta {
+		.hide();
+	}
+	.news-page-slider .news-slider-entry-hover,
+	.rev_slider .tp-caption.revslider-button.button,
+	.rev_slider .tp-caption.revslider-button.button.inverted {
+		display: none !important;
+	}
+}
+
+/* -------------------------------------------
+   Additional content styling
+------------------------------------------- */
+
+@media only screen
+and (min-width : @screen-x-large) {
+	.recent-block-wide .recent-block-wide-list.with-under-title .recent-works-item:hover .entry-meta-under-portfolio .read-more {
+		bottom: 118px;
+	}
+}
+.ls-thumbnail .ls-thumbnail-slide {
+	a img {
+		position: relative; /* allows repositioning */
+		left: 100%; /* move the whole width of the image to the right */
+		margin-left: -200%; /* magic! */
+	}
+}
+
+#main-wrap {
+	min-width: @screen-medium;
+}

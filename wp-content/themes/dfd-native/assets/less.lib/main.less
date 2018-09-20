@@ -1,0 +1,114 @@
+/**************************
+1. Main layouts
+2. Main theme components
+3. Pages
+4. Visual Composer styles
+5. Widgets
+**************************/
+
+@import "./variables.less";
+@import "./sb_mixins.less";
+@import "./layouts/style_mixins.less";
+
+@import "./foundation.less";
+
+@import "./app.less";
+
+/**************************
+[Main layouts]
+**************************/
+@import "./layouts/footer.less";
+@import "./layouts/vc-inline.less";
+
+/**************************
+[Headers]
+**************************/
+@import "./header/additional-menu.less";
+@import "./header/header-animations.less";
+@import "./header/header-cart.less";
+@import "./header/header-lang-sel.less";
+@import "./header/header-login.less";
+@import "./header/header-search.less";
+@import "./header/header-soc-icons.less";
+@import "./header/header-topinfo.less";
+@import "./header/header-wishlist.less";
+@import "./header/header.less";
+@import "./header/mega-menu.less";
+@import "./header/mobile-header.less";
+@import "./header/mobile-menu.less";
+@import "./header/smart-header.less";
+@import "./header/stunning-header.less";
+@import "./header/top-inner-page.less";
+
+/**************************
+[Main theme components]
+**************************/
+
+@import "./components/animate.less";
+@import "./components/audioplayer.less";
+@import "./components/backgroundcheck.less";
+@import "./components/bbpress.less";
+@import "./components/blog.less";
+@import "./components/button.less";
+@import "./components/comments.less";
+@import "./components/compiler.less";
+@import "./components/dropdowns.less";
+@import "./components/folio-gallery-hovers.less";
+@import "./components/form.less";
+@import "./components/full-page-slider.less";
+@import "./components/inside-elements.less";
+@import "./components/isotope.less";
+@import "./components/justifiedGallery.less";
+@import "./components/layout-settings.less";
+@import "./components/meta.less";
+@import "./components/multislider.less";
+@import "./components/pagination.less";
+@import "./components/password-form.less";
+@import "./components/portfolio.less";
+@import "./components/prettyPhoto.less";
+@import "./components/read-more-shortcodes.less";
+@import "./components/share.less";
+@import "./components/side-area.less";
+@import "./components/site-preloader.less";
+@import "./components/sort-panel.less";
+@import "./components/swiper.less";
+@import "./components/white-space.less";
+
+/**************************
+[Pages]
+**************************/
+@import "./pages/404.less";
+
+/**************************
+[Widgets]
+**************************/
+@import "./widgets/dfd-author.less";
+@import "./widgets/dfd-count-mail.less";
+@import "./widgets/dfd-flickr.less";
+@import "./widgets/dfd-latest-post.less";
+@import "./widgets/dfd-login.less";
+@import "./widgets/dfd-recent-comments.less";
+@import "./widgets/dfd-recent-posts.less";
+@import "./widgets/dfd-subscribe.less";
+@import "./widgets/dfd-tweets.less";
+@import "./widgets/dfd-vcard-simple.less";
+@import "./widgets/tags.less";
+@import "./widgets/widget-calendar.less";
+@import "./widgets/widget-rss.less";
+@import "./widgets/widgets.less";
+@import "./widgets/widgets-wp-plugin-others.less";
+
+// Responsive
+@import "./responsive.less";
+
+.ls-thumbnail .ls-thumbnail-slide {
+	a img {
+		position: relative; /* allows repositioning */
+		left: 100%; /* move the whole width of the image to the right */
+		margin-left: -200%; /* magic! */
+	}
+}
+
+#main-wrap {
+	min-width: @screen-medium;
+}

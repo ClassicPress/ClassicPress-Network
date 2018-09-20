@@ -1,0 +1,24 @@
+.top-inner-page{
+	> span {
+		margin: 0 auto;
+		> span{
+			width: 4px !important;
+			height: 4px !important;
+			.transition(background .3s ease);
+		}	
+	}	
+} 
+.inner_page{
+	width: 56px;
+	min-width: 56px;
+}
+
+&.side-header{ 
+	.header-builder-wrraper{
+		&.desktop{
+			.top-inner-page{
+				height: inherit;
+			}
+		}
+	}
+}

@@ -1,0 +1,177 @@
+/* 
+    Created on : 15.01.2016, 10:22:19
+    Author     : DFD
+	Styles for : DFD Heading module
+*/
+.dfd-heading-module-wrap {
+	.clearfix();
+	.dfd-heading-delimiter{
+		.aio-icon{
+			i{
+				display: table;
+				width: 100%;
+				height: 100%;
+				&:before{
+					display: table-cell;
+					vertical-align: middle;
+				}
+			}
+			&.circle {
+				.rounded(50%);
+				overflow: hidden;
+			}
+		}
+	}
+	&.style_01 {}
+	&.style_02 {}
+	&.style_03 {}
+	&.style_04 {}
+	&.style_05 {}
+	&.style_06 {}
+	&.style_07,
+	&.style_08 {
+		.dfd-heading-module {
+			.dfd-heading-delimiter {
+				width: 55px;
+				right: 100%;
+				margin-right: 10px;
+			}
+		}
+	}
+	&.style_09,
+	&.style_10 {
+		.dfd-heading-module {
+			.dfd-heading-delimiter {
+				width: 55px;
+				left: 100%;
+				margin-left: 10px;
+			}
+		}
+	}
+	&.style_11,
+	&.style_12 {
+		.dfd-heading-module {
+			padding: 0 65px;
+			.dfd-heading-delimiter {
+				width: 55px;
+				&:first-child {
+					right: 100%;
+					margin-right: 10px;
+				}
+				&:last-child {
+					left: 100%;
+					margin-left: 10px;
+				}
+			}
+		}
+	}
+	&.style_07,
+	&.style_08,
+	&.style_09,
+	&.style_10,
+	&.style_11,
+	&.style_12 {
+		.title-wrap {
+			.rel();
+			display:inline-block;
+			.dfd-heading-delimiter {
+				.abs();
+				bottom: 0;
+			}
+		}
+	}
+	&.style_13 {}
+	&.style_14 {}
+	&.style_13,
+	&.style_14 {
+		.inline-block{
+			width:100%;
+		}
+		.dfd-title {
+			font-size: @widget-title-h1-font-size;
+			line-height: 1;
+			color: @gray-light;
+		}
+		.dfd-sub-title {
+			color: @title-color;
+		}
+		.dfd-heading-module {
+			width:100%;
+			.cover {
+				.rel();
+				.dfd-title {
+					z-index: 1;
+				}
+				.dfd-sub-title {
+					.abs();
+					top: 50%;
+					left: 0;
+					.block();
+					width: 100%;
+					z-index: 2;
+					.transform(translateY(-50%));
+				}
+			}
+		}
+	}
+	* {
+		max-width: 100%;
+	}
+	.dfd-heading-module {
+		float: left;
+		.dfd-title {
+			p {
+				font: inherit;
+				line-height: inherit;
+				letter-spacing: inherit;
+				text-transform: inherit;
+				color: inherit;
+			}
+			em.dfd-textmodule-featured-decoration {
+				font-size: inherit;
+				line-height: inherit;
+				color: inherit;
+			}
+		}
+		.dfd-subtitle {
+			em.dfd-textmodule-featured-decoration {
+				font-size: inherit;
+				line-height: inherit;
+				color: inherit;
+			}
+		}
+	}
+	&.text-center {
+		.dfd-heading-delimiter {
+			margin: 0 auto;
+		}
+	}
+	&.text-left {
+		.dfd-heading-delimiter {
+			margin-left: 0;
+			margin-right: auto;
+		}
+	}
+	&.text-right {
+		.dfd-heading-delimiter {
+			margin-left: auto;
+			margin-right: 0;
+		}
+	}
+	div.block-title p {
+		p {
+			font: inherit;
+			margin: 0;
+			color: inherit;
+		}
+	}
+	h1,h2,h3,h4,h5,h6 {
+		&.dfd-title {
+			p {
+				font: inherit;
+				margin: 0;
+				color: inherit;
+			}
+		}
+	}
+}

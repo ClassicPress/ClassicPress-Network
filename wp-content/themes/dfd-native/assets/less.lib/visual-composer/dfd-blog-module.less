@@ -1,0 +1,256 @@
+/* 
+    Created on : 18.01.2016, 16:29:46
+    Author     : DFD
+	Styles for : DFD Blog Posts Module
+*/
+.dfd-posts-module {
+	&.content-tiny {
+		article.post {
+			&:last-child {
+				> .cover {
+					margin-bottom: 0;
+				}
+			}
+			> .cover {
+				.clearfix();
+				margin-bottom: 25px;
+				.entry-thumb {
+					float: left;
+					width: 80px;
+					height: 80px;
+					line-height: 80px;
+					text-align: center;
+					img {
+						.rounded(50%);
+						.scale(1);
+					}
+					.byline.category,
+					.dfd-post-format-icon {
+						.hide();
+					}
+				}
+				.content-wrap {
+					margin-left: 100px;
+					h3.entry-title {
+						font-size: 15px;
+						margin-top: 10px;
+						+ .entry-meta {
+							margin-top: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.content-list {
+		article.post {
+			> .cover {
+				padding-top: 25px;
+				padding-bottom: 25px;
+				border-bottom: 1px solid @border-color;
+				h3.entry-title {
+					font-size: 16px;
+					padding: 0 !important;
+					margin: 0;
+					+ .entry-meta {
+						margin-top: 10px;
+					}
+				}
+			}
+			&:last-child {
+				> .cover {
+					border-bottom: none;
+				}
+			}
+		}
+	}
+	&.content-full {
+		article.post {
+			h3.entry-title {
+				+ .entry-content,
+				+ .author-section {
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+	&.content-full_front {
+		&.posts-tiled {
+			article.post {
+				margin-bottom: 0;
+				&.format-quote,
+				&.format-link,
+				&.format-audio,
+				&.format-standard,
+				&.format-video,
+				&.format-gallery {
+					> .cover {
+						padding-bottom: 0;
+						.content-wrap {
+							.entry-meta,
+							h3.entry-title,
+							.entry-subtitle,
+							.entry-content,
+							.author-section {
+								padding-left: 0;
+								padding-right: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+		article.post {
+			margin-bottom: 0;
+			&.format-quote,
+			&.format-link,
+			&.format-audio,
+			&.format-standard,
+			&.format-video,
+			&.format-gallery {
+				&:not(:hover) {
+					> .cover {
+						.content-wrap {
+							.entry-content,
+							.author-section {
+								max-height: 0;
+								margin-top: 0;
+							}
+						}
+					}
+				}
+				&:hover {
+					> .cover {
+						.entry-thumb {
+							> a {
+								&:before {
+									background: rgba(0,0,0,.7);
+								}
+							}
+							img {
+								.transform(scale(1.02));
+							}
+						}
+					}
+				}
+				> .cover {
+					margin: -1px;
+					padding-bottom: 0;
+					.entry-thumb {
+						.byline.category {
+							z-index: 11;
+						}
+						> a {
+							.block();
+							.rel();
+							z-index: 10;
+							&:before {
+								content: "";
+								.block();
+								.abs();
+								top: 0;
+								bottom: 0;
+								left: 0;
+								right: 0;
+								background: rgba(0,0,0,.4);
+								z-index: 1;
+								.transition(background .3s ease);
+							}
+						}
+						img {
+							.block();
+							min-width: 100%;
+							.transform(scale(1));
+							.transition-transform(.8s ease);
+						}
+						.dfd-post-format-icon {
+							.hide();
+						}
+					}
+					.content-wrap {
+						.abs();
+						left: 0;
+						right: 0;
+						bottom: 0;
+						padding: 20px;
+						.transform(translate3d(0,0,0));
+						.entry-meta {
+							color: rgba(255,255,255,.4);
+						}
+						h3.entry-title {
+							color: #ffffff;
+							opacity: 1;
+							.transition(opacity .3s ease);
+							a {
+								color: inherit;
+							}
+							&:hover {
+								opacity: .8;
+							}
+						}
+						.author-section .author a {
+							color: #ffffff;
+						}
+						.entry-content {
+							max-height: 4em;
+							line-height: 2;
+							overflow: hidden;
+							color: rgba(255,255,255,.8);
+							.transition(~"max-height .3s ease, margin .3s ease");
+							p {
+								color: inherit;
+							}
+						}
+						.author-section {
+							max-height: 34px;
+							overflow: hidden;
+							.transition(~"max-height .3s ease, margin .3s ease");
+						}
+					}
+				}
+			}
+		}
+	}
+	&.layout-carousel {
+		article.post {
+			&.format-quote,
+			&.format-link,
+			&.format-audio,
+			&.format-standard,
+			&.format-video,
+			&.format-gallery {
+				> .cover {
+					.entry-content {
+						height: 4em;
+						line-height: 2;
+						overflow: hidden;
+						p {
+							line-height: inherit;
+						}
+					}
+				}
+			}
+		}
+	}
+	.dfd-slick-dots{
+		display: inline-block;
+		margin-top: 14px;
+		list-style: none;
+		z-index: 2;
+		li{
+			position: relative;
+			display: inline-block;
+			line-height: 1;
+			margin: 0 10px;
+			.box-shadow(none);
+			opacity: 1;
+			span{
+				display: block;
+				cursor: pointer;
+			}
+		}
+	}
+	article.post {
+		.rel();
+	}
+}

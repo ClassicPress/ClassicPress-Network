@@ -1,0 +1,202 @@
+/* 
+    Created on : 09.09.2016, 12:47:42
+    Author     : DFD
+	Styles for : Image layers shortcode
+*/
+
+.dfd-image-layers-wrap {
+	.rel();
+	line-height: 0;
+	max-width: 100%;
+	&.layers-center {
+		margin: 0 auto;
+	}
+	&.layers-right {
+		margin-left: auto;
+		margin-right: 0;
+	}
+	.dfd-layer-container {
+		.rel();
+		line-height: 0;
+		.block();
+		width: inherit;
+		max-width: 100%;
+		.dfd-layer-centered {
+			.rel();
+			.inline-block();
+			width: inherit;
+			max-width: 100%;
+			height: inherit;
+			line-height: inherit;
+		}
+		&:not(:first-child) {
+			.abs();
+			top: 0;
+			left: 0;
+		}
+		.dfd-layer-item {
+			.transition(all .5s cubic-bezier(.3,0.95,.3,0.95));
+			height: inherit;
+			line-height: inherit;
+			img {
+				.rel();
+				.block();
+				margin: 0 auto;
+				top: 50%;
+				.transform(translateY(-50%));
+			}
+		}
+		&.fadeIn,
+		&.flipXIn,
+		&.flipYIn,
+		&.shrinkIn,
+		&.expandIn,
+		&.grow,
+		&.slideUpBigIn,
+		&.slideDownBigIn,
+		&.slideLeftBigIn,
+		&.slideRightBigIn,
+		&.perspectiveUpIn,
+		&.perspectiveDownIn,
+		&.perspectiveLeftIn,
+		&.perspectiveRightIn {
+			.dfd-layer-item {
+				.opacity(0);
+				visibility: hidden;
+			}
+		}
+		&.flipXIn {
+			.dfd-layer-item {
+				.transform(rotateY(-90deg));
+			}
+		}
+		&.flipYIn {
+			.dfd-layer-item {
+				.transform(rotateX(-90deg));
+			}
+		}
+		&.shrinkIn {
+			.dfd-layer-item {
+				.scale(1.15);
+			}
+		}
+		&.expandIn {
+			.dfd-layer-item {
+				.scale(.85);
+			}
+		}
+		&.grow {
+			.dfd-layer-item {
+				.scale(.2);
+			}
+		}
+		&.slideUpBigIn {
+			.dfd-layer-item {
+				.transform(translateY(75%));
+			}
+		}
+		&.slideDownBigIn {
+			.dfd-layer-item {
+				.transform(translateY(-75%));
+			}
+		}
+		&.slideLeftBigIn {
+			.dfd-layer-item {
+				.transform(translateX(-75%));
+			}
+		}
+		&.slideRightBigIn {
+			.dfd-layer-item {
+				.transform(translateX(75%));
+			}
+		}
+		&.perspectiveUpIn {
+			.dfd-layer-item {
+				.transform-origin(0, 100%);
+				.transform(rotateX(-70deg));
+			}
+		}
+		&.perspectiveDownIn {
+			.dfd-layer-item {
+				.transform-origin(0, 0);
+				.transform(rotateX(70deg));
+			}
+		}
+		&.perspectiveLeftIn {
+			.dfd-layer-item {
+				.transform-origin(0, 0);
+				.transform(rotateY(-70deg));
+			}
+		}
+		&.perspectiveRightIn {
+			.dfd-layer-item {
+				.transform-origin(100%, 0);
+				.transform(rotateY(70deg));
+			}
+		}
+	}
+	&.layer-animate {
+		.dfd-layer-container {
+			&.fadeIn,
+			&.flipXIn,
+			&.flipYIn,
+			&.shrinkIn,
+			&.expandIn,
+			&.grow,
+			&.slideUpBigIn,
+			&.slideDownBigIn,
+			&.slideLeftBigIn,
+			&.slideRightBigIn,
+			&.perspectiveUpIn,
+			&.perspectiveDownIn,
+			&.perspectiveLeftIn,
+			&.perspectiveRightIn {
+				.dfd-layer-item {
+					.opacity(1);
+					visibility: visible;
+				}
+			}
+			&.flipXIn {
+				.dfd-layer-item {
+					.transform(rotateY(0));
+				}
+			}
+			&.flipYIn {
+				.dfd-layer-item {
+					.transform(rotateX(0));
+				}
+			}
+			&.shrinkIn,
+			&.expandIn,
+			&.grow {
+				.dfd-layer-item {
+					.scale(1);
+				}
+			}
+			&.slideUpBigIn,
+			&.slideDownBigIn {
+				.dfd-layer-item {
+					.transform(translateY(0));
+				}
+			}
+			&.slideLeftBigIn,
+			&.slideRightBigIn {
+				.dfd-layer-item {
+					.transform(translateX(0));
+				}
+			}
+			&.perspectiveUpIn,
+			&.perspectiveDownIn {
+				.dfd-layer-item {
+					.transform(rotateX(0));
+				}
+			}
+			&.perspectiveLeftIn,
+			&.perspectiveRightIn {
+				.dfd-layer-item {
+					.transform(rotateY(0));
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,70 @@
+/* 
+    Created on : 07.06.2016, 13:55:32
+    Author     : dfd
+	Styles for : Widgets Custom: Author
+*/
+
+.widget_dfd_author {
+	.dfd-author-container {
+		overflow: hidden;
+		.rounded(6px);
+		background: @white-color;
+		&.thumb-without-shadow {
+			.author-image img {
+				.box-shadow(none);
+			}
+		}
+	}
+	.top-decoration {
+		background-image: url(../images/no_image_resized_795-350.jpg);
+		background-size: cover;
+		padding-top: 85px;
+	}
+	.main-info {
+		padding: 0 20px;
+	}
+	.author-image {
+		height: 60px;
+		margin-bottom: 80px;
+		img {
+			.block();
+			margin: 0 auto;
+			.rounded(50%);
+			.box-shadow(0 8px 25px 3px fade(@black-color, 25%));
+		}
+	}
+	.author-info {
+		padding-top: 20px;
+	}
+	.dfd-widget-content-title {
+		.opacity(.5);
+	}
+	.icon-container {
+		padding: 30px 20px;
+		a {
+			.inline-block();
+			margin-right: 3px;
+			color: @title-color;
+			font-size: 17px;
+			text-align: center;
+			width: 38px;
+			height: 38px;
+			line-height: 38px;
+			.rounded(50%);
+			background: transparent;
+			.transition(~"color .3s ease, background .3s ease");
+			&:hover {
+				color: @white-color;
+				&.dfd-socicon-facebook		{background-color: #305fb3;}
+				&.dfd-socicon-twitter		{background-color: #5eaade;}
+				&.dfd-socicon-google-plus	{background-color: #d7482a;}
+				&.dfd-socicon-youtube		{background-color: #ff3333;}
+				&.dfd-socicon-linkedin		{background-color: #3399cc;}
+				&.dfd-socicon-pinterest		{background-color: #e1003a;}
+				&.dfd-socicon-instagram		{background-color: #cc29a5;}
+				&.dfd-socicon-tumblr		{background-color: #3d5a70;}
+				&.dfd-socicon-flickr		{background-color: #ff0084;}
+			}
+		}
+	}
+}

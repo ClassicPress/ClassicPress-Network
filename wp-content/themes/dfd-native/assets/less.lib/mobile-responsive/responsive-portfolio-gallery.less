@@ -1,0 +1,49 @@
+/* 
+    Created on : 28.10.2016, 9:47:55
+    Author     : DFD
+	Styles for : Responsive portfolio and gallery
+*/
+@media only screen and (max-width: @screen-medium - 1) {
+	/*Portfolio inside*/
+	#layout.single-folio .dfd-content-wrap.dfd-portfolio_single > article.portfolio .cover .media-section.eight + .dfd-portfolio-description,
+	#layout.single-folio .dfd-content-wrap.dfd-portfolio_single > article.gallery_single .cover .media-section.eight + .dfd-portfolio-description,
+	#layout.single-folio .dfd-content-wrap.dfd-gallery_single > article.portfolio .cover .media-section.eight + .dfd-portfolio-description,
+	#layout.single-folio .dfd-content-wrap.dfd-gallery_single > article.gallery_single .cover .media-section.eight + .dfd-portfolio-description,
+	#layout.single-gallery .dfd-content-wrap.dfd-portfolio_single > article.portfolio .cover .media-section.eight + .dfd-portfolio-description,
+	#layout.single-gallery .dfd-content-wrap.dfd-portfolio_single > article.gallery_single .cover .media-section.eight + .dfd-portfolio-description,
+	#layout.single-gallery .dfd-content-wrap.dfd-gallery_single > article.portfolio .cover .media-section.eight + .dfd-portfolio-description,
+	#layout.single-gallery .dfd-content-wrap.dfd-gallery_single > article.gallery_single .cover .media-section.eight + .dfd-portfolio-description {
+		margin-top: 30px;
+		padding-left: 0;
+	}
+	#layout.single-folio .dfd-content-wrap.dfd-portfolio_single > article.portfolio .cover .dfd-portfolio-description.four:first-child,
+	#layout.single-folio .dfd-content-wrap.dfd-portfolio_single > article.gallery_single .cover .dfd-portfolio-description.four:first-child,
+	#layout.single-folio .dfd-content-wrap.dfd-gallery_single > article.portfolio .cover .dfd-portfolio-description.four:first-child,
+	#layout.single-folio .dfd-content-wrap.dfd-gallery_single > article.gallery_single .cover .dfd-portfolio-description.four:first-child,
+	#layout.single-gallery .dfd-content-wrap.dfd-portfolio_single > article.portfolio .cover .dfd-portfolio-description.four:first-child,
+	#layout.single-gallery .dfd-content-wrap.dfd-portfolio_single > article.gallery_single .cover .dfd-portfolio-description.four:first-child,
+	#layout.single-gallery .dfd-content-wrap.dfd-gallery_single > article.portfolio .cover .dfd-portfolio-description.four:first-child,
+	#layout.single-gallery .dfd-content-wrap.dfd-gallery_single > article.gallery_single .cover .dfd-portfolio-description.four:first-child {
+		padding-right: 0;
+	}
+	#layout.single-folio {
+		.dfd-content-wrap {
+			&.dfd-portfolio_single {
+				.dfd-portfolio-description {
+					+ .media-section {
+						margin-top: 30px;
+					}
+				}
+				.media-section {
+					+ .dfd-portfolio-description {
+						.columns {
+							+ .columns {
+								margin-top: 30px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

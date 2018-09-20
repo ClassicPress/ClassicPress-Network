@@ -1,0 +1,526 @@
+/*------------------------------------------------------------------
+[Style Variables]
+
+1. Default font styles.
+2. Default colors.
+3. Responsive screen resolution
+
+The variables from this file can be overwritten from theme options
+-------------------------------------------------------------------*/
+/* Font Family */
+@font-default: "Open Sans", "PT Sans", sans-serif;
+@font-titles: "Montserrat", @font-default;
+@font-subtitles: "Open Sans", @font-default;
+@font-icons-main: "dfd-socicons-font" !important;
+@font-style: normal;
+@font-weight: 400;
+
+
+/******* GENERATED *************************/
+
+/*Static variables*/
+@white-color: #ffffff;
+@dark-color: #1b1b1b;
+@black-color: #000000;
+@border-color: #e7e7e7;
+@background-light: #f5f5f5;
+@layout-margin: 40px;
+
+/*Dinamic variables*/
+// Main Color
+@main-site-light-color: #3498db;//blue
+// Secondary Color
+@second-site-light-color: #e9e9e9;//grey
+// Third Color
+@third-site-light-color: #34db83;//green
+//Grey color
+@grey-color: #c3c3c3;
+// Text Color
+@font-site-light-color: #565656;
+
+/* Menu settings */
+@menu-dropdown-background: @white-color;
+@menu-dropdown-hover-bg: #f2f2f2;
+@menu_dropdowns-color: #242424;
+@menu-dropdown-hover-color: @white-color;
+
+/* Mobile header */
+@mobile-header-background: @white-color;
+@mobile-header-color: @title-color;
+@mobile-menu-background: #2d2d2d;
+@mobile-menu-color: @white-color;
+
+/* Buttons color settings */
+@default-button-font-family: @box-name-font-family;
+@default-button-font-size: 12px;
+@default-button-font-weight: @box-name-font-weight;
+@default-button-font-style: @box-name-font-style;
+@default-button-text-transform: @box-name-text-transform;
+@default-button-word-spacing: @box-name-word-spacing;
+@default-button-letter-spacing: 2px;
+@default-button-line-height: 45px;
+@default-button-color: @white-color;
+@default-button-hover-color: @white-color;
+@default-button-background: @third-site-light-color;
+@default-button-background-opacity: 100%;
+@default-button-hover-bg: darken(@third-site-light-color, 5%);
+@default-button-hover-bg-opacity: 100%;
+@default-button-border-color: @third-site-light-color;
+@default-button-hover-border-color: darken(@third-site-light-color, 5%);
+@default-button-border-opacity: 100%;
+@default-button-hover-border-opacity: 100%;
+@default-button-border-width: 1px;
+@default-button-border-style: solid;
+@default-button-border-radius: 0;
+@default-button-padding-left: 40px;
+@default-button-padding-right: 40px;
+
+@button-height: @default-button-line-height;
+@button-background-color: fade(@default-button-background, @default-button-background-opacity);
+@button-hover-background: fade(@default-button-hover-bg, @default-button-hover-bg-opacity);
+@button-color: @default-button-color;
+@button-border-color: fade(@default-button-border-color, @default-button-border-opacity);
+@button-hover-border-color: fade(@default-button-hover-border-color, @default-button-hover-border-opacity);
+@button-border-width: @default-button-border-width;
+
+/*To-top button*/
+@to-top-button-font-size: 10px;
+@to-top-button-size: 45px;
+@to-top-button-color: @title-color;
+@to-top-button-hover-color: @white-color;
+@to-top-button-background: #e8e8e8;
+@to-top-button-background-opacity: 100%;
+@to-top-button-hover-bg: @dark-color;
+@to-top-button-hover-bg-opacity: 100%;
+@to-top-button-border-color: @white-color;
+@to-top-button-hover-border-color: @dark-color;
+@to-top-button-border-opacity: 100%;
+@to-top-button-hover-border-opacity: 100%;
+@to-top-button-border-width: 0px;
+@to-top-button-border-style: solid;
+@to-top-button-border-radius: 3px;
+
+@top-button-background-color: fade(@to-top-button-background, @to-top-button-background-opacity);
+@top-button-hover-background: fade(@to-top-button-hover-bg, @to-top-button-hover-bg-opacity);
+@top-button-border-color: fade(@to-top-button-border-color, @to-top-button-border-opacity);
+@top-button-hover-border-color: fade(@to-top-button-hover-border-color, @to-top-button-hover-border-opacity);
+
+@title-color: #28262b;
+@title-highlight-color: @main-site-light-color;
+
+@subtitle-color: #bcbcbc;
+@block-subtitle-color: #878787;
+
+@blog-hover-text-color: @white-color;
+@blog-hover-bg: @black-color;
+@blog-hover-bg-opacity: 70%;
+
+@folio-hover-text-color: @white-color;
+@folio-hover-bg: @black-color;
+@folio-hover-bg-opacity: 70%;
+
+@dfd-gallery-hover-text-color: @white-color;
+@dfd-gallery-hover-bg: @black-color;
+@dfd-gallery-hover-bg-opacity: 70%;
+
+@hover-bg-color: #000000;
+
+/**
+ * Addition Color Settings
+ */
+// Header options
+// Header
+@header-logo-min-height: 58px;
+@header-logo-height: @header-logo-min-height;
+@header-logo-width: 220px;
+
+@top-menu-subitem-height: 46px;
+@top-menu-padding: 20px;
+@top-menu-margin: 0;//10px;
+@menu-inner-height: @top-menu-height - @top-menu-padding * 2;
+
+@fixed-menu-height: 42px;
+@active-item-color: @main-site-light-color;
+@top-submenu-radius: 0px;
+@top-submenu-backgroud-active-color: @background-grey; //fade(#000000, 40%);
+@top-submenu-shadow: 0px -3px 4px 0px fade(@black-color, 5%);
+@fixed-top-menu-padding: 0;
+
+@sticky-header-height: 60px;
+
+@side-header-width: 300px;
+@side-header-small-width: 75px;
+
+@top-menu-min-height: 26px;
+@top-menu-height: @top-menu-min-height;
+
+// Top panel info background
+
+// Top inner panel background
+@top-panel-inner-bg: #1b1b1b;
+
+//Stunning header options
+@stunning-header-min-height: 200px;
+
+//Side area width
+@side-area-width: 340px;
+
+//Sidr width
+@sidr-width: 260px;
+
+// News page slider hover
+@news-page-slider-background-hover:#272830;
+@news-page-slider-opacity-hover: 95%;
+
+// Read more
+@read-more-color: @title-color;
+
+// Default Button
+@button-bg-color: @main-site-light-color;
+
+// Titles typography
+@widget-title-h1-font-size: 55px;
+@widget-title-h2-font-size: 45px;
+@widget-title-h3-font-size: 35px;
+@widget-title-h4-font-size: 30px;
+@widget-title-h5-font-size: 22px;
+@widget-title-h6-font-size: 18px;
+
+@widget-title-h1-font-family: @font-titles;
+@widget-title-h2-font-family: @font-titles;
+@widget-title-h3-font-family: @font-titles;
+@widget-title-h4-font-family: @font-titles;
+@widget-title-h5-font-family: @font-titles;
+@widget-title-h6-font-family: @font-titles;
+
+@widget-title-h1-font-style: @font-style;
+@widget-title-h2-font-style: @font-style;
+@widget-title-h3-font-style: @font-style;
+@widget-title-h4-font-style: @font-style;
+@widget-title-h5-font-style: @font-style;
+@widget-title-h6-font-style: @font-style;
+
+@widget-title-h1-font-weight: 600;
+@widget-title-h2-font-weight: 600;
+@widget-title-h3-font-weight: 600;
+@widget-title-h4-font-weight: 600;
+@widget-title-h5-font-weight: 600;
+@widget-title-h6-font-weight: 600;
+
+@widget-title-h1-line-height: 1.63;
+@widget-title-h2-line-height: 1.866;
+@widget-title-h3-line-height: 1.54;
+@widget-title-h4-line-height: 2;
+@widget-title-h5-line-height: 2.05;
+@widget-title-h6-line-height: 1.2;
+
+@widget-title-h1-text-transform: none;
+@widget-title-h2-text-transform: none;
+@widget-title-h3-text-transform: none;
+@widget-title-h4-text-transform: none;
+@widget-title-h5-text-transform: uppercase;
+@widget-title-h6-text-transform: none;
+
+@widget-title-h1-word-spacing: 0;
+@widget-title-h2-word-spacing: 0;
+@widget-title-h3-word-spacing: 0;
+@widget-title-h4-word-spacing: 0;
+@widget-title-h5-word-spacing: 0;
+@widget-title-h6-word-spacing: 0;
+
+@widget-title-h1-letter-spacing: 0;
+@widget-title-h2-letter-spacing: 4px;
+@widget-title-h3-letter-spacing: 5px;
+@widget-title-h4-letter-spacing: 5px;
+@widget-title-h5-letter-spacing: 5px;
+@widget-title-h6-letter-spacing: 4px;
+
+@widget-title-h1-color: @title-color;
+@widget-title-h2-color: @title-color;
+@widget-title-h3-color: @title-color;
+@widget-title-h4-color: @title-color;
+@widget-title-h5-color: @title-color;
+@widget-title-h6-color: @title-color;
+
+// Subtitles typography
+@widget-subtitle-h1-font-size: 18px;
+@widget-subtitle-h2-font-size: 16px;
+@widget-subtitle-h3-font-size: 14px;
+@widget-subtitle-h4-font-size: 13px;
+@widget-subtitle-h5-font-size: 13px;
+@widget-subtitle-h6-font-size: 12px;
+
+@widget-subtitle-h1-font-family: @font-subtitles;
+@widget-subtitle-h2-font-family: @font-subtitles;
+@widget-subtitle-h3-font-family: @font-subtitles;
+@widget-subtitle-h4-font-family: @font-subtitles;
+@widget-subtitle-h5-font-family: @font-subtitles;
+@widget-subtitle-h6-font-family: @font-subtitles;
+
+@widget-subtitle-h1-font-style: @font-style;
+@widget-subtitle-h2-font-style: @font-style;
+@widget-subtitle-h3-font-style: @font-style;
+@widget-subtitle-h4-font-style: @font-style;
+@widget-subtitle-h5-font-style: @font-style;
+@widget-subtitle-h6-font-style: @font-style;
+
+@widget-subtitle-h1-font-weight: @font-weight;
+@widget-subtitle-h2-font-weight: @font-weight;
+@widget-subtitle-h3-font-weight: @font-weight;
+@widget-subtitle-h4-font-weight: @font-weight;
+@widget-subtitle-h5-font-weight: @font-weight;
+@widget-subtitle-h6-font-weight: @font-weight;
+
+@widget-subtitle-h1-line-height: 2;
+@widget-subtitle-h2-line-height: 1.875;
+@widget-subtitle-h3-line-height: 1.43;
+@widget-subtitle-h4-line-height: 1.38;
+@widget-subtitle-h5-line-height: 1.38;
+@widget-subtitle-h6-line-height: 1.25;
+
+@widget-subtitle-h1-text-transform: none;
+@widget-subtitle-h2-text-transform: none;
+@widget-subtitle-h3-text-transform: none;
+@widget-subtitle-h4-text-transform: none;
+@widget-subtitle-h5-text-transform: none;
+@widget-subtitle-h6-text-transform: none;
+
+@widget-subtitle-h1-word-spacing: 0;
+@widget-subtitle-h2-word-spacing: 0;
+@widget-subtitle-h3-word-spacing: 0;
+@widget-subtitle-h4-word-spacing: 0;
+@widget-subtitle-h5-word-spacing: 0;
+@widget-subtitle-h6-word-spacing: 0;
+
+@widget-subtitle-h1-letter-spacing: 0;
+@widget-subtitle-h2-letter-spacing: 0;
+@widget-subtitle-h3-letter-spacing: 0;
+@widget-subtitle-h4-letter-spacing: 0;
+@widget-subtitle-h5-letter-spacing: 0;
+@widget-subtitle-h6-letter-spacing: 0;
+
+@widget-subtitle-h1-color: #727272;
+@widget-subtitle-h2-color: #727272;
+@widget-subtitle-h3-color: #727272;
+@widget-subtitle-h4-color: #727272;
+@widget-subtitle-h5-color: #727272;
+@widget-subtitle-h6-color: #727272;
+
+@stunning-header-title-font-size: 35px;
+@blog-title-font-size: 18px;
+@widget-title-font-size: 13px;
+@block-title-font-size: 15px;
+@feature-title-font-size: 15px;
+@box-name-font-size: 14px;
+@subtitles-font-size: 13px;
+@default-text-font-size: 14px;
+@entry-meta-font-size: 13px;
+@menu_titles-font-size: 11px;
+@menu_dropdowns-font-size: 13px;
+@menu_dropdown_subtitles-font-size: 11px;
+
+@stunning-header-title-font-family: @font-titles;
+@blog-title-font-family: @font-titles;
+@widget-title-font-family: @font-titles;
+@block-title-font-family: @font-titles;
+@feature-title-font-family: @font-titles;
+@box-name-font-family: @font-titles;
+@subtitles-font-family: @font-subtitles;
+@default-text-font-family: @font-default;
+@entry-meta-font-family: @font-subtitles;
+@menu_titles-font-family: @font-titles;
+@menu_dropdowns-font-family: @font-default;
+@menu_dropdown_subtitles-font-family: @font-default;
+@side-area-menu_titles-font-family: @font-titles;
+@side-area-menu_dropdowns-font-family: @font-default;
+@side-area-menu_dropdown_subtitles-font-family: @font-default;
+
+@stunning-header-title-font-weight: 600;
+@blog-title-font-weight: 600;
+@widget-title-font-weight: 600;
+@block-title-font-weight: 600;
+@feature-title-font-weight: 600;
+@box-name-font-weight: 600;
+@subtitles-font-weight: @font-weight;
+@default-text-font-weight: @font-weight;
+@entry-meta-font-weight: @font-weight;
+@menu_titles-font-weight: 600;
+@menu_dropdowns-font-weight: @font-weight;
+@menu_dropdown_subtitles-font-weight: @font-weight;
+
+@stunning-header-title-font-style: @font-style;
+@blog-title-font-style: @font-style;
+@widget-title-font-style: @font-style;
+@block-title-font-style: @font-style;
+@feature-title-font-style: @font-style;
+@box-name-font-style: @font-style;
+@subtitles-font-style: italic;
+@default-text-font-style: @font-style;
+@entry-meta-font-style: italic;
+@menu_titles-font-style: @font-style;
+@menu_dropdowns-font-style: @font-style;
+@menu_dropdown_subtitles-font-style: @font-style;
+
+@stunning-header-title-line-height: 1.6;
+@blog-title-line-height: 1.6;
+@widget-title-line-height: 1.6;
+@block-title-line-height: 1.92;
+@feature-title-line-height: 1.71;
+@box-name-line-height: 1.37;
+@subtitles-line-height: 1.72;
+@default-text-line-height: 1.785;
+@entry-meta-line-height: 1.6;
+@menu_titles-line-height: 1.6;
+@menu_dropdowns-line-height: 1.6;
+@menu_dropdown_subtitles-line-height: 1.6;
+
+@stunning-header-title-text-transform: none;
+@blog-title-text-transform: none;
+@widget-title-text-transform: uppercase;
+@block-title-text-transform: none;
+@feature-title-text-transform: none;
+@box-name-text-transform: none;
+@subtitles-text-transform: none;
+@default-text-text-transform: none;
+@entry-meta-text-transform: none;
+@menu_titles-text-transform: uppercase;
+@menu_dropdowns-text-transform: none;
+@menu_dropdown_subtitles-text-transform: none;
+
+@stunning-header-title-word-spacing: 0;
+@blog-title-word-spacing: 0;
+@widget-title-word-spacing: 0;
+@block-title-word-spacing: 0;
+@feature-title-word-spacing: 0;
+@box-name-word-spacing: 0;
+@subtitles-word-spacing: 0;
+@default-text-word-spacing: 0;
+@entry-meta-word-spacing: 0;
+@menu_titles-word-spacing: 0;
+@menu_dropdowns-word-spacing: 0;
+@menu_dropdown_subtitles-word-spacing: 0;
+
+@stunning-header-title-letter-spacing: 0;
+@blog-title-letter-spacing: 0;
+@widget-title-letter-spacing: 4px;
+@block-title-letter-spacing: 0;
+@feature-title-letter-spacing: 0;
+@box-name-letter-spacing: 0;
+@subtitles-letter-spacing: 0;
+@default-text-letter-spacing: 0;
+@entry-meta-letter-spacing: 0;
+@menu_titles-letter-spacing: 0;
+@menu_dropdowns-letter-spacing: 0;
+@menu_dropdown_subtitles-letter-spacing: 0;
+
+@stunning-header-title-color: @title-color;
+@blog-title-color: @title-color;
+@widget-title-color: @title-color;
+@block-title-color: @title-color;
+@feature-title-color: @title-color;
+@box-name-color: @title-color;
+@subtitles-color: @subtitle-color;
+@default-text-color: @font-site-light-color;
+@entry-meta-color: @subtitle-color;
+@menu_titles-color: @title-color;
+@menu-dropdown-items-color: @default-text-color;
+@menu_dropdown_subtitles-color: #bbbbbb;
+
+/* Link settings */
+@link-font-size: 14px;
+@link-font-family: @subtitles-font-family;
+@link-font-weight: 400;
+@link-font-style: normal;
+@link-line-height: inherit;
+@link-text-transform: none;
+@link-letter-spacing: 0px;
+@link-color: @title-color;
+@link-hover-color: @third-site-light-color;
+@link-decoration: dotted;
+@link-decoration-color: @third-site-light-color;
+
+@layout-white-space-size: 30px;
+@layout-white-space-color: @white-color;
+
+@top-panel-height: 40px;
+
+@input-height: 43px;
+
+@blog-title-bottom-margin: 0;
+
+/******* ????????? *************************/
+
+@white-dark: @white-color - #0a0a0a;
+@gray-light: #e8e8e8;
+@gray-dark: #3e4142;
+
+@icon-base-color: #d2d2d2;
+
+@border-dark-color: #414141;
+
+@background-grey: #f4f4f4;
+@background-dark: #1e1e1e;
+@background-hover: #353a3f;
+
+@background-sidebars: @background-grey;
+
+@tooltip-bg: @dark-color;
+
+/* Woocommerce styling*/
+@woo-star-active: #f1b141;
+
+@woo-mask-bg: @dark-color;
+@woo-mask-opacity: 80%;
+/**
+ *	Screen Dimensions
+ */
+@screen-x-large: 1280px;
+@screen-large: 1180px;
+@screen-normal: 1024px;
+@screen-x-medium: 800px;
+@screen-medium: @screen-x-medium; // was 768px;
+@screen-small: 480px;
+@header-responsive-breakpoint: 1101px;
+
+
+/******* CALCULATED ************************/
+
+@link-color-hover: @link-color;
+
+@link-color-inverted: @white-color;
+@link-color-inverted-hover: @link-color;
+
+@footer-background: @background-grey;
+
+// Header
+
+@gutter-width: 20px;
+/*********************************
+	Post List
+**********************************/
+@news-widgets-entry-meta-icon-color: #c6c6c6;
+@news-widgets-entry-meta-color: @subtitle-color;
+
+//	-- recent-posts
+@recent-post-thumbnail-width: 50px;
+@recent-post-gutter-width: @gutter-width;
+
+@recent-post-entry-meta-height: 32px;
+
+/*Admin area*/
+@admin-input-height: 45px;
+
+/**
+ *	Products Woocommerce
+ */
+@woocommerce-title-color: @gray-dark;
+@woocommerce-description: #8a9193;
+@woocommerce-price-color: @title-color;
+@woocommerce-old-price-color: @subtitle-color;
+
+@woocommerce-border: 1px;
+@woocommerce-border-color: @border-color;
+@woocommerce-product-padding: 10px;
+
+@foundation-row-width: 1200px;
+@foundation-row-min-width: 768px;

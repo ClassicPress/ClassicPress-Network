@@ -1,0 +1,59 @@
+.dfd-header-logos{
+	display: table-cell;
+	vertical-align: middle;
+	position: relative;
+	height:inherit;
+	line-height:inherit;
+	.dfd-logo-wrap{
+		line-height: inherit;
+		height: inherit;
+	}
+	a {
+		height: inherit;
+		line-height: inherit;
+		display: table-cell;
+		vertical-align: middle;
+		img{
+			/*height: inherit;*/
+			width:100% !important;
+			display: table;
+		}
+	}
+
+}
+.c_el.port.Logo{
+	&:not(.init){
+		.dfd-header-logos{
+			a {
+				img{
+					height: inherit;
+				}
+			}
+		}
+	}
+}
+
+
+#dfd_header_t_preview {
+	&.side-header{
+		.c_el.port.fullwidth.Logo {
+			margin: 0 auto;
+			line-height: normal;
+			.dfd-logo-wrap{
+				a{
+					padding: 0;
+				}
+			}
+		}
+		.c_el.port.Logo{
+		    height: auto;
+			line-height: normal;
+			.dfd-logo-wrap{
+				a{
+					padding: 0 10px;
+				}
+			}
+		}
+	}
+}
+

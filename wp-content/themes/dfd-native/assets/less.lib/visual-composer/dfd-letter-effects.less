@@ -1,0 +1,88 @@
+/* 
+    Created on : 06.03.2016, 12:31:49
+    Author     : DFD
+	Styles for : Animated text module
+*/
+/********************
+* letter-effect
+********************/
+.dfd-letter-effect-wrap {
+	.content{
+		position: relative;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		align-items: center;
+		-webkit-align-items: center;
+		-ms-flex-align: center;
+		-webkit-justify-content: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+		width: 100%;
+		height: 100%;
+		.dfd-letters-slideshow{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			.dfd-slide {
+				position: relative;
+				width: 100%;
+				height: 100%;
+				display: -webkit-flex;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-align-items: center;
+				-ms-flex-align: center;
+				align-items: center;
+				flex-direction: row;
+				-webkit-flex-direction: row;
+				-ms-flex-direction: row;
+				.title {
+					.rel();
+					align-items: center;
+				}
+				.title-centered {
+					width: 100%;
+					align-items: center;
+					text-align: center;
+					-webkit-justify-content: center;
+					-ms-flex-pack: center;
+					justify-content: center;
+				}
+				.title-right {
+					width: 100%;
+					text-align: right;
+					-webkit-justify-content: flex-end;
+					-ms-flex-pack: flex-end;
+					justify-content: flex-end;
+				}
+				.letter-effect {
+					display: -webkit-flex;
+					display: -ms-flexbox;
+					display: flex;
+					align-items: center;
+					-webkit-align-items: center;
+					-ms-flex-align: center;
+					-webkit-flex-wrap: wrap;
+					-ms-flex-wrap: wrap;
+					flex-wrap: wrap;
+				}
+			}
+			.dfd-slide:not(.dfd-slide--current) {
+				position: absolute;
+				top: 0;
+				left: 0;
+				pointer-events: none;
+				opacity: 0;
+			}
+		}
+	}
+
+	[class*="letter"] {
+		position: relative;
+		-webkit-flex: none;
+		-ms-flex: none;
+		flex: none;
+		white-space: pre;
+	}
+}

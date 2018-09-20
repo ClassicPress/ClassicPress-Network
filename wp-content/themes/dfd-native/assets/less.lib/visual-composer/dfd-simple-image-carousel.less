@@ -1,0 +1,39 @@
+/* 
+    Created on : 08.03.2017, 11:34:31
+    Author     : DFD
+	Styles for : Simple image gallery module
+*/
+.dfd-simple-image-gallery {
+	&.layout-carousel {
+		.dfd-simple-image-gallery-item {
+			.transform(translateZ(0));
+		}
+		.dfd-slick-dots {
+			display: inline-block;
+			margin-top: 14px;
+			margin-bottom: 0;
+			list-style: none;
+			z-index: 2;
+			li {
+				position: relative;
+				display: inline-block;
+				line-height: 1;
+				margin: 0 10px;
+				.box-shadow(none);
+				opacity: 1;
+				span {
+					display: block;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+	&.layout-fitRows {}
+	&.layout-masonry {}
+	.dfd-simple-image-gallery-item {
+		img {
+			.block();
+			min-width: 100%;
+		}
+	}
+}

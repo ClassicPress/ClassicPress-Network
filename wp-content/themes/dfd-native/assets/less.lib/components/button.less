@@ -1,0 +1,138 @@
+/* 
+    Created on : 16.06.2016, 10:06:54
+    Author     : DFD
+	Styles for : Button
+*/
+button,
+.button,
+input[type="submit"] {
+	.inline-block();
+	line-height: 43px;
+	padding: 0 30px;
+	background: @main-site-light-color;
+	border: 0px solid @main-site-light-color;
+	cursor: pointer;
+	.rounded(43px);
+	.transition(all .3s ease);
+	&:disabled,
+	&:disabled[disabled] {
+		cursor: not-allowed;
+		opacity: .7;
+	}
+}
+.body-back-to-top {
+	position: fixed;
+	bottom: -42px;
+	right: 42px;
+	width: 42px;
+	height: 42px;
+	line-height: 42px;
+	text-align: center;
+	cursor: pointer;
+	z-index: 998;
+	.rounded(50%);
+	.opacity(0);
+	.transition(~"bottom .5s ease, opacity .5s ease");
+	> i {
+		.rel();
+		overflow: hidden;
+		font-size: 9px;
+		width: inherit;
+		height: inherit;
+		line-height: inherit;
+		.block();
+		color: transparent;
+		text-shadow: 0px 0px @white-color, 0px 50px @white-color;
+		.transition(text-shadow .2s ease);
+		
+		
+		z-index: 1;
+	}
+	&:after {
+		content: "";
+		.abs();
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		.block();
+		background: rgba(0,0,0,.25);
+		.box-shadow(0px 0px 0px 0px transparent);
+		.scale(1);
+		.transition(all .3s ease);
+		.rounded(inherit);
+	}
+	&:hover {
+		i {
+			text-shadow: 0px -50px @white-color, 0px 0px @white-color;
+		}
+		&:after {
+			.scale(1.07);
+			background: @main-site-light-color;
+			.box-shadow(0px 10px 20px 8px rgba(0,0,0,.15));
+		}
+	}
+	&:before {
+		content: "";
+		.abs();
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: transparent;
+		.opacity(1);
+		.block();
+		.scale(1);
+		.transition(all .3s ease);
+		.rounded(inherit);
+		.transition(~"transform .5s ease, opacity .6s ease");
+	}
+	&.active {
+		&:after {
+			background: @main-site-light-color;
+		}
+		&:before {
+			background: @main-site-light-color;
+			.scale(1.5);
+			.opacity(0);
+			
+		}
+	}
+	&.visible {
+		.opacity(1);
+		bottom: 40px;
+		&.lifted {
+			bottom: 130px;
+		}
+	}
+}
+.dfd-dots-link {
+	@s: 8px;
+	.block();
+	width: @s * 5;
+	height: @s;
+	.abs();
+	top: 50%;
+	left: 50%;
+	margin-top: -@s / 2;
+	margin-left: -@s * 2.5;
+	> span {
+		.block();
+		width: @s;
+		height: @s;
+		.abs();
+		top: 0;
+		left: 50%;
+		.rounded(50%);
+		&.dfd-left-dot {
+			left: 0;
+		}
+		&.dfd-right-dot {
+			left: auto;
+			right: 0;
+		}
+		&.dfd-middle-dot {
+			margin-left: -@s / 2;
+		}
+	}
+}

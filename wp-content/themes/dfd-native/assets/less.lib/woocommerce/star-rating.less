@@ -1,0 +1,120 @@
+/* 
+    Created on : 10.01.2015, 14:32:35
+    Author     : DFD
+	Styles for : Woocommerce star rating
+*/
+/* Woocommerce star rating */
+.woocommerce,
+.woocommerce-page {
+	.star-rating {
+		float: left;
+		overflow: hidden;
+		position: relative;
+		height: 23px;
+		line-height: 23px;
+		width: 70px !important;
+		font-family: @font-icons-main;
+		&:before {
+			content: "\ea74\ea74\ea74\ea74\ea74";
+			font-family: @font-icons-main;
+			font-size: 12px;
+			color: fade(@title-color, 25%);
+			float: left;
+			top: 0;
+			left: 0;
+			position: absolute;
+			letter-spacing: .2em;
+		}
+		span {
+			overflow: hidden;
+			float: left;
+			top: 0px;
+			left: 0;
+			position: absolute;
+			padding-top: 1.5em;
+			&:before {
+				content: "\ea74\ea74\ea74\ea74\ea74";
+				font-family: @font-icons-main;
+				font-size: 12px;
+				color: @woo-star-active;
+				position: absolute;
+				top: 0;
+				left: 0;
+				letter-spacing: .2em;
+			}
+		}
+	}
+	p.stars {
+		overflow: hidden;
+		position: relative;
+		height: 1em;
+		line-height: 1em;
+		font-size: 1.2em;
+		width: 5em;
+		&:before {
+			content: "\ea74\ea74\ea74\ea74\ea74";
+			font-family: @font-icons-main;
+			font-size: 13px;
+			float: left;
+			top: 0;
+			left: 0;
+			position: absolute;
+			letter-spacing: 1px;
+			color: fade(@title-color, 25%);
+		}
+		a {
+			float: left;
+			.abs();
+			left: 0;
+			top: 0;
+			width: .85em;
+			height: 0;
+			padding-top: 1.5em;
+			overflow: hidden;
+			&:before {
+				content: "\ea74\ea74\ea74\ea74\ea74";
+				font-family: @font-icons-main;
+				font-size: 13px;
+				top: 0;
+				position: absolute;
+				left: 0;
+				letter-spacing: 1px;
+				visibility: hidden;
+			}
+			&:hover,
+			&:focus {
+				&:before {
+					color: @woo-star-active;
+					visibility: visible;
+				}
+			}
+			&.active {
+				&:before {
+					color: @woo-star-active;
+					visibility: visible;
+				}
+			}
+			&.star-1 {
+				width: 1em;
+				z-index: 10;
+			}
+			&.star-2 {
+				width: 2em;
+				z-index: 9;
+			}
+			&.star-3 {
+				width: 3em;
+				z-index: 8;
+			}
+			&.star-4 {
+				width: 4em;
+				z-index: 7;
+			}
+			&.star-5 {
+				width: 5em;
+				z-index: 6;
+			}
+		}
+	}
+}
+@-moz-document url-prefix(){.woocommerce .star-rating,.woocommerce-page .star-rating{width:3.4em;font-size:1.5em}.woocommerce p.stars,.woocommerce-page p.stars{width:3.5em;font-size:1.5em}.woocommerce p.stars a.star-1,.woocommerce-page p.stars a.star-1{width:.7em}.woocommerce p.stars a.star-2,.woocommerce-page p.stars a.star-2{width:1.4em}.woocommerce p.stars a.star-3,.woocommerce-page p.stars a.star-3{width:2.1em}.woocommerce p.stars a.star-4,.woocommerce-page p.stars a.star-4{width:2.8em}.woocommerce p.stars a.star-5,.woocommerce-page p.stars a.star-5{width:3.5em}}

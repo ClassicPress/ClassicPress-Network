@@ -1,0 +1,30 @@
+.header-top-panel {
+	.clearfix();
+	height: @top-panel-height;
+	line-height: @top-panel-height;
+	border-bottom: 1px solid @border-color;
+
+	.dfd-header-top-info,
+	.login-header {
+		float: left;
+		height: inherit;
+		line-height: inherit;
+	}
+	.soc-icons,
+	.dfd-additional-header-menu {
+		float: right;
+		height: inherit;
+		line-height: inherit;
+	}
+}
+#header-container:not(.dfd-header-builder){
+	.header-top-panel {
+		* {
+			height: inherit;
+			line-height: inherit;
+		}
+	}
+}
+.dfd-header-top-info {
+	padding-right: 30px;
+}

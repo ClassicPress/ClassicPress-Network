@@ -1,0 +1,29 @@
+/* 
+    Created on : 24.03.2016, 17:39:29
+    Author     : DFD
+	Styles for : Top info bar additional menu
+*/
+.dfd-additional-header-menu {
+	.rel();
+	float: right;
+	height: @top-panel-height;
+	line-height: @top-panel-height;
+	list-style: none;
+	overflow: hidden;
+	padding-right: 60px;
+	margin: 0 -10px;
+	* {
+		font: inherit;
+	}
+	li {
+		float: left;
+		padding: 0 10px;
+		a {
+			opacity: 1;
+			.transition(opacity .5s ease);
+			&:hover {
+				opacity: .4;
+			}
+		}
+	}
+}

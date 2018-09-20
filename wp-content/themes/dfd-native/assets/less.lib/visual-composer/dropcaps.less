@@ -1,0 +1,96 @@
+//
+// Dropcaps shortcode styling
+// --------------------------------------------------
+
+.dfd-dropcap {
+	font-size: 330%;
+	font-style: @widget-title-h1-font-style;
+	font-weight: @widget-title-h1-font-weight;
+	font-family: @widget-title-h1-font-family;
+	color: @widget-title-h1-color;
+	.inline-block();
+	float: left;
+	width: 1em;
+	position: relative;
+	height: 1em;
+	line-height: .9em;
+	text-align: center;
+	margin-right: 20px;
+	border-radius: 2px;
+	margin-top: -.7em;
+	padding: 10px;
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+
+	&.border {
+		border: 1px solid fade((#000), 10%);
+	}
+	&.double{
+		padding-bottom: 13px;
+		&:after, &:before{
+			position: absolute;
+			content: "";
+			display: block;
+			border-bottom: 1px solid fade((#000), 10%);
+			height: 15px;
+			bottom: 1px;
+			left: 0;
+			right: 0;
+			border-radius: inherit;
+		}
+		&:after{
+			bottom: 3px;
+		}
+	}
+	&.border.main {
+		border-color: @third-site-light-color;
+		&.double:after, &.double:before{
+			border-color: @third-site-light-color;
+		}
+	}
+	&.filled {
+		background-color: @third-site-light-color;
+		color: #fff;
+	}
+	&.rounded{
+		border-radius: 8px;
+	}
+	&.circle{
+		border-radius: 100%;
+	}
+	&.shadow{
+		box-shadow: 0 2px 14px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.1);
+	}
+	&.raised{
+		box-shadow: 0 1px 1px darken(@third-site-light-color, 20%)
+	}
+	.text-colored{
+		color: @third-site-light-color;
+	}
+	&.gray-bg{
+		background: fade(#000,10%);
+	}
+	&.gray-bg.raised{
+		box-shadow: 0 1px 1px fade(#000,20%)
+	}
+}
+.drop-caps-color{
+	font-size: 25px;
+	vertical-align: middle;
+	font-family: @font-default;
+	color: @widget-title-h1-color;
+	display: table;
+	float: left;
+	width: 43px;
+	position: relative;
+	height: 43px;
+	line-height: 43px;
+	text-align: center;
+	margin-right: 15px;
+	border-radius: 6px;
+	top:0px;
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+}

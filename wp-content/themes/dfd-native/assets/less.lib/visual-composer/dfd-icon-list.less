@@ -1,0 +1,147 @@
+/* 
+    Created on : 02.12.2015, 21:16:48
+    Author     : DFD
+	Styles for : Icon List shortcode
+*/
+
+.dfd-icon-list-wrap {
+	.rel();
+	.dfd-icon-list {
+		margin: 0;
+		li {
+			.rel();
+			padding-top: 4px;
+			&:first-child {
+				padding-top: 0 !important;
+			}
+			&:last-child {
+				.delimeter {
+					.hide();
+				}
+			}
+			&.with-link {
+				.list-container {
+					opacity: 1;
+					.transition(opacity .3s ease);
+				}
+				&:hover {
+					.list-container {
+						opacity: .6;
+					}
+				}
+			}
+		}
+		.list-container {
+			display: table;
+			&.not-icon {
+				.block();
+				.content-wrap {
+					.block();
+				}
+			}
+		}
+		.icon-wrap {
+			.rel();
+			font-size: 16px;
+			width: 2em;
+			height: 2em;
+			line-height: 2em;
+			text-align: left;
+			color: #c3c3c3;
+			&:before {
+				content: "";
+				.abs();
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				border-color: transparent;
+			}
+			i {
+				.rel();
+				.block();
+				height: inherit;
+				line-height: inherit;
+			}
+			.none {
+				.abs();
+				.block();
+				width: 6px;
+				height: 6px;
+				top: 50%;
+				left: 0;
+				margin-top: -3px;
+				background: @border-color;
+				.rounded(50%);
+			}
+		}
+		.content-wrap {
+			line-height: 1.6;
+			display: table-cell;
+			vertical-align: middle;
+			> * {
+				line-height: 1.6;
+			}
+			.dfd-content-title-small {
+				font-size: 12px;
+				font-style: normal;
+				font-weight: 400;
+				text-transform: none;
+				line-height: 1.6;
+				letter-spacing: -.2px;
+				color: #333333;
+			}
+		}
+		.delimeter {
+			border-bottom: 1px solid @border-color;
+			padding-top: 4px;
+		}
+		.icon-item-link {
+			.abs();
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+	}
+	&.icon-right {
+		.dfd-icon-list {
+			text-align: right;
+			.icon-wrap {
+				text-align: right;
+				.none {
+					left: auto;
+					right: 0;
+				}
+			}
+			.content-wrap {
+				width: 100%;
+			}
+			.delimeter {
+				margin-right: 0;
+				margin-left: auto;
+			}
+		}
+	}
+	&.icon-center {
+		.delimeter,
+		.list-container {
+			margin: 0 auto;
+		}
+		.list-container.not-icon {
+			text-align: center;
+		}
+	}
+	&.style-1 {
+		li {
+			padding-bottom: 4px;
+		}
+	}
+	&.style-3 {
+		li {
+			.delimeter {
+				width: 33.33%;
+			}
+		}
+	}
+}

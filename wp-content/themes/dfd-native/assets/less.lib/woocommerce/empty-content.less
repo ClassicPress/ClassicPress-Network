@@ -1,0 +1,88 @@
+/* 
+    Created on : 28.12.2016, 10:42:04
+    Author     : dfd
+	Styles for : Empty cart & empty wishlist
+*/
+
+.dfd-woo-empty-content {
+	.dfd-cart-empty-content {
+		padding-top: 70px;
+		padding-bottom: 70px;
+		.empty-content-wrap {
+			.inline-block();
+		}
+		.icon-wrap {
+			font-size: 65px;
+			color: #e5e5e5;
+		}
+		.empty-title-content {
+			margin-left: 80px;
+		}
+		.subtitle {
+			line-height: 1.6;
+		}
+		.cart-empty {
+			font-size: 35px;
+			letter-spacing: -2.1px;
+			line-height: 1;
+			padding-bottom: 10px;
+		}
+		.return-to-shop {
+			padding-top: 30px;
+			> .button {
+				border-width: 1px;
+				&:not(:hover) {
+					border-color: @border-color;
+					background: transparent;
+					color: @title-color;
+				}
+			}
+		}
+	}
+	.delimeter-empty {
+		overflow: hidden;
+		margin: 0 auto;
+		margin-left: 10px;
+		margin-right: 10px;
+		span {
+			.rel();
+			padding: 0 15px;
+			&:before,
+			&:after {
+				content: "";
+				.abs();
+				top: 50%;
+				height: 1px;
+				background: @border-color;
+				width: 1000em;
+			}
+			&:before {
+				right: 100%;
+			}
+			&:after {
+				left: 100%;
+			}
+		}
+	}
+	.dfd-top-rated-shortcodes {
+		h3 {
+			margin-bottom: 40px;
+		}
+	}
+}
+.wishlist-empty {
+	.wishlist-title,
+	.wishlist_table tfoot,
+	.wishlist_table thead {
+		.hide();
+	}
+	.dfd-top-rated-shortcodes {
+		.products .product .woo-cover .buttons-wrap a.add_to_cart_button, .products .type-product .woo-cover .buttons-wrap a.add_to_cart_button {
+			padding-top: 0;
+			padding-bottom: 0;
+			i {
+				.hide();
+			}
+		}
+	}
+}

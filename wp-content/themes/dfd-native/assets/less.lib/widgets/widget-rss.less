@@ -1,0 +1,61 @@
+/* 
+    Created on : 04.04.2015, 18:49:48
+    Author     : DFD
+	Styles for : RSS Widget
+*/
+
+.widget.widget_rss {
+	.rsswidget img {.hide();}
+	ul li {
+		padding-bottom: 40px;
+		&:last-child {
+			padding-bottom: 0;
+		}
+		.rsswidget {
+			.block();
+			margin-bottom: 10px;
+			.transition(opacity .3s ease);
+			&:hover {
+				opacity: .6;
+			}
+		}
+		.rss-date {
+			.block();
+			margin-bottom: 10px;
+		}
+		.rssSummary {
+			margin-bottom: 15px;
+		}
+		.rss-date {
+			.rel();
+			color: #c3c3c3;
+			padding-left: 20px;
+			&:before {
+				content: "\ea8a";
+				font-family: 'dfd-socicons-font';
+				font-size: 13px;
+				font-weight: normal;
+				.abs();
+				left: 0;
+				top: 50%;
+				.transform(translateY(-50%));
+			}
+		}
+		cite {
+			.rel();
+			.block();
+			padding-left: 20px;
+			&:before {
+				content: "\eaac";
+				font-family: 'dfd-socicons-font';
+				font-size: 10px;
+				font-weight: normal;
+				color: #c3c3c3;
+				.abs();
+				left: 0;
+				top: 50%;
+				.transform(translateY(-50%));
+			}
+		}
+	}
+}

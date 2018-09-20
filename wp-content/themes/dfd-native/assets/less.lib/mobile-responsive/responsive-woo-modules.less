@@ -1,0 +1,108 @@
+/* 
+    Created on : 28.03.2015, 10:09:19
+    Author     : DFD
+	Styles for : Woo Modules
+*/
+@media only screen and (max-width : @screen-normal) {
+	.products.related .products > li.product {
+		width: 50%;
+	}
+	.dfd-content-wrap.dfd-product_single > .row > .product {
+		padding: 0 20px;
+	}
+}
+
+@media (min-width: @screen-medium) and (max-width: @screen-normal - 1) {
+	#layout.dfd-shop-loop .dfd-shop-archive {
+		.woocommerce-ordering {
+			text-align: left;
+		}
+	}
+	.dfd-shop-archive {
+		&.dfd-shop-columns-4 {
+			.products {
+				> li.product {
+					width: 33.3333%;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width : @screen-medium - 1) {
+	.dfd-shop-archive:not(.dfd-shop-loop-shortcode) .woocommerce-ordering {
+		margin-top: 20px;
+		text-align: left;
+	}
+	.products.row .product {
+		margin-bottom: 20px !important;
+		&:last-child {
+			margin-bottom: 0 !important;
+		}
+	}
+	#layout.dfd-shop-loop {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.dfd-shop-archive {
+		&.dfd-shop-columns-3,
+		&.dfd-shop-columns-4 {
+			.products {
+				> li.product {
+					width: 50%;
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width : 640px) {
+	body.woocommerce-cart .dfd-content-wrap > .woocommerce {
+		> form table.shop_table thead tr th.product-quantity,
+		> form table.shop_table tbody .cart_item td.product-quantity {
+			.hide();
+		}
+		> form table.shop_table tbody tr td.actions .coupon,
+		> form table.shop_table tbody tr td.actions .coupon + .button {
+			float: none;
+			clear: both;
+			width: 100%;
+		}
+		> form table.shop_table tbody tr td.actions .coupon + .button {
+			margin-top: 25px;
+		}
+	}
+}
+@media only screen and (max-width : @screen-small - 1) {
+	body.woocommerce-cart .dfd-content-wrap > .woocommerce {
+		> form table.shop_table thead tr th.product-thumbnail,
+		> form table.shop_table tbody .cart_item td.product-thumbnail {
+			.hide();
+		}
+		> form table.shop_table tbody tr td.actions .coupon {
+			input[type="text"] {
+				width: 100%;
+			}
+			.button {
+				margin-top: 25px;
+			}
+			input[type="text"],
+			.button {
+				float: none;
+				clear: both;
+			}
+		}
+	}
+	.dfd-shop-archive {
+		&.dfd-shop-columns-2,
+		&.dfd-shop-columns-3,
+		&.dfd-shop-columns-4 {
+			.products {
+				> li.product {
+					width: 100%;
+					float: none;
+					clear: both;
+				}
+			}
+		}
+	}
+}

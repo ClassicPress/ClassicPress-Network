@@ -1,0 +1,75 @@
+/* 
+    Created on : 27.05.2016, 15:11:06
+    Author     : DFD
+	Styles for : Blog, portfolio, gallery meta style
+*/
+.dfd-mini-categories {
+	.byline.category {
+		.inline-block();
+		background: @main-site-light-color;
+		.rounded(3px);
+		> a {
+			.inline-block();
+			height: 3.3em;
+			padding: 12px 23px;
+			color: @white-color;
+		}
+	}
+}
+
+.entry-meta {
+	.clearfix();
+	* {
+		font: inherit;
+		line-height: inherit;
+		text-transform: inherit;
+		letter-spacing: inherit;
+		.inline-block();
+		color: inherit;
+	}
+	> .inline-block {
+		> * {
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+	i {
+		font-size: 14px;
+		float: left;
+		margin-right: 5px;
+		&.dfd-socicon-Untitled-2-37 {
+			font-size: 11px;
+		}
+	}
+	.entry-date {
+		margin-right: 3px;
+		+ .entry-comments {
+			margin-left: 10px
+		}
+	}
+	.category {
+		margin-right: 15px;
+	}
+	.entry-comments {
+		margin-right: 13px;
+		.comments-title {
+			.hide();
+		}
+	}
+	.post-like {
+		i {
+			font-size: 14px;
+			margin-right: 2px;
+			.transition(color .3s ease);
+		}
+		.dfd-meta-hide {
+			.hide();
+		}
+		&:hover {
+			i {
+				color: #fa6047;
+			}
+		}
+	}
+}

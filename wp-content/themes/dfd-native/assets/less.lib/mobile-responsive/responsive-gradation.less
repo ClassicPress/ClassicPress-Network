@@ -1,0 +1,127 @@
+/* 
+    Created on : 28.10.2016, 9:56:51
+    Author     : DFD
+	Styles for : Responsive Gradation shortcode
+*/
+
+@media (min-width: @screen-medium) and (max-width: @screen-normal - 1) {
+	.dfd-short-info-block-wrap,
+	.dfd-gradation-wrap {
+		.quarter-width-elements > * {
+			width: 50%;
+		}
+		&.style-1 {
+			.quarter-width-elements {
+				.dfd-short-info-block-item,
+				.dfd-gradation-item {
+					padding-top: 40px;
+					&:first-child,
+					&:nth-child(2) {
+						padding-top: 0;
+					}
+				}
+			}
+			&:not(.side-delimeter) {
+				.quarter-width-elements {
+					.dfd-short-info-block-item,
+					.dfd-gradation-item {
+						&:nth-child(even) {
+							.icon-wrap:after {
+								.hide();
+							}
+						}
+						&:nth-child(odd) {
+							.icon-wrap:before {
+								.hide();
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen
+and (min-width : @screen-medium) {
+	.dfd-short-info-block-wrap,
+	.dfd-gradation-wrap {
+		&.style-1 {
+			.quarter-width-elements {
+				.dfd-short-info-block-item,
+				.dfd-gradation-item {
+					padding-top: 40px;
+					&:nth-child(-n+4) {
+						padding-top: 0;
+					}
+				}
+			}
+			.one-third-width-elements {
+				.dfd-short-info-block-item,
+				.dfd-gradation-item {
+					padding-top: 40px;
+					&:nth-child(-n+3) {
+						padding-top: 0;
+					}
+				}
+			}
+			.half-size-elements {
+				.dfd-short-info-block-item,
+				.dfd-gradation-item {
+					padding-top: 40px;
+					&:nth-child(-n+2) {
+						padding-top: 0;
+					}
+				}
+			}
+			.full-width-elements {
+				.dfd-short-info-block-item,
+				.dfd-gradation-item {
+					padding-top: 40px;
+					&:first-child {
+						padding-top: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen
+and (max-width : @screen-medium - 1) {
+	/*Gradation Native shortcode*/
+	.dfd-short-info-block-wrap,
+	.dfd-gradation-wrap {
+		&.style-1 {
+			.dfd-short-info-block-item,
+			.dfd-gradation-item {
+				-webkit-box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				box-sizing: border-box;
+				padding-bottom: 40px;
+				&:last-child {
+					padding-bottom: 0;
+				}
+			}
+			.quarter-width-elements,
+			.one-third-width-elements,
+			.half-size-elements,
+			.full-width-elements {
+				.dfd-short-info-block-item,
+				.dfd-gradation-item {
+					padding-top: 0;
+				}
+			}
+		}
+	}
+	.dfd-short-info-block-wrap.side-delimeter.style-1 .dfd-short-info-block-item:last-child .icon-wrap:after,
+	.dfd-gradation-wrap.side-delimeter.style-1 .dfd-gradation-item:last-child .icon-wrap:after,
+	.dfd-short-info-block-wrap.side-delimeter.style-1 .dfd-short-info-block-item:first-child .icon-wrap:before,
+	.dfd-gradation-wrap.side-delimeter.style-1 .dfd-gradation-item:first-child .icon-wrap:before,
+	.dfd-short-info-block-wrap.style-1 .icon-wrap:before,
+	.dfd-short-info-block-wrap.style-1 .icon-wrap:after,
+	.dfd-gradation-wrap.style-1 .icon-wrap:before,
+	.dfd-gradation-wrap.style-1 .icon-wrap:after {
+		.hide();
+	}
+}

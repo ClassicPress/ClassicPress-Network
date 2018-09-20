@@ -1,0 +1,74 @@
+/* 
+    Created on : 28.10.2016, 9:51:52
+    Author     : DFD
+	Styles for : Responsive Services shortcode
+*/
+@media (min-width : @screen-medium - 1) and (max-width : @screen-normal - 1) {
+	.dfd-services-wrap .dfd-service-list {
+		&.quarter-width-elements {
+			.dfd-service-item {
+				width: 50%;
+			}
+		}
+	}
+	.responcive-class.sliding.dfd-services-wrap .dfd-service-list {
+		&.quarter-width-elements {
+			.dfd-service-item {
+				border-top-width: 1px;
+				&:nth-child(-n+2) {
+					border-top-width: 0;
+				}
+				&:nth-child(2n+1) {
+					border-left-width: 0;
+				}
+			}
+		}
+	}
+	.responcive-class {
+		&.cubic,
+		&.flip {
+			&.dfd-services-wrap .dfd-service-list {
+				&.quarter-width-elements {
+					.dfd-service-item {
+						border-top-width: 20px;
+						&:nth-child(-n+2) {
+							border-top-width: 0;
+						}
+						&:nth-child(2n+1) {
+							border-left-width: 20px;
+						}
+						&:nth-child(3n-1) {
+							border-right-width: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen
+and (max-width : @screen-medium - 1) {
+	.dfd-services-wrap .dfd-service-list {
+		.dfd-service-item {
+			.dfd-service-front,
+			.dfd-service-back {
+				padding: 25px;
+			}
+		}
+		&.half-size-elements,
+		&.one-third-width-elements,
+		&.quarter-width-elements,
+		&.fifth-width-elements,
+		&.sixth-width-elements {
+			.dfd-service-item {
+				border-top-width: 1px !important;
+				border-bottom-width: 0 !important;
+				border-left-width: 0 !important;
+				border-right-width: 0 !important;
+				&:first-child {
+					border-top-width: 0 !important;
+				}
+			}
+		}
+	}
+}

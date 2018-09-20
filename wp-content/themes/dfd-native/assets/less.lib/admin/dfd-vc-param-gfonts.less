@@ -1,0 +1,31 @@
+/* 
+    Created on : 24.10.2016, 12:14:38
+    Author     : DFD
+	Styles for : Google fonts VC param
+*/
+.wpb_el_type_google_fonts {
+	.edit_form_line {
+		margin: 0 -10px;
+		> * {
+			float: left;
+			padding: 0 10px;
+			.box-sizing(border-box);
+			&.vc_row-fluid.vc_column {
+				.clearfix();
+				&:nth-child(1),
+				&:nth-child(2) {
+					width: 50%;
+					float: left;
+					padding-top: 0;
+					margin-bottom: 25px;
+					.vc_description {
+						.hide();
+					}
+					+ .vc_description {
+						.hide();
+					}
+				}
+			}
+		}
+	}
+}

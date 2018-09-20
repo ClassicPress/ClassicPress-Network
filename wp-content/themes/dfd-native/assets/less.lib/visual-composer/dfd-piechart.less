@@ -1,0 +1,96 @@
+/* 
+    Created on : 01.08.2016
+    Author     : DFD
+	Styles for : Piechart shortcode
+*/
+
+.dfd-piecharts {
+	.rel();
+	text-align: center;
+	canvas{
+		.abs();
+		top: 0;
+		left: 50%;
+		max-width: 100%;
+		margin-bottom: 13px;
+		z-index: 1;
+		.transform(rotateY(180deg) translateX(50%));
+	}
+	.pichart-title {
+		font-size: 15px;
+		line-height: 15px;
+	}
+	.pichart-subtitle {
+		font-size: 13px;
+		line-height: 28px;
+	}
+	i {
+		font-size: 36px;
+		color: #d9d9d9;
+	}
+	.piecharts-number {
+		font-size: 35px;
+		letter-spacing: -2px;
+		span {
+			font-size: 70%;
+		}
+	}
+	.inner-circle{
+		.rel();
+		overflow: hidden;
+		width: 160px;
+		height: 160px;
+		line-height: 160px;
+		.rounded(50%);
+		margin: 0 auto;
+		margin-bottom: 22px;
+		&:before {
+			content: "";
+			.abs();
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			border: 1px solid @border-color;
+			.rounded(inherit);
+		}
+
+		> * {
+			line-height: inherit
+		}
+	}
+	.title-wrap {
+		text-align: left;
+	}
+	.decor-wrap {
+		padding-right: 15px;
+		img {
+			.block();
+		}
+	}
+	.decor-wrap,
+	.title-wrap {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	&.counterclock-wise-animation {
+		canvas{
+			.transform(rotateY(0) translateX(-50%));
+		}
+	}
+	&.style-2 {
+		.piecharts-number {
+			.inline-block();
+			height: inherit;
+		}
+		i {
+			font-size: 25px;
+			padding-right: 10px;
+		}
+	}
+	&.style-4 {
+		i {
+			color: @black-color;
+		}
+	}
+}

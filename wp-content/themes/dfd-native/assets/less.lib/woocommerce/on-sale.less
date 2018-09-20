@@ -1,0 +1,36 @@
+/* 
+    Created on : 10.01.2015, 14:44:43
+    Author     : DFD
+	Styles for : On-sale bedge
+*/
+/* On-sale bedge */
+.yith-wcwl-message,
+.onsale {
+	@h: 30px;
+	text-align: center;
+	.absolute(3);
+	top: 15px;
+	left: 15px;
+	.block();
+	height: @h;
+	line-height: @h;
+	padding: 0 15px;
+	color: @white-color;
+	background: #f4b900;
+	.rounded(4px);
+}
+
+body.single-product .product.type-product {
+	> .columns {
+		> .onsale {
+			top: 10px;
+			right: 20px;
+			left: auto;
+		}
+	}
+}
+
+.yith-wcwl-message {
+	width: auto;
+	padding: 0 20px;
+}

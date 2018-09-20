@@ -1,0 +1,53 @@
+/* 
+    Created on : 07.06.2016, 17:49:49
+    Author     : dfd
+	Styles for : Widgets Custom: Subscribe
+*/
+
+.widget_dfd_subscribe {
+	.subscribe-info {
+		.rel();
+		top: -5px; 
+		margin-bottom: 20px;
+	}
+	.text {
+		height: 43px;
+		line-height: 43px;
+		margin: 0;
+		padding: 0;
+		padding-left: 25px;
+		border: 1px solid @border-color;
+		background: fade(@black-color, 1%);
+		.rounded(4px);
+		.box-shadow(0 10px 45px -10px transparent);
+		.transition(~"background .4s ease, border-color .4s ease, box-shadow .4s ease");
+		&::-webkit-input-placeholder {line-height: 41px;top: 0;}
+		&:-moz-placeholder {line-height: 41px;}
+		&::-moz-placeholder {line-height: 41px;}
+		&:-ms-input-placeholder {line-height: 41px;}
+		&:focus,
+		&:hover {
+			border-color: transparent;
+			background: @white-color;
+			.box-shadow(0 10px 45px -10px fade(@black-color, 25%));
+		}
+	}
+	button {
+		height: 43px;
+		line-height: 43px;
+		width: 100%;
+		background: #fe5339;
+		border-width: 0;
+		.rounded(4px);
+		margin-top: 10px;
+		cursor: pointer;
+		color: @white-color;
+		.transition(~"background .3s ease, color  .3s ease, border-color .3s ease");
+		i {
+			padding-right: 10px;
+		}
+		&:hover {
+			background: darken(#fe5339, 10%);
+		}
+	}
+}

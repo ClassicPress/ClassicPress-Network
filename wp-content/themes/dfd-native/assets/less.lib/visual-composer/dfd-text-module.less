@@ -1,0 +1,59 @@
+/* 
+    Created on : 25.03.2015, 17:12:56
+    Author     : DFD
+	Styles for : Text module
+*/
+.dfd-textmodule-blockquote {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.dfd-textmodule-dropcaps {
+	font-size: 200%;
+	.inline-block();
+	float: left;
+	width: 2em;
+	height: 2em;
+	line-height: 2;
+	text-align: center;
+	margin-right: 10px;
+	&.bordered {
+		border: 1px solid @border-color;
+	}
+	&.rounded {
+		.rounded(50%);
+	}
+}
+.wpb_text_column {
+	strong {
+		color: #4a4a4a;
+	}
+	a:not(.quote-content):not(.dfd-post-link-url):not(.fn):not(.dfd-post-link-title):not(.dk_toggle) {
+		color: @main-site-light-color;
+	}
+	> div > ol,
+	> p > ol,
+	> ol {
+		list-style-type: decimal;
+		margin-left: 0;
+	}
+	> div > ul,
+	> p > ul,
+	> ul {
+		.advanced_list_style();
+	}
+	> table,
+	> p table {
+		tbody {
+			th {
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+		}
+	}
+	.wp-caption {
+		.wp-caption-text {
+			margin-top: 15px;
+			padding: 0 20px;
+		}
+	}
+}

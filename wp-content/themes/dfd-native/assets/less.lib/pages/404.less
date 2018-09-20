@@ -1,0 +1,187 @@
+/*------------------------------------------------------------------
+[404 Page & No resoult Stylesheet]
+
+Last change:	16/06/15
+Assigned to:	DFD
+Primary use:	404 page styles
+-------------------------------------------------------------------*/
+
+.page-not-found {
+	.info-wrap-empty {
+		.namber404 {
+			font-size: 200px;
+			letter-spacing: -6px;
+			line-height: 1;
+			padding-top: 23px;
+			padding-bottom: 18px;
+		}
+		.title-container {
+			.inline-block();
+		}
+		.icon-wrap {
+			float: left;
+			font-size: 55px;
+			color: #e5e5e5;
+			i {
+				top: 2px;
+			}
+		}
+		.title-wrap {
+			margin-left: 69px;
+			.empty-title {
+				font-size: 35px;
+				line-height: 1;
+				letter-spacing: -2.1px;
+			}
+			.empty-subttitle {
+				margin-bottom: 0;
+			}
+		}
+		.button-wrap {
+			text-align: center;
+			padding-top: 28px;
+		}
+		.empty-button {
+			&:not(:hover) {
+				border-width: 1px;
+				border-color: @border-color;
+				background: transparent;
+				color: @title-color;
+			}
+			.transition(~"color .3s ease, background .3s ease, border-color .3s ease");
+			i {
+				.rel();
+				top: 1px;
+				color: #b5b5b5;
+				padding-left: 9px;
+				.transition(color .3s ease);
+			}
+			&:hover {
+				border-width: 1px;
+				i {
+					color: inherit;
+				}
+			}
+		}
+	}
+	.container-shortcodes {
+		padding-top: 40px;
+		width: 66.66%;
+		margin: 0 auto;
+		.delimeter-empty {
+			overflow: hidden;
+			margin: 0 10px;
+			padding-bottom: 40px;
+			span {
+				.rel();
+				padding: 0 15px;
+				&:before,
+				&:after {
+					content: "";
+					.abs();
+					top: 50%;
+					height: 1px;
+					background: @border-color;
+					width: 1000em;
+				}
+				&:before {
+					right: 100%;
+				}
+				&:after {
+					left: 100%;
+				}
+			}
+		}
+		.label-form {
+			color: #c3c3c3;
+		}
+		.form-search {
+			.rel();
+			.rounded(22px);
+			i,
+			.btn {
+				.abs();
+				height: 43px;
+				line-height: 43px;
+				width: 43px;
+				left: 0;
+				top: 0;
+			}
+			i {
+				text-align: center;
+				color: @title-color;
+			}
+			.btn {
+				padding: 0;
+				border-width: 0;
+				background: transparent;
+				color: transparent;
+				z-index: 1;
+			}
+			input[type="text"] {
+				margin: 0;
+				padding-left: 43px;
+				height: 43px;
+				line-height: 43px;
+				.rounded(inherit);
+				.box-shadow(0 5px 15px 0 transparent);
+				.transform(perspective(0px));
+				.transition(all .3s ease);
+				&:focus {
+					border-color: transparent;
+					background: @white-color;
+					.transform(perspective(1200px));
+					.box-shadow(0 10px 25px 0 fade(@black-color , 20%));
+				}
+				&::-webkit-input-placeholder {
+					color: transparent;
+				}
+				&:-moz-placeholder {
+					color: transparent;
+				}
+				&::-moz-placeholder {
+					color: transparent;
+				}
+				&:-ms-input-placeholder {
+					color: transparent;
+				}
+			}
+			&:hover {
+				input[type="text"] {
+					border-color: transparent;
+					background: @white-color;
+					.transform(perspective(1200px));
+					.box-shadow(0 10px 25px 0 fade(@black-color , 20%));
+				}
+			}
+		}
+		.dk-select {
+			.dk-select-options .dk-option {
+				&:first-child {
+					border-bottom-width: 0;
+				}
+			}
+			&.dk-select-open-down,
+			&.dk-select-open-up {
+				.dk-select-options {
+					.transform(scaleY(1) translateY(-70%));
+				}
+			}
+		}
+	}
+	&.page404 {
+		padding-bottom: 40px;
+	}
+	&.search-page {
+		padding: 40px 0;
+	}
+}
+.dfd-ie-detected .page-not-found .info-wrap-empty .number-decoration {
+	-webkit-text-fill-color: inherit;
+	background-image: none;
+}
+#layout.nothing-found {padding: 0;}
+#layout.nothing-found .blog-section.sidebar-both .page-not-found .container-shortcodes {width: 100%;}
+#layout.dfd-search-result > .row,
+#layout.nothing-found > .row {padding: 40px 20px;}
+#layout.nothing-found > .row.full-width {padding: 40px 30px;}

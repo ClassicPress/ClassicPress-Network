@@ -1,0 +1,126 @@
+/* 
+    Created on : 15.07.2016, 14:15:19
+    Author     : DFD
+	Styles for : Countdown shortcode
+*/
+
+.dfd-countdown {
+	line-height: .5;
+
+	.dfd-countdown-wrap {
+		.inline-block();
+		margin: -5px 0;
+	}
+	.number-wrap {
+		.rel();
+		.inline-block();
+		text-align: center;
+		min-width: 87px;
+		min-height: 87px;
+		margin: 5px;
+		padding: 0 10px;
+		.number {
+			.rel();
+			.block();
+			line-height: 1;
+		}
+		&:last-child {
+			.dot {
+				.hide();
+			}
+		}
+	}
+	.dot {
+		vertical-align: top;
+		.inline-block();
+		padding: 0 10px;
+		&:last-child {
+			.hide();
+		}
+	}
+	.dot {
+		margin: 5px 0;
+	}
+	.period {
+		.rel();
+		.block();
+		line-height: 1.4;
+	}
+	&.style-1 {
+		.number-wrap {
+			min-height: initial;
+		}
+		.number {
+			font-size: 45px;
+		}
+		.dot {
+			font-size: 45px;
+			line-height: .9;
+		}
+	}
+	&.style-2 {
+		.number-wrap {
+			&:before {
+				content: "";
+				.block();
+				.abs();
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border: 1px solid @border-color;
+				.rounded(10px);
+			}
+		}
+		.number {
+			font-size: 35px;
+			padding-top: 15px;
+		}
+		.period {
+			font-size: 13px;
+		}
+		.dot {
+			font-size: 45px;
+			line-height: 1;
+			padding-top: 5px;
+		}
+	}
+	&.style-3 {
+		.number-wrap {
+			min-width: auto;
+			min-height: auto;
+			padding: 0;
+		}
+		.number-container {
+			.block();
+			.rel();
+			&:before {
+				content: "";
+				.block();
+				.abs();
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border: 1px solid @border-color;
+				.rounded(6px);
+			}
+		}
+		.number {
+			.block();
+			min-width: 60px;
+			height: 60px;
+			line-height: 60px;
+			font-size: 35px;
+			padding: 0 10px;
+		}
+		.period {
+			font-size: 13px;
+			line-height: 1.8;
+		}
+		.dot {
+			font-size: 35px;
+			line-height: 60px;
+		}
+	}
+}

@@ -1,0 +1,270 @@
+/* -----------------------------------------
+   Login link with popup
+----------------------------------------- */
+.login-header {
+	.rel();
+	.block();
+	float: left;
+	color: inherit;
+	
+	.dfd-header-links {
+		.rel();
+		.block();
+		height: inherit;
+		line-height: inherit;
+		padding: 0 50px;
+		border-left: 1px solid @border-color;
+		i {
+			font-size: 13px;
+			.abs();
+			left: 25px;
+			top: 50%;
+			height: 1em !important;
+			line-height: 1 !important;
+			margin-top: -.5em;
+			opacity: .4;
+		}
+	}
+	
+	.top-avatar {
+		.hide();
+	}
+	#dfd-register,
+	#dfd-lost-password {
+		.hide();
+		&.active {
+			.block();
+		}
+	}
+	#loginModal,
+	#dfd-register,
+	#dfd-lost-password {
+		.abs();
+		top: 100% !important;
+		left: 0;
+		width: 410px;
+		height: auto !important;
+		margin: 0;
+		padding: 20px;
+		background: @white-color;
+		.rounded(6px);
+		.box-shadow(0 15px 45px 0 rgba(0,0,0,.2));
+		z-index: 1005;
+		.login_form_title {
+			line-height: 1;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		form {
+			overflow: hidden;
+			margin: 0 -7px;
+			> * {
+				padding: 0 7px;
+				&:not(.clear) {
+					float: left;
+					width: 100%;
+				}
+			}
+		}
+		p {
+			@input: 43px;
+			line-height: 1;
+			margin: 0;
+			input {
+				margin: 0;
+				&[type="text"],
+				&[type="email"],
+				&[type="password"] {
+					height: @input;
+					background: @background-light;
+					border: 1px solid @border-color;
+					.rounded(@input);
+					.box-shadow(0 10px 20px 0 transparent);
+					.transform(perspective(0));
+					.transition(all .3s ease);
+					&:hover,
+					&:focus {
+						background: @white-color;
+						border-color: @white-color;
+						.box-shadow(0 10px 20px 0 rgba(0,0,0,0.1));
+						.transform(perspective(400px));
+					}
+				}
+				&[type="checkbox"] {
+					margin-right: 10px;
+				}
+			}
+			&.add-info {
+				font-size: 13px;
+				line-height: 1.6;
+			}
+		}
+	}
+	#loginModal {
+		label {
+			
+		}
+		p {
+			@input: 43px;
+			&.login-username {
+				margin-bottom: 20px;
+				label {
+					line-height: 1;
+					padding: 0 20px;
+					margin-bottom: 10px;
+					opacity: .4;
+				}
+			}
+			&.login-password {
+				width: 50%;
+				margin-bottom: 10px;
+				label {
+					line-height: 1;
+					padding: 0 20px;
+					margin-bottom: 10px;
+					opacity: .4;
+				}
+				input[type="password"] {
+					font-size: 16px;
+					font-weight: bolder;
+					letter-spacing: 3px;
+				}
+			}
+			&.login-submit {
+				width: 50%;
+				margin-bottom: 10px;
+				button.button {
+					.block();
+					width: 100%;
+					height: @input;
+					line-height: @input;
+					text-align: center;
+					margin-top: 25px;
+					background: @third-site-light-color;
+					color: @white-color;
+					border: none;
+					.rounded(@input);
+					cursor: pointer;
+				}
+			}
+			&.login-remember {
+				text-align: center;
+				width: auto;
+				padding-top: 20px;
+				padding-bottom: 20px;
+				margin-right: 20px;
+				margin-left: 10px;
+				label {
+					font-size: 13px;
+					line-height: 1;
+				}
+			}
+			&.login-lost-password {
+				text-align: center;
+				width: auto;
+				padding-top: 20px;
+				padding-bottom: 20px;
+				a {
+					text-decoration: underline;
+				}
+			}
+			&.delim-line {
+				.rel();
+				&:before,
+				&:after {
+					content: "";
+					.block();
+					width: 42%;
+					height: 1px;
+					.abs();
+					top: 50%;
+					background: @border-color;
+				}
+				&:before {
+					left: 0;
+				}
+				&:after {
+					right: 0;
+				}
+			}
+		}
+		div.title-registration {
+			text-align: center;
+			padding-top: 20px;
+			> span {
+				.block();
+				margin-bottom: 20px;
+			}
+			> a {
+				.inline-block();
+				padding: 0 60px;
+			}
+		}
+	}
+	#dfd-register {
+		label {
+			.block();
+			padding: 0 20px;
+			margin-bottom: 10px;
+			opacity: .4;
+		}
+		p {
+			&.email-wrap {
+				margin-bottom: 20px;
+			}
+			&.login-wrap,
+			&.submit {
+				width: 50%;
+			}
+			&.submit {
+				.button {
+					.block();
+					width: 100%;
+					margin-top: 32px;
+					cursor: pointer;
+				}
+			}
+			&#reg_passmail {
+				margin-top: 20px;
+			}
+		}
+		.dfd-close-register {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: -1;
+		}
+	}
+	#dfd-lost-password {
+		label {
+			.block();
+			padding: 0 20px;
+			margin-bottom: 10px;
+			opacity: .4;
+		}
+		p.submit {
+			margin-top: 20px;
+			margin-bottom: 20px;
+			padding-bottom: 20px;
+			border-bottom: 1px solid @border-color;
+			.button {
+				cursor: pointer;
+			}
+		}
+		.dfd-close-lost-password {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: -1;
+		}
+	}
+	.reveal-modal-bg {
+		width: 3500px;
+		height: 3500px;
+		background: transparent;
+	}
+}

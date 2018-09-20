@@ -1,0 +1,99 @@
+/* -----------------------------------------
+   Widgets
+----------------------------------------- */
+
+/*Animation for widget load more button arrow*/
+@-webkit-keyframes loadArrow {
+	0% {transform: rotate(90deg);}
+	100% {transform: rotate(450deg);}
+}
+@-moz-keyframes loadArrow {
+	0% {transform: rotate(90deg);}
+	100% {transform: rotate(450deg);}
+}
+@-o-keyframes loadArrow {
+	0% {transform: rotate(90deg);}
+	100% {transform: rotate(450deg);}
+}
+@keyframes loadArrow {
+	0% {transform: rotate(90deg);}
+	100% {transform: rotate(450deg);}
+}
+
+.widget + .widget {
+	margin-top: 50px;
+}
+
+.widget {
+	position: relative;
+	ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	.widget-title {
+		margin-bottom: 35px;
+	}
+	.ajax-pagination {
+		padding-top: 25px;
+		text-align: center;
+		.button {
+			.rel();
+			.inline-block();
+			background: transparent;
+			color: #c3c3c3;
+			border: none;
+			padding: 0 45px 0 30px;
+			height: 37px;
+			line-height: 37px;
+			white-space: nowrap;
+			.rounded(20px);
+			.box-shadow(0px 15px 50px 0px transparent);
+			.transition(~"background .4s ease, box-shadow .4s ease, color .4s ease");
+			i {
+				.abs();
+				width: 11px;
+				height: 11px;
+				right: 25px;
+				top: 50%;
+				margin-top: -5.5px;
+				color: inherit;
+				font-size: inherit;
+				.translate(0; 0);
+				.transform(rotate3d(0,0,0,0));
+				.transition(~"transform .3s ease, color .3s ease");
+				.transition-transform(.3s ease);
+			}
+			&:hover {
+				background: @white-color;
+				color: @title-color;
+				.box-shadow(0px 15px 50px 0px fade(@black-color, 25%));
+				i {
+					color: #c3c3c3;
+					.transform(rotate3d(0,0,1,90deg));
+				}
+			}
+			&.loading i {
+				-webkit-animation: loadArrow .3s infinite linear;
+				-moz-animation: loadArrow .3s infinite linear;
+				-o-animation: loadArrow .3s infinite linear;
+				animation: loadArrow .3s infinite linear;
+			}
+			&.loaded {
+				padding-right: 30px;
+				&:hover {
+					background: transparent;
+					color: #c3c3c3;
+					.box-shadow(none);
+					cursor: default;
+				}
+			}
+		}
+	}
+	.dk-select .dk-select-options .dk-option {
+		font: inherit;
+		text-transform: inherit;
+		line-height: 3em;
+		letter-spacing: inherit;
+	}
+}

@@ -1,0 +1,98 @@
+/* 
+    Created on : 26.10.2016, 16:03:10
+    Author     : DFD
+	Styles for : VC param responsive text
+*/
+.vc_edit_form_elements .wpb_el_type_dfd_param_responsive_text {
+	> .wpb_element_label {
+		font-size: 22px;
+		font-weight: 800;
+		letter-spacing: -1px;
+		text-transform: none;
+		margin-bottom: 0;
+		margin: 0 -15px 15px;
+		padding: 12px 15px  !important;
+		color: #dedede;
+		border-bottom: 1px dashed #e7e7e7;
+	}
+	.dfd-responsive-text-param-container {
+		.box-sizing(border-box);
+		* {
+			.box-sizing(border-box);
+		}
+		.inner-wrap {
+			.clearfix();
+			margin: 0 -10px 20px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			&.expanded {
+				.dfd-resolution-section-expand {
+					.button-animation {
+						background: #52d298;
+						&:before {
+							right: -1px;
+						}
+					}
+				}
+				.item.input-cover {
+					width: 20%;
+					padding: 0 10px;
+				}
+			}
+			.item {
+				float: left;
+				width: 20%;
+				padding: 0 10px;
+				.clearfix();
+				.transition(~"width .3s ease, padding .3s ease");
+				&.input-cover {
+					width: 0;
+					padding: 0;
+					overflow: hidden;
+				}
+				.wpb_element_label {
+					white-space: nowrap;
+				}
+			}
+			.dfd-resolution-section-expand {
+				@s: 32px;
+				.rel();
+				.inline-block();
+				width: 58px;
+				height: @s;
+				margin-top: 6px;
+				.box-shadow(none);
+				.button-animation {
+					.block();
+					width: 100%;
+					height: 100%;
+					background: #f2f2f2;
+					border-radius: 32px;
+					z-index: 0;
+					-webkit-transition: background .3s ease 0s;
+					-moz-transition: background .3s ease 0s;
+					transition: background .3s ease 0s;
+					&:before {
+						content: "";
+						display: block;
+						width: @s+2;
+						height: @s+2;
+						position: absolute;
+						left: auto;
+						right: 24px;
+						top: -1px;
+						background: #ffffff;
+						border-radius: 50%;
+						-webkit-box-shadow: 0px 5px 9px 2px fade(#000000, 10%);
+						-moz-box-shadow: 0px 5px 9px 2px fade(#000000, 10%);
+						box-shadow: 0px 5px 9px 2px fade(#000000, 10%);
+						-webkit-transition: right .3s ease 0s;
+						-moz-transition: right .3s ease 0s;
+						transition: right .3s ease 0s;
+					}
+				}
+			}
+		}
+	}
+}

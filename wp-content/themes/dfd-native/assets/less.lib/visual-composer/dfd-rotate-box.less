@@ -1,0 +1,209 @@
+/* 
+    Created on : 17.01.2017, 16:20:00
+    Author     : DFD
+	Styles for : Rotate Box shortcode
+*/
+
+.dfd-rotate-box-wrap {
+	.rel();
+	text-align: center;
+	.rotate-box {
+		line-height: 0;
+		.dfd-rotate-box-item {
+			.rel();
+			.thumb-wrap {
+				.perspective(1000px);
+				.thumb-wrap-front,
+				.thumb-wrap-back {
+					background-size: cover;
+					min-height: 300px;
+					z-index: 1;
+					.transform-style(preserve-3d);
+					.backface-visibility(hidden);
+					.perspective(inherit);
+					.transition(transform .8s cubic-bezier(0.5, 0.2, 0.2, 0.8));
+					background-position: center;
+					.content-wrap {
+						.abs(); 
+						width: 100%;
+						.block();
+						.transform-style(preserve-3d);
+						.perspective(inherit);
+						.backface-visibility(hidden);
+						z-index: 2;
+					}
+				} 
+				.thumb-wrap-front {
+					.content-wrap {
+						height: 100%;
+						.transform(translateZ(70px) scale(.86));
+						.content-block {
+							.abs();
+							left: 0;
+							width: 100%;
+							padding: 50px;
+							&.dfd-rotate-content-v_center {
+							top: 50%;
+							.transform(translateY(-50%));
+							}
+							&.dfd-rotate-content-top {
+								top: 0;
+								.transform(translateY(0%));
+							}
+							&.dfd-rotate-content-bottom {
+								bottom: 0;
+								.transform(translateY(0%));
+							}
+							&.dfd-rotate-content-h_center {
+								text-align: center;
+							}
+							&.dfd-rotate-content-left {
+								text-align: left;
+							}
+							&.dfd-rotate-content-right {
+								text-align: right;
+							}
+							.title-first {
+								color: #fff;
+							}
+							.subtitle-first {
+								color: rgba(255,255,255,.6);
+								line-height: 1.5;
+								padding-top: 10px;
+							}
+						}
+					}
+				}
+				.thumb-wrap-back {
+					.abs();
+					.block();
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					.content-wrap {
+						top: 50%;
+						left: 0;
+						padding: 50px;
+						.transform(translate3d(0, -50%, 70px) scale(.86));
+						.description-reverse {
+							color: #fff;
+						}
+					}
+				}
+				img {
+					.rel();
+					.block();
+					margin: 0 auto;
+					width:100%;
+				}
+			}
+			/*****************
+			* Direction
+			*****************/
+			&.to-left, &.to-right {
+				.thumb-wrap-front {
+					.transform(rotateY(0deg));
+				} 
+			}
+			&.to-top, &.to-bottom {
+				.thumb-wrap-front {
+					.transform(rotateX(0deg));
+				} 
+			}
+			&.to-left {
+				.thumb-wrap-back {
+					.transform(rotateY(180deg));
+				}
+			}
+			&.to-right {
+				.thumb-wrap-back {
+					.transform(rotateY(-180deg));
+				}
+			}
+			&.to-top {
+				.thumb-wrap-back {
+					.transform(rotateX(-180deg));
+				}
+			}
+			&.to-bottom {
+				.thumb-wrap-back {
+					.transform(rotateX(180deg));
+				}
+			}
+			&:hover {
+				.thumb-wrap-front,
+				.thumb-wrap-back {
+					.transform-style(preserve-3d);
+					.transition(transform 1s cubic-bezier(0.3, 1, 0.6, 1));
+				}
+			}
+			&.to-left {
+				&:hover {
+					.thumb-wrap-front{
+						.transform(rotateY(-180deg));
+					}
+					.thumb-wrap-back {
+						.transform(rotateY(0deg));
+					}
+				}
+			}
+			&.to-right {
+				&:hover {
+					.thumb-wrap-front{
+						.transform(rotateY(180deg));
+					}
+					.thumb-wrap-back {
+						.transform(rotateY(0deg));
+					}
+				}
+			}
+			&.to-top {
+				&:hover {
+					.thumb-wrap-front{
+						.transform(rotateX(180deg));
+					}
+					.thumb-wrap-back {
+						.transform(rotateX(0deg));
+					}
+				}
+			}
+			&.to-bottom {
+				&:hover {
+					.thumb-wrap-front{
+						.transform(rotateX(-180deg));
+					}
+					.thumb-wrap-back {
+						.transform(rotateX(0deg));
+					}
+				}
+			}
+			.full-box-link {
+				.abs();
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	&.number-before-content {
+		padding-top: 15px;
+		.dfd-rotate-box-number {
+			top: 0;
+		}
+	}
+	&.number-after-content {
+		padding-bottom: 15px;
+		.dfd-rotate-box-number {
+			bottom: 0;
+		}
+	}
+	.dfd-rotate-box-number {
+		.abs();
+		width: 100%;
+		font-size: 30px;
+		line-height: 1;
+	}
+}
+

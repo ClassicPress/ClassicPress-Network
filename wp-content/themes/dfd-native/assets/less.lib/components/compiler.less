@@ -1,0 +1,103 @@
+/* 
+    Created on : 12.04.2016, 11:22:35
+    Author     : DFD
+	Styles for : Style compiler modal box style
+*/
+html.dfd-compile-box {
+	#TB_overlay {
+		opacity: .9;
+	}
+	body.about-php #TB_window,
+	body.import-php #TB_window,
+	body.index-php #TB_window,
+	body.plugin-install-php #TB_window,
+	body.plugins-php #TB_window,
+	body.update-core-php #TB_window,
+	#TB_window {
+			overflow: hidden;
+			background: transparent;
+			.box-shadow(none);
+			&:before {
+				.hide();
+			}
+			#TB_ajaxContent {
+				overflow: hidden;
+				margin: 0 auto;
+				background: transparent;
+				* {
+					color: @white-color;
+					.box-sizing(border-box);
+				}
+			}
+		.BlockCompile {
+			height: 100%;
+			margin: 0 -40px;
+			padding: 40px;
+			overflow-x: hidden;
+			overflow-y: scroll;
+			.compilestatuslessBar{
+				height: 20px;
+				background: fade(@white-color, 10%);
+				.stat{
+					display: block;
+					height: 100%;
+					width: 0%;
+					background: fade(@white-color, 20%);
+					-webkit-transition: all 0.2s ease-out 0.2s;
+					-moz-transition: all 0.2s ease-out 0.2s;
+					-o-transition: all 0.2s ease-out 0.2s;
+					transition: all 0.2s ease-out 0.2s;
+				}
+			}
+			.heading {
+				font-size: 150%;
+			}
+			.hasError{
+				color: #ff6f53;
+			}
+			.c_row{
+				border-top: 1px solid #999;
+			}
+			.compilestatuslessTotal {
+
+			}
+			.compilestatuslessBar {
+
+			}
+			table.compilestatusless {
+				width: 100%;
+				margin: 0;
+				background: transparent;
+				border: none;
+				border-collapse: collapse;
+				* {
+					text-align: left;
+				}
+				thead{
+					font-weight: bold;
+					background: transparent;
+				}
+				tbody {
+					tr {
+						background: transparent;
+						td {
+							padding: 10px 0;
+						}
+					}
+				}
+			}
+			.closeCompile {
+				input[type="submit"] {
+					cursor: pointer;
+					margin: 10px 0;
+					background: transparent;
+					border: none;
+					.box-shadow(none);
+				}
+				.compile_err_mess{
+					color: #ff6f53;
+				}
+			}
+		}
+	}
+}

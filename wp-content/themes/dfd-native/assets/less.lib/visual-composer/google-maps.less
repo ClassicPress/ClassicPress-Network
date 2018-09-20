@@ -1,0 +1,331 @@
+/* 
+    Created on : 24.02.2015, 15:29:02
+    Author     : DFD
+	Styles for : Googls maps module
+*/
+.map-holder, .map-holder :before, .map-holder *:after {
+	-webkit-box-sizing: content-box !important;
+	-moz-box-sizing: content-box !important;
+	-o-box-sizing: content-box !important;
+	box-sizing: content-box !important;
+}
+
+.map-holder {
+	img {
+		max-width: none;
+	}
+	label {
+		width: auto;
+		display: inline;
+	}
+	.noscroll {
+		line-height: 1.35;
+		overflow: hidden;
+		white-space: nowrap;
+		text-align: center;
+	}
+}
+
+
+
+.dfd_gmap{
+	.gmap_text_appear{
+		opacity: 0;
+		-webkit-transform: translateY(55%);
+		transform: translateY(55%);
+		transition: opacity .3s ease, transform  .3s ease, visibility .6s ease;
+		left: 17%;
+		padding-left: 11px;
+		position: absolute;
+		top: 100%;
+		visibility: hidden;
+		width: 200px;
+		will-change: transform,opacity;
+		pointer-events: none;
+		.gmap_text_appear_content{
+			background-color: black;
+			color: white;
+			display: inline-block;
+			pointer-events: none;
+			padding: 0px 14px;
+		}
+	}
+
+	.img_wrapper{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 2;
+		.hover_img{
+			opacity: 0;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
+			background-size: cover;
+			transition: opacity .3s ease;
+			will-change: opacity;
+
+		}
+	}
+
+	.gm-style .gmnoprint{
+		overflow: visible !important;
+		/*width: initial !important;*/
+		background-color:inherit !important;
+		> img{
+
+			-webkit-transform: none;
+			transform: none;
+			transition: transform .2s ease, opacity .4s ease;
+			cursor: pointer;
+			will-change: opacity,transform;
+
+			opacity: 1;
+
+		}
+		&:hover{
+			cursor: pointer;
+			> img{
+				top:-2px !important;
+				-webkit-transform: translateY(-5px) scale(1.1,1.1) !important;
+				transform: translateY(-2px) scale(1.2,1.2) !important;
+				transform: translateY(-3px)  scale(1.1,1.1) !important;
+				opacity: 1;
+			}
+		}
+	}
+
+	.gm-style > div:first-child > div:first-child > div:nth-child(4) img{
+		visibility: hidden;
+	}
+	.gmap-infowindows-style {
+		> div:nth-child(3) div:first-child > div{
+			height: 13px !important;
+			transform: skewX(41.6deg) !important;
+			box-shadow: none !important;
+			border-radius: 0px !important;
+		}
+		> div:nth-child(3) div:last-child > div{
+			height: 13px !important;
+			transform: skewX(-41.6deg) !important;
+			box-shadow: none !important;
+			border-radius: 0px !important;
+		}
+		> div:nth-child(1){
+			display: none;
+		}
+		> div:nth-child(2){
+			display: none;
+		}
+		div:last-child{
+			border-radius: 4px !important;
+		}
+		> div:last-child{
+			background-color: inherit !important;
+		}
+	}
+	.close_btn{
+		div:last-child{
+			visibility:visible  !important;
+		}
+	}
+	.gm-style{
+		div{
+			div{
+				div{
+					.gmnoprint{
+						opacity : 1 !important;
+					}
+				}
+			}
+		}
+		.arrow_align{
+		}
+		.CustomStyleInfoWin{
+			+div{
+				visibility:hidden;
+				&:before, &:after{
+					width: 200%;
+					left: -50%;
+					content: '';
+					position: absolute;
+					height: 2px;
+					width: 12px;
+					top: 7px;
+					left: 0;
+					margin-top: -1px;
+					background: white;
+				}
+				&:before{
+					-webkit-transform: rotate(45deg);
+					-moz-transform: rotate(45deg);
+					-ms-transform: rotate(45deg);
+					-o-transform: rotate(45deg);
+					transform: rotate(45deg);
+				}
+				&:after{
+					-webkit-transform: rotate(-45deg);
+					-moz-transform: rotate(-45deg);
+					-ms-transform: rotate(-45deg);
+					-o-transform: rotate(-45deg);
+					transform: rotate(-45deg);
+				}
+				img{
+					display: none;
+				}
+			}
+			> div:first-child{
+				> div:first-child{
+					padding: 10px;
+					padding-top: 13px;
+					padding-left: 0px;
+					padding-right: 0px;
+				}
+			}
+			.map-title{
+				color: @white-color;
+				line-height: 30px;
+				padding: 0px 21px;
+				padding-bottom: 0px;
+				color:@white-color;
+				display: inline-block;
+				width: 100%;
+			}
+			.map-content{
+				padding: 0px 21px;
+				color:@white-color;
+				display: inline-block;
+				width: 100%;
+			}
+			.map-content-separator{
+				margin-bottom: 10px;
+				display: block;
+				overflow: hidden;
+				width: 100%;
+				&:last-child{
+					margin-bottom: 0px;
+				}
+			}
+		}
+		.gm-style-iw{
+			+ div{
+				
+
+				img{
+				
+				}
+
+			}
+			div{
+				div{
+					> span, >h6{
+					
+					}
+
+				}
+			}
+			
+		}
+		.gmnoprint{
+			div {
+				line-height: inherit;
+				div{
+					line-height: inherit;
+				}
+			}
+		}
+		.gm-style-cc{
+			div:last-child{
+				line-height: inherit;
+			}
+		}
+	}
+}
+
+.dfd-gmap-module {
+	.rel();
+	.dfd-gmap-tooltip-wrap {
+		.abs();
+		top: 50%;
+		width: 100%;
+		.cover {
+			.rel();
+			width: 1200px;
+			max-width: 100%;
+			margin: 0 auto;
+			.dfd-gmap-tooltip {
+				.block();
+				min-width: 250px;
+				.abs();
+				top: 50%;
+				padding: 30px 25px;
+				color: @title-color;
+				background: @white-color;
+				.box-shadow(0 4px 17px 0px fade(@black-color, 20%));
+				.transform(translateY(-50%));
+				&.left-aligned {
+					left: 20px;
+				}
+				&.right-aligned {
+					right: 20px;
+				}
+				div.block-title {
+					margin-bottom: 20px;
+					color: inherit;
+				}
+				ul.dfd-gmap-infobox {
+					list-style: none;
+					margin-bottom: 0;
+					color: inherit;
+					li {
+						.rel();
+						line-height: 1.6;
+						margin-bottom: 10px;
+						padding-bottom: 10px;
+						color: inherit;
+						&:before {
+							content: "";
+							.block();
+							width: 125px;
+							height: 0;
+							.abs();
+							left: 0;
+							bottom: 0;
+							border-bottom: 1px dotted @border-color;
+						}
+						&:last-child {
+							margin-bottom: 0;
+							padding-bottom: 0;
+							&:before {
+								.hide();
+							}
+						}
+						span {
+							float: left;
+							line-height: inherit;
+							color: inherit;
+							i {
+								line-height: inherit;
+								color: inherit;
+							}
+						}
+						p {
+							margin-left: 35px;
+							line-height: inherit;
+							margin-bottom: 0;
+							color: inherit;
+							a {
+								.link-style();
+								color: @third-site-light-color;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

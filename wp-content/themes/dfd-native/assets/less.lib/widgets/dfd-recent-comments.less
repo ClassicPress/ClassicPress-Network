@@ -1,0 +1,80 @@
+/* 
+    Created on : 26.05.2016, 13:57:25
+    Author     : dfd
+	Styles for : Widgets Custom: Recent Comments with avatar no excerpt & Custom: Recent Comments with excerpt no avatar
+*/
+
+.widget_dfd_rec_com_with_avatar_noexept,
+.widget_dfd_rec_com_with_exept_noavatar {
+	p {
+		margin: 0;
+		color: inherit;
+	}
+	.container-content {
+		.avatar {
+			float: left;
+			margin-right: 15px;
+			.rounded(50%);
+		}
+	}
+	.author-text {
+		color: #c3c3c3;
+	}
+	.dfd-list-elem-comments {
+		padding: 15px 0;
+		&:first-child {
+			padding-top: 0;
+		}
+		&:last-child {
+			padding-bottom: 0;
+		}
+	}
+	.comments-date {
+		.rel();
+		padding-left: 20px;
+	}
+	i {
+		font-size: 13px;
+		font-weight: normal;
+		line-height: 1;
+		.abs();
+		left: 0;
+		top: 50%;
+		.transform(translateY(-50%));
+		&.dfd-socicon-users {font-size: 10px;}
+	}
+	.dfd-widget-comment-title {
+		.rel();
+		padding-left: 20px;
+		i {
+			color: #c3c3c3;
+		}
+	}
+	.entry-meta {
+		margin-top: 10px;
+		* {
+			float: none;
+		}
+	}
+	.comment-text {
+		margin-top: 10px;
+		margin-bottom: 5px;
+		height: 4em;
+		line-height: 2em;
+		overflow: hidden;
+	}
+	.ajax-pagination i {
+		left: auto;
+	}
+	.dfd-post-link {
+		.transition(opacity .3s ease);
+		&:hover {
+			opacity: .6;
+		}
+	}
+}
+.widget_dfd_rec_com_with_avatar_noexept {
+	.dfd-widget-list-content {
+		line-height: 1.5;
+	}
+}

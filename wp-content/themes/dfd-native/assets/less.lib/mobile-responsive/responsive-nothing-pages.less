@@ -1,0 +1,73 @@
+/* 
+    Created on : 14.10.2016, 12:52:18
+    Author     : DFD
+*/
+
+/*1180*/
+@media only screen and (max-width : @screen-large) {
+	.nothing-found {
+		> .row:not(.full-width) .blog-section {
+			&.sidebar-right,
+			&.sidebar-left {
+				.page-not-found .container-shortcodes {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+/*1024*/
+@media only screen and (max-width : @screen-normal) {
+	.nothing-found {
+		.container-shortcodes {
+			width: 100%;
+		}
+	}
+	#layout.nothing-found > .row.full-width {
+		padding: 40px 20px;
+	}
+}
+
+/*800*/
+@media only screen and (max-width : @screen-x-medium - 1) {
+	.page-not-found {
+		.container-shortcodes {
+			width: 100%;
+			.delimeter-empty {
+				margin: 0;
+			}
+			.widget-arhives-empty {
+				margin-bottom: 40px;
+			}
+		}
+	}
+}
+
+/*500*/
+@media only screen and (max-width : 500px) {
+	.page-not-found {
+		.info-wrap-empty .namber404 {
+			font-size: 120px;
+		}
+		.info-wrap-empty {
+			.icon-wrap {
+				font-size: 40px;
+			}
+			.title-wrap {
+				margin-left: 60px;
+				.empty-title {
+					font-size: 26px;
+				}
+				.empty-subttitle {
+					font-size: 13px;
+					line-height: 1.5;
+					padding-top: 5px;
+				}
+			}
+		}
+		&.search-page {
+			padding: 0;
+		}
+	}
+}

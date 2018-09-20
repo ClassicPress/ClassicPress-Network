@@ -1,0 +1,171 @@
+/* 
+    Created on : 23.02.2017, 15:32:49
+    Author     : DFD
+	Styles for : Hotspot VC param
+*/
+.dfd-hotspot-param-wrapper {
+	.rel();
+	.inline-block();
+	.hotspot();
+	padding: 0 8%;
+	.dfd-hotspot-image-holder {
+		.rel();
+		max-width: 100%;
+		margin-bottom: 40px;
+		img {
+			.block();
+			max-width: 100%;
+		}
+		.HotspotPlugin_Overlay {
+			.abs();
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			p {
+				.hide();
+			}
+		}
+		.btn {
+			@s: 100px;
+			.abs();
+			top: 100%;
+			left: 0;
+			width: @s;
+			margin-top: 20px;
+		}
+		.HotspotPlugin_Hotspot {
+			> div {
+				opacity: 0;
+				visibility: hidden;
+			}
+			&:hover {
+				> div {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+		}
+	}
+}
+.dfd-hotspot-popup {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	.block();
+	min-width: 400px;
+	min-height: 300px;
+	padding: 25px 25px 90px 25px;
+	background: @white-color;
+	overflow: hidden;
+	.rounded(6px);
+	.box-shadow(~"0 30px 100px 0 rgba(0,0,0,0.6)");
+	.translate(-50%;-50%);
+	z-index: 999999;
+	.dfd-hotspot-popup-title {
+		font-size: 20px;
+		font-weight: 300;
+		.rel();
+		padding: 25px;
+		margin: -25px -25px 10px;
+		color: @white-color;
+		background: #3e94ce;
+		.dfd-socicon-cross-24 {
+			@s: 24px;
+			font-size: 14px;
+			.abs();
+			top: 50%;
+			right: @s/2;
+			.block();
+			width: @s;
+			height: @s;
+			line-height: @s;
+			text-align: center;
+			text-decoration: none;
+			margin-top: -@s/2;
+			color: @white-color;
+			&:active,
+			&:hover,
+			&:focus {
+				border: none;
+				.box-shadow(none);
+			}
+		}
+	}
+	label {
+		font-size: 11px;
+		font-weight: 700;
+		.block();
+		text-transform: uppercase;
+		width: 100%;
+		margin-bottom: 10px;
+		color: #3b3b3b;
+	}
+	input[type="text"],
+	textarea {
+		font-size: 13px;
+		.block();
+		margin: 0;
+		color: #282828;
+		background: #f3f3f3;
+		border: 1px solid #e2e2e2;
+		.rounded(3px);
+		.box-shadow(none);
+		.transition(~"background-color .3s ease 0s, border-color .3s ease 0s");
+		&:hover,
+		&:focus {
+			background-color: #ffffff;
+			border-color: #52d298;
+		}
+	}
+	input[type="text"] {
+		width: 100%;
+		height: 40px;
+		line-height: 40px;
+		padding: 0 10px;
+		margin-bottom: 20px;
+	}
+	textarea {
+		width: 100%;
+		height: auto;
+		min-height: 130px;
+		padding: 10px;
+	}
+	.dfd-hotspot-button {
+		font-size: 13px;
+		font-weight: 600;
+		text-align: center;
+		text-decoration: none;
+		.block();
+		width: 140px;
+		.abs();
+		left: 25px;
+		bottom: 25px;
+		padding: 14px 21px;
+		color: @white-color;
+		border: none;
+		.rounded(25px);
+		.box-shadow(none);
+		.box-sizing(border-box);
+		.transition(background .3s ease);
+		&:active,
+		&:hover,
+		&:focus {
+			border: none;
+			.box-shadow(none);
+		}
+		&.dfd-hotspot-save {
+			background: #52d298;
+			&:hover {
+				background: #3db07c;
+			}
+		}
+		&.dfd-hotspot-close {
+			left: 175px;
+			background: #d0d0d0;
+			&:hover {
+				background: #b9b9b9;
+			}
+		}
+	}
+}

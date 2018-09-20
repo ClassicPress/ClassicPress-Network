@@ -1,0 +1,75 @@
+/* 
+    Created on : 10.01.2015, 14:34:44
+    Author     : DFD
+	Styles for : Quantity selector
+*/
+/* Quantity selector */
+.quantity {
+	@s: 43px;
+    .rel();
+    float: left;
+	width: 90px;
+    height: @s;
+	text-align: center;
+	margin-right: 10px;
+	border: 2px solid @border-color;
+	.rounded(@s);
+	
+	.plus,
+	.minus {
+		font-family: @font-icons-main;
+		font-size: 7px;
+		.abs();
+		top: -2px;
+		.block();
+		width: 30px;
+		height: @s;
+		line-height: @s;
+		padding: 0;
+		border: none;
+		color: @title-color;
+		background-color: transparent;
+		cursor: pointer;
+		opacity: .4;
+		z-index: 2;
+		.transition(opacity .3s ease);
+		&:hover {
+			opacity: 1;
+		}
+	}
+	
+	.plus {
+		right: 0;
+	}
+	
+	.minus {
+		left: 0;
+	}
+	
+	input.qty {
+		width: 30px;
+		height: 100%;
+		text-align: center;
+		margin-left: 30px;
+		margin-right: 30px;
+		margin-bottom: 0;
+		padding: 0;
+		background: transparent;
+		border-width: 0;
+		.rounded(0);
+		.box-shadow(none);
+		
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+		}
+	}
+	input[type=number] {
+		-moz-appearance: textfield;
+	}
+}
+
+#content .quantity input.qty {
+   width: 48px;
+}

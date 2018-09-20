@@ -1,0 +1,112 @@
+/* 
+    Created on : 07.09.2016, 15:12:06
+    Author     : DFD
+	Styles for : Animate Heading shortcode
+*/
+
+.dfd-animate-heading-wrap {
+	line-height: 0;
+	&.full-width-bg {
+		.content-wrap {
+			.wrap-container > * {
+				.block();
+			}
+		}
+	}
+	.content-wrap {
+		.inline-block();
+		overflow: hidden;
+		.wrap-container {
+			.block();
+			line-height: 0 !important;
+		}
+		.wrap-container > * {
+			.inline-block();
+			overflow: hidden;
+			color: @white-color;
+			line-height: 0 !important;
+		}
+		.dfd-content-title-big {
+			font-family: @font-titles;
+			font-size: 10px;
+			text-transform: uppercase;
+			letter-spacing: .5px;
+			font-weight: 400;
+		}
+	}
+	.animate-container,
+	.animate-element {
+		.rel();
+		.block();
+	}
+	.animate-container {
+		overflow: hidden;
+		.rounded(4px);
+	}
+	.animate-element {
+		padding: 10px 12px;
+		line-height: 1.3;
+	}
+	.title-container {
+		&.animate-container {
+			background: @main-site-light-color;
+		}
+		&.animate-container,
+		.animate-element {
+			.transition-transform(1s cubic-bezier(.5, 0, .7, .3));
+		}
+	}
+	.subtitle-wrap {
+		.dfd-content-subtitle {
+			font-size: 14px;
+			color: #bfbfbf;
+		}
+	}
+	.subtitle-container {
+		&.animate-container {
+			background: @main-site-light-color;
+		}
+		&.animate-container,
+		.animate-element {
+			.transition-transform(1s cubic-bezier(.5, 0, .7, .3) 1s);
+		}
+	}
+	&.left-to-right {
+		.animate-container {
+			.transform(translateX(-101%));
+		}
+		.animate-element {
+			.transform(translateX(101%));
+		}
+	}
+	&.right-to-left {
+		.animate-container {
+			.transform(translateX(101%));
+		}
+		.animate-element {
+			.transform(translateX(-101%));
+		}
+	}
+	&.top-to-bottom {
+		.animate-container {
+			.transform(translateY(-101%));
+		}
+		.animate-element {
+			.transform(translateY(101%));
+		}
+	}
+	&.bottom-to-top {
+		.animate-container {
+			.transform(translateY(101%));
+		}
+		.animate-element {
+			.transform(translateY(-101%));
+		}
+	}
+	&.heading-animate {
+		.animate-container,
+		.animate-element {
+			.transform(translate(0, 0));
+		}
+	}
+}

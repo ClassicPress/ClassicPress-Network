@@ -1,0 +1,85 @@
+/* 
+    Created on : 26.10.2016, 13:55:58
+    Author     : DFD
+	Styles for : Visual Composer backend tooltip
+*/
+.dfd-vc-toolip {
+	.rel();
+	.clearfix();
+	float: left;
+	> i {
+		font-size: 7px;
+		.rel();
+		bottom: 1px;
+		text-align: center;
+		padding: 0 6px;
+		margin-right: 8px;
+		color: #ffffff;
+		&:before {
+			.rel();
+			z-index: 1;
+		}
+		&:after {
+			content: "";
+			.block();
+			width: 16px;
+			height: 16px;
+			.abs();
+			top: 50%;
+			left: 50%;
+			margin-top: -8px;
+			margin-left: -8px;
+			background: #c9c9c9;
+			.rounded(50%);
+			z-index: 0;
+		}
+	}
+	span.dfd-vc-tooltip-text {
+		font-size: 13px;
+		font-weight: normal;
+		text-transform: none;
+		.abs();
+		bottom: 100%;
+		left: 0;
+		margin-bottom: 10px;
+		min-width: 200px;
+		padding: 15px;
+		color: #ffffff;
+		background: #333333;
+		.rounded(6px);
+		opacity: 0;
+		visibility: hidden;
+		z-index: 9;
+		.transition(~"opacity .3s ease .3s, visibility .3s ease .3s");
+		&:before {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 10px;
+			display: block;
+			border: 3px solid transparent;
+			border-top: 2px solid #383838;
+			border-left: 2px solid #383838;
+		}
+	}
+	&:hover {
+		span.dfd-vc-tooltip-text {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+	&.tooltip-bottom {
+		span.dfd-vc-tooltip-text {
+			top: 100%;
+			bottom: auto;
+			margin-top: 10px;
+			margin-bottom: 0;
+			&:before {
+				top: auto;
+				bottom: 100%;
+				border-top: 3px solid transparent;
+				border-bottom: 2px solid #383838;
+			}
+		}
+	}
+}

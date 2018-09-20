@@ -1,0 +1,133 @@
+/* -----------------------------------------
+   Language drop-down select
+----------------------------------------- */
+.lang-sel {
+	@s: 20px;
+	.rel();
+	height: inherit;
+	line-height: inherit;
+	> a {
+		.rel();
+		.block();
+		font-size: 13px;
+		letter-spacing: -.4px;
+		overflow: hidden;
+		height: inherit;
+		line-height: inherit;
+		opacity: 1;
+		visibility: visible;
+		.transform(translateX(0));
+		-webkit-transition: -webkit-transform .3s ease, opacity .3s ease, visibility .3s ease;
+		-moz-transition: -moz-transform .3s ease, opacity .3s ease, visibility .3s ease;
+		transition: -webkit-transform .3s ease, transform .3s ease, opacity .3s ease, visibility .3s ease;
+		> span {
+			float: left;
+			.vertical-align();
+		}
+		span.flag {
+			.block();
+			width: @s;
+			height: @s;
+			margin-right: 10px;
+			background-position: center center;
+			background-size: initial;
+			background-repeat: no-repeat;
+			background-image: url(../img/eng.png);
+			.rounded(50%);
+		}
+	}
+	> ul {
+		.abs();
+		top: 50%;
+		left: 50%;
+		width: @s * 3 + 18;
+		.clearfix();
+		margin-bottom: 0;
+		margin-left: -@s / 2;
+		opacity: 0;
+		visibility: hidden;
+		z-index: 1000;
+		.translate(-50%; -50%);
+		.transition(~"opacity .3s ease, visiblity .3s ease");
+		> li {
+			float: left;
+			&:nth-child(1) {
+				.transform(translateX(0));
+				span.flag {
+					background-image: url(../img/eng.png);
+				}
+			}
+			&:nth-child(2) {
+				margin-left: -3px;
+				.transform(translateX(-50%));
+				.transition(all .3s ease .1s);
+				span.flag {
+					background-image: url(../img/de.png);
+				}
+			}
+			&:nth-child(3) {
+				margin-left: -6px;
+				.transform(translateX(-100%));
+				.transition(all .3s ease .05s);
+				span.flag {
+					background-image: url(../img/fr.png);
+				}
+			}
+			&.active {
+				opacity: .4;
+				> a:hover {
+					span.flag {
+						.box-shadow(0 5px 15px 0 transparent);
+						.transform(perspective(0px) scale(1));
+					}
+				}
+			}
+			> a {
+				.block();
+				padding: 0 3px;
+				span.flag {
+					.block();
+					width: @s;
+					height: @s;
+					background-position: center center;
+					background-repeat: no-repeat;
+					background-size: initial;
+					.rounded(50%);
+					.box-shadow(0 5px 15px 0 transparent);
+					.transform(perspective(0px) scale(1));
+					.transition(all .3s ease);
+					&:hover {
+						.transform(perspective(1200px) scale(1.2));
+						.box-shadow(0 10px 20px 0 fade(@black-color , 20%));
+					}
+				}
+			}
+		}
+	}
+	&:hover {
+		> a {
+			opacity: 0;
+			visibility: hidden;
+			.transform(translateX(-20px));
+		}
+		> ul {
+			opacity: 1;
+			visibility: visible;
+			> li {
+				&:nth-child(1) {
+					.transform(translateX(0));
+				}
+				&:nth-child(2) {
+					margin-left: 0;
+					.transform(translateX(0));
+					.transition(all .3s ease .05s);
+				}
+				&:nth-child(3) {
+					margin-left: 0;
+					.transform(translateX(0));
+					.transition(all .3s ease .1s);
+				}
+			}
+		}
+	}
+}

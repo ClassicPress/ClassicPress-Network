@@ -1,0 +1,108 @@
+/* 
+    Created on : 25.03.2015, 13:53:56
+    Author     : DFD
+	Styles for : Vertical tabs
+*/
+.wpb_tour.dfd-vertical-tabs {
+	&.dfd-left-tabs {
+		.wpb_tabs_nav {
+			li {
+				text-align: center;
+				&.ui-tabs-active,
+				&.ui-state-active {
+				}
+			}
+		}
+		.wpb_tour_tabs_wrapper .wpb_tab {
+			padding-left: 20px;
+		}
+	}
+	&.dfd-right-tabs {
+		.wpb_tabs_nav {
+			float: right;
+			li {
+				text-align: center;
+				&.ui-tabs-active,
+				&.ui-state-active {
+				}
+			}
+		}
+		.wpb_tour_tabs_wrapper .wpb_tab {
+			float: right;
+			padding-left: 0;
+			padding-right: 20px;
+		}
+		.wpb_tour_next_prev_nav {
+			margin-left: 0;
+			margin-right: 31.66666667%;
+			padding-left: 0;
+			padding-right: 20px;
+		}
+	}
+	.wpb_tabs_nav {
+		li {
+			font-family: @box-name-font-family;
+			font-size: @box-name-font-size - 2;
+			font-weight: @box-name-font-weight;
+			color: @box-name-color;
+			text-transform: uppercase;
+			line-height: 45px;
+			padding: 0 30px;
+			margin-bottom: 0;
+			background: transparent;
+			border: 1px solid transparent;
+			.transition(~"border-color .3s ease-in-out, box-shadow .3s ease-in-out");
+			a {
+				color: inherit;
+				font-size: inherit;
+				text-transform: inherit;
+				line-height: inherit;
+				padding: 0;
+			}
+			&:not(.ui-tabs-active) {
+				border-top: 1px dotted @border-color;
+				&:first-child {
+					border-top-color: transparent;
+				}
+			}
+			&.ui-tabs-active {
+				border-color: @border-color;
+				+ li {
+					border-top-color: transparent;
+				}
+			}
+		}
+	}
+	.wpb_tour_next_prev_nav {
+		> span {
+			padding-top: 30px;
+		}
+		a {
+			font-size: @box-name-font-size;
+			font-weight: normal;
+			text-transform: none;
+			border-bottom: none;
+			color: @title-color;
+			&:hover {
+				color: @main-site-light-color;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: @screen-medium - 1) {
+	.wpb_tour.dfd-vertical-tabs {
+		&.dfd-left-tabs {
+			.wpb_tour_tabs_wrapper .wpb_tab,
+			.wpb_tour_next_prev_nav {
+				padding-left: 40px;
+			}
+		}
+		&.dfd-right-tabs {
+			.wpb_tour_tabs_wrapper .wpb_tab,
+			.wpb_tour_next_prev_nav {
+				padding-right: 40px;
+			}
+		}
+	}
+}

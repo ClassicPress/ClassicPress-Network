@@ -1,0 +1,93 @@
+/* 
+    Created on : 10.06.2016, 9:03:10
+    Author     : dfd
+	Styles for : Widgets Custom: Login / Logout
+*/
+
+.widget_dfd_login_widget {
+	.dfd-widget-content-title {
+		.opacity(.4);
+		padding-left: 20px;
+	}
+	input[type="text"],
+	input[type="password"] {
+		height: 42px;
+		.rounded(20px);
+		padding-left: 20px;
+		background: fade(@black-color, 1%);
+		.box-shadow(0 10px 45px -10px transparent);
+		.transition(~"background .4s ease, border-color .4s ease, box-shadow .4s ease");
+		&:hover,
+		&:focus {
+			border-color: transparent;
+			background: @white-color;
+			.box-shadow(0 10px 45px -10px fade(@black-color, 25%));
+		}
+	}
+	.login-lost-password {
+		a {
+			text-decoration: underline;
+			.transition(color .3s ease);
+			&:hover {
+				color: @main-site-light-color;
+			}
+		}
+	}
+	.login-remember {
+		text-align: center;
+	}
+	.login-logout,
+	.login-submit {
+		.button {
+			min-width: 60%;
+			margin: 0 auto;
+			border: none;
+			background: @third-site-light-color;
+			color: @white-color;
+			cursor: pointer;
+			.transition(background .3s ease);
+			&:hover {
+				background: darken(@third-site-light-color, 10%);
+			}
+		}
+	}
+	div.title-registration {
+		padding-top: 20px;
+		> span {
+			.block();
+			margin-bottom: 20px;
+		}
+	}
+	.title-registration {
+	}
+	.registration {
+		.block();
+		width: 80%;
+		margin: 0 auto;
+		.transition(background .3s ease);
+	}
+	.delim-line {
+		.rel();
+		margin: 0;
+		line-height: 1;
+		&:before,
+		&:after {
+			content: "";
+			.block();
+			.abs();
+			height: 1px;
+			width: 42%;
+			background: @border-color;
+			top: 50%;
+		}
+		&:before {
+			left: 0;
+		}
+		&:after {
+			right: 0;
+		}
+	}
+	.login-user {
+		margin-bottom: 30px;
+	}
+}

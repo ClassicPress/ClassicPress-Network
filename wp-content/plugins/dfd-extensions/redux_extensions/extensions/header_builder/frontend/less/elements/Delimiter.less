@@ -1,0 +1,35 @@
+.dfd-header-delimiter{
+	min-width:1px;
+	text-align: center;
+	&:before{
+		content: "";
+		position: absolute;
+		width: 1px;
+		bottom: 1px;
+		top: 0px;
+		background: #e7e7e7;
+		.transition(all .3s ease);
+	}
+}
+&.side-header{
+	.desktop .wrapper_el{
+		.el.delimiter{
+			width: 100%;
+			display: block;
+			height:20px;
+			.dfd-header-delimiter{
+				display: block;
+				height: inherit;
+				margin: 0 -40px;
+				position:relative;
+				&:before{
+					width: 100%;
+					left: 0;
+					height: 1px;
+					top: 50%;
+				}
+			}
+		}
+	}
+
+}

@@ -1,0 +1,28 @@
+.dfd_template_layout{
+    border: 1px solid rgb(43, 75, 128);
+    display: table;
+    width: 100%;
+    border-spacing: 7px;
+    text-align: center;
+    margin: 0 auto;
+}
+.dfd_template_layout input,
+.dfd_template_layout select{
+    width: 90% !important;
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+}
+.dfd_template_layout div{
+}
+.dfd_template_layout .d_row{
+    display: table-row;
+}
+.dfd_template_layout .d_row .d_col{
+    display: table-cell;
+    border: 1px solid rgb(43, 75, 128);
+    height: 36px;
+    vertical-align: middle;
+}
+.dfd_contact_form_select{
+
+}

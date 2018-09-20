@@ -1,0 +1,147 @@
+/* 
+    Created on : 24.10.2016, 9:23:21
+    Author     : DFD
+	Styles for : Border VC param
+*/
+.vc_shortcode-param.dfd-vc-border-param-styles {
+	position: relative;
+	* {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-o-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	> .wpb_element_label {
+		font-size: 14px;
+		font-weight: 600;
+		text-transform: none;
+		padding: 15px;
+		margin-top: -5px;
+		margin-left: -15px;
+		margin-right: -15px;
+		background: transparent;
+		border-bottom: 1px dashed #52d298;
+	}
+	.dfd-border-param-container {
+		.clearfix();
+		margin: 0 -10px;
+		> div {
+			float: left;
+			width: 100%;
+			padding: 0 10px;
+			&:not(:last-child) {
+				position: relative;
+				padding-bottom: 15px;
+				margin-bottom: 15px;
+				border-bottom: 1px dashed #e1e1e1;
+				&.dfd-border-style {
+					-webkit-transition: padding .3s ease, margin-bottom .3s ease;
+					-moz-transition: padding .3s ease, margin-bottom .3s ease;
+					-ms-transition: padding .3s ease, margin-bottom .3s ease;
+					-o-transition: padding .3s ease, margin-bottom .3s ease;
+					transition: padding .3s ease, margin-bottom .3s ease;
+					&:not(.expanded) {
+						padding-bottom: 0;
+						margin-bottom: 0;
+						border-bottom: none;
+					}
+				}
+				&.dfd-border-radius {
+					margin-bottom: 0;
+				}
+			}
+			&.dfd-border-style {
+				width: 33.3333%;
+			}
+			&.dfd-border-radius {
+				width: 33.3333%;
+			}
+			&.dfd-param-colorpicker-section {
+				width: 33.3333%;
+			}
+			&.dfd-border-width {
+				width: 70%;
+			}
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		.dfd-border-width {
+			.border-width-block {
+				overflow: hidden;
+				position: relative;
+				padding-left: 50px;
+				> input {
+					overflow: hidden;
+					float: left;
+					margin-right: 10px;
+					-webkit-transition: width .3s ease 0s, visibility .15s ease 0s;
+					-moz-transition: width .3s ease 0s, visibility .15s ease 0s;
+					-o-transition: width .3s ease 0s, visibility .15s ease 0s;
+					transition: width .3s ease 0s, visibility .15s ease 0s;
+					&:last-child {
+						margin-right: 0;
+					}
+					&.vc_container_form_field-border_width {
+						width: 0;
+						visibility: hidden;
+					}
+					&:not(.vc_container_form_field-border_width) {
+						width: 20%;
+						visibility: visible;
+					}
+				}
+				a.dfd-border-expand {
+					font-size: 23px;
+					width: 40px;
+					height: 40px;
+					position: absolute;
+					top: 50%;
+					left: 0;
+					text-align: center;
+					text-decoration: none;
+					margin-top: -20px;
+					color: #242424;
+					-webkit-box-shadow: none;
+					-moz-box-shadow: none;
+					-o-box-shadow: none;
+					box-shadow: none;
+					&:before {
+						content: "\f506";
+						font-family: dashicons;
+						height: 40px;
+						line-height: 40px;
+					}
+				}
+			}
+			&.expandable {
+				.border-width-block {
+					a.dfd-border-expand:before {
+						content: "\f211";
+					}
+					> input {
+						&.vc_container_form_field-border_width {
+							width: 20%;
+							visibility: visible;
+						}
+						&:not(.vc_container_form_field-border_width) {
+							width: 0;
+							visibility: hidden;
+						}
+					}
+				}
+			}
+		}
+		.dfd-border-radius {
+		}
+		.dfd-param-colorpicker-section {
+			* {
+				-webkit-box-sizing: content-box;
+				-moz-box-sizing: content-box;
+				-o-box-sizing: content-box;
+				box-sizing: content-box;
+			}
+		}
+	}
+}

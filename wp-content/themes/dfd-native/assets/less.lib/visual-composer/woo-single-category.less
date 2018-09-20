@@ -1,0 +1,130 @@
+/* 
+    Created on : 24.11.2016, 17:37:08
+    Author     : DFD
+	Styles for : Single WooCommerce products category
+*/
+.dfd-product-category-module {
+	.dfd-product-category-module-wrap {
+		.rel();
+		.transition(box-shadow .3s ease);
+		&.dfd-style-1 {
+			.content-wrap {
+				top: 0;
+				left: 0;
+			}
+		}
+		&.dfd-style-2 {
+			.content-wrap {
+				top: 50%;
+				left: 0;
+				.transform(translateY(-50%));
+			}
+		}
+		&.dfd-style-3 {
+			.content-wrap {
+				bottom: 0;
+				left: 0;
+			}
+		}
+		&.dfd-style-4 {
+			.content-wrap {
+				top: 0;
+				right: 0;
+				text-align: right;
+			}
+		}
+		&.dfd-style-5 {
+			.content-wrap {
+				top: 50%;
+				right: 0;
+				text-align: right;
+				.transform(translateY(-50%));
+			}
+		}
+		&.dfd-style-6 {
+			.content-wrap {
+				bottom: 0;
+				right: 0;
+				text-align: right;
+			}
+		}
+		&.dfd-style-7 {
+			.content-wrap {
+				top: 50%;
+				left: 50%;
+				text-align: center;
+				.translate(-50%; -50%);
+			}
+		}
+		.entry-thumb {
+			.rel();
+			overflow: hidden;
+			z-index: 1;
+			-webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+			&:before {
+				content: "";
+				.block();
+				width: 100%;
+				height: 100%;
+				.abs();
+				top: 0;
+				left: 0;
+				background: rgba(0,0,0,.8);
+				opacity: 0;
+				z-index: 1;
+				will-change: opacity;
+				.transition(opacity .3s ease);
+			}
+			img {
+				.block();
+				min-width: 100%;
+				.scale(1);
+				will-change: transform;
+				.transition-transform(.8s ease);
+			}
+		}
+		.content-wrap {
+			.abs();
+			padding: 27px;
+			z-index: 2;
+			.product_subtitle {
+				color: rgba(255,255,255,.5);
+				+ .product_title {
+					margin-top: 10px;
+				}
+				+ .byline.category {
+					margin-top: 15px;
+				}
+			}
+			.product_title {
+				white-space: nowrap;
+				color: @white-color;
+				+ .byline.category {
+					margin-top: 15px;
+				}
+			}
+			.byline.category {
+				.inline-block();
+				padding: 10px;
+				background: @main-site-light-color;
+				.rounded(4px);
+			}
+		}
+		.dfd-product-cat-link {
+			.abs();
+			top: 0; bottom: 0;
+			left: 0; right: 0;
+			z-index: 3;
+		}
+		&:hover {
+			.entry-thumb {
+				&:before {
+					opacity: 1;
+				}
+				img {
+					.scale(1.05);
+				}
+			}
+		}
+	}
+}

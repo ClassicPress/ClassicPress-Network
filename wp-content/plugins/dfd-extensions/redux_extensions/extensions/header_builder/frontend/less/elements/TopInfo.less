@@ -1,0 +1,27 @@
+.dfd-header-top-info{
+	color: inherit;
+	height: inherit;
+	padding-right: 0px;
+	float: none;
+}
+&.side-header{
+	.header-builder-wrraper{
+		&.desktop{
+			.dfd-header-top-info{
+				
+			}
+		}
+		&:not(.desktop){
+			.dfd-header-top-info{
+				line-height: inherit;
+			}
+		}
+	} 
+
+}
+
+&:not(.side-header){ 
+	.dfd-header-top-info{
+		line-height: inherit;
+	}
+}

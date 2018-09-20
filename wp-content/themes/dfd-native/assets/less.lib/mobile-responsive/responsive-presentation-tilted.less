@@ -1,0 +1,103 @@
+/* 
+    Created on : 28.10.2016, 9:51:52
+    Author     : DFD
+	Styles for : Responsive Presentation tilted shortcode
+*/
+@media (min-width: @screen-medium)
+and (max-width : @screen-normal) {
+	.dfd-presentation-tilted-wrap {
+		.dfd-presentation-tilted-list {
+			&.quarter-width-elements {
+				> * {
+					float: none;
+					clear: both;
+					width: 100%;
+				}
+				.dfd-presentation-tilted-item {
+					margin-bottom: 20px;
+					.main-decoration {
+						margin: 0;
+					}
+					&:first-child {
+						padding-left: 80px;
+						.main-decoration:before {
+							width: 100%;
+						}
+					}
+					&:last-child {
+						padding-right: 80px;
+						margin-bottom: 0;
+						.main-decoration:before {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+		&.style-1,
+		&.style-2 {
+			.dfd-presentation-tilted-list {
+				&.quarter-width-elements {
+					.dfd-presentation-tilted-item {
+						.main-decoration {
+							.transform(skew(0));
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen
+and (max-width : @screen-medium - 1) {
+	.dfd-presentation-tilted-wrap {
+		.dfd-presentation-tilted-item {
+			margin-bottom: 20px;
+			.main-decoration {
+				margin: 0;
+			}
+			&:first-child .main-decoration:before,
+			&:last-child .main-decoration:before {
+				width: 100%;
+			}
+			&:first-child {
+				padding-left: 80px;
+			}
+			&:last-child {
+				padding-right: 80px;
+				margin-bottom: 0;
+			}
+		}
+		&.style-1,
+		&.style-2 {
+			.dfd-presentation-tilted-item {
+				.main-decoration {
+					.transform(skew(0));
+				}
+			}
+		}
+	}
+}
+@media (min-width: @screen-normal)
+and (max-width : 1200px) {
+	.dfd-presentation-tilted-wrap {
+		.dfd-presentation-tilted-list {
+			&.quarter-width-elements {
+				.dfd-presentation-tilted-item {
+					padding: 45px 40px;
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width : 640px) {
+	.dfd-presentation-tilted-wrap .dfd-presentation-tilted-item {
+		padding: 40px;
+	}
+	.dfd-presentation-tilted-wrap .dfd-presentation-tilted-item:first-child {
+		padding-left: 40px;
+	}
+	.dfd-presentation-tilted-wrap .dfd-presentation-tilted-item:last-child {
+		padding-right: 40px;
+	}
+}

@@ -1,0 +1,385 @@
+/* 
+    Created on : 28.10.2016, 9:42:40
+    Author     : DFD
+	Styles for : Blog responsive
+*/
+@media only screen and (max-width: @screen-medium - 1) {
+	/*Blog posts side image style*/
+	#layout {
+		> .row {
+			&.full-width,
+			&:not(.full-width) {
+				.blog-section {
+					&.sidebar-left,
+					&.sidebar-right,
+					&.sidebar-both {
+						.dfd-content-wrap {
+							&.left-image,
+							&.right-image,
+							&.mixed-image {
+								&.posts-tiled,
+								&:not(.posts-tiled) {
+									article.post {
+										&.format-standard,
+										&.format-gallery,
+										&.format-quote,
+										&.format-link,
+										&.format-video,
+										&.format-audio {
+											&:nth-child(even),
+											&:nth-child(odd) {
+												> .cover {
+													.entry-content {
+														height: auto;
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.dfd-content-wrap {
+					&.left-image,
+					&.right-image,
+					&.mixed-image {
+						&.posts-tiled,
+						&:not(.posts-tiled) {
+							article.post {
+								&.format-standard,
+								&.format-gallery,
+								&.format-quote,
+								&.format-link,
+								&.format-video,
+								&.format-audio {
+									&:nth-child(even),
+									&:nth-child(odd) {
+										> .cover {
+											.entry-thumb {
+												.rounded(6px);
+											}
+											.entry-content {
+												height: auto;
+											}
+										}
+									}
+								}
+							}
+						}
+						article.post {
+							&.format-standard,
+							&.format-gallery,
+							&.format-quote,
+							&.format-link,
+							&.format-video,
+							&.format-audio {
+								&:nth-child(even),
+								&:nth-child(odd) {
+									> .cover {
+										padding-bottom: 30px;
+										.entry-thumb {
+											width: 100%;
+											margin: 0;
+											float: none;
+											clear: both;
+											.rounded(6px);
+										}
+										.content-wrap {
+											.rel();
+											top: 0;
+											left: auto;
+											right: auto;
+											width: 100%;
+											float: none;
+											text-align: left;
+											margin-top: 30px;
+											margin-bottom: 0;
+											.transform(translateY(0));
+										}
+										.entry-meta,
+										h3.entry-title,
+										.entry-subtitle,
+										.entry-content,
+										.author-section {
+											text-align: left;
+											padding: 0 20px;
+										}
+										.entry-meta {
+											.entry-comments,
+											.post-like {
+												.inline-block();
+											}
+										}
+									}
+								}
+							}
+						}
+						article.dfd-portfolio,
+						article.dfd-gallery,
+						article.dfd-portfolio_archive,
+						article.dfd-gallery_archive {
+							&:nth-child(even),
+							&:nth-child(odd) {
+								> .cover {
+									padding-bottom: 30px;
+									.entry-thumb {
+										width: 100%;
+										margin: 0;
+										float: none;
+										clear: both;
+									}
+									.content-wrap {
+										.rel();
+										top: 0;
+										left: auto;
+										right: auto;
+										width: 100%;
+										float: none;
+										text-align: left;
+										margin-top: 30px;
+										margin-bottom: 0;
+										.transform(translateY(0));
+									}
+									.entry-content {
+										height: auto;
+									}
+									.entry-meta {
+										.entry-comments,
+										.post-like {
+											.inline-block();
+										}
+									}
+								}
+							}
+						}
+					}
+					&.layout-metro {
+						&.posts-tiled {
+							article.post {
+								&.dfd-side-image {
+									> .cover {
+										padding-bottom: 90px !important;
+										.inner-cover {
+											top: 0;
+											margin-top: 20px;
+											.transform(none);
+										}
+										.entry-meta,
+										h3.entry-title,
+										.entry-content,
+										.author-section {
+											padding: 0 25px;
+										}
+									}
+								}
+							}
+						}
+						article.post {
+							&.dfd-side-image {
+								&.format-quote {
+									&.post-tiled,
+									&:not(.post-tiled) {
+										> .cover {
+											.entry-content {
+												.quote-content {
+													.block();
+													font-size: 16px;
+													height: 6em;
+													line-height: 2;
+													overflow: hidden;
+												}
+											}
+										}
+									}
+								}
+								> .cover {
+									padding-bottom: 90px !important;
+									> * {
+										width: 100%;
+									}
+									.inner-cover {
+										top: 0;
+										margin-top: 30px;
+										.transform(none);
+									}
+									.entry-thumb {
+										float: none;
+										height: 50%;
+										.rounded-top(6px);
+										.rounded-bottom(0);
+										img {
+											display: none;
+										}
+										+ .entry-meta,
+										+ h3.entry-title,
+										+ .entry-content,
+										+ .author-section {
+											margin-top: 30px;
+										}
+									}
+									.entry-meta,
+									h3.entry-title,
+									.entry-content,
+									.author-section {
+										padding: 0;
+									}
+								}
+								&:not(.dfd-right-image),
+								&.dfd-right-image {
+									entry-thumb,
+									.entry-meta,
+									h3.entry-title,
+									.entry-content,
+									.author-section {
+										float: none;
+										clear: both;
+										width: 100%;
+									}
+									.author-section {
+										right: auto;
+										left: 0;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen
+and (max-width : 1100px) {
+	/* Blog */
+	#layout {
+		> .row {
+			&.full-width,
+			&:not(.full-width) {
+				.dfd-content-wrap {
+					&.left-image,
+					&.right-image,
+					&.mixed-image {
+						article.post {
+							&.format-standard,
+							&.format-gallery,
+							&.format-quote,
+							&.format-link,
+							&.format-video,
+							&.format-audio {
+								> .cover {
+									.entry-thumb {
+										+ .entry-meta,
+										+ h3.entry-title,
+										+ .entry-content,
+										+ .author-section {
+											margin-top: 20px;
+										}
+									}
+									h3.entry-title {
+										height: 1.2em;
+										overflow: hidden;
+									}
+									.entry-content {
+										height: 4em;
+									}
+								}
+							}
+						}
+						article.dfd-portfolio,
+						article.dfd-gallery,
+						article.dfd-portfolio_archive,
+						article.dfd-gallery_archive {
+							> .cover {
+								.entry-content {
+									height: 4em;
+									line-height: 2;
+								}
+								.entry-meta {
+									.entry-comments,
+									.post-like {
+										.hide();
+									}
+								}
+							}
+						}
+					}
+					&.dfd-post_single,
+					&.dfd-portfolio_single,
+					&.dfd-gallery_single {
+						.dfd-single-item-bottom {
+							.dfd-single-tags {
+								max-width: 100%;
+								margin-bottom: 10px;
+							}
+							.dfd-single-tags,
+							.dfd-blog-share-wrap,
+							.post-like {
+								float: left;
+								clear: both;
+								margin-left: 0;
+							}
+						}
+					}
+					article.post {
+						> .cover {
+							.entry-meta {
+								.entry-comments,
+								.post-like {
+									.hide();
+								}
+							}
+						}
+					}
+				}
+				.blog-section {
+					&.sidebar-right {
+						.dfd-content-wrap {
+							&.left-image,
+							&.right-image,
+							&.mixed-image {
+								article.post {
+									&.format-standard,
+									&.format-gallery,
+									&.format-quote,
+									&.format-link,
+									&.format-video,
+									&.format-audio {
+										> .cover {
+											.entry-content {
+												height: 4em;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					&.sidebar-left {
+						.dfd-content-wrap {
+							&.left-image,
+							&.right-image,
+							&.mixed-image {
+								article.post {
+									&.format-standard,
+									&.format-gallery,
+									&.format-quote,
+									&.format-link,
+									&.format-video,
+									&.format-audio {
+										> .cover {
+											.entry-content {
+												height: 4em;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,138 @@
+/* 
+    Created on : 21.09.2015, 11:52:40
+    Author     : DFD
+	Styles for : DFD News Scroller Module
+*/
+.dfd-scrolling-news-wrap {
+	overflow: hidden;
+	.dfd-news-top,
+	.dfd-news-bottom {
+		.clearfix();
+		.post {
+			margin: 0;
+			padding: 0;
+		}
+	}
+	.dfd-news-top {
+		
+	}
+	.dfd-news-bottom {
+		.post.dfd-post-style-title_over_thumb .dfd-title-wrap {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	}
+	.post {
+		border-bottom: none;
+		.cover {
+			.rel();
+			.entry-thumb {
+				.rel();
+			}
+		}
+		.dfd-title-wrap {
+			.absolute(2);
+			top: 0;
+			.block();
+			height: 100%;
+			.transform(translate3d(0,0,0));
+			.dfd-mini-categories {
+				margin-bottom: 15px;
+				.byline.category {
+					.inline-block();
+					a {
+						.link-style();
+						font-size: @link-font-size - 2;
+						.block();
+						float: left;
+						line-height: 1;
+						padding: 8px 25px;
+						color: @white-color;
+						background: @third-site-light-color;
+						.transition(color .3s ease);
+						&:hover {
+							color: @box-name-color;
+						}
+					}
+				}
+			}
+			.dfd-news-title {
+				line-height: 1.2;
+				margin-bottom: 15px;
+				a {
+					color: inherit;
+				}
+			}
+			.entry-meta {
+				text-align: inherit;
+				> * {
+					font-family: inherit;
+					font-size: inherit;
+					font-style: inherit;
+					font-weight: inherit;
+					float: none;
+					color: inherit;
+					a {
+						display: inline;
+						color: inherit;
+						&:hover {
+							color: @main-site-light-color;
+						}
+					}
+				}
+			}
+		}
+		&.dfd-post-style-default {
+			.dfd-title-wrap {
+				width: 50%;
+				left: 50%;
+				padding: 50px;
+				background: @background-grey;
+				&.dfd-content-right {
+					left: auto;
+					right: 50%;
+				} 
+				.dfd-news-title {
+				}
+				.entry-meta {
+					color: @title-color;
+				}
+			}
+		}
+		&.dfd-post-style-title_over_thumb {
+			.dfd-title-wrap {
+				left: 0;
+				width: 100%;
+				padding: 50px 55px;
+				.dfd-news-title {
+					color: @white-color;
+				}
+				.entry-meta {
+					color: @white-color;
+				}
+			}
+		}
+		.dfd-image-mask {
+			.absolute(1);
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: fade(@dark-color, 50%);
+			.opacity(.5);
+			.transform(translate3d(0,0,0));
+			.transition(opacity .3s ease);
+			&.dfd-hide-on-hover {
+				.opacity(1);
+			}
+		}
+		&:hover {
+			.dfd-image-mask {
+				.opacity(1);
+				&.dfd-hide-on-hover {
+					.opacity(.5);
+				}
+			}
+		}
+	}
+}

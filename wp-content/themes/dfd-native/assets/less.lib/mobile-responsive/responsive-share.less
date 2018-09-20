@@ -1,0 +1,91 @@
+/* 
+    Created on : 28.10.2016, 10:12:06
+    Author     : DFD
+	Styles for : Responsive Share module
+*/
+@media only screen
+and (max-width : @screen-medium - 1) {
+	/* Share modules */
+	.dfd-new-share-module {
+		&.style-1 {
+			ul li {
+				border-color: @border-color;
+				a {
+                    border-bottom-width: 0;
+					border-right: 1px solid @border-color;
+				}
+				&:last-child {
+					a {
+						border-bottom-width: 1px;
+					}
+				}
+			}
+            &.general-border {
+                ul li {
+                    a {
+                        span {
+                            border-left-width: 0;
+                        }
+						&:before {
+							content: "";
+							.abs();
+							.block();
+							left: 0;
+							right: 0;
+							bottom: 0;
+							height: 1px;
+							background: @border-color;
+						}
+                    }
+					&:last-child {
+						a {
+							&:before {
+								.hide();
+							}
+						}
+					}
+                }
+            }
+		}
+		&.style-3,
+		&.style-4 {
+			ul li {
+				padding-bottom: 10px;
+				&:last-child {
+					padding-bottom: 0;
+				}
+			}
+		}
+	}
+	.dfd-background-dark {
+		.dfd-new-share-module {
+			&.style-1 {
+				ul li {
+					border-color: fade(@white-color, 20%);
+					a {
+						border-right-color: fade(@white-color, 20%);
+					}
+					&:last-child {
+						a {
+							border-bottom-color: fade(@white-color, 20%);
+						}
+					}
+                    &:hover {
+                        + li a {
+                            border-left-color: fade(@white-color, 20%);
+                        }
+                    }
+				}
+				&.general-border {
+					ul li {
+						a {
+							&:before {
+								background: fade(@white-color, 20%);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

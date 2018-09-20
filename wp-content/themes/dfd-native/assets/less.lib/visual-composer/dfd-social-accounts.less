@@ -1,0 +1,1702 @@
+/* 
+    Created on : 18.02.2016, 18:08:01
+    Author     : DFD
+	Styles for : Soc Icon shortcode
+*/
+
+.dfd-soc-icon {
+	line-height: 0;
+	.soc-icon-container {
+		.inline-block();
+	}
+	a {
+		.rel();
+		overflow: hidden;
+		margin-right: 3px;
+		font-size: 20px;
+		color: @title-color;
+		text-align: center;
+		float: left;
+		width: 2.5em;
+		height: 2.5em;
+		line-height: 2.5em;
+		z-index: 1;
+		&:before {
+			.abs();
+			width: inherit;
+			height: inherit;
+			top: 0;
+			left: 0;
+			color: inherit;
+			.rounded(inherit);
+		}
+		&:last-child {
+			margin-right: 0 !important;
+		}
+	}
+	i {
+		.abs();
+		width: inherit;
+		height: inherit;
+		line-height: inherit;
+		.rounded(inherit);
+		&:before {
+			.abs();
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			.rounded(inherit);
+		}
+	}
+	i {
+		color: @white-color;
+		&.dfd-socicon-deviantart		{background-color: #5c6f61;}
+		&.dfd-socicon-digg				{background-color: #286091;}
+		&.dfd-socicon-dribbble			{background-color: #ea4c89;}
+		&.dfd-socicon-dropbox			{background-color: #007ee5;}
+		&.dfd-socicon-evernote			{background-color: #2dbe60;}
+		&.dfd-socicon-facebook			{background-color: #3b5998;}
+		&.dfd-socicon-flickr			{background-color: #ff0084;}
+		&.dfd-socicon-google-plus		{background-color: #dd4b39;}
+		&.dfd-socicon-instagram			{background-color: #cc29a5;}
+		&.dfd-socicon-lastfm			{background-color: #e0282e;}
+		&.dfd-socicon-linkedin			{background-color: #0077B5;}
+		&.dfd-socicon-picasa			{background-color: #9a469e;}
+		&.dfd-socicon-pinterest			{background-color: #bd081c;}
+		&.dfd-socicon-rss				{background-color: #fca600;}
+		&.dfd-socicon-tumblr			{background-color: #34465d;}
+		&.dfd-socicon-twitter			{background-color: #55acee;}
+		&.dfd-socicon-vimeo				{background-color: #1ab7ea;}
+		&.dfd-socicon-wordpress			{background-color: #242424;}
+		&.dfd-socicon-youtube			{background-color: #ff3333;}
+		&.dfd-socicon-px-icon			{background-color: #00aeef;}
+		&.dfd-socicon-vb				{background-color: #27b4e9;}
+		&.dfd-socicon-b_Xing-icon_bl	{background-color: #b0d400;}
+		&.dfd-socicon-spotify			{background-color: #1ed760;}
+		&.dfd-socicon-houzz-dark-icon	{background-color: #7AC143;}
+		&.dfd-socicon-skype				{background-color: #00aff0;}
+		&.dfd-socicon-slideshare		{background-color: #0077B5;}
+		&.dfd-socicon-bandcamp-logo		{background-color: #629aa9;}
+		&.dfd-socicon-soundcloud		{background-color: #ff5500;}
+		&.dfd-socicon-Meerkat-color		{background-color: #FFE203;}
+		&.dfd-socicon-periscope			{background-color: #46A3C4;}
+		&.dfd-socicon-snapchat			{background-color: #FEFB1E;}
+		&.dfd-socicon-the-city			{background-color: #48a3be;}
+		&.dfd-socicon-behance			{background-color: #131418;}
+		&.dfd-socicon-pinpoint			{background-color: #2376DE;}
+		&.dfd-socicon-viadeo			{background-color: #FF7D0A;}
+		&.dfd-socicon-tripadvisor		{background-color: #1f892f;}
+		&.dfd-socicon-vkontakte			{background-color: #5e81a8;}
+		&.dfd-socicon-ok				{background-color: #ee8208;}
+	}
+	&.with-border {
+		a {
+			border-color: @border-color;
+			&:before {
+				border-width: 1px;
+				border-style: solid;
+				border-color: inherit;
+			}
+		}
+	}
+	&.standard-color {
+		a {
+			&.dfd-socicon-deviantart		{color: #5c6f61;}
+			&.dfd-socicon-digg				{color: #286091;}
+			&.dfd-socicon-dribbble			{color: #ea4c89;}
+			&.dfd-socicon-dropbox			{color: #007ee5;}
+			&.dfd-socicon-evernote			{color: #2dbe60;}
+			&.dfd-socicon-facebook			{color: #3b5998;}
+			&.dfd-socicon-flickr			{color: #ff0084;}
+			&.dfd-socicon-google-plus		{color: #dd4b39;}
+			&.dfd-socicon-instagram			{color: #cc29a5;}
+			&.dfd-socicon-lastfm			{color: #e0282e;}
+			&.dfd-socicon-linkedin			{color: #0077B5;}
+			&.dfd-socicon-picasa			{color: #9a469e;}
+			&.dfd-socicon-pinterest			{color: #bd081c;}
+			&.dfd-socicon-rss				{color: #fca600;}
+			&.dfd-socicon-tumblr			{color: #34465d;}
+			&.dfd-socicon-twitter			{color: #55acee;}
+			&.dfd-socicon-vimeo				{color: #1ab7ea;}
+			&.dfd-socicon-wordpress			{color: #242424;}
+			&.dfd-socicon-youtube			{color: #ff3333;}
+			&.dfd-socicon-px-icon			{color: #00aeef;}
+			&.dfd-socicon-vb				{color: #27b4e9;}
+			&.dfd-socicon-b_Xing-icon_bl	{color: #b0d400;}
+			&.dfd-socicon-spotify			{color: #1ed760;}
+			&.dfd-socicon-houzz-dark-icon	{color: #7AC143;}
+			&.dfd-socicon-skype				{color: #00aff0;}
+			&.dfd-socicon-slideshare		{color: #0077B5;}
+			&.dfd-socicon-bandcamp-logo		{color: #629aa9;}
+			&.dfd-socicon-soundcloud		{color: #ff5500;}
+			&.dfd-socicon-Meerkat-color		{color: #FFE203;}
+			&.dfd-socicon-periscope			{color: #46A3C4;}
+			&.dfd-socicon-snapchat			{color: #FEFB1E;}
+			&.dfd-socicon-the-city			{color: #48a3be;}
+			&.dfd-socicon-behance			{color: #131418;}
+			&.dfd-socicon-pinpoint			{color: #2376DE;}
+			&.dfd-socicon-viadeo			{color: #FF7D0A;}
+			&.dfd-socicon-tripadvisor		{color: #1f892f;}
+			&.dfd-socicon-vkontakte			{color: #5e81a8;}
+			&.dfd-socicon-ok				{color: #ee8208;}
+		}
+	}
+	/*style-1 & style-2*/
+	&.left_to_right,
+	&.right_to_left {
+		a {
+			i {
+				top: 0;
+			}
+			&:hover {
+				i {
+					left: 0;
+				}
+			}
+		}
+	}
+	&.top_to_bottom,
+	&.bottom_to_top {
+		a {
+			i {
+				left: 0;
+			}
+			&:hover {
+				i {
+					top: 0;
+				}
+			}
+		}
+	}
+	&.left_to_right {
+		a i {
+			left: -110%;
+		}
+	}
+	&.right_to_left {
+		a i {
+			left: 110%;
+		}
+	}
+	&.top_to_bottom {
+		a i {
+			top: -110%;
+		}
+	}
+	&.bottom_to_top {
+		a i {
+			top: 110%;
+		}
+	}
+	/*AND style-1 & style-2*/
+	&.style-1,
+	&.style-2 {
+		&.left_to_right,
+		&.right_to_left {
+			a {
+				&:before,
+				i {
+					.transition(~"border-color .3s ease, left .2s ease");
+				}
+			}
+		}
+		&.top_to_bottom,
+		&.bottom_to_top {
+			a {
+				&:before,
+				i {
+					.transition(~"border-color .3s ease, top .2s ease");
+				}
+			}
+		}
+	}
+	&.style-1 {
+		&.left_to_right {
+			a:hover {
+				&:before {
+					left: 100%;
+				}
+			}
+		}
+		&.right_to_left {
+			a:hover {
+				&:before {
+					left: -100%;
+				}
+			}
+		}
+		&.top_to_bottom {
+			a:hover {
+				&:before {
+					top: 100%;
+				}
+			}
+		}
+		&.bottom_to_top {
+			a:hover {
+				&:before {
+					top: -100%;
+				}
+			}
+		}
+	}
+	&.style-2 {
+		a {
+			.transition(color .2s ease);
+			&:before {
+				z-index: 1;
+			}
+			i {
+				&:before {
+					.hide();
+				}
+			}
+			&:hover {
+				color: @white-color;
+				&:before {
+					border-color: transparent !important;
+				}
+			}
+		}
+	}
+	&.style-3 {
+		a {
+			overflow: visible;
+			&:before {
+				border-color: inherit;
+				.transition(~"background .3s ease, color .3s ease, border-color .3s ease");
+			}
+			i {
+				.hide();
+			}
+			&:hover {
+				&:before {
+					color: @white-color;
+				}
+				&.dfd-socicon-deviantart:before			{background: #5c6f61; border-color: #5c6f61;}
+				&.dfd-socicon-digg:before				{background: #286091; border-color: #286091;}
+				&.dfd-socicon-dribbble:before			{background: #ea4c89; border-color: #ea4c89;}
+				&.dfd-socicon-dropbox:before			{background: #007ee5; border-color: #007ee5;}
+				&.dfd-socicon-evernote:before			{background: #2dbe60; border-color: #2dbe60;}
+				&.dfd-socicon-facebook:before			{background: #3b5998; border-color: #3b5998;}
+				&.dfd-socicon-flickr:before				{background: #ff0084; border-color: #ff0084;}
+				&.dfd-socicon-google-plus:before		{background: #dd4b39; border-color: #dd4b39;}
+				&.dfd-socicon-instagram:before			{background: #cc29a5; border-color: #cc29a5;}
+				&.dfd-socicon-lastfm:before				{background: #e0282e; border-color: #e0282e;}
+				&.dfd-socicon-linkedin:before			{background: #0077B5; border-color: #0077B5;}
+				&.dfd-socicon-picasa:before				{background: #9a469e; border-color: #9a469e;}
+				&.dfd-socicon-pinterest:before			{background: #bd081c; border-color: #bd081c;}
+				&.dfd-socicon-rss:before				{background: #fca600; border-color: #fca600;}
+				&.dfd-socicon-tumblr:before				{background: #34465d; border-color: #34465d;}
+				&.dfd-socicon-twitter:before			{background: #55acee; border-color: #55acee;}
+				&.dfd-socicon-vimeo:before				{background: #1ab7ea; border-color: #1ab7ea;}
+				&.dfd-socicon-wordpress:before			{background: #242424; border-color: #242424;}
+				&.dfd-socicon-youtube:before			{background: #ff3333; border-color: #ff3333;}
+				&.dfd-socicon-px-icon:before			{background: #00aeef; border-color: #00aeef;}
+				&.dfd-socicon-vb:before					{background: #27b4e9; border-color: #27b4e9;}
+				&.dfd-socicon-b_Xing-icon_bl:before		{background: #b0d400; border-color: #b0d400;}
+				&.dfd-socicon-spotify:before			{background: #1ed760; border-color: #1ed760;}
+				&.dfd-socicon-houzz-dark-icon:before	{background: #7AC143; border-color: #7AC143;}
+				&.dfd-socicon-skype:before				{background: #00aff0; border-color: #00aff0;}
+				&.dfd-socicon-slideshare:before			{background: #0077B5; border-color: #0077B5;}
+				&.dfd-socicon-bandcamp-logo:before		{background: #629aa9; border-color: #629aa9;}
+				&.dfd-socicon-soundcloud:before			{background: #ff5500; border-color: #ff5500;}
+				&.dfd-socicon-Meerkat-color:before		{background: #FFE203; border-color: #FFE203;}
+				&.dfd-socicon-periscope:before			{background: #46A3C4; border-color: #46A3C4;}
+				&.dfd-socicon-snapchat:before			{background: #FEFB1E; border-color: #FEFB1E;}
+				&.dfd-socicon-the-city:before			{background: #48a3be; border-color: #48a3be;}
+				&.dfd-socicon-behance:before			{background: #131418; border-color: #131418;}
+				&.dfd-socicon-pinpoint:before			{background: #2376DE; border-color: #2376DE;}
+				&.dfd-socicon-viadeo:before				{background: #FF7D0A; border-color: #FF7D0A;}
+				&.dfd-socicon-tripadvisor:before		{background: #1f892f; border-color: #1f892f;}
+				&.dfd-socicon-vkontakte:before			{background: #5e81a8; border-color: #5e81a8;}
+				&.dfd-socicon-ok:before					{background: #ee8208; border-color: #ee8208;}
+			}
+		}
+	}
+	&.style-4 {
+		a {
+			overflow: visible;
+			&:before {
+				.transition(~"border-color .3s ease, color .3s ease");
+				z-index: 1;
+			}
+			i {
+				top: 0;
+				left: 0;
+				.scale(1.3);
+				.opacity(0);
+				visibility: hidden;
+				.transition(all .3s ease);
+				&:before {
+					.hide();
+				}
+			}
+			&:hover {
+				color: @white-color;
+				&:before {
+					color: @white-color;
+					border-color: transparent !important;
+				}
+				i {
+					.scale(1);
+					.opacity(1);
+					visibility: visible;
+				}
+			}
+		}
+	}
+	&.style-5 {
+		a {
+			overflow: visible;
+			.scale(1);
+			top: 0;
+			.transition(transform .2s ease);
+			i {
+				top: 0;
+				left: 0;
+				z-index: 2;
+			}
+			&:after {
+				content: "";
+				.abs();
+				top: 5px;
+				right: 5px;
+				bottom: 5px;
+				left: 5px;
+				z-index: 1;
+				.rounded(inherit);
+				.box-shadow(0px 15px 50px 0px transparent);
+				.transition(box-shadow .2s ease);
+			}
+			&:hover {
+				.scale(1.08);
+				&:after {
+					.box-shadow(0px 15px 50px 0px rgba(0,0,0,.4));
+				}
+			}
+		}
+	}
+	&.style-6 {
+		a {
+			overflow: visible;
+			.rounded(50%);
+			.transition(border-radius .5s ease);
+			i {
+				top: 0;
+				left: 0;
+			}
+			&:hover {
+				.rounded(2px !important);
+			}
+		}
+	}
+	&.style-7 {
+		.container-3d {
+			.perspective(500px);
+			.block();
+			float: left;
+			margin-right: 3px;
+			&:last-child {
+				margin-right: 0 !important;
+			}
+		}
+		&.standard-color {
+			a {color: @white-color;}
+		}
+		a {
+			color: @white-color;
+			.transform-style(preserve-3d);
+			overflow: visible;
+			.transition(transform .3s ease);
+			.rounded(0 !important);
+			&:before,
+			i {
+				.backface-visibility(hidden);
+				.transition(transform .3s ease);
+			}
+			&.dfd-socicon-deviantart:before		{background-color: #5c6f61;}
+			&.dfd-socicon-digg:before			{background-color: #286091;}
+			&.dfd-socicon-dribbble:before		{background-color: #ea4c89;}
+			&.dfd-socicon-dropbox:before		{background-color: #007ee5;}
+			&.dfd-socicon-evernote:before		{background-color: #2dbe60;}
+			&.dfd-socicon-facebook:before		{background-color: #3b5998;}
+			&.dfd-socicon-flickr:before			{background-color: #ff0084;}
+			&.dfd-socicon-google-plus:before	{background-color: #dd4b39;}
+			&.dfd-socicon-instagram:before		{background-color: #cc29a5;}
+			&.dfd-socicon-lastfm:before			{background-color: #e0282e;}
+			&.dfd-socicon-linkedin:before		{background-color: #0077B5;}
+			&.dfd-socicon-picasa:before			{background-color: #9a469e;}
+			&.dfd-socicon-pinterest:before		{background-color: #bd081c;}
+			&.dfd-socicon-rss:before			{background-color: #fca600;}
+			&.dfd-socicon-tumblr:before			{background-color: #34465d;}
+			&.dfd-socicon-twitter:before		{background-color: #55acee;}
+			&.dfd-socicon-vimeo:before			{background-color: #1ab7ea;}
+			&.dfd-socicon-wordpress:before		{background-color: #242424;}
+			&.dfd-socicon-youtube:before		{background-color: #ff3333;}
+			&.dfd-socicon-px-icon:before		{background-color: #00aeef;}
+			&.dfd-socicon-vb:before				{background-color: #27b4e9;}
+			&.dfd-socicon-b_Xing-icon_bl:before	{background-color: #b0d400;}
+			&.dfd-socicon-spotify:before		{background-color: #1ed760;}
+			&.dfd-socicon-houzz-dark-icon:before{background-color: #7AC143;}
+			&.dfd-socicon-skype:before			{background-color: #00aff0;}
+			&.dfd-socicon-slideshare:before		{background-color: #0077B5;}
+			&.dfd-socicon-bandcamp-logo:before	{background-color: #629aa9;}
+			&.dfd-socicon-soundcloud:before		{background-color: #ff5500;}
+			&.dfd-socicon-Meerkat-color:before	{background-color: #FFE203;}
+			&.dfd-socicon-periscope:before		{background-color: #46A3C4;}
+			&.dfd-socicon-snapchat:before		{background-color: #FEFB1E;}
+			&.dfd-socicon-the-city:before		{background-color: #48a3be;}
+			&.dfd-socicon-behance:before		{background-color: #131418;}
+			&.dfd-socicon-pinpoint:before		{background-color: #2376DE;}
+			&.dfd-socicon-viadeo:before			{background-color: #FF7D0A;}
+			&.dfd-socicon-tripadvisor:before	{background-color: #1f892f;}
+			&.dfd-socicon-vkontakte:before		{background-color: #5e81a8;}
+			&.dfd-socicon-ok:before				{background-color: #ee8208;}
+			i {
+				left: 0;
+				top: 0;
+				&.dfd-socicon-deviantart		{background-color: darken(#5c6f61, 10%);}
+				&.dfd-socicon-digg				{background-color: darken(#286091, 10%);}
+				&.dfd-socicon-dribbble			{background-color: darken(#ea4c89, 10%);}
+				&.dfd-socicon-dropbox			{background-color: darken(#007ee5, 10%);}
+				&.dfd-socicon-evernote			{background-color: darken(#2dbe60, 10%);}
+				&.dfd-socicon-facebook			{background-color: darken(#3b5998, 10%);}
+				&.dfd-socicon-flickr			{background-color: darken(#ff0084, 10%);}
+				&.dfd-socicon-google-plus		{background-color: darken(#dd4b39, 10%);}
+				&.dfd-socicon-instagram			{background-color: darken(#cc29a5, 10%);}
+				&.dfd-socicon-lastfm			{background-color: darken(#e0282e, 10%);}
+				&.dfd-socicon-linkedin			{background-color: darken(#0077B5, 10%);}
+				&.dfd-socicon-picasa			{background-color: darken(#9a469e, 10%);}
+				&.dfd-socicon-pinterest			{background-color: darken(#bd081c, 10%);}
+				&.dfd-socicon-rss				{background-color: darken(#fca600, 10%);}
+				&.dfd-socicon-tumblr			{background-color: darken(#34465d, 10%);}
+				&.dfd-socicon-twitter			{background-color: darken(#55acee, 10%);}
+				&.dfd-socicon-vimeo				{background-color: darken(#1ab7ea, 10%);}
+				&.dfd-socicon-wordpress			{background-color: darken(#242424, 10%);}
+				&.dfd-socicon-youtube			{background-color: darken(#ff3333, 10%);}
+				&.dfd-socicon-px-icon			{background-color: darken(#00aeef, 10%);}
+				&.dfd-socicon-vb				{background-color: darken(#27b4e9, 10%);}
+				&.dfd-socicon-b_Xing-icon_bl	{background-color: darken(#b0d400, 10%);}
+				&.dfd-socicon-spotify			{background-color: darken(#1ed760, 10%);}
+				&.dfd-socicon-houzz-dark-icon	{background-color: darken(#7AC143, 10%);}
+				&.dfd-socicon-skype				{background-color: darken(#00aff0, 10%);}
+				&.dfd-socicon-slideshare		{background-color: darken(#0077B5, 10%);}
+				&.dfd-socicon-bandcamp-logo		{background-color: darken(#629aa9, 10%);}
+				&.dfd-socicon-soundcloud		{background-color: darken(#ff5500, 10%);}
+				&.dfd-socicon-Meerkat-color		{background-color: darken(#FFE203, 10%);}
+				&.dfd-socicon-periscope			{background-color: darken(#46A3C4, 10%);}
+				&.dfd-socicon-snapchat			{background-color: darken(#FEFB1E, 10%);}
+				&.dfd-socicon-the-city			{background-color: darken(#48a3be, 10%);}
+				&.dfd-socicon-behance			{background-color: darken(#131418, 10%);}
+				&.dfd-socicon-pinpoint			{background-color: darken(#2376DE, 10%);}
+				&.dfd-socicon-viadeo			{background-color: darken(#FF7D0A, 10%);}
+				&.dfd-socicon-tripadvisor		{background-color: darken(#1f892f, 10%);}
+				&.dfd-socicon-vkontakte			{background-color: darken(#5e81a8, 10%);}
+				&.dfd-socicon-ok				{background-color: darken(#ee8208, 10%);}
+			}
+		}
+		&.left_to_right {
+			a {
+				.transform-origin(100% 50%);
+				i {
+					.transform(rotateY(-90deg) translate3d(-100%,0,0));
+					.transform-origin(0 50%);
+				}
+				&:hover {
+					.transform(rotateY(90deg) translateX(100%));
+				}
+			}
+		}
+		&.top_to_bottom {
+			a {
+				.transform-origin(50% 100%);
+				i {
+					.transform(rotateX(90deg) translate3d(0,-100%,0));
+					.transform-origin(50% 0%);
+				}
+				&:hover {
+					.transform(rotateX(-90deg) translateY(100%));
+				}
+			}
+		}
+		&.right_to_left {
+			a {
+				.transform-origin(0% 50%);
+				i {
+					.transform(rotateY(90deg) translate3d(100%,0,0em));
+					.transform-origin(100% 50%);
+				}
+				&:hover {
+					.transform(rotateY(-90deg) translateX(-100%));
+				}
+			}
+		}
+		&.bottom_to_top {
+			a {
+				.transform-origin(50% 0%);
+				i {
+					.transform(rotateX(-90deg) translate3d(0,100%,0));
+					.transform-origin(50% 100%);
+				}
+				&:hover {
+					.transform(rotateX(90deg) translateY(-100%));
+				}
+			}
+		}
+	}
+	&.style-8 {
+		a {
+			i {
+				top: 0;
+				left: 0;
+				.transition(text-shadow .2s ease);
+			}
+			&:hover {
+				i {
+					&.dfd-socicon-deviantart {
+						text-shadow:	rgb(72, 87, 76) 1px 1px,
+										rgb(72, 87, 76) 2px 2px,
+										rgb(72, 87, 76) 3px 3px,
+										rgb(72, 87, 76) 4px 4px,
+										rgb(72, 87, 76) 5px 5px,
+										rgb(72, 87, 76) 6px 6px,
+										rgb(72, 87, 76) 7px 7px,
+										rgb(72, 87, 76) 8px 8px,
+										rgb(73, 88, 77) 9px 9px,
+										rgb(74, 89, 78) 10px 10px,
+										rgb(75, 90, 79) 11px 11px,
+										rgb(76, 91, 80) 12px 12px,
+										rgb(77, 93, 81) 13px 13px,
+										rgb(78, 94, 82) 14px 14px,
+										rgb(79, 95, 83) 15px 15px,
+										rgb(80, 96, 84) 16px 16px,
+										rgb(81, 97, 85) 17px 17px,
+										rgb(82, 99, 86) 18px 18px,
+										rgb(83, 100, 87) 19px 19px,
+										rgb(84, 101, 88) 20px 20px,
+										rgb(85, 102, 89) 21px 21px,
+										rgb(86, 103, 90) 22px 22px,
+										rgb(87, 105, 91) 23px 23px,
+										rgb(88, 106, 92) 24px 24px,
+										rgb(89, 107, 93) 25px 25px,
+										rgb(90, 108, 94) 26px 26px,
+										rgb(91, 109, 95) 27px 27px,
+										rgb(92, 111, 97) 28px 28px;
+					}
+					&.dfd-socicon-digg {
+						text-shadow:	rgb(31, 75, 113) 1px 1px,
+										rgb(31, 75, 113) 2px 2px,
+										rgb(31, 75, 113) 3px 3px,
+										rgb(31, 75, 113) 4px 4px,
+										rgb(31, 75, 113) 5px 5px,
+										rgb(31, 75, 113) 6px 6px,
+										rgb(31, 75, 113) 7px 7px,
+										rgb(31, 75, 113) 8px 8px,
+										rgb(31, 76, 114) 9px 9px,
+										rgb(31, 77, 116) 10px 10px,
+										rgb(32, 78, 117) 11px 11px,
+										rgb(32, 79, 119) 12px 12px,
+										rgb(33, 80, 121) 13px 13px,
+										rgb(33, 81, 122) 14px 14px,
+										rgb(34, 82, 124) 15px 15px,
+										rgb(34, 83, 125) 16px 16px,
+										rgb(35, 84, 127) 17px 17px,
+										rgb(35, 85, 129) 18px 18px,
+										rgb(35, 86, 130) 19px 19px,
+										rgb(36, 87, 132) 20px 20px,
+										rgb(36, 88, 133) 21px 21px,
+										rgb(37, 89, 135) 22px 22px,
+										rgb(37, 90, 137) 23px 23px,
+										rgb(38, 91, 138) 24px 24px,
+										rgb(38, 92, 140) 25px 25px,
+										rgb(39, 93, 141) 26px 26px,
+										rgb(39, 94, 143) 27px 27px,
+										rgb(40, 96, 145) 28px 28px;
+					}
+					&.dfd-socicon-dribbble {
+						text-shadow:	rgb(187, 86, 133) 1px 1px,
+										rgb(187, 86, 133) 2px 2px,
+										rgb(187, 86, 133) 3px 3px,
+										rgb(187, 86, 133) 4px 4px,
+										rgb(187, 86, 133) 5px 5px,
+										rgb(187, 86, 133) 6px 6px,
+										rgb(187, 86, 133) 7px 7px,
+										rgb(187, 86, 133) 8px 8px,
+										rgb(189, 87, 134) 9px 9px,
+										rgb(192, 88, 136) 10px 10px,
+										rgb(194, 89, 138) 11px 11px,
+										rgb(197, 90, 140) 12px 12px,
+										rgb(200, 92, 142) 13px 13px,
+										rgb(202, 93, 144) 14px 14px,
+										rgb(205, 94, 145) 15px 15px,
+										rgb(208, 95, 147) 16px 16px,
+										rgb(210, 96, 149) 17px 17px,
+										rgb(213, 98, 151) 18px 18px,
+										rgb(216, 99, 153) 19px 19px,
+										rgb(218, 100, 155) 20px 20px,
+										rgb(221, 101, 157) 21px 21px,
+										rgb(224, 102, 158) 22px 22px,
+										rgb(226, 104, 160) 23px 23px,
+										rgb(229, 105, 162) 24px 24px,
+										rgb(232, 106, 164) 25px 25px,
+										rgb(234, 107, 166) 26px 26px,
+										rgb(237, 108, 168) 27px 27px,
+										rgb(240, 110, 170) 28px 28px;
+					}
+					&.dfd-socicon-dropbox {
+						text-shadow:	rgb(0, 98, 179) 1px 1px,
+										rgb(0, 98, 179) 2px 2px,
+										rgb(0, 98, 179) 3px 3px,
+										rgb(0, 98, 179) 4px 4px,
+										rgb(0, 98, 179) 5px 5px,
+										rgb(0, 98, 179) 6px 6px,
+										rgb(0, 98, 179) 7px 7px,
+										rgb(0, 98, 179) 8px 8px,
+										rgb(0, 99, 181) 9px 9px,
+										rgb(0, 100, 184) 10px 10px,
+										rgb(0, 102, 186) 11px 11px,
+										rgb(0, 103, 189) 12px 12px,
+										rgb(0, 105, 191) 13px 13px,
+										rgb(0, 106, 194) 14px 14px,
+										rgb(0, 107, 196) 15px 15px,
+										rgb(0, 109, 199) 16px 16px,
+										rgb(0, 110, 201) 17px 17px,
+										rgb(0, 112, 204) 18px 18px,
+										rgb(0, 113, 206) 19px 19px,
+										rgb(0, 114, 209) 20px 20px,
+										rgb(0, 116, 211) 21px 21px,
+										rgb(0, 117, 214) 22px 22px,
+										rgb(0, 119, 216) 23px 23px,
+										rgb(0, 120, 219) 24px 24px,
+										rgb(0, 121, 221) 25px 25px,
+										rgb(0, 123, 224) 26px 26px,
+										rgb(0, 124, 226) 27px 27px,
+										rgb(0, 126, 229) 28px 28px;
+					}
+					&.dfd-socicon-evernote {
+						text-shadow:	0px 0px 0px rgb(0, 118, 24) ,
+										1px 1px 0px rgb(0, 121, 27) ,
+										2px 2px 0px rgb(0, 124, 30) ,
+										3px 3px 0px rgb(0, 126, 32) ,
+										4px 4px 0px rgb(0, 129, 35) ,
+										5px 5px 0px rgb(0, 132, 38) ,
+										6px 6px 0px rgb(0, 134, 40) ,
+										7px 7px 0px rgb(0, 137, 43) ,
+										8px 8px 0px rgb(0, 140, 46) ,
+										9px 9px 0px rgb(0, 142, 48) ,
+										10px 10px 0px rgb(0, 145, 51) ,
+										11px 11px 0px rgb(3, 148, 54) ,
+										12px 12px 0px rgb(5, 150, 56) ,
+										13px 13px 0px rgb(8, 153, 59) ,
+										14px 14px 0px rgb(11, 156, 62) ,
+										15px 15px 0px rgb(13, 158, 64) ,
+										16px 16px 0px rgb(16, 161, 67) ,
+										17px 17px 0px rgb(18, 163, 69) ,
+										18px 18px 0px rgb(21, 166, 72) ,
+										19px 19px 0px rgb(24, 169, 75) ,
+										20px 20px 0px rgb(26, 171, 77) ,
+										21px 21px 0px rgb(29, 174, 80) ,
+										22px 22px 0px rgb(32, 177, 83) ,
+										23px 23px 0px rgb(34, 179, 85) ,
+										24px 24px 0px rgb(37, 182, 88) ,
+										25px 25px 0px rgb(40, 185, 91) ,
+										26px 26px 0px rgb(42, 187, 93) ,
+										27px 27px 0px rgb(45, 190, 96);
+					}
+					&.dfd-socicon-facebook {
+						text-shadow:	rgb(37, 74, 140) 1px 1px,
+										rgb(37, 74, 140) 2px 2px,
+										rgb(37, 74, 140) 3px 3px,
+										rgb(37, 74, 140) 4px 4px,
+										rgb(37, 74, 140) 5px 5px,
+										rgb(37, 74, 140) 6px 6px,
+										rgb(37, 74, 140) 7px 7px,
+										rgb(37, 74, 140) 8px 8px,
+										rgb(37, 75, 141) 9px 9px,
+										rgb(38, 76, 143) 10px 10px,
+										rgb(38, 77, 145) 11px 11px,
+										rgb(39, 78, 147) 12px 12px,
+										rgb(39, 79, 149) 13px 13px,
+										rgb(40, 80, 151) 14px 14px,
+										rgb(40, 81, 153) 15px 15px,
+										rgb(41, 82, 155) 16px 16px,
+										rgb(41, 83, 157) 17px 17px,
+										rgb(42, 84, 159) 18px 18px,
+										rgb(43, 85, 161) 19px 19px,
+										rgb(43, 86, 163) 20px 20px,
+										rgb(44, 87, 165) 21px 21px,
+										rgb(44, 88, 167) 22px 22px,
+										rgb(45, 89, 169) 23px 23px,
+										rgb(45, 90, 171) 24px 24px,
+										rgb(46, 91, 173) 25px 25px,
+										rgb(46, 92, 175) 26px 26px,
+										rgb(47, 93, 177) 27px 27px,
+										rgb(48, 95, 179) 28px 28px;
+					}
+					&.dfd-socicon-flickr {
+						text-shadow:	rgb(199, 0, 103) 1px 1px,
+										rgb(199, 0, 103) 2px 2px,
+										rgb(199, 0, 103) 3px 3px,
+										rgb(199, 0, 103) 4px 4px,
+										rgb(199, 0, 103) 5px 5px,
+										rgb(199, 0, 103) 6px 6px,
+										rgb(199, 0, 103) 7px 7px,
+										rgb(199, 0, 103) 8px 8px,
+										rgb(201, 0, 104) 9px 9px,
+										rgb(204, 0, 105) 10px 10px,
+										rgb(207, 0, 107) 11px 11px,
+										rgb(210, 0, 108) 12px 12px,
+										rgb(213, 0, 110) 13px 13px,
+										rgb(215, 0, 111) 14px 14px,
+										rgb(218, 0, 113) 15px 15px,
+										rgb(221, 0, 114) 16px 16px,
+										rgb(224, 0, 116) 17px 17px,
+										rgb(227, 0, 117) 18px 18px,
+										rgb(229, 0, 118) 19px 19px,
+										rgb(232, 0, 120) 20px 20px,
+										rgb(235, 0, 121) 21px 21px,
+										rgb(238, 0, 123) 22px 22px,
+										rgb(241, 0, 124) 23px 23px,
+										rgb(243, 0, 126) 24px 24px,
+										rgb(246, 0, 127) 25px 25px,
+										rgb(249, 0, 129) 26px 26px,
+										rgb(252, 0, 130) 27px 27px,
+										rgb(255, 0, 132) 28px 28px;
+					}
+					&.dfd-socicon-google-plus {
+						text-shadow:	rgb(168, 56, 33) 1px 1px,
+										rgb(168, 56, 33) 2px 2px,
+										rgb(168, 56, 33) 3px 3px,
+										rgb(168, 56, 33) 4px 4px,
+										rgb(168, 56, 33) 5px 5px,
+										rgb(168, 56, 33) 6px 6px,
+										rgb(168, 56, 33) 7px 7px,
+										rgb(168, 56, 33) 8px 8px,
+										rgb(170, 56, 33) 9px 9px,
+										rgb(172, 57, 33) 10px 10px,
+										rgb(175, 58, 34) 11px 11px,
+										rgb(177, 59, 34) 12px 12px,
+										rgb(179, 60, 35) 13px 13px,
+										rgb(182, 60, 35) 14px 14px,
+										rgb(184, 61, 36) 15px 15px,
+										rgb(186, 62, 36) 16px 16px,
+										rgb(189, 63, 37) 17px 17px,
+										rgb(191, 64, 37) 18px 18px,
+										rgb(193, 64, 37) 19px 19px,
+										rgb(196, 65, 38) 20px 20px,
+										rgb(198, 66, 38) 21px 21px,
+										rgb(200, 67, 39) 22px 22px,
+										rgb(203, 68, 39) 23px 23px,
+										rgb(205, 68, 40) 24px 24px,
+										rgb(207, 69, 40) 25px 25px,
+										rgb(210, 70, 41) 26px 26px,
+										rgb(212, 71, 41) 27px 27px,
+										rgb(215, 72, 42) 28px 28px;
+					}
+					&.dfd-socicon-instagram {
+						text-shadow:	1px 1px rgba(174,68,149, 0.97),
+										2px 2px rgba(174,68,149, 0.94),
+										3px 3px rgba(174,68,149, 0.90),
+										4px 4px rgba(174,68,149, 0.87),
+										5px 5px rgba(174,68,149, 0.83),
+										6px 6px rgba(174,68,149, 0.79),
+										7px 7px rgba(174,68,149, 0.75),
+										8px 8px rgba(174,68,149, 0.71),
+										9px 9px rgba(174,68,149, 0.67),
+										10px 10px rgba(174,68,149, 0.64),
+										11px 11px rgba(174,68,149, 0.59),
+										12px 12px rgba(174,68,149, 0.55),
+										13px 13px rgba(174,68,149, 0.51),
+										14px 14px rgba(174,68,149, 0.47),
+										15px 15px rgba(174,68,149, 0.43),
+										16px 16px rgba(174,68,149, 0.39),
+										17px 17px rgba(174,68,149, 0.35),
+										18px 18px rgba(174,68,149, 0.30),
+										19px 19px rgba(174,68,149, 0.26),
+										20px 20px rgba(174,68,149, 0.22),
+										21px 21px rgba(174,68,149, 0.17),
+										22px 22px rgba(174,68,149, 0.13),
+										23px 23px rgba(174,68,149, 0.09),
+										24px 24px rgba(174,68,149, 0.04),
+										25px 25px rgba(174,68,149, 0.00),
+										26px 26px rgba(174,68,149, -0.04),
+										27px 27px rgba(174,68,149, -0.09),
+										28px 28px rgba(174,68,149, -0.13);
+					}
+					&.dfd-socicon-lastfm {
+						text-shadow:	rgb(175, 31, 36) 1px 1px,
+										rgb(175, 31, 36) 2px 2px,
+										rgb(175, 31, 36) 3px 3px,
+										rgb(175, 31, 36) 4px 4px,
+										rgb(175, 31, 36) 5px 5px,
+										rgb(175, 31, 36) 6px 6px,
+										rgb(175, 31, 36) 7px 7px,
+										rgb(175, 31, 36) 8px 8px,
+										rgb(177, 31, 36) 9px 9px,
+										rgb(179, 31, 37) 10px 10px,
+										rgb(182, 32, 37) 11px 11px,
+										rgb(184, 32, 38) 12px 12px,
+										rgb(187, 33, 38) 13px 13px,
+										rgb(189, 33, 39) 14px 14px,
+										rgb(192, 34, 39) 15px 15px,
+										rgb(194, 34, 40) 16px 16px,
+										rgb(197, 35, 40) 17px 17px,
+										rgb(199, 35, 41) 18px 18px,
+										rgb(201, 35, 41) 19px 19px,
+										rgb(204, 36, 42) 20px 20px,
+										rgb(206, 36, 42) 21px 21px,
+										rgb(209, 37, 43) 22px 22px,
+										rgb(211, 37, 43) 23px 23px,
+										rgb(214, 38, 44) 24px 24px,
+										rgb(216, 38, 44) 25px 25px,
+										rgb(219, 39, 45) 26px 26px,
+										rgb(221, 39, 45) 27px 27px,
+										rgb(224, 40, 46) 28px 28px;
+					}
+					&.dfd-socicon-linkedin {
+						text-shadow:	0px 0px 0px rgb(0, 70, 132) ,
+										1px 1px 0px rgb(0, 71, 133) ,
+										2px 2px 0px rgb(0, 73, 135) ,
+										3px 3px 0px rgb(0, 75, 137) ,
+										4px 4px 0px rgb(0, 77, 139) ,
+										5px 5px 0px rgb(0, 79, 141) ,
+										6px 6px 0px rgb(0, 81, 143) ,
+										7px 7px 0px rgb(0, 82, 144) ,
+										8px 8px 0px rgb(0, 84, 146) ,
+										9px 9px 0px rgb(0, 86, 148) ,
+										10px 10px 0px rgb(0, 88, 150) ,
+										11px 11px 0px rgb(0, 90, 152) ,
+										12px 12px 0px rgb(0, 92, 154) ,
+										13px 13px 0px rgb(0, 93, 155) ,
+										14px 14px 0px rgb(0, 95, 157) ,
+										15px 15px 0px rgb(0, 97, 159) ,
+										16px 16px 0px rgb(0, 99, 161) ,
+										17px 17px 0px rgb(0, 101, 163) ,
+										18px 18px 0px rgb(0, 103, 165) ,
+										19px 19px 0px rgb(0, 104, 166) ,
+										20px 20px 0px rgb(0, 106, 168) ,
+										21px 21px 0px rgb(0, 108, 170) ,
+										22px 22px 0px rgb(0, 110, 172) ,
+										23px 23px 0px rgb(0, 112, 174) ,
+										24px 24px 0px rgb(0, 114, 176) ,
+										25px 25px 0px rgb(0, 115, 177) ,
+										26px 26px 0px rgb(0, 117, 179) ,
+										27px 27px 0px rgb(0, 119, 181);
+					}
+					&.dfd-socicon-picasa {
+						text-shadow:	rgb(120, 55, 123) 1px 1px,
+										rgb(120, 55, 123) 2px 2px,
+										rgb(120, 55, 123) 3px 3px,
+										rgb(120, 55, 123) 4px 4px,
+										rgb(120, 55, 123) 5px 5px,
+										rgb(120, 55, 123) 6px 6px,
+										rgb(120, 55, 123) 7px 7px,
+										rgb(120, 55, 123) 8px 8px,
+										rgb(121, 55, 124) 9px 9px,
+										rgb(123, 56, 126) 10px 10px,
+										rgb(125, 57, 128) 11px 11px,
+										rgb(126, 58, 130) 12px 12px,
+										rgb(128, 58, 131) 13px 13px,
+										rgb(130, 59, 133) 14px 14px,
+										rgb(131, 60, 135) 15px 15px,
+										rgb(133, 61, 137) 16px 16px,
+										rgb(135, 61, 138) 17px 17px,
+										rgb(137, 62, 140) 18px 18px,
+										rgb(138, 63, 142) 19px 19px,
+										rgb(140, 64, 144) 20px 20px,
+										rgb(142, 64, 145) 21px 21px,
+										rgb(143, 65, 147) 22px 22px,
+										rgb(145, 66, 149) 23px 23px,
+										rgb(147, 67, 151) 24px 24px,
+										rgb(148, 67, 152) 25px 25px,
+										rgb(150, 68, 154) 26px 26px,
+										rgb(152, 69, 156) 27px 27px,
+										rgb(154, 70, 158) 28px 28px;
+					}
+					&.dfd-socicon-pinterest {
+						text-shadow:	0px 0px 0px rgb(140, 0, 0) ,
+										1px 1px 0px rgb(141, 0, 0) ,
+										2px 2px 0px rgb(143, 0, 0) ,
+										3px 3px 0px rgb(145, 0, 0) ,
+										4px 4px 0px rgb(147, 0, 0) ,
+										5px 5px 0px rgb(149, 0, 0) ,
+										6px 6px 0px rgb(151, 0, 0) ,
+										7px 7px 0px rgb(152, 0, 0) ,
+										8px 8px 0px rgb(154, 0, 0) ,
+										9px 9px 0px rgb(156, 0, 0) ,
+										10px 10px 0px rgb(158, 0, 0) ,
+										11px 11px 0px rgb(160, 0, 0) ,
+										12px 12px 0px rgb(162, 0, 1) ,
+										13px 13px 0px rgb(163, 0, 2) ,
+										14px 14px 0px rgb(165, 0, 4) ,
+										15px 15px 0px rgb(167, 0, 6) ,
+										16px 16px 0px rgb(169, 0, 8) ,
+										17px 17px 0px rgb(171, 0, 10) ,
+										18px 18px 0px rgb(173, 0, 12) ,
+										19px 19px 0px rgb(174, 0, 13) ,
+										20px 20px 0px rgb(176, 0, 15) ,
+										21px 21px 0px rgb(178, 0, 17) ,
+										22px 22px 0px rgb(180, 0, 19) ,
+										23px 23px 0px rgb(182, 1, 21) ,
+										24px 24px 0px rgb(184, 3, 23) ,
+										25px 25px 0px rgb(185, 4, 24) ,
+										26px 26px 0px rgb(187, 6, 26) ,
+										27px 27px 0px rgb(189, 8, 28);
+					}
+					&.dfd-socicon-rss {
+						text-shadow:	rgb(197, 129, 0) 1px 1px,
+										rgb(197, 129, 0) 2px 2px,
+										rgb(197, 129, 0) 3px 3px,
+										rgb(197, 129, 0) 4px 4px,
+										rgb(197, 129, 0) 5px 5px,
+										rgb(197, 129, 0) 6px 6px,
+										rgb(197, 129, 0) 7px 7px,
+										rgb(197, 129, 0) 8px 8px,
+										rgb(199, 130, 0) 9px 9px,
+										rgb(202, 132, 0) 10px 10px,
+										rgb(205, 134, 0) 11px 11px,
+										rgb(208, 136, 0) 12px 12px,
+										rgb(210, 138, 0) 13px 13px,
+										rgb(213, 140, 0) 14px 14px,
+										rgb(216, 141, 0) 15px 15px,
+										rgb(219, 143, 0) 16px 16px,
+										rgb(221, 145, 0) 17px 17px,
+										rgb(224, 147, 0) 18px 18px,
+										rgb(227, 149, 0) 19px 19px,
+										rgb(230, 151, 0) 20px 20px,
+										rgb(232, 153, 0) 21px 21px,
+										rgb(235, 154, 0) 22px 22px,
+										rgb(238, 156, 0) 23px 23px,
+										rgb(241, 158, 0) 24px 24px,
+										rgb(243, 160, 0) 25px 25px,
+										rgb(246, 162, 0) 26px 26px,
+										rgb(249, 164, 0) 27px 27px,
+										rgb(252, 166, 0) 28px 28px;
+					}
+					&.dfd-socicon-tumblr {
+						text-shadow:	0px 0px 0px rgb(3, 21, 44) ,
+										1px 1px 0px rgb(4, 22, 45) ,
+										2px 2px 0px rgb(6, 24, 47) ,
+										3px 3px 0px rgb(8, 26, 49) ,
+										4px 4px 0px rgb(10, 28, 51) ,
+										5px 5px 0px rgb(12, 30, 53) ,
+										6px 6px 0px rgb(14, 32, 55) ,
+										7px 7px 0px rgb(15, 33, 56) ,
+										8px 8px 0px rgb(17, 35, 58) ,
+										9px 9px 0px rgb(19, 37, 60) ,
+										10px 10px 0px rgb(21, 39, 62) ,
+										11px 11px 0px rgb(23, 41, 64) ,
+										12px 12px 0px rgb(25, 43, 66) ,
+										13px 13px 0px rgb(26, 44, 67) ,
+										14px 14px 0px rgb(28, 46, 69) ,
+										15px 15px 0px rgb(30, 48, 71) ,
+										16px 16px 0px rgb(32, 50, 73) ,
+										17px 17px 0px rgb(34, 52, 75) ,
+										18px 18px 0px rgb(36, 54, 77) ,
+										19px 19px 0px rgb(37, 55, 78) ,
+										20px 20px 0px rgb(39, 57, 80) ,
+										21px 21px 0px rgb(41, 59, 82) ,
+										22px 22px 0px rgb(43, 61, 84) ,
+										23px 23px 0px rgb(45, 63, 86) ,
+										24px 24px 0px rgb(47, 65, 88) ,
+										25px 25px 0px rgb(48, 66, 89) ,
+										26px 26px 0px rgb(50, 68, 91) ,
+										27px 27px 0px rgb(52, 70, 93);
+					}
+					&.dfd-socicon-twitter {
+						text-shadow:	0px 0px 0px rgb(36, 123, 189) ,
+										1px 1px 0px rgb(37, 124, 190) ,
+										2px 2px 0px rgb(39, 126, 192) ,
+										3px 3px 0px rgb(41, 128, 194) ,
+										4px 4px 0px rgb(43, 130, 196) ,
+										5px 5px 0px rgb(45, 132, 198) ,
+										6px 6px 0px rgb(47, 134, 200) ,
+										7px 7px 0px rgb(48, 135, 201) ,
+										8px 8px 0px rgb(50, 137, 203) ,
+										9px 9px 0px rgb(52, 139, 205) ,
+										10px 10px 0px rgb(54, 141, 207) ,
+										11px 11px 0px rgb(56, 143, 209) ,
+										12px 12px 0px rgb(58, 145, 211) ,
+										13px 13px 0px rgb(59, 146, 212) ,
+										14px 14px 0px rgb(61, 148, 214) ,
+										15px 15px 0px rgb(63, 150, 216) ,
+										16px 16px 0px rgb(65, 152, 218) ,
+										17px 17px 0px rgb(67, 154, 220) ,
+										18px 18px 0px rgb(69, 156, 222) ,
+										19px 19px 0px rgb(70, 157, 223) ,
+										20px 20px 0px rgb(72, 159, 225) ,
+										21px 21px 0px rgb(74, 161, 227) ,
+										22px 22px 0px rgb(76, 163, 229) ,
+										23px 23px 0px rgb(78, 165, 231) ,
+										24px 24px 0px rgb(80, 167, 233) ,
+										25px 25px 0px rgb(81, 168, 234) ,
+										26px 26px 0px rgb(83, 170, 236) ,
+										27px 27px 0px rgb(85, 172, 238);
+					}
+					&.dfd-socicon-vimeo {
+						text-shadow:	0px 0px 0px rgb(0, 134, 185) ,
+										1px 1px 0px rgb(0, 135, 186) ,
+										2px 2px 0px rgb(0, 137, 188) ,
+										3px 3px 0px rgb(0, 139, 190) ,
+										4px 4px 0px rgb(0, 141, 192) ,
+										5px 5px 0px rgb(0, 143, 194) ,
+										6px 6px 0px rgb(0, 145, 196) ,
+										7px 7px 0px rgb(0, 146, 197) ,
+										8px 8px 0px rgb(0, 148, 199) ,
+										9px 9px 0px rgb(0, 150, 201) ,
+										10px 10px 0px rgb(0, 152, 203) ,
+										11px 11px 0px rgb(0, 154, 205) ,
+										12px 12px 0px rgb(0, 156, 207) ,
+										13px 13px 0px rgb(0, 157, 208) ,
+										14px 14px 0px rgb(2, 159, 210) ,
+										15px 15px 0px rgb(4, 161, 212) ,
+										16px 16px 0px rgb(6, 163, 214) ,
+										17px 17px 0px rgb(8, 165, 216) ,
+										18px 18px 0px rgb(10, 167, 218) ,
+										19px 19px 0px rgb(11, 168, 219) ,
+										20px 20px 0px rgb(13, 170, 221) ,
+										21px 21px 0px rgb(15, 172, 223) ,
+										22px 22px 0px rgb(17, 174, 225) ,
+										23px 23px 0px rgb(19, 176, 227) ,
+										24px 24px 0px rgb(21, 178, 229) ,
+										25px 25px 0px rgb(22, 179, 230) ,
+										26px 26px 0px rgb(24, 181, 232) ,
+										27px 27px 0px rgb(26, 183, 234);
+					}
+					&.dfd-socicon-wordpress {
+						text-shadow:	rgb(28, 28, 28) 1px 1px,
+										rgb(28, 28, 28) 2px 2px,
+										rgb(28, 28, 28) 3px 3px,
+										rgb(28, 28, 28) 4px 4px,
+										rgb(28, 28, 28) 5px 5px,
+										rgb(28, 28, 28) 6px 6px,
+										rgb(28, 28, 28) 7px 7px,
+										rgb(28, 28, 28) 8px 8px,
+										rgb(28, 28, 28) 9px 9px,
+										rgb(28, 28, 28) 10px 10px,
+										rgb(29, 29, 29) 11px 11px,
+										rgb(29, 29, 29) 12px 12px,
+										rgb(30, 30, 30) 13px 13px,
+										rgb(30, 30, 30) 14px 14px,
+										rgb(30, 30, 30) 15px 15px,
+										rgb(31, 31, 31) 16px 16px,
+										rgb(31, 31, 31) 17px 17px,
+										rgb(32, 32, 32) 18px 18px,
+										rgb(32, 32, 32) 19px 19px,
+										rgb(32, 32, 32) 20px 20px,
+										rgb(33, 33, 33) 21px 21px,
+										rgb(33, 33, 33) 22px 22px,
+										rgb(34, 34, 34) 23px 23px,
+										rgb(34, 34, 34) 24px 24px,
+										rgb(34, 34, 34) 25px 25px,
+										rgb(35, 35, 35) 26px 26px,
+										rgb(35, 35, 35) 27px 27px,
+										rgb(36, 36, 36) 28px 28px;
+					}
+					&.dfd-socicon-youtube {
+						text-shadow:	rgb(199, 40, 40) 1px 1px,
+										rgb(199, 40, 40) 2px 2px,
+										rgb(199, 40, 40) 3px 3px,
+										rgb(199, 40, 40) 4px 4px,
+										rgb(199, 40, 40) 5px 5px,
+										rgb(199, 40, 40) 6px 6px,
+										rgb(199, 40, 40) 7px 7px,
+										rgb(199, 40, 40) 8px 8px,
+										rgb(201, 40, 40) 9px 9px,
+										rgb(204, 41, 41) 10px 10px,
+										rgb(207, 41, 41) 11px 11px,
+										rgb(210, 42, 42) 12px 12px,
+										rgb(213, 42, 42) 13px 13px,
+										rgb(215, 43, 43) 14px 14px,
+										rgb(218, 43, 43) 15px 15px,
+										rgb(221, 44, 44) 16px 16px,
+										rgb(224, 44, 44) 17px 17px,
+										rgb(227, 45, 45) 18px 18px,
+										rgb(229, 46, 46) 19px 19px,
+										rgb(232, 46, 46) 20px 20px,
+										rgb(235, 47, 47) 21px 21px,
+										rgb(238, 47, 47) 22px 22px,
+										rgb(241, 48, 48) 23px 23px,
+										rgb(243, 48, 48) 24px 24px,
+										rgb(246, 49, 49) 25px 25px,
+										rgb(249, 49, 49) 26px 26px,
+										rgb(252, 50, 50) 27px 27px,
+										rgb(255, 51, 51) 28px 28px;
+					}
+					&.dfd-socicon-px-icon {
+						text-shadow:	rgb(0, 136, 186) 1px 1px,
+										rgb(0, 136, 186) 2px 2px,
+										rgb(0, 136, 186) 3px 3px,
+										rgb(0, 136, 186) 4px 4px,
+										rgb(0, 136, 186) 5px 5px,
+										rgb(0, 136, 186) 6px 6px,
+										rgb(0, 136, 186) 7px 7px,
+										rgb(0, 136, 186) 8px 8px,
+										rgb(0, 137, 188) 9px 9px,
+										rgb(0, 139, 191) 10px 10px,
+										rgb(0, 141, 193) 11px 11px,
+										rgb(0, 143, 196) 12px 12px,
+										rgb(0, 145, 199) 13px 13px,
+										rgb(0, 147, 201) 14px 14px,
+										rgb(0, 149, 204) 15px 15px,
+										rgb(0, 151, 207) 16px 16px,
+										rgb(0, 153, 209) 17px 17px,
+										rgb(0, 155, 212) 18px 18px,
+										rgb(0, 156, 215) 19px 19px,
+										rgb(0, 158, 217) 20px 20px,
+										rgb(0, 160, 220) 21px 21px,
+										rgb(0, 162, 223) 22px 22px,
+										rgb(0, 164, 225) 23px 23px,
+										rgb(0, 166, 228) 24px 24px,
+										rgb(0, 168, 231) 25px 25px,
+										rgb(0, 170, 233) 26px 26px,
+										rgb(0, 172, 236) 27px 27px,
+										rgb(0, 174, 239) 28px 28px;
+					}
+					&.dfd-socicon-vb {
+						text-shadow:	rgb(30, 140, 182) 1px 1px,
+										rgb(30, 140, 182) 2px 2px,
+										rgb(30, 140, 182) 3px 3px,
+										rgb(30, 140, 182) 4px 4px,
+										rgb(30, 140, 182) 5px 5px,
+										rgb(30, 140, 182) 6px 6px,
+										rgb(30, 140, 182) 7px 7px,
+										rgb(30, 140, 182) 8px 8px,
+										rgb(30, 142, 184) 9px 9px,
+										rgb(30, 144, 187) 10px 10px,
+										rgb(31, 146, 189) 11px 11px,
+										rgb(31, 148, 192) 12px 12px,
+										rgb(32, 150, 194) 13px 13px,
+										rgb(32, 152, 197) 14px 14px,
+										rgb(33, 154, 199) 15px 15px,
+										rgb(33, 156, 202) 16px 16px,
+										rgb(34, 158, 204) 17px 17px,
+										rgb(34, 160, 207) 18px 18px,
+										rgb(34, 162, 210) 19px 19px,
+										rgb(35, 164, 212) 20px 20px,
+										rgb(35, 166, 215) 21px 21px,
+										rgb(36, 168, 217) 22px 22px,
+										rgb(36, 170, 220) 23px 23px,
+										rgb(37, 172, 222) 24px 24px,
+										rgb(37, 174, 225) 25px 25px,
+										rgb(38, 176, 227) 26px 26px,
+										rgb(38, 178, 230) 27px 27px,
+										rgb(39, 180, 233) 28px 28px;
+					}
+					&.dfd-socicon-b_Xing-icon_bl {
+						text-shadow:	0px 0px 0px rgb(127, 163, 0) ,
+										1px 1px 0px rgb(128, 164, 0) ,
+										2px 2px 0px rgb(130, 166, 0) ,
+										3px 3px 0px rgb(132, 168, 0) ,
+										4px 4px 0px rgb(134, 170, 0) ,
+										5px 5px 0px rgb(136, 172, 0) ,
+										6px 6px 0px rgb(138, 174, 0) ,
+										7px 7px 0px rgb(139, 175, 0) ,
+										8px 8px 0px rgb(141, 177, 0) ,
+										9px 9px 0px rgb(143, 179, 0) ,
+										10px 10px 0px rgb(145, 181, 0) ,
+										11px 11px 0px rgb(147, 183, 0) ,
+										12px 12px 0px rgb(149, 185, 0) ,
+										13px 13px 0px rgb(150, 186, 0) ,
+										14px 14px 0px rgb(152, 188, 0) ,
+										15px 15px 0px rgb(154, 190, 0) ,
+										16px 16px 0px rgb(156, 192, 0) ,
+										17px 17px 0px rgb(158, 194, 0) ,
+										18px 18px 0px rgb(160, 196, 0) ,
+										19px 19px 0px rgb(161, 197, 0) ,
+										20px 20px 0px rgb(163, 199, 0) ,
+										21px 21px 0px rgb(165, 201, 0) ,
+										22px 22px 0px rgb(167, 203, 0) ,
+										23px 23px 0px rgb(169, 205, 0) ,
+										24px 24px 0px rgb(171, 207, 0) ,
+										25px 25px 0px rgb(172, 208, 0) ,
+										26px 26px 0px rgb(174, 210, 0) ,
+										27px 27px 0px rgb(176, 212, 0);
+					}
+					&.dfd-socicon-spotify {
+						text-shadow:	rgb(23, 168, 75) 1px 1px,
+										rgb(23, 168, 75) 2px 2px,
+										rgb(23, 168, 75) 3px 3px,
+										rgb(23, 168, 75) 4px 4px,
+										rgb(23, 168, 75) 5px 5px,
+										rgb(23, 168, 75) 6px 6px,
+										rgb(23, 168, 75) 7px 7px,
+										rgb(23, 168, 75) 8px 8px,
+										rgb(23, 170, 76) 9px 9px,
+										rgb(23, 172, 77) 10px 10px,
+										rgb(24, 175, 78) 11px 11px,
+										rgb(24, 177, 79) 12px 12px,
+										rgb(24, 179, 80) 13px 13px,
+										rgb(25, 182, 81) 14px 14px,
+										rgb(25, 184, 82) 15px 15px,
+										rgb(25, 186, 83) 16px 16px,
+										rgb(26, 189, 84) 17px 17px,
+										rgb(26, 191, 85) 18px 18px,
+										rgb(26, 193, 86) 19px 19px,
+										rgb(27, 196, 87) 20px 20px,
+										rgb(27, 198, 88) 21px 21px,
+										rgb(27, 200, 89) 22px 22px,
+										rgb(28, 203, 90) 23px 23px,
+										rgb(28, 205, 91) 24px 24px,
+										rgb(28, 207, 92) 25px 25px,
+										rgb(29, 210, 93) 26px 26px,
+										rgb(29, 212, 94) 27px 27px,
+										rgb(30, 215, 96) 28px 28px;
+					}
+					&.dfd-socicon-houzz-dark-icon {
+						text-shadow:	rgb(95, 151, 52) 1px 1px,
+										rgb(95, 151, 52) 2px 2px,
+										rgb(95, 151, 52) 3px 3px,
+										rgb(95, 151, 52) 4px 4px,
+										rgb(95, 151, 52) 5px 5px,
+										rgb(95, 151, 52) 6px 6px,
+										rgb(95, 151, 52) 7px 7px,
+										rgb(95, 151, 52) 8px 8px,
+										rgb(96, 153, 52) 9px 9px,
+										rgb(97, 155, 53) 10px 10px,
+										rgb(99, 157, 54) 11px 11px,
+										rgb(100, 159, 55) 12px 12px,
+										rgb(101, 161, 55) 13px 13px,
+										rgb(103, 163, 56) 14px 14px,
+										rgb(104, 165, 57) 15px 15px,
+										rgb(105, 167, 58) 16px 16px,
+										rgb(107, 169, 58) 17px 17px,
+										rgb(108, 172, 59) 18px 18px,
+										rgb(109, 174, 60) 19px 19px,
+										rgb(111, 176, 61) 20px 20px,
+										rgb(112, 178, 61) 21px 21px,
+										rgb(113, 180, 62) 22px 22px,
+										rgb(115, 182, 63) 23px 23px,
+										rgb(116, 184, 64) 24px 24px,
+										rgb(117, 186, 64) 25px 25px,
+										rgb(119, 188, 65) 26px 26px,
+										rgb(120, 190, 66) 27px 27px,
+										rgb(122, 193, 67) 28px 28px;
+					}
+					&.dfd-socicon-skype {
+						text-shadow:	0px 0px 0px rgb(0, 126, 191) ,
+										1px 1px 0px rgb(0, 127, 192) ,
+										2px 2px 0px rgb(0, 129, 194) ,
+										3px 3px 0px rgb(0, 131, 196) ,
+										4px 4px 0px rgb(0, 133, 198) ,
+										5px 5px 0px rgb(0, 135, 200) ,
+										6px 6px 0px rgb(0, 137, 202) ,
+										7px 7px 0px rgb(0, 138, 203) ,
+										8px 8px 0px rgb(0, 140, 205) ,
+										9px 9px 0px rgb(0, 142, 207) ,
+										10px 10px 0px rgb(0, 144, 209) ,
+										11px 11px 0px rgb(0, 146, 211) ,
+										12px 12px 0px rgb(0, 148, 213) ,
+										13px 13px 0px rgb(0, 149, 214) ,
+										14px 14px 0px rgb(0, 151, 216) ,
+										15px 15px 0px rgb(0, 153, 218) ,
+										16px 16px 0px rgb(0, 155, 220) ,
+										17px 17px 0px rgb(0, 157, 222) ,
+										18px 18px 0px rgb(0, 159, 224) ,
+										19px 19px 0px rgb(0, 160, 225) ,
+										20px 20px 0px rgb(0, 162, 227) ,
+										21px 21px 0px rgb(0, 164, 229) ,
+										22px 22px 0px rgb(0, 166, 231) ,
+										23px 23px 0px rgb(0, 168, 233) ,
+										24px 24px 0px rgb(0, 170, 235) ,
+										25px 25px 0px rgb(0, 171, 236) ,
+										26px 26px 0px rgb(0, 173, 238) ,
+										27px 27px 0px rgb(0, 175, 240);
+					}
+					&.dfd-socicon-slideshare {
+						text-shadow:	0px 0px 0px rgb(0, 70, 132) ,
+										1px 1px 0px rgb(0, 71, 133) ,
+										2px 2px 0px rgb(0, 73, 135) ,
+										3px 3px 0px rgb(0, 75, 137) ,
+										4px 4px 0px rgb(0, 77, 139) ,
+										5px 5px 0px rgb(0, 79, 141) ,
+										6px 6px 0px rgb(0, 81, 143) ,
+										7px 7px 0px rgb(0, 82, 144) ,
+										8px 8px 0px rgb(0, 84, 146) ,
+										9px 9px 0px rgb(0, 86, 148) ,
+										10px 10px 0px rgb(0, 88, 150) ,
+										11px 11px 0px rgb(0, 90, 152) ,
+										12px 12px 0px rgb(0, 92, 154) ,
+										13px 13px 0px rgb(0, 93, 155) ,
+										14px 14px 0px rgb(0, 95, 157) ,
+										15px 15px 0px rgb(0, 97, 159) ,
+										16px 16px 0px rgb(0, 99, 161) ,
+										17px 17px 0px rgb(0, 101, 163) ,
+										18px 18px 0px rgb(0, 103, 165) ,
+										19px 19px 0px rgb(0, 104, 166) ,
+										20px 20px 0px rgb(0, 106, 168) ,
+										21px 21px 0px rgb(0, 108, 170) ,
+										22px 22px 0px rgb(0, 110, 172) ,
+										23px 23px 0px rgb(0, 112, 174) ,
+										24px 24px 0px rgb(0, 114, 176) ,
+										25px 25px 0px rgb(0, 115, 177) ,
+										26px 26px 0px rgb(0, 117, 179) ,
+										27px 27px 0px rgb(0, 119, 181);
+					}
+					&.dfd-socicon-bandcamp-logo {
+						text-shadow:	rgb(76, 120, 132) 1px 1px,
+										rgb(76, 120, 132) 2px 2px,
+										rgb(76, 120, 132) 3px 3px,
+										rgb(76, 120, 132) 4px 4px,
+										rgb(76, 120, 132) 5px 5px,
+										rgb(76, 120, 132) 6px 6px,
+										rgb(76, 120, 132) 7px 7px,
+										rgb(76, 120, 132) 8px 8px,
+										rgb(77, 121, 133) 9px 9px,
+										rgb(78, 123, 135) 10px 10px,
+										rgb(79, 125, 137) 11px 11px,
+										rgb(80, 126, 139) 12px 12px,
+										rgb(81, 128, 141) 13px 13px,
+										rgb(82, 130, 143) 14px 14px,
+										rgb(83, 131, 144) 15px 15px,
+										rgb(84, 133, 146) 16px 16px,
+										rgb(85, 135, 148) 17px 17px,
+										rgb(87, 137, 150) 18px 18px,
+										rgb(88, 138, 152) 19px 19px,
+										rgb(89, 140, 154) 20px 20px,
+										rgb(90, 142, 156) 21px 21px,
+										rgb(91, 143, 157) 22px 22px,
+										rgb(92, 145, 159) 23px 23px,
+										rgb(93, 147, 161) 24px 24px,
+										rgb(94, 148, 163) 25px 25px,
+										rgb(95, 150, 165) 26px 26px,
+										rgb(96, 152, 167) 27px 27px,
+										rgb(98, 154, 169) 28px 28px;
+					}
+					&.dfd-socicon-soundcloud {
+						text-shadow:	rgb(199, 66, 0) 1px 1px,
+										rgb(199, 66, 0) 2px 2px,
+										rgb(199, 66, 0) 3px 3px,
+										rgb(199, 66, 0) 4px 4px,
+										rgb(199, 66, 0) 5px 5px,
+										rgb(199, 66, 0) 6px 6px,
+										rgb(199, 66, 0) 7px 7px,
+										rgb(199, 66, 0) 8px 8px,
+										rgb(201, 66, 0) 9px 9px,
+										rgb(204, 67, 0) 10px 10px,
+										rgb(207, 68, 0) 11px 11px,
+										rgb(210, 69, 0) 12px 12px,
+										rgb(213, 70, 0) 13px 13px,
+										rgb(215, 71, 0) 14px 14px,
+										rgb(218, 72, 0) 15px 15px,
+										rgb(221, 73, 0) 16px 16px,
+										rgb(224, 74, 0) 17px 17px,
+										rgb(227, 75, 0) 18px 18px,
+										rgb(229, 76, 0) 19px 19px,
+										rgb(232, 77, 0) 20px 20px,
+										rgb(235, 78, 0) 21px 21px,
+										rgb(238, 79, 0) 22px 22px,
+										rgb(241, 80, 0) 23px 23px,
+										rgb(243, 81, 0) 24px 24px,
+										rgb(246, 82, 0) 25px 25px,
+										rgb(249, 83, 0) 26px 26px,
+										rgb(252, 84, 0) 27px 27px,
+										rgb(255, 85, 0) 28px 28px;
+					}
+					&.dfd-socicon-Meerkat-color {
+						text-shadow:	rgb(199, 176, 2) 1px 1px,
+										rgb(199, 176, 2) 2px 2px,
+										rgb(199, 176, 2) 3px 3px,
+										rgb(199, 176, 2) 4px 4px,
+										rgb(199, 176, 2) 5px 5px,
+										rgb(199, 176, 2) 6px 6px,
+										rgb(199, 176, 2) 7px 7px,
+										rgb(199, 176, 2) 8px 8px,
+										rgb(201, 178, 2) 9px 9px,
+										rgb(204, 181, 2) 10px 10px,
+										rgb(207, 183, 2) 11px 11px,
+										rgb(210, 186, 2) 12px 12px,
+										rgb(213, 188, 2) 13px 13px,
+										rgb(215, 191, 2) 14px 14px,
+										rgb(218, 193, 2) 15px 15px,
+										rgb(221, 196, 2) 16px 16px,
+										rgb(224, 198, 2) 17px 17px,
+										rgb(227, 201, 2) 18px 18px,
+										rgb(229, 203, 2) 19px 19px,
+										rgb(232, 206, 2) 20px 20px,
+										rgb(235, 208, 2) 21px 21px,
+										rgb(238, 211, 2) 22px 22px,
+										rgb(241, 213, 2) 23px 23px,
+										rgb(243, 216, 2) 24px 24px,
+										rgb(246, 218, 2) 25px 25px,
+										rgb(249, 221, 2) 26px 26px,
+										rgb(252, 223, 2) 27px 27px,
+										rgb(255, 226, 3) 28px 28px;
+					}
+					&.dfd-socicon-periscope {
+						text-shadow:	rgb(55, 127, 153) 1px 1px,
+										rgb(55, 127, 153) 2px 2px,
+										rgb(55, 127, 153) 3px 3px,
+										rgb(55, 127, 153) 4px 4px,
+										rgb(55, 127, 153) 5px 5px,
+										rgb(55, 127, 153) 6px 6px,
+										rgb(55, 127, 153) 7px 7px,
+										rgb(55, 127, 153) 8px 8px,
+										rgb(55, 128, 155) 9px 9px,
+										rgb(56, 130, 157) 10px 10px,
+										rgb(57, 132, 159) 11px 11px,
+										rgb(58, 134, 161) 12px 12px,
+										rgb(58, 136, 163) 13px 13px,
+										rgb(59, 137, 165) 14px 14px,
+										rgb(60, 139, 168) 15px 15px,
+										rgb(61, 141, 170) 16px 16px,
+										rgb(61, 143, 172) 17px 17px,
+										rgb(62, 145, 174) 18px 18px,
+										rgb(63, 146, 176) 19px 19px,
+										rgb(64, 148, 178) 20px 20px,
+										rgb(64, 150, 180) 21px 21px,
+										rgb(65, 152, 183) 22px 22px,
+										rgb(66, 154, 185) 23px 23px,
+										rgb(67, 155, 187) 24px 24px,
+										rgb(67, 157, 189) 25px 25px,
+										rgb(68, 159, 191) 26px 26px,
+										rgb(69, 161, 193) 27px 27px,
+										rgb(70, 163, 196) 28px 28px;
+					}
+					&.dfd-socicon-snapchat {
+						text-shadow:	rgb(198, 196, 23) 1px 1px,
+										rgb(198, 196, 23) 2px 2px,
+										rgb(198, 196, 23) 3px 3px,
+										rgb(198, 196, 23) 4px 4px,
+										rgb(198, 196, 23) 5px 5px,
+										rgb(198, 196, 23) 6px 6px,
+										rgb(198, 196, 23) 7px 7px,
+										rgb(198, 196, 23) 8px 8px,
+										rgb(200, 198, 23) 9px 9px,
+										rgb(203, 201, 23) 10px 10px,
+										rgb(206, 204, 24) 11px 11px,
+										rgb(209, 207, 24) 12px 12px,
+										rgb(212, 209, 24) 13px 13px,
+										rgb(214, 212, 25) 14px 14px,
+										rgb(217, 215, 25) 15px 15px,
+										rgb(220, 218, 25) 16px 16px,
+										rgb(223, 220, 26) 17px 17px,
+										rgb(226, 223, 26) 18px 18px,
+										rgb(228, 226, 26) 19px 19px,
+										rgb(231, 229, 27) 20px 20px,
+										rgb(234, 231, 27) 21px 21px,
+										rgb(237, 234, 27) 22px 22px,
+										rgb(240, 237, 28) 23px 23px,
+										rgb(242, 240, 28) 24px 24px,
+										rgb(245, 242, 28) 25px 25px,
+										rgb(248, 245, 29) 26px 26px,
+										rgb(251, 248, 29) 27px 27px,
+										rgb(254, 251, 30) 28px 28px;
+					}
+					&.dfd-socicon-the-city {
+						text-shadow:	rgb(56, 127, 148) 1px 1px,
+										rgb(56, 127, 148) 2px 2px,
+										rgb(56, 127, 148) 3px 3px,
+										rgb(56, 127, 148) 4px 4px,
+										rgb(56, 127, 148) 5px 5px,
+										rgb(56, 127, 148) 6px 6px,
+										rgb(56, 127, 148) 7px 7px,
+										rgb(56, 127, 148) 8px 8px,
+										rgb(56, 128, 150) 9px 9px,
+										rgb(57, 130, 152) 10px 10px,
+										rgb(58, 132, 154) 11px 11px,
+										rgb(59, 134, 156) 12px 12px,
+										rgb(60, 136, 158) 13px 13px,
+										rgb(60, 137, 160) 14px 14px,
+										rgb(61, 139, 162) 15px 15px,
+										rgb(62, 141, 164) 16px 16px,
+										rgb(63, 143, 166) 17px 17px,
+										rgb(64, 145, 169) 18px 18px,
+										rgb(64, 146, 171) 19px 19px,
+										rgb(65, 148, 173) 20px 20px,
+										rgb(66, 150, 175) 21px 21px,
+										rgb(67, 152, 177) 22px 22px,
+										rgb(68, 154, 179) 23px 23px,
+										rgb(68, 155, 181) 24px 24px,
+										rgb(69, 157, 183) 25px 25px,
+										rgb(70, 159, 185) 26px 26px,
+										rgb(71, 161, 187) 27px 27px,
+										rgb(72, 163, 190) 28px 28px;
+					}
+					&.dfd-socicon-behance {
+						text-shadow:	0px 0px 0px rgb(0, 0, 0) ,
+										1px 1px 0px rgb(0, 0, 0) ,
+										2px 2px 0px rgb(0, 0, 0) ,
+										3px 3px 0px rgb(0, 0, 0) ,
+										4px 4px 0px rgb(0, 0, 0) ,
+										5px 5px 0px rgb(0, 0, 0) ,
+										6px 6px 0px rgb(0, 0, 0) ,
+										7px 7px 0px rgb(0, 0, 0) ,
+										8px 8px 0px rgb(0, 0, 0) ,
+										9px 9px 0px rgb(0, 0, 0) ,
+										10px 10px 0px rgb(0, 0, 0) ,
+										11px 11px 0px rgb(0, 0, 0) ,
+										12px 12px 0px rgb(0, 0, 0) ,
+										13px 13px 0px rgb(0, 0, 0) ,
+										14px 14px 0px rgb(0, 0, 0) ,
+										15px 15px 0px rgb(0, 0, 2) ,
+										16px 16px 0px rgb(0, 0, 4) ,
+										17px 17px 0px rgb(1, 2, 6) ,
+										18px 18px 0px rgb(3, 4, 8) ,
+										19px 19px 0px rgb(4, 5, 9) ,
+										20px 20px 0px rgb(6, 7, 11) ,
+										21px 21px 0px rgb(8, 9, 13) ,
+										22px 22px 0px rgb(10, 11, 15) ,
+										23px 23px 0px rgb(12, 13, 17) ,
+										24px 24px 0px rgb(14, 15, 19) ,
+										25px 25px 0px rgb(15, 16, 20) ,
+										26px 26px 0px rgb(17, 18, 22) ,
+										27px 27px 0px rgb(19, 20, 24);
+					}
+					&.dfd-socicon-pinpoint {
+						text-shadow:	rgb(27, 92, 173) 1px 1px,
+										rgb(27, 92, 173) 2px 2px,
+										rgb(27, 92, 173) 3px 3px,
+										rgb(27, 92, 173) 4px 4px,
+										rgb(27, 92, 173) 5px 5px,
+										rgb(27, 92, 173) 6px 6px,
+										rgb(27, 92, 173) 7px 7px,
+										rgb(27, 92, 173) 8px 8px,
+										rgb(27, 93, 175) 9px 9px,
+										rgb(27, 94, 177) 10px 10px,
+										rgb(28, 95, 180) 11px 11px,
+										rgb(28, 97, 182) 12px 12px,
+										rgb(29, 98, 185) 13px 13px,
+										rgb(29, 99, 187) 14px 14px,
+										rgb(29, 101, 190) 15px 15px,
+										rgb(30, 102, 192) 16px 16px,
+										rgb(30, 103, 195) 17px 17px,
+										rgb(31, 105, 197) 18px 18px,
+										rgb(31, 106, 199) 19px 19px,
+										rgb(31, 107, 202) 20px 20px,
+										rgb(32, 108, 204) 21px 21px,
+										rgb(32, 110, 207) 22px 22px,
+										rgb(33, 111, 209) 23px 23px,
+										rgb(33, 112, 212) 24px 24px,
+										rgb(33, 114, 214) 25px 25px,
+										rgb(34, 115, 217) 26px 26px,
+										rgb(34, 116, 219) 27px 27px,
+										rgb(35, 118, 222) 28px 28px;
+					}
+					&.dfd-socicon-viadeo {
+						text-shadow:	rgb(199, 98, 8) 1px 1px,
+										rgb(199, 98, 8) 2px 2px,
+										rgb(199, 98, 8) 3px 3px,
+										rgb(199, 98, 8) 4px 4px,
+										rgb(199, 98, 8) 5px 5px,
+										rgb(199, 98, 8) 6px 6px,
+										rgb(199, 98, 8) 7px 7px,
+										rgb(199, 98, 8) 8px 8px,
+										rgb(201, 99, 8) 9px 9px,
+										rgb(204, 100, 8) 10px 10px,
+										rgb(207, 102, 8) 11px 11px,
+										rgb(210, 103, 8) 12px 12px,
+										rgb(213, 104, 8) 13px 13px,
+										rgb(215, 106, 8) 14px 14px,
+										rgb(218, 107, 8) 15px 15px,
+										rgb(221, 108, 8) 16px 16px,
+										rgb(224, 110, 8) 17px 17px,
+										rgb(227, 111, 9) 18px 18px,
+										rgb(229, 112, 9) 19px 19px,
+										rgb(232, 114, 9) 20px 20px,
+										rgb(235, 115, 9) 21px 21px,
+										rgb(238, 116, 9) 22px 22px,
+										rgb(241, 118, 9) 23px 23px,
+										rgb(243, 119, 9) 24px 24px,
+										rgb(246, 120, 9) 25px 25px,
+										rgb(249, 122, 9) 26px 26px,
+										rgb(252, 123, 9) 27px 27px,
+										rgb(255, 125, 10) 28px 28px;
+					}
+					&.dfd-socicon-tripadvisor {
+						text-shadow:	rgb(24, 107, 37) 1px 1px,
+										rgb(24, 107, 37) 2px 2px,
+										rgb(24, 107, 37) 3px 3px,
+										rgb(24, 107, 37) 4px 4px,
+										rgb(24, 107, 37) 5px 5px,
+										rgb(24, 107, 37) 6px 6px,
+										rgb(24, 107, 37) 7px 7px,
+										rgb(24, 107, 37) 8px 8px,
+										rgb(24, 108, 37) 9px 9px,
+										rgb(24, 110, 38) 10px 10px,
+										rgb(25, 111, 38) 11px 11px,
+										rgb(25, 113, 39) 12px 12px,
+										rgb(25, 114, 39) 13px 13px,
+										rgb(26, 116, 40) 14px 14px,
+										rgb(26, 117, 40) 15px 15px,
+										rgb(26, 119, 41) 16px 16px,
+										rgb(27, 120, 41) 17px 17px,
+										rgb(27, 122, 42) 18px 18px,
+										rgb(27, 123, 42) 19px 19px,
+										rgb(28, 125, 43) 20px 20px,
+										rgb(28, 126, 43) 21px 21px,
+										rgb(28, 128, 44) 22px 22px,
+										rgb(29, 129, 44) 23px 23px,
+										rgb(29, 131, 45) 24px 24px,
+										rgb(29, 132, 45) 25px 25px,
+										rgb(30, 134, 46) 26px 26px,
+										rgb(30, 135, 46) 27px 27px,
+										rgb(31, 137, 47) 28px 28px;
+					}
+					&.dfd-socicon-vkontakte {
+						text-shadow:	rgb(46, 81, 120) 1px 1px,
+										rgb(48, 83, 122) 2px 2px,
+										rgb(50, 85, 124) 3px 3px,
+										rgb(52, 87, 126) 4px 4px,
+										rgb(54, 89, 128) 5px 5px,
+										rgb(56, 91, 130) 6px 6px,
+										rgb(57, 92, 131) 7px 7px,
+										rgb(59, 94, 133) 8px 8px,
+										rgb(61, 96, 135) 9px 9px,
+										rgb(63, 98, 137) 10px 10px,
+										rgb(65, 100, 139) 11px 11px,
+										rgb(67, 102, 141) 12px 12px,
+										rgb(68, 103, 142) 13px 13px,
+										rgb(70, 105, 144) 14px 14px,
+										rgb(72, 107, 146) 15px 15px,
+										rgb(74, 109, 148) 16px 16px,
+										rgb(76, 111, 150) 17px 17px,
+										rgb(78, 113, 152) 18px 18px,
+										rgb(79, 114, 153) 19px 19px,
+										rgb(81, 116, 155) 20px 20px,
+										rgb(83, 118, 157) 21px 21px,
+										rgb(85, 120, 159) 22px 22px,
+										rgb(87, 122, 161) 23px 23px,
+										rgb(89, 124, 163) 24px 24px,
+										rgb(90, 125, 164) 25px 25px,
+										rgb(92, 127, 166) 26px 26px,
+										rgb(94, 129, 168) 27px 27px,
+										rgb(95, 130, 169) 28px 28px;
+					}
+					&.dfd-socicon-ok {
+						text-shadow:	rgb(199, 98, 8) 1px 1px,
+										rgb(199, 98, 8) 2px 2px,
+										rgb(199, 98, 8) 3px 3px,
+										rgb(199, 98, 8) 4px 4px,
+										rgb(199, 98, 8) 5px 5px,
+										rgb(199, 98, 8) 6px 6px,
+										rgb(199, 98, 8) 7px 7px,
+										rgb(199, 98, 8) 8px 8px,
+										rgb(201, 99, 8) 9px 9px,
+										rgb(204, 100, 8) 10px 10px,
+										rgb(207, 102, 8) 11px 11px,
+										rgb(210, 103, 8) 12px 12px,
+										rgb(213, 104, 8) 13px 13px,
+										rgb(215, 106, 8) 14px 14px,
+										rgb(218, 107, 8) 15px 15px,
+										rgb(221, 108, 8) 16px 16px,
+										rgb(224, 110, 8) 17px 17px,
+										rgb(227, 111, 9) 18px 18px,
+										rgb(229, 112, 9) 19px 19px,
+										rgb(232, 114, 9) 20px 20px,
+										rgb(235, 115, 9) 21px 21px,
+										rgb(238, 116, 9) 22px 22px,
+										rgb(241, 118, 9) 23px 23px,
+										rgb(243, 119, 9) 24px 24px,
+										rgb(246, 120, 9) 25px 25px,
+										rgb(249, 122, 9) 26px 26px,
+										rgb(252, 123, 9) 27px 27px,
+										rgb(255, 125, 10) 28px 28px;
+					}
+				}
+			}
+		}
+	}
+}

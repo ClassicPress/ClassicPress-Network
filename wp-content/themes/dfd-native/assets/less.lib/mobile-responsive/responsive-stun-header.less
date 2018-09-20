@@ -1,0 +1,77 @@
+/* 
+    Created on : 27.10.2016, 14:44:55
+    Author     : DFD
+	Styles for : Stunning header responsive
+*/
+@media only screen and (max-width: @screen-x-large - 1) {
+	#stuning-header .stuning-header-inner div.page-title-inner {
+		padding: 0 10px;
+		.dfd-meta-wrap {
+			width: auto;
+			left: 20px;
+			right: 20px;
+		}
+	}
+	.page-title-inner.full-height h1.dfd-page-title {
+		font-size: 6vh;
+		line-height: 6.6vh;
+	}
+	.page-title-inner.full-height h2.dfd-page-subtitle {
+		font-size: 2vh;
+		line-height: 2.4vh;
+	}
+}
+@media only screen and (max-width: @screen-medium - 1) {
+	#stuning-header .stuning-header-inner div.page-title-inner {
+		padding: 0 20px;
+	}
+	div.page-title-inner {
+		.dfd-mini-categories {
+			top: 15px;
+		}
+		.dfd-meta-wrap {
+			.entry-meta {
+				.hide();
+			}
+		}
+		.dfd-header-videoplayer {
+			margin-top: 10px;
+			.dfd-video-button-wrap .dfd-play-button {
+				width: 40px;
+				height: 40px;
+				line-height: 40px;
+				.dfd-socicon-icon-play {
+					font-size: 14px;
+					&:before {
+						left: 1px;
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: 560px) {
+	div.page-title-inner {
+		.dfd-meta-wrap {
+			.entry-meta {
+				&.meta-right {
+					.entry-comments {
+						margin-right: 0;
+						&:before {
+							.hide();
+						}
+					}
+					.entry-views,
+					.post-like {
+						.hide();
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width : @screen-small) {
+	.breadcrumbs{
+        display: none;
+    }
+}

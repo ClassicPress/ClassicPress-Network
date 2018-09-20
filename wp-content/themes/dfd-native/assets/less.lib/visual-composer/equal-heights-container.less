@@ -1,0 +1,60 @@
+/* 
+    Created on : 14.02.2015, 14:35:21
+    Author     : DFD
+	Styles for : Equal height elements container
+*/
+
+.dfd-short-info-block-list,
+.dfd-presentation-tilted-list,
+.dfd-gradation-list,
+.dfd-service-list,
+.dfd-equal-height-wrapper {
+	> * {
+		overflow: hidden;
+	}
+	&.full-width-elements {
+		
+	}
+	&.half-size-elements {
+		> * {
+			float: left;
+			width: 50%;
+		}
+	}
+	&.one-third-width-elements {
+		> * {
+			float: left;
+			width: 33.3333%;
+		}
+	}
+	&.quarter-width-elements {
+		> * {
+			float: left;
+			width: 25%;
+		}
+	}
+	&.fifth-width-elements {
+		> * {
+			float: left;
+			width: 20%;
+		}
+	}
+	&.sixth-width-elements {
+		> * {
+			float: left;
+			width: 16.666%;
+		}
+	}
+	&.dfd-small-paddings {
+		margin: -3px;
+		> * {
+			padding: 3px;
+		}
+	}
+	&.dfd-normal-paddings {
+		margin: -10px;
+		> * {
+			padding: 10px;
+		}
+	}
+}

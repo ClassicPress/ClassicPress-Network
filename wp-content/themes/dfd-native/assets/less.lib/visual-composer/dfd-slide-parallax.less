@@ -1,0 +1,109 @@
+/* 
+    Created on : 19.02.2016, 14:51:10
+    Author     : DFD
+	Styles for : Slide parallax module
+*/
+.dfd-slide-parallax-wrap {
+	.no-select();
+	* {
+		.no-select();
+	}
+	&.dfd-slide-parallax-vertical {
+		.images-wrap {
+			.image-left {
+				top: 0;
+				img {
+					top: 0;
+				}
+			}
+			.image-right {
+				bottom: 0;
+				img {
+					bottom: 0;
+				}
+			}
+			.image-left,
+			.image-right {
+				left: 0;
+				width: 100%;
+				height: 50%;
+			}
+			.handler {
+				top: 50%;
+				left: 0;
+				right: 0;
+				height: 1px;
+				.pointer{
+					img{
+						    display: inherit;
+					}
+				}
+			}
+		}
+	}
+	&.dfd-slide-parallax-horizontal {
+		.images-wrap {
+			.image-left {
+				left: 0;
+				img {
+					left: 0;
+				}
+			}
+			.image-right {
+				right: 0;
+				img {
+					right: 0;
+				}
+			}
+			.image-left,
+			.image-right {
+				top: 0;
+				width: 50%;
+				height: 100%;
+			}
+			.handler {
+				left: 50%;
+				top: 0;
+				bottom: 0;
+				width: 1px;
+			}
+		}
+	}
+	.images-wrap {
+		.rel();
+		overflow: hidden;
+		height: 300px;
+		margin: 0 auto;
+		.image-left {
+			z-index: 5;
+		}
+		.image-right {
+			z-index: 4;
+		}
+		.image-left,
+		.image-right {
+			.abs();
+			overflow: hidden;
+			img {
+				.block();
+				width: auto;
+				max-width: none;
+			}
+		}
+		.handler {
+			.abs();
+			z-index: 7;
+			.pointer {
+				.abs();
+				top: 50%;
+				left: 50%;
+				margin-left: 0px;
+				z-index: 7;
+				.translate(-50%; -50%);
+				img {
+					max-width: none;
+				}
+			}
+		}
+	}
+}

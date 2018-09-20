@@ -1,0 +1,273 @@
+/* 
+    Created on : 10.01.2015, 14:28:08
+    Author     : DFD
+	Styles for : Woocommerce reviews
+*/
+/* Reviews */
+.woocommerce-page {
+	#reviews {
+		#review_form {
+			#respond {
+				position: static;
+				width: auto;
+				margin: 0;
+				padding: 0;
+				background: transparent none;
+				border-width: 0;
+				&:after {
+					content: "";
+					display: block;
+					clear: both;
+				}
+				> h3 {
+					.rel();
+					padding: 0;
+					padding-bottom: 20px;
+					margin-bottom: 30px;
+				}
+				form {
+					padding: 0;
+					margin: 0 -10px;
+					> p {
+						text-align: left;
+						padding: 0 10px;
+						&:first-child {
+							margin-top: 0;
+						}
+						&.comment-notes {
+							font-size: 13px;
+							margin-bottom: 20px;
+							#email-notes {
+								.block();
+								margin-bottom: 10px;
+							}
+						}
+						&.comment-form-author,
+						&.comment-form-email {
+							width: 66.6667%;
+							margin-bottom: 25px;
+							label {
+								color: #5c5c5c;
+							}
+						}
+						
+					}
+					label {
+						line-height: 1;
+						margin-bottom: 15px;
+					}
+				}
+				.comment-form-comment {
+					margin-top: 35px;
+					margin-bottom: 25px;
+					label {
+						margin-bottom: 15px;
+						color: #5c5c5c;
+					}
+				}
+				.comment-form-rating {
+					margin-bottom: 0;
+					label {
+						line-height: inherit;
+						padding: 0;
+						margin: 0 0 10px 0;
+						color: #5c5c5c;
+					}
+					p {
+						width: 100%;
+						margin-bottom: 0;
+						&:before {
+							.hide();
+						}
+						span {
+							.block();
+							a {
+								.rel();
+								.block();
+								float: left;
+								width: 70px;
+								height: 18px;
+								margin-right: 25px;
+								padding: 0;
+								color: transparent;
+								.transition(opacity .3s ease);
+								&:not(.active) {
+									opacity: .5;
+								}
+								&:hover {
+									opacity: 1;
+								}
+								&:last-child {
+									margin-right: 0;
+								}
+								&:before {
+									color: rgba(40,38,43,0.25);
+									visibility: visible;
+								}
+								&:after {
+									font-family: @font-icons-main;
+									font-size: 13px;
+									color: #f4b900;
+									float: left;
+									top: 0;
+									left: 0;
+									position: absolute;
+									letter-spacing: 1px;
+								}
+								&.star-1 {
+									&:after {
+										content: "\ea74";
+									}
+								}
+								&.star-2 {
+									&:after {
+										content: "\ea74\ea74";
+									}
+								}
+								&.star-3 {
+									&:after {
+										content: "\ea74\ea74\ea74";
+									}
+								}
+								&.star-4 {
+									&:after {
+										content: "\ea74\ea74\ea74\ea74";
+									}
+								}
+								&.star-5 {
+									&:after {
+										content: "\ea74\ea74\ea74\ea74\ea74";
+									}
+								}
+							}
+						}
+					}
+				}
+				.form-submit {
+					margin-top: 0;
+					margin-bottom: 0;
+					#submit {
+					}
+				}
+			}
+		}
+		h3 {
+			margin: 0;
+		}
+		h2 {
+			small {
+				float: right;
+				color: #777;
+				line-height: 21px;
+				margin: 10px 0 0 0;
+				a {
+					text-decoration: none;
+					color: #777;
+				}
+			}
+		}
+		input[type="text"],
+		input[type="email"] {
+			margin-bottom: 0;
+		}
+		#comment {
+			margin-bottom: 0;
+		}
+		#comments {
+			padding-bottom: 0;
+			ol.commentlist {
+				margin: 0;
+				width: 100%;
+				background: 0;
+				list-style: none;
+				&:after {
+					content: "";
+					display: block;
+					clear: both;
+				}
+				&.notes {
+					li.note {
+						p.meta {
+							font-weight: bold;
+							margin-bottom: 0;
+						}
+						.comment-description p:last-child {
+							margin-bottom: 0;
+						}
+					}
+				}
+				li {
+					.rel();
+					margin: 0 0 35px;
+					padding: 0 0 30px;
+					border-bottom: 1px solid @border-color;
+					background: 0;
+					.comment_container {
+						.rel();
+						img {
+							float: left;
+							.rounded(50%);
+							margin-right: 25px;
+						}
+						.comment-text {
+							.star-rating {
+								.transform(translateY(100%));
+							}
+							.meta {
+								min-height: 53px;
+								padding-top: 25px;
+								margin-left: 80px;
+								color: transparent;
+								.transform(translateY(-50%));
+								strong {
+									font-size: 15px;
+									+ time {
+										margin-left: 10px;
+									}
+								}
+								time {
+									.rel();
+									padding-left: 20px;
+									margin-top: 10px;
+									&:before {
+										content: "\ea8a";
+										font-size: 13px;
+										font-family: dfd-socicons-font !important;
+										.abs();
+										top: 50%;
+										left: 4px;
+										height: 1em;
+										line-height: 1;
+										margin-top: -.5em;
+									}
+								}
+							}
+							.description {
+								p {
+									margin-bottom: 0;
+								}
+							}
+						}
+					}
+					&:last-child {
+						padding-bottom: 0;
+						margin-bottom: 0;
+						border-bottom: none;
+					}
+				}
+				> li {
+					&:before {
+						content: "";
+					}
+				}
+			}
+			.add_review {
+				&:after {
+					content: "";
+					display: block;
+					clear: both;
+				}
+			}
+		}
+	}
+}

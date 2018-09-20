@@ -1,0 +1,164 @@
+/* 
+    Created on : 13.09.2016, 15:32:47
+    Author     : DFD
+	Styles for : WooCommerce Pages Elements
+*/
+
+.woocommerce-page {
+	#layout {
+		padding: 50px 0;
+	}
+	p {
+		margin: 0;
+	}
+	form p label {
+		.block();
+		padding-left: 15px;
+		padding-bottom: 11px;
+		color: #5c5c5c;
+	}
+	/*Woo dropdown*/
+	#billing_country_field,
+	#shipping_country_field {
+		padding-bottom: 18px;
+	}
+	.select2-container {
+		.select2-choice,
+		.select2-selection {
+			font-size: 13px;
+			color: #2f2f2f;
+			height: 43px;
+			line-height: 43px;
+			border-width: 0;
+			background: @background-grey;
+			.rounded(4px);
+			padding-left: 20px;
+			.box-shadow(0 5px 15px 0 transparent);
+			.transform(perspective(0px));
+			.transition(all .3s ease);
+			.select2-arrow,
+			.select2-selection__arrow {
+				.block();
+				width: 40px;
+				height: 100%;
+				.abs();
+				top: 0;
+				right: 0;
+				&:before {
+					content: "\e9c5";
+					font-family: "dfd-socicons-font";
+					font-size: 5px;
+					text-align: center;
+					overflow: hidden;
+					.abs();
+					top: 50%;
+					right: 15px;
+					width: 7px;
+					height: 3px;
+					line-height: 2px;
+					margin-top: -0.5em;
+				}
+				b {
+					.hide();
+				}
+			}
+			.select2-selection__rendered {
+				line-height: inherit;
+				padding: 0;
+			}
+		}
+		&:hover {
+			.select2-choice,
+			.select2-selection {
+				background: @white-color;
+				.transform(perspective(1200px));
+				.box-shadow(0 10px 25px 0 fade(@black-color , 20%));
+			}
+		}
+	}
+	.select2-drop,
+	.select2-dropdown {
+		border-width: 0;
+		.box-shadow(0 15px 45px 0 rgba(0,0,0,.2));
+		.transform(translateY(-44px));
+		.rounded(4px);
+		&.select2-drop-above.select2-drop-active,
+		&.select2-dropdown--above {
+			border-top-width: 0;
+		}
+		.select2-search {
+			padding: 0;
+			input[type="text"],
+			input[type="search"] {
+				padding: 5px 15px !important;
+				font-size: 13px;
+				background: none;
+				border-radius: 0;
+				border-width: 0;
+				margin: 0;
+				&:focus,
+				&:hover {
+					.box-shadow(none);
+				}
+			}
+		}
+		.select2-results {
+			background: @white-color;
+			padding: 0;
+			border-bottom-left-radius: inherit;
+			border-bottom-right-radius: inherit;
+			&::-webkit-scrollbar {
+				width: 3px;
+				margin-right: 20px;
+			}
+			&::-webkit-scrollbar-track {
+				background-color: transparent;
+				border: none;
+			}
+			&::-webkit-scrollbar-thumb {
+				height: 50px;
+				background-color: fade(@black-color, 25%);
+				border-radius: 5px;
+			}
+			&::-webkit-scrollbar-thumb:hover {
+				background-color: fade(@black-color, 80%);
+			}
+			ul {
+				&::-webkit-scrollbar {
+					width: 3px;
+					margin-right: 20px;
+				}
+				&::-webkit-scrollbar-track {
+					background-color: transparent;
+					border: none;
+				}
+				&::-webkit-scrollbar-thumb {
+					height: 50px;
+					background-color: fade(@black-color, 25%);
+					border-radius: 5px;
+				}
+				&::-webkit-scrollbar-thumb:hover {
+					background-color: fade(@black-color, 80%);
+				}
+			}
+			li {
+				overflow: hidden;
+				line-height: 3em;
+				padding: 0 10px;
+				margin: 0;
+				color: @title-color;
+				background: transparent;
+				border-bottom: 1px solid @border-color;
+				.transition(~"background .3s ease-in-out, color .3s ease-in-out, border .3s ease-in-out");
+				&:first-child {
+					border-top: 1px solid @border-color;
+				}
+				&.select2-highlighted,
+				&.select2-results__option--highlighted {
+					background: #e7e7e7;
+					.rounded(0);
+				}
+			}
+		}
+	}
+}
