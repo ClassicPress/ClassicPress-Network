@@ -61,7 +61,7 @@
 	<!-- END Settings Header -->
 	<!-- START Settings Body -->
 	<div id="wpoa-settings-body">
-	<!-- START Settings Column 2 -->
+	<br><!-- START Settings Column 2 -->
 	<div id="wpoa-settings-col2" class="wpoa-settings-column">
 		<div id="wpoa-settings-section-about" class="wpoa-settings-section">
 			<h3>About</h3>
