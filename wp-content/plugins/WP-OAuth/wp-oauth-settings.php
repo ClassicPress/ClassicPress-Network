@@ -68,7 +68,7 @@
 			<div class='form-padding'>
 				<div id="wpoa-logo" style="width:64px; height:64px; float:right; background-size:100% 100%;"></div>
 				<p><span style="font-size:1.1em;"><strong>WP-OAuth <?php echo WPOA::PLUGIN_VERSION; ?></strong></span><br/>by <a href="http://glassocean.net" target="_blank"><strong>Perry Butler</strong></a></p>
-				<p>Rate it 5 stars: <a id="wpoa-rate-5stars" href="https://wordpress.org/support/view/plugin-reviews/wp-oauth?rate=5" target="_blank"><img src="http://ps.w.org/wp-oauth/assets/5stars.png" style="vertical-align:text-top;"></img></a></p>
+				<p>Rate it 5 stars: <a id="wpoa-rate-5stars" href="https://wordpress.org/support/view/plugin-reviews/wp-oauth?rate=5" target="_blank"><img src="https://ps.w.org/wp-oauth/assets/5stars.png" style="vertical-align:text-top;"></img></a></p>
 				<nav><ul><li><a href="https://wordpress.org/plugins/wp-oauth/" target="_blank">WP-OAuth at WordPress.org</a></li><li><a href="https://github.com/perrybutler/WP-OAuth" target="_blank">WP-OAuth at GitHub.com</a></li><li><a href="http://glassocean.net/wp-oauth-enhances-your-wordpress-login-and-registration/" target="_blank">WP-OAuth at GlassOcean.net</a></li></ul></nav>
 			</div>
 		</div>
