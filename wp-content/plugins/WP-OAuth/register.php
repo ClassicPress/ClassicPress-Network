@@ -51,9 +51,9 @@ if ($_SESSION["WPOA"]["USER_ID"] != "") {
     echo "cURL Error #:" . $err;
   } else {
     $repsone = json_decode($response, true);
+    $username = $repsone['email'];
+    $password = wp_generate_password();
   }
-   $username = $repsone['email'];
-   $password = wp_generate_password();
 }
 
 // registration was initiated from the standard sign up form, set the username and password that was requested by the user.
