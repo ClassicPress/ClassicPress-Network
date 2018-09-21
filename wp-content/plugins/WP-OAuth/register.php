@@ -83,11 +83,7 @@ else {
 }
 
 function updateUsername($sso)
-{
-  $_SESSION["WPOA"]["RESULT"] = "$sso";
-	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]);
-	exit;
-	
+{	
   if ($sso == "Github") {
     $url = 'https://api.github.com/user';
     $username_params = array(
