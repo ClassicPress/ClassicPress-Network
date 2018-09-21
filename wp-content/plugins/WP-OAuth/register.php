@@ -9,7 +9,9 @@ global $wpdb;
 session_start();
 $token = $_SESSION['WPOA']['ACCESS_TOKEN'];
 $provider = $_SESSION['WPOA']['PROVIDER'];
-
+$_SESSION["WPOA"]["RESULT"] = "$_SESSION['WPOA']['PROVIDER']";
+	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]);
+	exit;
 
 // prevent users from registering if the option is turned off in the dashboard:
 if (!get_option("users_can_register") && !get_option("wpoa_override_users_can_register")) {
