@@ -40,10 +40,9 @@ if (is_wp_error($user_id)) {
 }
 
 // now try to update the username to something more permanent and recognizable:
-updateUsername();
-// $username = "user" . $user_id;
-// $update_username_result = $wpdb->update($wpdb->users, array('user_login' => $username, 'user_nicename' => $username, 'display_name' => $username), array('ID' => $user_id));
-// $update_nickname_result = update_user_meta($user_id, 'nickname', $username);
+$username = "user" . $user_id;
+$update_username_result = $wpdb->update($wpdb->users, array('user_login' => $username, 'user_nicename' => $username, 'display_name' => $username), array('ID' => $user_id));
+$update_nickname_result = update_user_meta($user_id, 'nickname', $username);
 
 // apply the custom default user role:
 $role = get_option('wpoa_new_user_role');
@@ -64,6 +63,7 @@ else {
 	// registration was successful, the user account was created, proceed to login the user automatically...
 	// associate the wordpress user account with the now-authenticated third party account:
 	$this->wpoa_link_account($user_id);
+  updateUsername();
 	// attempt to login the new user (this could be error prone):
 	$creds = array();
 	$creds['user_login'] = $username;
@@ -113,6 +113,5 @@ function updateUsername()
     $update_username_result = $wpdb->update($wpdb->users, array('user_login' => $username, 'user_nicename' => $username, 'display_name' => $username), array('ID' => $user_id));
     $update_nickname_result = update_user_meta($user_id, 'nickname', $username);
   }
-
 }
 ?>
