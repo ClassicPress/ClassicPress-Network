@@ -8,8 +8,7 @@ global $wpdb;
 // initiate the user session:
 session_start();
 $code = $_SESSION['WPOA']['ACCESS_TOKEN'];
-$_SESSION["WPOA"]["RESULT"] = "Access token is: $code.";
-header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
+$provider = $_SESSION['WPOA']['PROVIDER'];
 
 
 // prevent users from registering if the option is turned off in the dashboard:
@@ -86,21 +85,40 @@ else {
 
 function updateUsername()
 {
+  if ($provider == "Github") {
+    $url = 'https://api.github.com/user';
+    $username_params = array(
+      "Authorization: Bearer $token",
+      "Cache-Control: no-cache",
+      "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
+    );
+  }elseif ($provider == "Facebook") {
+    $url = 'https://graph.facebook.com/v3.1/me?fields=email';
+    $username_params = array(
+      "Authorization: Bearer $token",
+      "Cache-Control: no-cache"
+    );
+  }elseif ($provider == "Google") {
+    $_SESSION["WPOA"]["RESULT"] = "Haven't set up Google SSO yet. Please contact site admin.";
+  	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
+  }
+
+  if (!$provider) {
+    $_SESSION["WPOA"]["RESULT"] = "No provider is set. Please contact site admin.";
+  	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
+  }
 
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://graph.facebook.com/v3.1/me?fields=email",
+    CURLOPT_URL => $url,
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
     CURLOPT_TIMEOUT => 30,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
-    CURLOPT_HTTPHEADER => array(
-      "Authorization: Bearer $access_token",
-      "Cache-Control: no-cache"
-    ),
+    CURLOPT_HTTPHEADER => $username_params,
   ));
 
   $response = curl_exec($curl);
