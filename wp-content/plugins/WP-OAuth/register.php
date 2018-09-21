@@ -9,7 +9,7 @@ global $wpdb;
 session_start();
 $token = $_SESSION['WPOA']['ACCESS_TOKEN'];
 $provider = $_SESSION['WPOA']['PROVIDER'];
-$_SESSION["WPOA"]["RESULT"] = "$_SESSION['WPOA']['PROVIDER']";
+$_SESSION["WPOA"]["RESULT"] = $_SESSION['WPOA']['PROVIDER'];
 	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]);
 	exit;
 
