@@ -83,7 +83,7 @@ else {
 }
 
 function updateUsername($sso)
-{	
+{
   if ($sso == "Github") {
     $url = 'https://api.github.com/user';
     $username_params = array(
@@ -130,9 +130,11 @@ function updateUsername($sso)
   	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
   } else {
     $response = json_decode($response, true);
-	  $_SESSION["WPOA"]["RESULT"] = $response['email'];
-  	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
+
     $username = $response['email'];
+
+		$_SESSION["WPOA"]["RESULT"] = "$username";
+  	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
     if (!$username) {
       $username = "user" . $user_id;
       // NOTE: this means that the email was missing from the provider (ie. Github doesn't require an email) so we set a default username
