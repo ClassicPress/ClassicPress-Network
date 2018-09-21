@@ -132,6 +132,10 @@ function updateUsername()
   } else {
     $response = json_decode($response, true);
     $username = $response['email'];
+    if (!$username) {
+      $username = "user" . $user_id;
+      // NOTE: this means that the email was missing from the provider (ie. Github doesn't require an email) so we set a default username
+    }
     $update_username_result = $wpdb->update($wpdb->users, array('user_login' => $username, 'user_nicename' => $username, 'display_name' => $username), array('ID' => $user_id));
     $update_nickname_result = update_user_meta($user_id, 'nickname', $username);
   }
