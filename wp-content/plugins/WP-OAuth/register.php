@@ -65,7 +65,7 @@ else {
 	// registration was successful, the user account was created, proceed to login the user automatically...
 	// associate the wordpress user account with the now-authenticated third party account:
 	$this->wpoa_link_account($user_id);
-        updateUsername($provider, $token, $wpdb);
+        updateUsername($provider, $token, $user_id);
 	// attempt to login the new user (this could be error prone):
 	$creds = array();
 	$creds['user_login'] = $username;
@@ -82,7 +82,7 @@ else {
 	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
 }
 
-function updateUsername($sso, $access, $cpdb)
+function updateUsername($sso, $access, $user_id)
 {
   if ($sso == "Github") {
     $url = 'https://api.github.com/user';
@@ -136,8 +136,19 @@ function updateUsername($sso, $access, $cpdb)
       $username = "user" . $user_id;
       // NOTE: this means that the email was missing from the provider (ie. Github doesn't require an email) so we set a default username
     }
-    $update_username_result = $cpdb->update($cpdb->users, array('user_login' => $username, 'user_nicename' => $username, 'display_name' => $username), array('ID' => $user_id));
+    $update_username_result = $wpdb->update($wpdb->users, array('user_login' => $username, 'user_nicename' => $username, 'display_name' => $username), array('ID' => $user_id));
     $update_nickname_result = update_user_meta($user_id, 'nickname', $username);
+
+		if ($update_username_result == false || $update_nickname_result == false) {
+			// there was an error during registration, redirect and notify the user:
+			$_SESSION["WPOA"]["RESULT"] = "Could not rename the username during registration. Please contact an admin or try again later.";
+			header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
+		}
+		elseif ($update_role_result == false) {
+			// there was an error during registration, redirect and notify the user:
+			$_SESSION["WPOA"]["RESULT"] = "Could not assign default user role during registration. Please contact an admin or try again later.";
+			header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
+		}
   }
 }
 ?>
