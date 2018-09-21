@@ -7,6 +7,9 @@ global $wpdb;
 
 // initiate the user session:
 session_start();
+$_SESSION["WPOA"]["RESULT"] = "Access token is: $access_token.";
+header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
+
 
 // prevent users from registering if the option is turned off in the dashboard:
 if (!get_option("users_can_register") && !get_option("wpoa_override_users_can_register")) {
