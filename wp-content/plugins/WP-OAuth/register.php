@@ -9,9 +9,6 @@ global $wpdb;
 session_start();
 $token = $_SESSION['WPOA']['ACCESS_TOKEN'];
 $provider = $_SESSION['WPOA']['PROVIDER'];
-$_SESSION["WPOA"]["RESULT"] = $_SESSION['WPOA']['PROVIDER'];
-	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]);
-	exit;
 
 // prevent users from registering if the option is turned off in the dashboard:
 if (!get_option("users_can_register") && !get_option("wpoa_override_users_can_register")) {
@@ -68,7 +65,7 @@ else {
 	// registration was successful, the user account was created, proceed to login the user automatically...
 	// associate the wordpress user account with the now-authenticated third party account:
 	$this->wpoa_link_account($user_id);
-  updateUsername();
+        updateUsername($provider);
 	// attempt to login the new user (this could be error prone):
 	$creds = array();
 	$creds['user_login'] = $username;
@@ -85,22 +82,22 @@ else {
 	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
 }
 
-function updateUsername()
+function updateUsername($sso)
 {
-  if ($provider == "Github") {
+  if ($sso == "Github") {
     $url = 'https://api.github.com/user';
     $username_params = array(
       "Authorization: Bearer $token",
       "Cache-Control: no-cache",
       "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
     );
-  }elseif ($provider == "Facebook") {
+  }elseif ($sso == "Facebook") {
     $url = 'https://graph.facebook.com/v3.1/me?fields=email';
     $username_params = array(
       "Authorization: Bearer $token",
       "Cache-Control: no-cache"
     );
-  }elseif ($provider == "Google") {
+  }elseif ($sso == "Google") {
     $_SESSION["WPOA"]["RESULT"] = "Haven't set up Google SSO yet. Please contact site admin.";
   	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
   }
