@@ -65,7 +65,7 @@ else {
 	// registration was successful, the user account was created, proceed to login the user automatically...
 	// associate the wordpress user account with the now-authenticated third party account:
 	$this->wpoa_link_account($user_id);
-        updateUsername($provider, $token, $user_id);
+  updateUsername($provider, $token, $user_id, $wpdb);
 	// attempt to login the new user (this could be error prone):
 	$creds = array();
 	$creds['user_login'] = $username;
@@ -82,7 +82,7 @@ else {
 	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
 }
 
-function updateUsername($sso, $access, $user_id)
+function updateUsername($sso, $access, $user_id, $wpdb)
 {
   if ($sso == "Github") {
     $url = 'https://api.github.com/user';
