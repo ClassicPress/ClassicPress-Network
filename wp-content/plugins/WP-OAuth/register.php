@@ -132,8 +132,10 @@ function updateUsername($sso, $access, $user_id, $wpdb)
     $response = json_decode($response, true);
 		if ($sso == "Github") {
 			$username = $response['login'];
+			$email = $response['email'];
 		}elseif ($sso == "Facebook") {
 			$username = $response['email'];
+			$email = $username;
 		}
 
     if (!$username || $username == null) {
@@ -142,7 +144,7 @@ function updateUsername($sso, $access, $user_id, $wpdb)
     }
 
 		// update username and login information to be user friendly
-    $update_username_result = $wpdb->update($wpdb->users, array('user_login' => $username, 'user_nicename' => $username, 'display_name' => $username), array('ID' => $user_id));
+    $update_username_result = $wpdb->update($wpdb->users, array('user_login' => $username, 'user_nicename' => $username, 'display_name' => $username, 'user_email' => $email), array('ID' => $user_id));
     $update_nickname_result = update_user_meta($user_id, 'nickname', $username);
 
 		if ($update_username_result == false || $update_nickname_result == false) {
