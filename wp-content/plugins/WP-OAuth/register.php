@@ -130,13 +130,8 @@ function updateUsername($sso, $access)
   	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
   } else {
     $response = json_decode($response, true);
+    $username = $response['email'];
 
-		var_dump($response);
-	  exit;
-    $username = $response;
-
-		$_SESSION["WPOA"]["RESULT"] = "$username";
-  	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
     if (!$username) {
       $username = "user" . $user_id;
       // NOTE: this means that the email was missing from the provider (ie. Github doesn't require an email) so we set a default username
