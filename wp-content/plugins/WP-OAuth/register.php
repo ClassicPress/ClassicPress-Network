@@ -131,7 +131,7 @@ function updateUsername($sso)
   } else {
     $response = json_decode($response, true);
 
-    $username = $response['email'];
+    $username = $response;
 
 		$_SESSION["WPOA"]["RESULT"] = "$username";
   	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
