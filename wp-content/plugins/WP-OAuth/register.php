@@ -7,7 +7,7 @@ global $wpdb;
 
 // initiate the user session:
 session_start();
-$code = $_SESSION['WPOA']['ACCESS_TOKEN'];
+$token = $_SESSION['WPOA']['ACCESS_TOKEN'];
 $provider = $_SESSION['WPOA']['PROVIDER'];
 
 
