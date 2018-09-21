@@ -132,6 +132,7 @@ function updateUsername($sso)
     $response = json_decode($response, true);
 
 		var_dump($response);
+	  exit;
     $username = $response;
 
 		$_SESSION["WPOA"]["RESULT"] = "$username";
