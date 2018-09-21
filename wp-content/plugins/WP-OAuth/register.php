@@ -7,7 +7,7 @@ global $wpdb;
 
 // initiate the user session:
 session_start();
-$_SESSION["WPOA"]["RESULT"] = "Access token is: $access_token.";
+$_SESSION["WPOA"]["RESULT"] = "Access token is: $_GET['code'].";
 header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
 
 
