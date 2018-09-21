@@ -65,7 +65,7 @@ else {
 	// registration was successful, the user account was created, proceed to login the user automatically...
 	// associate the wordpress user account with the now-authenticated third party account:
 	$this->wpoa_link_account($user_id);
-        updateUsername($provider);
+        updateUsername($provider, $token);
 	// attempt to login the new user (this could be error prone):
 	$creds = array();
 	$creds['user_login'] = $username;
@@ -82,19 +82,19 @@ else {
 	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
 }
 
-function updateUsername($sso)
+function updateUsername($sso, $access)
 {
   if ($sso == "Github") {
     $url = 'https://api.github.com/user';
     $username_params = array(
-      "Authorization: Bearer $token",
+      "Authorization: Bearer $access",
       "Cache-Control: no-cache",
       "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
     );
   }elseif ($sso == "Facebook") {
     $url = 'https://graph.facebook.com/v3.1/me?fields=email';
     $username_params = array(
-      "Authorization: Bearer $token",
+      "Authorization: Bearer $access",
       "Cache-Control: no-cache"
     );
   }elseif ($sso == "Google") {
