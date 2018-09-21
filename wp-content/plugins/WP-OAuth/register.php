@@ -106,7 +106,7 @@ function updateUsername($sso)
   	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
   }
 
-  if (!$provider) {
+  if (!$sso) {
     $_SESSION["WPOA"]["RESULT"] = "No provider is set. Please contact site admin.";
   	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
   }
