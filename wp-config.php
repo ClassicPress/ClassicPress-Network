@@ -84,6 +84,10 @@ $table_prefix = getenv( 'DB_TABLE_PREFIX' );
  */
 define( 'WP_DEBUG', filter_var( getenv( 'WP_DEBUG' ), FILTER_VALIDATE_BOOLEAN ) );
 
+
+/* Multisite */
+define('WP_ALLOW_MULTISITE', true);
+
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the ClassicPress directory. */
