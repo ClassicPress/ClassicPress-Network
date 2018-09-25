@@ -92,6 +92,7 @@ define('DOMAIN_CURRENT_SITE', 'www.classicpress.net');
 define('PATH_CURRENT_SITE', '/');
 define('SITE_ID_CURRENT_SITE', 1);
 define('BLOG_ID_CURRENT_SITE', 1);
+define( 'NOBLOGREDIRECT', 'https://www.classicpress.net' );
 
 
 /* That's all, stop editing! Happy blogging. */
