@@ -86,13 +86,45 @@ define( 'WP_DEBUG', filter_var( getenv( 'WP_DEBUG' ), FILTER_VALIDATE_BOOLEAN ) 
 
 
 /* Multisite */
-define('MULTISITE', true);
-define('SUBDOMAIN_INSTALL', true);
-define('DOMAIN_CURRENT_SITE', 'www.classicpress.net');
-define('PATH_CURRENT_SITE', '/');
-define('SITE_ID_CURRENT_SITE', 1);
-define('BLOG_ID_CURRENT_SITE', 1);
-define( 'NOBLOGREDIRECT', 'https://www.classicpress.net' );
+
+/**
+ * Utility functions defined here because we need to use them below and
+ * elsewhere in the codebase.
+ */
+
+/**
+ * Given a URL, returns its hostname, possibly including the port.
+ */
+function cpnet_normalize_hostname( $url ) {
+	$parts = parse_url( $url );
+
+	$parts['scheme'] = $parts['scheme'] ?? 'http';
+
+	if ( $parts['scheme'] === 'http' ) {
+		$parts['port'] = $parts['port'] ?? 80;
+		$has_port = ( $parts['port'] !== 80 );
+	} else if ( $parts['scheme'] === 'https' ) {
+		$parts['port'] = $parts['port'] ?? 443;
+		$has_port = ( $parts['port'] !== 443 );
+	}
+
+	$hostname = $parts['host'] ?? 'localhost';
+	if ( $has_port ) {
+		$hostname .= ':' . $parts['port'];
+	}
+
+	return $hostname;
+}
+
+define( 'MULTISITE', true );
+define( 'SUBDOMAIN_INSTALL', true );
+define( 'PRIMARY_SITE_URL', getenv( 'PRIMARY_SITE_URL' ) );
+define( 'DOMAIN_CURRENT_SITE', cpnet_normalize_hostname( PRIMARY_SITE_URL ) );
+define( 'PATH_CURRENT_SITE', '/' );
+define( 'SITE_ID_CURRENT_SITE', 1 );
+define( 'BLOG_ID_CURRENT_SITE', 1 );
+define( 'NOBLOGREDIRECT', PRIMARY_SITE_URL );
+define( 'SUNRISE', true );
 
 
 /* That's all, stop editing! Happy blogging. */
