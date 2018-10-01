@@ -1,21 +1,5 @@
 <?php
 
-add_filter( 'wp_redirect', function( $location, $status ) {
-	error_log( json_encode( array(
-		'src' => 'wp_redirect',
-		'location' => $location,
-		'status' => $status,
-		'trace' => debug_backtrace()
-	) ) );
-	return $location;
-}, 10, 2 );
-
-add_filter( 'pre_get_site_by_path', function( $site, $domain, $path, $segments, $paths ) {
-	$src = 'pre_get_site_by_path';
-	error_log( json_encode( compact( 'src', 'site', 'domain', 'path', 'segments', 'paths' ) ) );
-	return $site;
-}, 10, 5 );
-
 /**
  * Override default multisite "get site" logic, especially for local development.
  *
