@@ -416,6 +416,11 @@ Class WPOA {
 		$matched_user = $this->wpoa_match_wordpress_user($oauth_identity);
 		// handle the matched user if there is one:
 		if ( $matched_user ) {
+			// Testing to see whether user is an admin, if so don't allow them to log in using SSO
+			 if ($matched_user->caps['administrator']) {
+				$this->wpoa_end_login("You are an admin, please sign in using native login.");
+		  	 }
+			
 			// there was a matching wordpress user account, log it in now:
 			$user_id = $matched_user->ID;
 			$user_login = $matched_user->user_login;
