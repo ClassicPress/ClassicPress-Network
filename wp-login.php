@@ -330,6 +330,13 @@ function retrieve_password() {
 	 * @param WP_Error $errors A WP_Error object containing any errors generated
 	 *                         by using invalid credentials.
 	 */
+	
+	// If user is an admin, do NOT allow them to reset password. They must reach out to a committee member
+	if ($user_data->caps['administrator']) {
+		 $errors->add('invalidcombo', __('<strong>ERROR</strong>: You are an admin, please contact a committee member to have your password reset.'));
+ 		return $errors;
+	 }
+	
 	do_action( 'lostpassword_post', $errors );
 
 	if ( $errors->get_error_code() )
