@@ -333,7 +333,7 @@ function retrieve_password() {
 	
 	// If user is an admin, do NOT allow them to reset password. They must reach out to a committee member
 	if ($user_data->caps['administrator']) {
-		 $errors->add('invalidcombo', __('<strong>ERROR</strong>: You are an admin, please contact a committee member to have your password reset.'));
+		 $errors->add('invalidcombo', __('<strong>ERROR</strong>: You are an admin, please contact a Community team member to have your password reset.'));
  		return $errors;
 	 }
 	
