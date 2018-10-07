@@ -12,7 +12,7 @@ define('CLIENT_ENABLED', get_option('wpoa_github_api_enabled'));
 define('CLIENT_ID', get_option('wpoa_github_api_id'));
 define('CLIENT_SECRET', get_option('wpoa_github_api_secret'));
 define('REDIRECT_URI', 'https://www.classicpress.net/');
-define('SCOPE', 'user'); // PROVIDER SPECIFIC: "user" is the minimum scope required to get the user's id from Github
+define('SCOPE', 'read:user user:email'); // PROVIDER SPECIFIC: see https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
 define('URL_AUTH', "https://github.com/login/oauth/authorize?");
 define('URL_TOKEN', "https://github.com/login/oauth/access_token?");
 define('URL_USER', "https://api.github.com/user?");
