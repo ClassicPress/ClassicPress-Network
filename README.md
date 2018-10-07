@@ -43,6 +43,7 @@ php -S classicpress.local:8000
 
 ```
 wp user create admin me@gmail.com --role=administrator --user_pass=admin
+wp super-admin add admin
 ```
 
 8. Log in and use/develop the site!  Please submit issues or changes back to
