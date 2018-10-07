@@ -1,4 +1,10 @@
 /.env
 /vendor/
+/wp-content/backup-db/
+/wp-content/backups/
+/wp-content/blogs.dir/
+/wp-content/cache/
+/wp-content/upgrade/
 /wp-content/uploads/
 /wp-content/plugins/elementor-pro/
+*.log
