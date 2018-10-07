@@ -139,7 +139,9 @@ define( 'INSTALLATION_ROOT_DOMAIN', preg_replace( '#^www\.#', '', DOMAIN_CURRENT
 
 if ( WP_DEBUG ) {
 	define( 'FORCE_SSL_ADMIN', parse_url( PRIMARY_SITE_URL, PHP_URL_SCHEME ) === 'https' );
-	// Cookies are shared across all ports.
+	// Cookies are shared across all ports, and we want to share them across
+	// all subdomains too, so this needs to be the root installation domain
+	// without the port (if any).
 	define( 'COOKIE_DOMAIN', parse_url( INSTALLATION_ROOT_DOMAIN, PHP_URL_HOST ) );
 }
 
