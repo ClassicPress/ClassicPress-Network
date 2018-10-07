@@ -50,12 +50,9 @@ function cpnet_override_get_site( $site, $domain, $path, $segments, $paths ) {
 
 	$domain = cpnet_normalize_hostname( $domain );
 
-	$installation_domain = preg_replace( '#^www\.#', '', DOMAIN_CURRENT_SITE );
-	$installation_domain_match = preg_quote( $installation_domain );
-
 	// Extract the subdomain, or trigger a redirect to the primary site.
 	if ( ! preg_match(
-		'#^([a-z0-9-]+)\.' . $installation_domain_match . '$#',
+		'#^([a-z0-9-]+)\.' . preg_quote( INSTALLATION_ROOT_DOMAIN ) . '$#',
 		$domain,
 		$matches
 	) ) {
@@ -74,3 +71,24 @@ function cpnet_override_get_site( $site, $domain, $path, $segments, $paths ) {
 	return $sites[0] ?? false;
 }
 add_filter( 'pre_get_site_by_path', 'cpnet_override_get_site', 10, 5 );
+
+/**
+ * Overrides `site_url()` and `get_site_url()` for local development.
+ *
+ * Necessary for logging in locally, for example.
+ */
+function cpnet_override_site_url( $url, $path, $scheme, $blog_id ) {
+	if ( ! WP_DEBUG ) {
+		return $url;
+	}
+
+	$url = set_url_scheme( $url, parse_url( PRIMARY_SITE_URL, PHP_URL_SCHEME ) );
+	$url = preg_replace(
+		'#/([a-z0-9-]+)\.classicpress\.net(/|$)#',
+		'/\1.' . INSTALLATION_ROOT_DOMAIN . '\2',
+		$url
+	);
+
+	return $url;
+}
+add_filter( 'site_url', 'cpnet_override_site_url', 10, 4 );
