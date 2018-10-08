@@ -399,12 +399,23 @@ Class WPOA {
 		// attempt to get a wordpress user id from the database that matches the $oauth_identity['id'] value:
 		global $wpdb;
 		$usermeta_table = $wpdb->usermeta;
-		$query_string = "SELECT $usermeta_table.user_id FROM $usermeta_table WHERE $usermeta_table.meta_key = 'wpoa_identity' AND $usermeta_table.meta_value LIKE '%" . $oauth_identity['provider'] . "|" . $oauth_identity['id'] . "%'";
-		//print_r( $query_string ); exit;
-		$query_result = $wpdb->get_var($query_string);
-		//print_r( $query_result ); exit;
-		// attempt to get a wordpress user with the matched id:
-		$user = get_user_by('id', $query_result);
+    if ($oauth_identity['email']) {
+        // attempt to match email (if set)
+      	$user = get_user_by('email', $oauth_identity['email']);
+    }else {
+      // if no email is set then return to default behaviour
+      $query_string = "SELECT $usermeta_table.user_id FROM $usermeta_table WHERE $usermeta_table.meta_key = 'wpoa_identity' AND $usermeta_table.meta_value LIKE '%" . $oauth_identity['provider'] . "|" . $oauth_identity['id'] . "%'";
+      //print_r( $query_string ); exit;
+  		$query_result = $wpdb->get_var($query_string);
+  		//print_r( $query_result ); exit;
+      // attempt to get a wordpress user with the matched id:
+  		$user = get_user_by('id', $query_result);
+    }
+
+    if (!$user) {
+      // Should never happen
+      $this->wpoa_end_login("Error Logging In");
+    }
 		return $user;
 	}
 	
