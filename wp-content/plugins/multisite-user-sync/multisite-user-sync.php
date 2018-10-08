@@ -21,7 +21,7 @@ function mus_plugin_activate() {
 	foreach ( $users as $user ) {
 		foreach ( $blogids as $blogid ) {
 			if ( is_array( $user->roles ) && $user->roles ) {
-				add_user_to_blog( $blogid, $user->ID, $user->roles[0] );
+				add_user_to_blog( $blogid, $user->ID, 'subscriber' );
 			} else {
 				add_user_to_blog( $blogid, $user->ID, get_blog_option( $blogid, 'default_role', 'subscriber' ) );
 			}
@@ -50,7 +50,7 @@ function mus_add_all_users_to_new_site( $blog_id ) {
 		$users = get_users( array( 'blog_id' => $blogid, 'fields' => 'all_with_meta' ) );
 		foreach ( $users as $user ) {
 			if ( is_array( $user->roles ) && $user->roles ) {
-				add_user_to_blog( $blog_id, $user->ID, $user->roles[0] );
+				add_user_to_blog( $blog_id, $user->ID, 'subscriber' );
 			}
 		}
 		break;
@@ -76,7 +76,7 @@ function mus_add_new_user_role_to_all_sites( $user_id, $role, $old_roles ) {
 	$blogids = $wpdb->get_col( "SELECT blog_id FROM {$wpdb->base_prefix}blogs" );
 	remove_action( 'set_user_role', 'mus_add_new_user_role_to_all_sites', 10, 3 );
 	foreach ( $blogids as $blogid ) {
-		add_user_to_blog( $blogid, $user_id, $role );
+		add_user_to_blog( $blogid, $user_id, 'subscriber' );
 	}
 	add_action( 'set_user_role', 'mus_add_new_user_role_to_all_sites', 10, 3 );
 }
