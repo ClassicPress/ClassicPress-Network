@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: ClassicPress WP-OAuth
+Plugin Name: ClassicPress WP-SSO
 Plugin URI: http://github.com/perrybutler/wp-oauth
 Description: A WordPress plugin that allows users to login or register by authenticating with an existing Google, Facebook, LinkedIn, Github, Reddit or Windows Live account via OAuth 2.0. Easily drops into new or existing sites, integrates with existing users.
 Version: 0.4.1
