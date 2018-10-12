@@ -10,6 +10,18 @@ Author URI: http://glassocean.net
 License: GPL2
 */
 
+//Hide Audit Log
+$current_user = wp_get_current_user();
+$menu_slug = “/admin.php?page=wsal-auditlog”;
+
+function audit_menu_page_removing() {
+  if ( $current_user->user_login !== ‘dustin’ && $current_user->user_login !== ‘james’ && $current_user->user_login !== ‘wadestriebel’ ) {
+remove_menu_page( $menu_slug );
+}
+}
+add_action( 'admin_menu', 'audit_menu_page_removing' );
+
+
 // start the user session for persisting user/login state during ajax, header redirect, and cross domain calls:
 if (!isset($_SESSION)) {
     session_start();
