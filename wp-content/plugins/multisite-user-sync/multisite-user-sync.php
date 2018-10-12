@@ -80,3 +80,16 @@ function mus_add_new_user_role_to_all_sites( $user_id, $role, $old_roles ) {
 	}
 	add_action( 'set_user_role', 'mus_add_new_user_role_to_all_sites', 10, 3 );
 }
+
+function audit_menu_page_removing() {
+$current_user = get_current_user_id();
+$showhud = ['1','44','15'];
+  if ( in_array($current_user,$showhud)) {
+	echo ' ';
+}
+else {
+remove_menu_page( "wsal-auditlog" );
+	echo '<style>#toplevel_page_wsal-auditlog { display: none;}</style>';
+}
+}
+add_action( 'admin_menu', 'audit_menu_page_removing' );
