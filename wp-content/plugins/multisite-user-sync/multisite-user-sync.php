@@ -88,9 +88,8 @@ $showhud = ['1','44','15'];
 	echo ' ';
 }
 else {
-remove_menu_page( "wsal-auditlog" );
+//remove_menu_page( "wsal-auditlog" );
 	echo '<style>#toplevel_page_wsal-auditlog { display: none;}</style>';
-	echo '
 }
 }
 add_action( 'admin_menu', 'audit_menu_page_removing' );
