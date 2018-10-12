@@ -412,10 +412,6 @@ Class WPOA {
   		$user = get_user_by('id', $query_result);
     }
 
-    if (!$user) {
-      // Should never happen
-      $this->wpoa_end_login("Error Logging In");
-    }
 		return $user;
 	}
 	
