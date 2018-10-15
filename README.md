@@ -42,8 +42,8 @@ php -S classicpress.local:8000
    you can add yourself as a local, administrative user:
 
 ```
-wp user create admin me@gmail.com --role=administrator --user_pass=admin
-wp super-admin add admin
+wp user create localdev localdev@example.com --role=administrator --user_pass=localdev
+wp super-admin add localdev
 ```
 
 8. Log in and use/develop the site!  Please submit issues or changes back to
