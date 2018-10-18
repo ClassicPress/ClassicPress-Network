@@ -1,6 +1,8 @@
 <?php
 
-/* Add Google Tag Manager into Elementor Canvas pages */
+/* Add Google Tag Manager into Elementor Canvas pages 
+ * TODO: Look at moving these actions to mu-plugins
+ */
 add_action( 'wp_head', 'custom_add_google_tag_manager_head', 0 );
 add_action( 'elementor/page_templates/canvas/before_content', 'custom_add_google_tag_manager_body' );
 
