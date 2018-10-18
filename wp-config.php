@@ -73,6 +73,9 @@ $table_prefix = getenv( 'DB_TABLE_PREFIX' );
 /**
  * For developers: ClassicPress debugging mode.
  *
+ * On the ClassicPress network specifically, setting WP_DEBUG to `true` also
+ * enables some code to make the network function on local hostnames.
+ *
  * Change this to true to enable the display of notices during development.
  * It is strongly recommended that plugin and theme developers use WP_DEBUG
  * in their development environments.
@@ -116,9 +119,11 @@ function cpnet_normalize_hostname( $url ) {
 	return $hostname;
 }
 
+define( 'PRIMARY_SITE_URL', getenv( 'PRIMARY_SITE_URL' ) );
+
+/* Multisite constants used by ClassicPress core */
 define( 'MULTISITE', true );
 define( 'SUBDOMAIN_INSTALL', true );
-define( 'PRIMARY_SITE_URL', getenv( 'PRIMARY_SITE_URL' ) );
 define( 'DOMAIN_CURRENT_SITE', cpnet_normalize_hostname( PRIMARY_SITE_URL ) );
 define( 'PATH_CURRENT_SITE', '/' );
 define( 'SITE_ID_CURRENT_SITE', 1 );
@@ -126,8 +131,19 @@ define( 'BLOG_ID_CURRENT_SITE', 1 );
 define( 'NOBLOGREDIRECT', PRIMARY_SITE_URL );
 define( 'SUNRISE', true );
 
+// This is verified to start with 'www.' later.
+define( 'INSTALLATION_ROOT_DOMAIN', preg_replace( '#^www\.#', '', DOMAIN_CURRENT_SITE ) );
+
 
 /* That's all, stop editing! Happy blogging. */
+
+if ( WP_DEBUG ) {
+	define( 'FORCE_SSL_ADMIN', parse_url( PRIMARY_SITE_URL, PHP_URL_SCHEME ) === 'https' );
+	// Cookies are shared across all ports, and we want to share them across
+	// all subdomains too, so this needs to be the root installation domain
+	// without the port (if any).
+	define( 'COOKIE_DOMAIN', parse_url( INSTALLATION_ROOT_DOMAIN, PHP_URL_HOST ) );
+}
 
 /** Absolute path to the ClassicPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
