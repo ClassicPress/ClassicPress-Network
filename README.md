@@ -50,6 +50,7 @@ php -S classicpress.local:8000
 ```
 wp user create localdev localdev@example.com --role=administrator --user_pass=localdev
 wp super-admin add localdev
+wp site list --field=url --format=csv | while read url; do wp user set-role localdev administrator --url="$url"; done
 ```
 
 8. Log in and use/develop the site!  Please submit issues or changes back to
