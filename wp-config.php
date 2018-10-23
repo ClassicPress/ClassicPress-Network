@@ -131,7 +131,7 @@ define( 'BLOG_ID_CURRENT_SITE', 1 );
 define( 'NOBLOGREDIRECT', PRIMARY_SITE_URL );
 define( 'SUNRISE', true );
 
-// This is verified to start with 'www.' later.
+// DOMAIN_CURRENT_SITE is verified to start with 'www.' later.
 define( 'INSTALLATION_ROOT_DOMAIN', preg_replace( '#^www\.#', '', DOMAIN_CURRENT_SITE ) );
 
 
