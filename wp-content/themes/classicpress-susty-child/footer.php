@@ -11,7 +11,7 @@
 	</div>
 
 	<footer id="colophon">
-		<a href="<?php echo esc_url( __( 'https://classicpress.net', 'susty' ) ); ?>">
+		<a href="<?php echo esc_url( __( 'https://www.classicpress.net', 'susty' ) ); ?>">
 			<?php
 			/* translators: %s: CMS name, i.e. ClassicPress. */
 			printf( esc_html__( 'Proudly powered by %s', 'susty' ), 'ClassicPress' );
