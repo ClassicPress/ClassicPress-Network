@@ -14,3 +14,35 @@ Tags:
 This child theme is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+
+table.cp-file-list {
+	border-spacing: 0 6px;
+}
+table.cp-file-list td {
+	padding: 0;
+	margin-bottom: 4px;
+}
+table.cp-file-list tr:hover td {
+	background: #ddd;
+}
+table.cp-file-list tr:hover a {
+	background: none;
+}
+table.cp-file-list .cp-file-preview .cp-file-wrapper {
+	border: 6px solid rgb(252, 248, 243);
+	background: #ddd;
+	width: 132px;
+	height: 132px;
+}
+table.cp-file-list tr:hover .cp-file-preview .cp-file-wrapper {
+	border-color: #ddd;
+}
+table.cp-file-list .cp-file-preview .cp-file-thumbnail {
+	border: 6px solid #ddd;
+}
+table.cp-file-list .cp-file-name {
+	padding-left: 1em;
+}
+table.cp-file-list .cp-file-size {
+	padding-right: 1em;
+}
