@@ -31,3 +31,26 @@ function cpnet_redirect_network_admin_request( $redirect ) {
 	return false;
 }
 add_filter( 'redirect_network_admin_request', 'cpnet_redirect_network_admin_request' );
+
+/**
+ * During local dev, filter script and stylesheet tags so that they don't
+ * include production URLs.
+ *
+ * @param string $tag    The tag for the enqueued asset.
+ * @param string $handle The script's registered handle.
+ * @param string $src    The script's source URL.
+ *
+ * @return string        The possibly-updated asset tag.
+ */
+function cpnet_filter_script_stylesheet_tags( $tag, $handle, $src ) {
+	$scheme = parse_url( PRIMARY_SITE_URL, PHP_URL_SCHEME );
+	return preg_replace(
+		'#https?://([a-z0-9-]+)\.classicpress\.net/#',
+		$scheme . '://$1.' . INSTALLATION_ROOT_DOMAIN . '/',
+		$tag
+	);
+}
+if ( WP_DEBUG ) {
+	add_filter( 'script_loader_tag', 'cpnet_filter_script_stylesheet_tags', 10, 3 );
+	add_filter( 'style_loader_tag', 'cpnet_filter_script_stylesheet_tags', 10, 3 );
+}
