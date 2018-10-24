@@ -42,7 +42,6 @@ function cpnet_setup_google_tag_manager_body( $body_classes ) {
  */
 function cpnet_end_setup_google_tag_manager_body( $hook, $arg = null ) {
 	$content = ob_get_clean();
-	error_log( "$hook: $content" );
 	$content = explode( '">', $content, 2 );
 	echo $content[0] . '">';
 	cpnet_print_google_tag_manager_body();
