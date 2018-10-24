@@ -27,7 +27,7 @@ add_shortcode( 'cp_file_list', function( $atts ) {
 		$html .= "<tr><td class=\"cp-file-preview\">\n";
 		if ( preg_match( '#\.(png|gif|jpg|svg)#i', $entry ) ) {
 			$url = esc_url( $dir_url . $entry );
-			$html .= "<div class=\"cp-file-wrapper\">";
+			$html .= "<a href=\"$url\"><div class=\"cp-file-wrapper\">";
 			$html .= "<div class=\"cp-file-thumbnail\" style=\"
 				width: 120px;
 				height: 120px;
@@ -35,7 +35,7 @@ add_shortcode( 'cp_file_list', function( $atts ) {
 				background-repeat: no-repeat;
 				background-size: contain;
 				background-position: center;
-			\"></div></div>\n";
+			\"></div></div></a>\n";
 		} else {
 			$html .= '(no preview)';
 		}
