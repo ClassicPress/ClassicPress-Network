@@ -31,7 +31,7 @@ add_shortcode( 'cp_file_list', function( $atts ) {
 			$html .= "<div class=\"cp-file-thumbnail\" style=\"
 				width: 120px;
 				height: 120px;
-				background-image: url( $url );
+				background-image: url( '$url' );
 				background-repeat: no-repeat;
 				background-size: contain;
 				background-position: center;
