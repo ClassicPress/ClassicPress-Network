@@ -32,10 +32,6 @@ $cpnet_redirects = [
 		'/article/classicpress-a-hard-fork-of-wordpress-without-gutenberg/'
 		=> '/2018/08/20/classicpress-a-fork-of-wordpress-without-gutenberg/',
 	],
-	'docs' => [
-		'/testing-classicpress/get-started/'
-		=> '/testing-classicpress/getting-started/',
-	],
 ];
 function cpnet_process_redirects() {
 	global $cpnet_redirects;
