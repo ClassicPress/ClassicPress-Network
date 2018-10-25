@@ -43,6 +43,11 @@ header#masthead {
 	max-width: 800px;
 }
 
+#content ul li, #content ol li {
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+}
+
 article a, nav a {
 	background-color: transparent;
 }
