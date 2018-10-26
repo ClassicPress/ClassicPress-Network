@@ -28,7 +28,10 @@ cd ClassicPress-Network
    value which will depend on your local hostnames.  For example:
    `http://www.classicpress.local:8000`
 
-5. Point the relevant hostnames to `127.0.0.1` in your `/etc/hosts` file.  For
+5. [Install `composer`](https://getcomposer.org/doc/00-intro.md)
+   if you don't already have it, and run `composer install`.
+
+6. Point the relevant hostnames to `127.0.0.1` in your `/etc/hosts` file.  For
    example:
 
 ```
@@ -37,13 +40,13 @@ cd ClassicPress-Network
 127.0.0.1 translate.classicpress.local
 ```
 
-6. Run a development server on PHP 7.0 or greater:
+7. Run a development server on PHP 7.0 or greater:
 
 ```
 php -S classicpress.local:8000
 ```
 
-7. If you have
+8. If you have
    [WP-CLI](https://wp-cli.org/) installed locally, which we highly recommend,
    you can add yourself as a local, administrative user:
 
@@ -53,5 +56,5 @@ bin/add-local-user.sh
 bin/add-local-user.sh mylocaluser mylocalpass
 ```
 
-8. Log in and use/develop the site!  Please submit issues or changes back to
+9. Log in and use/develop the site!  Please submit issues or changes back to
    this repository.
