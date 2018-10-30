@@ -41,6 +41,7 @@ header#masthead {
 
 #content {
 	max-width: 800px;
+	padding: 0 1em 0 1.5em;
 }
 
 #content ul li, #content ol li {
@@ -108,6 +109,12 @@ a.cp-heading-link {
 	left: -1.2em;
 	color: #057f99;
 }
+@media (max-width: 800px) {
+	a.cp-heading-link {
+		left: -1em;
+	}
+}
+
 a.cp-heading-link:hover {
 	text-decoration: underline;
 	color: #3ebca6;

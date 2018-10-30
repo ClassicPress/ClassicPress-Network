@@ -4,7 +4,7 @@
  * Stylesheet version (cache buster)
  */
 function cp_susty_get_asset_version() {
-	return '20181029';
+	return '20181029.2';
 }
 
 /**
