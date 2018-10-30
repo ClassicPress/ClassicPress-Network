@@ -88,3 +88,27 @@ table.cp-file-list .cp-file-name {
 table.cp-file-list .cp-file-size {
 	padding-right: 1em;
 }
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+}
+
+
+h1, h2, h3 {
+	position: relative;
+}
+a.cp-heading-link {
+	border-bottom: none;
+	font-weight: normal;
+	font-size: 0.85em;
+	display: block;
+	position: absolute;
+	top: 0.1em;
+	left: -1.2em;
+	color: #057f99;
+}
+a.cp-heading-link:hover {
+	text-decoration: underline;
+	color: #3ebca6;
+}
