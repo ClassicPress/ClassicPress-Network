@@ -413,7 +413,6 @@
 
 			<?php
 					include('settings/settings-facebook.php');
-					include('settings/settings-twitter.php');
 					include('settings/settings-google.php');
 					include('settings/settings-linkedin.php');
 					include('settings/settings-slack.php');

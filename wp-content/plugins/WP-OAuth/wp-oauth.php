@@ -3,7 +3,7 @@
 /*
 Plugin Name: ClassicPress WP-OAuth
 Plugin URI: http://github.com/perrybutler/wp-oauth
-Description: A WordPress plugin that allows users to login or register by authenticating with an existing Google, Facebook, LinkedIn, Github, Twitter and Slack via OAuth 2.0. Easily drops into new or existing sites, integrates with existing users.
+Description: A WordPress plugin that allows users to login or register by authenticating with an existing Google, Facebook, LinkedIn, Github and Slack via OAuth 2.0. Easily drops into new or existing sites, integrates with existing users.
 Version: 0.9.9
 Author: ClassicPress Community Team
 Author URI: https://www.classicpress.net
@@ -116,11 +116,6 @@ Class WPOA {
     'wpoa_oauth_server_api_secret' => '',							// any string
     'wpoa_oauth_server_api_endpoint' => '',							// any string
     'wpoa_oauth_server_api_button_text' => '',						// any string
-
-    'wpoa_twitter_api_enabled' => 0,									// 0, 1
-    'wpoa_twitter_api_id' => '',										// any string
-    'wpoa_twitter_api_secret' => '',									// any string
-    'wpoa_twitter_api_scope' => '',                  // any string
 
     'wpoa_slack_api_enabled' => 0,									// 0, 1
     'wpoa_slack_api_id' => '',										// any string
@@ -422,10 +417,6 @@ Class WPOA {
 		}
 		elseif (get_query_var('code')) {
 			$provider = $_SESSION['WPOA']['PROVIDER'];
-			$this->wpoa_include_connector($provider);
-		}
-    elseif (get_query_var('oauth_token')) {
-			$provider = 'twitter';
 			$this->wpoa_include_connector($provider);
 		}
 		elseif (get_query_var('error_description') || get_query_var('error_message')) {
@@ -790,8 +781,7 @@ Class WPOA {
 		$html .= $this->wpoa_login_button("google", "Google", $atts);
 		$html .= $this->wpoa_login_button("facebook", "Facebook", $atts);
 		$html .= $this->wpoa_login_button("linkedin", "LinkedIn", $atts);
-		$html .= $this->wpoa_login_button("github", "Github", $atts);
-    $html .= $this->wpoa_login_button("twitter", "Twitter", $atts);
+		$html .= $this->wpoa_login_button("github", "Github", $atts);;
     $html .= $this->wpoa_login_button("slack", "Slack", $atts);
 		$html .= $this->wpoa_login_button( 'oauth_server' , get_option( 'wpoa_oauth_server_api_button_text' ), $atts );
 		if ($html == '') {
