@@ -65,7 +65,7 @@ else {
 	// registration was successful, the user account was created, proceed to login the user automatically...
 	// associate the wordpress user account with the now-authenticated third party account:
 	$this->wpoa_link_account($user_id);
-  updateUsername($provider, $token, $user_id, $wpdb);
+  updateUsername($provider, $user_id, $wpdb, $oauth_identity);
 	// attempt to login the new user (this could be error prone):
 	$creds = array();
 	$creds['user_login'] = $username;
@@ -82,76 +82,32 @@ else {
 	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
 }
 
-function updateUsername($sso, $access, $user_id, $wpdb)
+function updateUsername($sso, $user_id, $wpdb, $identity)
 {
-  if ($sso == "Github") {
-    $url = 'https://api.github.com/user';
-    $username_params = array(
-      "Authorization: Bearer $access",
-      "Cache-Control: no-cache",
-      "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36"
-    );
-  }elseif ($sso == "Facebook") {
-    $url = 'https://graph.facebook.com/v3.1/me?fields=email';
-    $username_params = array(
-      "Authorization: Bearer $access",
-      "Cache-Control: no-cache"
-    );
-  }elseif ($sso == "Google") {
-    $_SESSION["WPOA"]["RESULT"] = "Haven't set up Google SSO yet. Please contact site admin.";
-  	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
-  }
 
-  if (!$sso) {
-    $_SESSION["WPOA"]["RESULT"] = "No provider is set. Please contact site admin.";
-  	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
-  }
-
-  $curl = curl_init();
-
-  curl_setopt_array($curl, array(
-    CURLOPT_URL => $url,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "GET",
-    CURLOPT_HTTPHEADER => $username_params,
-  ));
-
-  $response = curl_exec($curl);
-  $err = curl_error($curl);
-
-  curl_close($curl);
-
-  if ($err) {
-    $_SESSION["WPOA"]["RESULT"] = "Could not assign username during registration. Please contact an admin or try again later.";
-  	header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
-  } else {
-    $response = json_decode($response, true);
+	if ($identity) {
 		if ($sso == "Github") {
-			$username = $response['login'];
-			$email = $response['email'];
-		}elseif ($sso == "Facebook") {
-			$username = $response['email'];
-			$email = $username;
+			$username = $identity['login'];
+		}elseif ($sso == "Twitter") {
+			$username = $identity['login'];
+		}else {
+			$username = "User" . $user_id;
 		}
+		$email = $identity['email'];
+	}else {
+		$_SESSION["WPOA"]["RESULT"] = "Error setting username during registration. Please contact an admin or try again later.";
+		header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
+	}
 
-    if (!$username || $username == null) {
-      $username = "user" . $user_id;
-      // NOTE: this means that the email was missing from the provider (ie. Github doesn't require an email) so we set a default username
-    }
+	// update username and login information to be user friendly
+  $update_username_result = $wpdb->update($wpdb->users, array('user_login' => $username, 'user_nicename' => $username, 'display_name' => $username, 'user_email' => $email), array('ID' => $user_id));
 
-		// update username and login information to be user friendly
-    $update_username_result = $wpdb->update($wpdb->users, array('user_login' => $username, 'user_nicename' => $username, 'display_name' => $username, 'user_email' => $email), array('ID' => $user_id));
-    $update_nickname_result = update_user_meta($user_id, 'nickname', $username);
+  $update_nickname_result = update_user_meta($user_id, 'nickname', $username);
 
-		if ($update_username_result == false || $update_nickname_result == false) {
-			// there was an error during registration, redirect and notify the user:
-			$_SESSION["WPOA"]["RESULT"] = "Could not rename the username during registration. Please contact an admin or try again later.";
-			header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
-		}
-  }
+	if ($update_username_result == false) {
+		// there was an error during registration, redirect and notify the user:
+		$_SESSION["WPOA"]["RESULT"] = "Set: Could not rename the username during registration. Please contact an admin or try again later.";
+		header("Location: " . $_SESSION["WPOA"]["LAST_URL"]); exit;
+	}
 }
 ?>

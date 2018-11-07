@@ -1,26 +1,26 @@
 <?php
 
+
 // start the user session for maintaining individual user states during the multi-stage authentication flow:
 if (!isset($_SESSION)) {
     session_start();
 }
 
 # DEFINE THE OAUTH PROVIDER AND SETTINGS TO USE #
-$_SESSION['WPOA']['PROVIDER'] = 'oauth_server';
+$_SESSION['WPOA']['PROVIDER'] = 'Slack';
 define('HTTP_UTIL', get_option('wpoa_http_util'));
-define('CLIENT_ENABLED', get_option('wpoa_oauth_server_api_enabled'));
-define('CLIENT_ID', get_option('wpoa_oauth_server_api_id'));
-define('CLIENT_SECRET', get_option('wpoa_oauth_server_api_secret'));
+define('CLIENT_ENABLED', get_option('wpoa_slack_api_enabled'));
+define('CLIENT_ID', get_option('wpoa_slack_api_id'));
+define('CLIENT_SECRET', get_option('wpoa_slack_api_secret'));
 define('REDIRECT_URI', rtrim(site_url(), '/') . '/');
-define('SCOPE', 'profile'); // PROVIDER SPECIFIC: 'profile' is the minimum scope required to get the user's id from Google
-define('URL_AUTH', get_option('wpoa_oauth_server_api_endpoint') . "?oauth=authorize&");
-define('URL_TOKEN', get_option('wpoa_oauth_server_api_endpoint') . "?oauth=token&");
-define('URL_USER', get_option('wpoa_oauth_server_api_endpoint') . "?oauth=me&");
+define('SCOPE', get_option('wpoa_slack_api_scope')); // PROVIDER SPECIFIC: 'identity.basic' is the minimum scope required to get the user's id from Slack
+define('URL_AUTH', "https://slack.com/oauth/authorize?");
+define('URL_TOKEN', "https://slack.com/api/oauth.access?");
+define('URL_USER', "https://slack.com/api/users.identity?");
 # END OF DEFINE THE OAUTH PROVIDER AND SETTINGS TO USE #
 
 // remember the user's last url so we can redirect them back to there after the login ends:
 if (!$_SESSION['WPOA']['LAST_URL']) {
-
 	// try to obtain the redirect_url from the default login page:
 	$redirect_url = esc_url($_GET['redirect_to']);
 	// if no redirect_url was found, set it to the user's last page:
@@ -51,7 +51,6 @@ elseif (isset($_GET['error_message'])) {
 elseif (isset($_GET['code'])) {
 	// post-auth phase, verify the state:
 	if ($_SESSION['WPOA']['STATE'] == $_GET['state']) {
-
 		// get an access token from the third party provider:
 		get_oauth_token($this);
 		// get the user's third-party identity and attempt to login/register a matching wordpress user account:
@@ -65,8 +64,6 @@ elseif (isset($_GET['code'])) {
 	}
 }
 else {
-	//print'pre auth'; exit;
-
 	// pre-auth, start the auth process:
 	if ((empty($_SESSION['WPOA']['EXPIRES_AT'])) || (time() > $_SESSION['WPOA']['EXPIRES_AT'])) {
 		// expired token; clear the state:
@@ -87,8 +84,6 @@ function get_oauth_code($wpoa) {
 		'state' => uniqid('', true),
 		'redirect_uri' => REDIRECT_URI,
 	);
-
-	//print_r( $params ); exit;
 	$_SESSION['WPOA']['STATE'] = $params['state'];
 	$url = URL_AUTH . http_build_query($params);
 	header("Location: $url");
@@ -103,18 +98,17 @@ function get_oauth_token($wpoa) {
 		'code' => $_GET['code'],
 		'redirect_uri' => REDIRECT_URI,
 	);
-
 	$url_params = http_build_query($params);
-	//print_r($url_params); exit;
 	switch (strtolower(HTTP_UTIL)) {
 		case 'curl':
-			//print 'Curl'; exit;
 			$url = URL_TOKEN . $url_params;
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, $url);
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($curl, CURLOPT_POST, 1);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+			// PROVIDER NORMALIZATION: Reddit requires sending a User-Agent header...
+			// PROVIDER NORMALIZATION: Reddit requires sending the client id/secret via http basic authentication
 			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, (get_option('wpoa_http_util_verify_ssl') == 1 ? 1 : 0));
 			curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, (get_option('wpoa_http_util_verify_ssl') == 1 ? 2 : 0));
 			$result = curl_exec($curl);
@@ -136,50 +130,41 @@ function get_oauth_token($wpoa) {
 			break;
 	}
 	// parse the result:
-	$result_obj = json_decode($result, true);
-	$access_token = $result_obj['access_token'];
-	$expires_in = $result_obj['expires_in']; 
-	$expires_at = time() + $expires_in;
+	$result_obj = json_decode($result, true); // PROVIDER SPECIFIC: Slack encodes the access token result as json by
+	$access_token = $result_obj['access_token']; // PROVIDER SPECIFIC: this is how Slack returns the access token KEEP THIS PROTECTED!
+	// $expires_in = $result_obj['expires_in']; // PROVIDER SPECIFIC: this is how Slack returns the access token's expiration
+	// $expires_at = time() + $expires_in;
+  // parse and return the user's oauth identity:
 
-	//print_r($result_obj); exit;
 	// handle the result:
-	if (!$access_token || !$expires_in) {
-		//print 'Access token or expires in is not set'; exit;
+	if (!$access_token) {
 		// malformed access token result detected:
 		$wpoa->wpoa_end_login("Sorry, we couldn't log you in. Malformed access token result detected. Please notify the admin or try again later.");
 	}
 	else {
 		$_SESSION['WPOA']['ACCESS_TOKEN'] = $access_token;
-		$_SESSION['WPOA']['EXPIRES_IN'] = $expires_in;
-		$_SESSION['WPOA']['EXPIRES_AT'] = $expires_at;
-
-		//print_r( $_SESSION['WPOA'] ); exit;
-		return true;
+		return $oauth_identity;
 	}
 }
 
 function get_oauth_identity($wpoa) {
-
-	//print 'Get Identity'; exit;
 	// here we exchange the access token for the user info...
 	// set the access token param:
 	$params = array(
-		'access_token' => $_SESSION['WPOA']['ACCESS_TOKEN'], // PROVIDER SPECIFIC: the access_token is passed to Google via POST param
+		'token' => $_SESSION['WPOA']['ACCESS_TOKEN'], // PROVIDER SPECIFIC: the access token is passed to Slack using this key name
 	);
 	$url_params = http_build_query($params);
 	// perform the http request:
 	switch (strtolower(HTTP_UTIL)) {
 		case 'curl':
-			$url = URL_USER . $url_params;
-			$response = wp_remote_get($url, array(
-				'timeout' => 45,
-				'redirection' => 5,
-				'httpversion' => '1.0',
-				'blocking' => true,
-				'headers' => array(),
-				'sslverify' => false
-			));
-			$result_obj = json_decode( $response['body'], true );
+			$url = URL_USER . $url_params; // TODO: we probably want to send this using a curl_setopt...
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, $url);
+			// PROVIDER NORMALIZATION: Github/Reddit require a User-Agent here...
+			curl_setopt($curl, CURLOPT_HTTPHEADER, array('x-li-format: json')); // PROVIDER SPECIFIC: we must specify json or else Slack will encode the result as xml by default // PROVIDER NORMALIZATION: PayPal/Reddit require that we send the access token via a bearer header, PayPal also requires a Content-Type: application/json header...
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			$result = curl_exec($curl);
+			$result_obj = json_decode($result, true);
 			break;
 		case 'stream-context':
 			$url = rtrim(URL_USER, "?");
@@ -187,7 +172,7 @@ function get_oauth_identity($wpoa) {
 				array(
 					'method'  => 'GET',
 					// PROVIDER NORMALIZATION: Reddit/Github requires User-Agent here...
-					'header'  => "Authorization: Bearer " . $_SESSION['WPOA']['ACCESS_TOKEN'] . "\r\n" . "x-li-format: json\r\n", // PROVIDER SPECIFIC: i think only LinkedIn uses x-li-format...
+					'header'  => "Authorization: Bearer " . $_SESSION['WPOA']['ACCESS_TOKEN'] . "\r\n" . "x-li-format: json\r\n", // PROVIDER SPECIFIC: we must specify json or else Slack will encode the result as xml by default
 				)
 			);
 			$context = $context  = stream_context_create($opts);
@@ -198,15 +183,14 @@ function get_oauth_identity($wpoa) {
 			$result_obj = json_decode($result, true);
 			break;
 	}
+
 	// parse and return the user's oauth identity:
 	$oauth_identity = array();
 	$oauth_identity['provider'] = $_SESSION['WPOA']['PROVIDER'];
-	$oauth_identity['id'] = $result_obj['ID']; // PROVIDER SPECIFIC: Google returns the user's OAuth identity as id
-	
-	// print_r( $oauth_identity ); exit;
-	// $oauth_identity['email'] = $result_obj['emails'][0]['value']; // PROVIDER SPECIFIC: Google returns an array of email addresses. To respect privacy we currently don't collect the user's email address.
+	$oauth_identity['id'] = $result_obj['user']['id']; // PROVIDER SPECIFIC: this is how Slack returns the user's unique id
+	$oauth_identity['email'] = $result_obj['user']['email']; //PROVIDER SPECIFIC: this is how Slack returns the email address
 	if (!$oauth_identity['id']) {
-		$wpoa->wpoa_end_login("Sorry, we couldn't log you in. User identity was not found. Please notify the admin or try again later.");
+		$wpoa->wpoa_end_login("ID_missing: Sorry, we couldn't log you in. User identity was not found. Please notify the admin or try again later.");
 	}
 	return $oauth_identity;
 }

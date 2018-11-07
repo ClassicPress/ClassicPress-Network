@@ -1,19 +1,28 @@
 <?php
 
 /*
-Plugin Name: ClassicPress WP-SSO
+Plugin Name: ClassicPress WP-OAuth
 Plugin URI: http://github.com/perrybutler/wp-oauth
-Description: A WordPress plugin that allows users to login or register by authenticating with an existing Google, Facebook, LinkedIn, Github, Reddit or Windows Live account via OAuth 2.0. Easily drops into new or existing sites, integrates with existing users.
-Version: 0.4.1
-Author: Perry Butler
-Author URI: http://glassocean.net
+Description: A WordPress plugin that allows users to login or register by authenticating with an existing Google, Facebook, LinkedIn, Github, Twitter and Slack via OAuth 2.0. Easily drops into new or existing sites, integrates with existing users.
+Version: 0.9.9
+Author: ClassicPress Community Team
+Author URI: https://www.classicpress.net
+
 License: GPL2
+
+Original Version: 0.4.1
+Original Author: Perry Butler
+Original Author URI: http://glassocean.net
+Original Plugin URI: http://github.com/perrybutler/wp-oauth
+
 */
+
 
 // start the user session for persisting user/login state during ajax, header redirect, and cross domain calls:
 if (!isset($_SESSION)) {
     session_start();
 }
+
 
 // plugin class:
 Class WPOA {
@@ -24,7 +33,7 @@ Class WPOA {
 
 	// set a version that we can use for performing plugin updates, this should always match the plugin version:
 	const PLUGIN_VERSION = "0.4.1";
-	
+
 	// singleton class pattern:
 	protected static $instance = NULL;
 	public static function get_instance() {
@@ -81,50 +90,49 @@ Class WPOA {
 			),
 		'wpoa_suppress_welcome_email' => 0,								// 0, 1
 		'wpoa_new_user_role' => 'contributor',							// role
+
 		'wpoa_google_api_enabled' => 0,									// 0, 1
 		'wpoa_google_api_id' => '',										// any string
 		'wpoa_google_api_secret' => '',									// any string
+    'wpoa_google_api_scope' => '',                  // any string
+
 		'wpoa_facebook_api_enabled' => 0,								// 0, 1
 		'wpoa_facebook_api_id' => '',									// any string
 		'wpoa_facebook_api_secret' => '',								// any string
+    'wpoa_facebook_api_scope' => '',                  // any string
+
 		'wpoa_linkedin_api_enabled' => 0,								// 0, 1
 		'wpoa_linkedin_api_id' => '',									// any string
 		'wpoa_linkedin_api_secret' => '',								// any string
+    'wpoa_linkedin_api_scope' => '',                  // any string
+
 		'wpoa_github_api_enabled' => 0,									// 0, 1
 		'wpoa_github_api_id' => '',										// any string
 		'wpoa_github_api_secret' => '',									// any string
-		'wpoa_itembase_api_enabled' => 0,								// 0, 1
-		'wpoa_itembase_api_id' => '',									// any string
-		'wpoa_itembase_api_secret' => '',								// any string
-		'wpoa_reddit_api_enabled' => 0,									// 0, 1
-		'wpoa_reddit_api_id' => '',										// any string
-		'wpoa_reddit_api_secret' => '',									// any string
-		'wpoa_windowslive_api_enabled' => 0,							// 0, 1
-		'wpoa_windowslive_api_id' => '',								// any string
-		'wpoa_windowslive_api_secret' => '',							// any string
-		'wpoa_paypal_api_enabled' => 0,									// 0, 1
-		'wpoa_paypal_api_id' => '',										// any string
-		'wpoa_paypal_api_secret' => '',									// any string
-		'wpoa_paypal_api_sandbox_mode' => 0,							// 0, 1
-		'wpoa_instagram_api_enabled' => 0,								// 0, 1
-		'wpoa_instagram_api_id' => '',									// any string
-		'wpoa_instagram_api_secret' => '',								// any string
-		'wpoa_battlenet_api_enabled' => 0,								// 0, 1
-		'wpoa_battlenet_api_id' => '',									// any string
-		'wpoa_battlenet_api_secret' => '',
-																		// any string
-		'wpoa_oauth_server_api_enabled' => 0,							// 0, 1
-		'wpoa_oauth_server_api_id' => '',								// any string
-		'wpoa_oauth_server_api_secret' => '',							// any string
-		'wpoa_oauth_server_api_endpoint' => '',							// any string
-		'wpoa_oauth_server_api_button_text' => '',						// any string
+    'wpoa_github_api_scope' => '',                  // any string
+
+    'wpoa_oauth_server_api_enabled' => 0,							// 0, 1
+    'wpoa_oauth_server_api_id' => '',								// any string
+    'wpoa_oauth_server_api_secret' => '',							// any string
+    'wpoa_oauth_server_api_endpoint' => '',							// any string
+    'wpoa_oauth_server_api_button_text' => '',						// any string
+
+    'wpoa_twitter_api_enabled' => 0,									// 0, 1
+    'wpoa_twitter_api_id' => '',										// any string
+    'wpoa_twitter_api_secret' => '',									// any string
+    'wpoa_twitter_api_scope' => '',                  // any string
+
+    'wpoa_slack_api_enabled' => 0,									// 0, 1
+    'wpoa_slack_api_id' => '',										// any string
+    'wpoa_slack_api_secret' => '',									// any string
+    'wpoa_slack_api_scope' => '',                  // any string
 
 		'wpoa_http_util' => 'curl',										// curl, stream-context
 		'wpoa_http_util_verify_ssl' => 1,								// 0, 1
 		'wpoa_restore_default_settings' => 0,							// 0, 1
 		'wpoa_delete_settings_on_uninstall' => 0,						// 0, 1
 	);
-	
+
 	// when the plugin class gets created, fire the initialization:
 	function __construct() {
 		// hook activation and deactivation for the plugin:
@@ -134,8 +142,11 @@ Class WPOA {
 		add_action('plugins_loaded', array($this, 'wpoa_update'));
 		// hook init event to handle plugin initialization:
 		add_action('init', array($this, 'init'));
+    add_action('template_redirect',array($this, 'possibly_redirect'), 10);
+    add_action( 'bp_loaded', array($this,'my_disable_bp_registration') );
+    add_filter( 'bp_get_signup_page', array($this,'redirect_bp_signup_page'));
 	}
-	
+
 	// a wrapper for wordpress' get_option(), this basically feeds get_option() the setting's correct default value as specified at the top of this file:
 	/*
 	function wpoa_option($name) {
@@ -144,15 +155,53 @@ Class WPOA {
 		return $val;
 	}
 	*/
-	
+
+  function wpoa_uninstall_cleanup()
+  {
+    // security check so this file doesn't execute outside of wordpress context:
+    if(!defined('WP_UNINSTALL_PLUGIN')) {
+    	exit();
+    }
+
+    // delete all plugin settings ONLY if the user requested it:
+    global $wpdb;
+    $delete_settings = $wpdb->get_var("SELECT option_value FROM $wpdb->options WHERE option_name = 'wpoa_delete_settings_on_uninstall'");
+    if ($delete_settings) {
+    	$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE 'wpoa_%';");
+    	$wpdb->query("DELETE FROM $wpdb->usermeta WHERE meta_key LIKE 'wpoa_%';");
+    }
+  }
+
+  /*disable registration bp in case we decide to use buddypress/bbpress*/
+    function my_disable_bp_registration() {
+      remove_action( 'bp_init',    'bp_core_wpsignup_redirect' );
+      remove_action( 'bp_screens', 'bp_core_screen_signup' );
+    }
+
+    function redirect_bp_signup_page($page ){
+        return bp_get_root_domain() . '/wp-login.php?action=register';
+    }
+  function possibly_redirect(){
+    if (function_exists('bp_is_active')) {
+      $page = basename(get_permalink());
+       if( 'login' == $page ) {
+        wp_redirect('/wp-login.php');
+        exit();
+      }elseif ('register' == $page) {
+        wp_redirect('/wp-login.php?action=register');
+        exit();
+      }
+    }
+  }
+
 	// do something during plugin activation:
 	function wpoa_activate() {
 	}
-	
+
 	// do something during plugin deactivation:
 	function wpoa_deactivate() {
 	}
-	
+
 	// do something during plugin update:
 	function wpoa_update() {
 		$plugin_version = WPOA::PLUGIN_VERSION;
@@ -167,17 +216,17 @@ Class WPOA {
 			add_action('admin_notices', array($this, 'wpoa_update_notice'));
 		}
 	}
-	
+
 	// indicate to the admin that the plugin has been updated:
 	function wpoa_update_notice() {
-		$settings_link = "<a href='options-general.php?page=WP-OAuth.php'>Settings Page</a>"; // CASE SeNsItIvE filename!
+		$settings_link = "<a href='options-general.php?page=WP-OAuth'>Settings Page</a>"; // CASE SeNsItIvE filename!
 		?>
 		<div class="updated">
 			<p>WP-OAuth has been updated! Please review the <?php echo $settings_link ?>.</p>
 		</div>
 		<?php
 	}
-	
+
 	// adds any missing settings and their default values:
 	function wpoa_add_missing_settings() {
 		foreach($this->settings as $setting_name => $default_value) {
@@ -188,7 +237,7 @@ Class WPOA {
 			$added = add_option($setting_name, $default_value);
 		}
 	}
-	
+
 	// restores the default plugin settings:
 	function wpoa_restore_default_settings() {
 		foreach($this->settings as $setting_name => $default_value) {
@@ -200,10 +249,10 @@ Class WPOA {
 		}
 		add_action('admin_notices', array($this, 'wpoa_restore_default_settings_notice'));
 	}
-	
+
 	// indicate to the admin that the plugin has been updated:
 	function wpoa_restore_default_settings_notice() {
-		$settings_link = "<a href='options-general.php?page=WP-OAuth.php'>Settings Page</a>"; // CASE SeNsItIvE filename!
+		$settings_link = "<a href='options-general.php?page=WP-OAuth'>Settings Page</a>"; // CASE SeNsItIvE filename!
 		?>
 		<div class="updated">
 			<p>The default settings have been restored. You may review the <?php echo $settings_link ?>.</p>
@@ -246,7 +295,7 @@ Class WPOA {
 			add_filter('login_footer', array($this, 'wpoa_push_login_messages'));
 		}
 	}
-	
+
 	// init scripts and styles for use on FRONTEND PAGES:
 	function wpoa_init_frontend_scripts_styles() {
 		// here we "localize" php variables, making them available as a js variable in the browser:
@@ -272,7 +321,7 @@ Class WPOA {
 		wp_enqueue_script('wpoa-script', plugin_dir_url( __FILE__ ) . 'wp-oauth.js', array());
 		wp_enqueue_style('wpoa-style', plugin_dir_url( __FILE__ ) . 'wp-oauth.css', array());
 	}
-	
+
 	// init scripts and styles for use on BACKEND PAGES:
 	function wpoa_init_backend_scripts_styles() {
 		// here we "localize" php variables, making them available as a js variable in the browser:
@@ -298,7 +347,7 @@ Class WPOA {
 		// load the default wordpress media screen:
 		wp_enqueue_media();
 	}
-	
+
 	// init scripts and styles for use on the LOGIN PAGE:
 	function wpoa_init_login_scripts_styles() {
 		if (isset($_SESSION['WPOA']['RESULT'])) {
@@ -332,25 +381,25 @@ Class WPOA {
 		wp_enqueue_script('wpoa-script', plugin_dir_url( __FILE__ ) . 'wp-oauth.js', array());
 		wp_enqueue_style('wpoa-style', plugin_dir_url( __FILE__ ) . 'wp-oauth.css', array());
 	}
-	
+
 	// add a settings link to the plugins page:
 	function wpoa_settings_link($links) {
-		$settings_link = "<a href='options-general.php?page=WP-OAuth.php'>Settings</a>"; // CASE SeNsItIvE filename!
-		array_unshift($links, $settings_link); 
-		return $links; 
+		$settings_link = "<a href='options-general.php?page=WP-OAuth'>Settings</a>"; // CASE SeNsItIvE filename!
+		array_unshift($links, $settings_link);
+		return $links;
 	}
-	
+
 	// ===============
 	// GENERIC HELPERS
 	// ===============
-	
+
 	// adds basic http auth to a given url string:
 	function wpoa_add_basic_auth($url, $username, $password) {
 		$url = str_replace("https://", "", $url);
 		$url = "https://" . $username . ":" . $password . "@" . $url;
 		return $url;
 	}
-	
+
 	// ===================
 	// LOGIN FLOW HANDLING
 	// ===================
@@ -359,11 +408,12 @@ Class WPOA {
 	function wpoa_qvar_triggers($vars) {
 		$vars[] = 'connect';
 		$vars[] = 'code';
+    $vars[] = 'oauth_token';
 		$vars[] = 'error_description';
 		$vars[] = 'error_message';
 		return $vars;
 	}
-	
+
 	// handle the querystring triggers:
 	function wpoa_qvar_handlers() {
 		if (get_query_var('connect')) {
@@ -374,12 +424,16 @@ Class WPOA {
 			$provider = $_SESSION['WPOA']['PROVIDER'];
 			$this->wpoa_include_connector($provider);
 		}
+    elseif (get_query_var('oauth_token')) {
+			$provider = 'twitter';
+			$this->wpoa_include_connector($provider);
+		}
 		elseif (get_query_var('error_description') || get_query_var('error_message')) {
 			$provider = $_SESSION['WPOA']['PROVIDER'];
 			$this->wpoa_include_connector($provider);
 		}
 	}
-	
+
 	// load the provider script that is being requested by the user or being called back after authentication:
 	function wpoa_include_connector($provider) {
 		// normalize the provider name (no caps, no spaces):
@@ -387,9 +441,9 @@ Class WPOA {
 		$provider = str_replace(" ", "", $provider);
 		$provider = str_replace(".", "", $provider);
 		// include the provider script:
-		include 'login-' . $provider . '.php';
+		include 'login/login-' . $provider . '.php';
 	}
-	
+
 	// =======================
 	// LOGIN / LOGOUT HANDLING
 	// =======================
@@ -411,10 +465,9 @@ Class WPOA {
       // attempt to get a wordpress user with the matched id:
   		$user = get_user_by('id', $query_result);
     }
-
 		return $user;
 	}
-	
+
 	// login (or register and login) a wordpress user based on their oauth identity:
 	function wpoa_login_user($oauth_identity) {
 		// store the user info in the user session so we can grab it later if we need to register the user:
@@ -427,7 +480,7 @@ Class WPOA {
 			 if ($matched_user->caps['administrator']) {
 				$this->wpoa_end_login("You are an admin, please sign in using native login.");
 		  	 }
-			
+
 			// there was a matching wordpress user account, log it in now:
 			$user_id = $matched_user->ID;
 			$user_login = $matched_user->user_login;
@@ -455,7 +508,7 @@ Class WPOA {
 		// we shouldn't be here, but just in case...
 		$this->wpoa_end_login("Sorry, we couldn't log you in. The login flow terminated in an unexpected way. Please notify the admin or try again later.");
 	}
-	
+
 	// ends the login request by clearing the login state and redirecting the user to the desired page:
 	function wpoa_end_login($msg) {
 		$last_url = $_SESSION["WPOA"]["LAST_URL"];
@@ -488,7 +541,7 @@ Class WPOA {
 		wp_safe_redirect($redirect_url);
 		die();
 	}
-	
+
 	// logout the wordpress user:
 	// TODO: this is usually called from a custom logout button, but we could have the button call /wp-logout.php?action=logout for more consistency...
 	function wpoa_logout_user() {
@@ -497,7 +550,7 @@ Class WPOA {
 		session_destroy(); 	// destroy the php user session
 		wp_logout(); 		// logout the wordpress user...this gets hooked and diverted to wpoa_end_logout() for final handling
 	}
-	
+
 	// ends the logout request by redirecting the user to the desired page:
 	function wpoa_end_logout() {
 		$_SESSION["WPOA"]["RESULT"] = 'Logged out successfully.';
@@ -539,7 +592,7 @@ Class WPOA {
 		wp_safe_redirect($redirect_url);
 		die();
 	}
-	
+
 	// links a third-party account to an existing wordpress user account:
 	function wpoa_link_account($user_id) {
 		if ($_SESSION['WPOA']['USER_ID'] != '') {
@@ -570,7 +623,7 @@ Class WPOA {
 		// wp-ajax requires death:
 		die();
 	}
-	
+
 	// pushes login messages into the dom where they can be extracted by javascript:
 	function wpoa_push_login_messages() {
 		if (isset($_SESSION['WPOA']['RESULT'])) {
@@ -579,7 +632,7 @@ Class WPOA {
 		}
 		$_SESSION['WPOA']['RESULT'] = '';
 	}
-	
+
 	// clears the login state:
 	function wpoa_clear_login_state() {
 		unset($_SESSION["WPOA"]["USER_ID"]);
@@ -589,7 +642,7 @@ Class WPOA {
 		unset($_SESSION["WPOA"]["EXPIRES_AT"]);
 		//unset($_SESSION["WPOA"]["LAST_URL"]);
 	}
-	
+
 	// ===================================
 	// DEFAULT LOGIN SCREEN CUSTOMIZATIONS
 	// ===================================
@@ -598,7 +651,7 @@ Class WPOA {
 	function wpoa_logo_link() {
 		return get_bloginfo('url');
 	}
-	
+
 	// show a custom login form on the default login screen:
 	function wpoa_customize_login_screen() {
 		$html = "";
@@ -613,7 +666,7 @@ Class WPOA {
 	// ===================================
 	// DEFAULT COMMENT FORM CUSTOMIZATIONS
 	// ===================================
-	
+
 	// show a custom login form at the top of the default comment form:
 	function wpoa_customize_comment_form_fields($fields) {
 		$html = "";
@@ -625,7 +678,7 @@ Class WPOA {
 		}
 		return $fields;
 	}
-	
+
 	// show a custom login form at the top of the default comment form:
 	function wpoa_customize_comment_form() {
 		$html = "";
@@ -640,7 +693,7 @@ Class WPOA {
 	// =========================
 	// LOGIN / LOGOUT COMPONENTS
 	// =========================
-	
+
 	// shortcode which allows adding the wpoa login form to any post or page:
 	function wpoa_login_form( $atts ){
 		$a = shortcode_atts( array(
@@ -665,7 +718,7 @@ Class WPOA {
 		$html = $this->wpoa_login_form_content($a['design'], $a['icon_set'], $a['layout'], $a['button_prefix'], $a['align'], $a['show_login'], $a['show_logout'], $a['logged_out_title'], $a['logged_in_title'], $a['logging_in_title'], $a['logging_out_title'], $a['style'], $a['class']);
 		return $html;
 	}
-	
+
 	// gets the content to be used for displaying the login/logout form:
 	function wpoa_login_form_content($design = '', $icon_set = 'icon_set', $layout = 'links-column', $button_prefix = '', $align = 'left', $show_login = 'conditional', $show_logout = 'conditional', $logged_out_title = 'Please login:', $logged_in_title = 'You are already logged in.', $logging_in_title = 'Logging in...', $logging_out_title = 'Logging out...', $style = '', $class = '') { // even though wpoa_login_form() will pass a default, we might call this function from another method so it's important to re-specify the default values
 		// if a design was specified and that design exists, load the shortcode attributes from that design:
@@ -714,7 +767,7 @@ Class WPOA {
 		$html .= "</div>";
 		return $html;
 	}
-	
+
 	// generate and return the login buttons, depending on available providers:
 	function wpoa_login_buttons($icon_set, $button_prefix) {
 		// generate the atts once (cache them), so we can use it for all buttons without computing them each time:
@@ -737,13 +790,9 @@ Class WPOA {
 		$html .= $this->wpoa_login_button("google", "Google", $atts);
 		$html .= $this->wpoa_login_button("facebook", "Facebook", $atts);
 		$html .= $this->wpoa_login_button("linkedin", "LinkedIn", $atts);
-		$html .= $this->wpoa_login_button("github", "GitHub", $atts);
-		$html .= $this->wpoa_login_button("itembase", "itembase", $atts);
-		$html .= $this->wpoa_login_button("reddit", "Reddit", $atts);
-		$html .= $this->wpoa_login_button("windowslive", "Windows Live", $atts);
-		$html .= $this->wpoa_login_button("paypal", "PayPal", $atts);
-		$html .= $this->wpoa_login_button("instagram", "Instagram", $atts);
-		$html .= $this->wpoa_login_button("battlenet", "Battlenet", $atts);
+		$html .= $this->wpoa_login_button("github", "Github", $atts);
+    $html .= $this->wpoa_login_button("twitter", "Twitter", $atts);
+    $html .= $this->wpoa_login_button("slack", "Slack", $atts);
 		$html .= $this->wpoa_login_button( 'oauth_server' , get_option( 'wpoa_oauth_server_api_button_text' ), $atts );
 		if ($html == '') {
 			$html .= 'Sorry, no login providers have been enabled.';
@@ -764,7 +813,7 @@ Class WPOA {
 		}
 		return $html;
 	}
-	
+
 	// output the custom login form design selector:
 	function wpoa_login_form_designs_selector($id = '', $master = false) {
 		$html = "";
@@ -788,7 +837,7 @@ Class WPOA {
 		}
 		return $html;
 	}
-	
+
 	// returns a saved login form design as a shortcode atts string or array for direct use via the shortcode
 	function wpoa_get_login_form_design($design_name, $as_string = false) {
 		$designs_json = get_option('wpoa_login_form_designs');
@@ -811,7 +860,7 @@ Class WPOA {
 		}
 		return $atts;
 	}
-	
+
 	function wpoa_login_form_design_exists($design_name) {
 		$designs_json = get_option('wpoa_login_form_designs');
 		$designs_array = json_decode($designs_json, true);
@@ -828,7 +877,7 @@ Class WPOA {
 			return false;
 		}
 	}
-	
+
 	// shows the user's linked providers, used on the 'Your Profile' page:
 	function wpoa_linked_accounts() {
 		// get the current user:
@@ -876,18 +925,18 @@ Class WPOA {
 		echo "</td>";
 		echo "</table>";
 	}
-	
+
 	// ====================
 	// PLUGIN SETTINGS PAGE
 	// ====================
-	
+
 	// registers all settings that have been defined at the top of the plugin:
 	function wpoa_register_settings() {
 		foreach ($this->settings as $setting_name => $default_value) {
 			register_setting('wpoa_settings', $setting_name);
 		}
 	}
-	
+
 	// add the main settings page:
 	function wpoa_settings_page() {
 		add_options_page( 'WP-OAuth Options', 'WP-OAuth', 'manage_options', 'WP-OAuth', array($this, 'wpoa_settings_page_content') );

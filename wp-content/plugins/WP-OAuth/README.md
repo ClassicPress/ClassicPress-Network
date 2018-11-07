@@ -1,5 +1,25 @@
+SSO Plugin being used on ClassicPress.net
+
+Forked from WP-OAuth by [Perry Butler](http://github.com/perrybutler/wp-oauth)
+
+
+Roadmap
+-------
+* ~~Full compabitility with WordPress Multisite, BuddyPress, bbpress.~~ Completed
+* Icon sets for the login provider buttons.
+* ~~Ability to acquire a registering user's third-party username / nickname / email address and auto-populate the WordPress user profile. Works as an alternative to the userXX naming pattern.~~ Completed
+* ~~Advanced options for account merging.~~ Completed
+* Advanced options for account recovery.
+* More custom login forms, layouts and login screen customization options.
+* Allow users to set what fields get auto-populated.
+* Ability to set scope. **Started**
+
+
+---
+
 WP-OAuth
-========
+---
+
 
 ***NEWS MAY 2015: I'd like to apologize to the contributors here for being unable to accept pull requests in a timely manner. I did not expect to be receiving so many so early on :) Just wanted to let everyone know that this project hasn't been abandoned, I'm still here and will be addressing pull requests + issues in due time. Thanks for understanding.***
 

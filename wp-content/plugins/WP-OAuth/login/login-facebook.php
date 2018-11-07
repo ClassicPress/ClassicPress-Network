@@ -12,10 +12,10 @@ define('CLIENT_ENABLED', get_option('wpoa_facebook_api_enabled'));
 define('CLIENT_ID', get_option('wpoa_facebook_api_id'));
 define('CLIENT_SECRET', get_option('wpoa_facebook_api_secret'));
 define('REDIRECT_URI', rtrim(site_url(), '/') . '/');
-define('SCOPE', 'email'); // PROVIDER SPECIFIC: 'email' is the minimum scope required to get the user's id from Facebook
+define('SCOPE', get_option('wpoa_facebook_api_scope')); // PROVIDER SPECIFIC: 'email' is the minimum scope required to get the user's id from Facebook
 define('URL_AUTH', "https://www.facebook.com/dialog/oauth?");
 define('URL_TOKEN', "https://graph.facebook.com/oauth/access_token?");
-define('URL_USER', "https://graph.facebook.com/me?");
+define('URL_USER', "https://graph.facebook.com/me?fields=email");
 # END OF DEFINE THE OAUTH PROVIDER AND SETTINGS TO USE #
 
 // remember the user's last url so we can redirect them back to there after the login ends:
@@ -147,10 +147,9 @@ function get_oauth_identity($wpoa) {
 	// perform the http request:
 	switch (strtolower(HTTP_UTIL)) {
 		case 'curl':
-			$url = URL_USER . $url_params; // TODO: we probably want to send this using a curl_setopt...
+			$url = URL_USER . "&" . $url_params; // TODO: we probably want to send this using a curl_setopt...
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, $url);
-			// PROVIDER NORMALIZATION: Reddit/Github requires a User-Agent here...
 			// PROVIDER NORMALIZATION: Reddit requires that we send the access token via a bearer header...
 			//curl_setopt($curl, CURLOPT_HTTPHEADER, array('x-li-format: json')); // PROVIDER SPECIFIC: I think this is only for LinkedIn...
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);

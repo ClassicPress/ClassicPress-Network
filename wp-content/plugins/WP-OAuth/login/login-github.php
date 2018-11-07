@@ -4,18 +4,18 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-
+//read:user user:email
 # DEFINE THE OAUTH PROVIDER AND SETTINGS TO USE #
-$_SESSION['WPOA']['PROVIDER'] = 'Reddit';
+$_SESSION['WPOA']['PROVIDER'] = 'Github';
 define('HTTP_UTIL', get_option('wpoa_http_util'));
-define('CLIENT_ENABLED', get_option('wpoa_reddit_api_enabled'));
-define('CLIENT_ID', get_option('wpoa_reddit_api_id'));
-define('CLIENT_SECRET', get_option('wpoa_reddit_api_secret'));
-define('REDIRECT_URI', rtrim(site_url(), '/') . '/');
-define('SCOPE', 'identity'); // PROVIDER SPECIFIC: 'identity' is the minimum scope required to get the user's id from Reddit
-define('URL_AUTH', "https://ssl.reddit.com/api/v1/authorize?");
-define('URL_TOKEN', "https://ssl.reddit.com/api/v1/access_token?");
-define('URL_USER', "https://oauth.reddit.com/api/v1/me?");
+define('CLIENT_ENABLED', get_option('wpoa_github_api_enabled'));
+define('CLIENT_ID', get_option('wpoa_github_api_id'));
+define('CLIENT_SECRET', get_option('wpoa_github_api_secret'));
+define('REDIRECT_URI', get_home_url() . "/");
+define('SCOPE', get_option('wpoa_github_api_scope')); // PROVIDER SPECIFIC: see https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/
+define('URL_AUTH', "https://github.com/login/oauth/authorize?");
+define('URL_TOKEN', "https://github.com/login/oauth/access_token?");
+define('URL_USER', "https://api.github.com/user?");
 # END OF DEFINE THE OAUTH PROVIDER AND SETTINGS TO USE #
 
 // remember the user's last url so we can redirect them back to there after the login ends:
@@ -97,14 +97,14 @@ function get_oauth_token($wpoa) {
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($curl, CURLOPT_POST, 1);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
-			curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']); // PROVIDER SPECIFIC: Reddit requires a User-Agent
-			curl_setopt($curl, CURLOPT_USERPWD, CLIENT_ID . ":" . CLIENT_SECRET); // PROVIDER SPECIFIC: Reddit requires basic authentication with this request
+			// PROVIDER NORMALIZATION: Reddit requires sending a User-Agent header...
+			// PROVIDER NORMALIZATION: Reddit requires sending the client id/secret via http basic authentication
 			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, (get_option('wpoa_http_util_verify_ssl') == 1 ? 1 : 0));
 			curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, (get_option('wpoa_http_util_verify_ssl') == 1 ? 2 : 0));
 			$result = curl_exec($curl);
 			break;
 		case 'stream-context':
-			$url = $wpoa->wpoa_add_basic_auth(rtrim(URL_TOKEN, "?"), CLIENT_ID, CLIENT_SECRET); // PROVIDER SPECIFIC: Reddit requires basic authentication with the request
+			$url = rtrim(URL_TOKEN, "?");
 			$opts = array('http' =>
 				array(
 					'method'  => 'POST',
@@ -120,19 +120,19 @@ function get_oauth_token($wpoa) {
 			break;
 	}
 	// parse the result:
-	$result_obj = json_decode($result, true); // PROVIDER SPECIFIC: Reddit encodes the access token result as json by default
-	$access_token = $result_obj['access_token']; // PROVIDER SPECIFIC: this is how Reddit returns the access token KEEP THIS PROTECTED!
-	$expires_in = $result_obj['expires_in']; // PROVIDER SPECIFIC: this is how Reddit returns the access token's expiration
-	$expires_at = time() + $expires_in;
+	parse_str($result, $result_obj); // PROVIDER SPECIFIC: Github encodes the access token result as a querystring by default
+	$access_token = $result_obj['access_token']; // PROVIDER SPECIFIC: this is how Github returns the access token KEEP THIS PROTECTED!
+	//$expires_in = $result_obj['expires_in']; // PROVIDER SPECIFIC: Github does not return an access token expiration!
+	//$expires_at = time() + $expires_in; // PROVIDER SPECIFIC: Github does not return an access token expiration!
 	// handle the result:
-	if (!$access_token || !$expires_in) {
+	if (!$access_token) {
 		// malformed access token result detected:
 		$wpoa->wpoa_end_login("Sorry, we couldn't log you in. Malformed access token result detected. Please notify the admin or try again later.");
 	}
 	else {
 		$_SESSION['WPOA']['ACCESS_TOKEN'] = $access_token;
-		$_SESSION['WPOA']['EXPIRES_IN'] = $expires_in;
-		$_SESSION['WPOA']['EXPIRES_AT'] = $expires_at;
+		//$_SESSION['WPOA']['EXPIRES_IN'] = $expires_in; // PROVIDER SPECIFIC: Github does not return an access token expiration!
+		//$_SESSION['WPOA']['EXPIRES_AT'] = $expires_at; // PROVIDER SPECIFIC: Github does not return an access token expiration!
 		return true;
 	}
 }
@@ -141,18 +141,18 @@ function get_oauth_identity($wpoa) {
 	// here we exchange the access token for the user info...
 	// set the access token param:
 	$params = array(
-		'access_token' => $_SESSION['WPOA']['ACCESS_TOKEN'], // PROVIDER SPECIFIC: the access token is passed to Reddit using this key name
+		'access_token' => $_SESSION['WPOA']['ACCESS_TOKEN'], // PROVIDER SPECIFIC: the access token is passed to Github using this key name
 	);
 	$url_params = http_build_query($params);
 	// perform the http request:
 	switch (strtolower(HTTP_UTIL)) {
 		case 'curl':
-			$url = rtrim(URL_USER, "?");
+			$url = URL_USER . $url_params; // TODO: we probably want to send this using a curl_setopt...
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, $url);
-			curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']); // PROVIDER SPECIFIC: Reddit requires a User-Agent
-			curl_setopt($curl, CURLOPT_HTTPHEADER, array("Authorization: bearer " . $_SESSION['WPOA']['ACCESS_TOKEN'])); // PROVIDER SPECIFIC: the access token must be sent to Reddit as a bearer header
-			// PROVIDER NORMALIZATION: LinkedIn requires an x-li-format: json header...
+			curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']); // PROVIDER SPECIFIC: Github requires the useragent for all api requests
+			// PROVIDER NORMALIZATION: Reddit requires that we send the access token via a bearer header...
+			//curl_setopt($curl, CURLOPT_HTTPHEADER, array('x-li-format: json')); // PROVIDER SPECIFIC: I think this is only for LinkedIn...
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$result = curl_exec($curl);
 			$result_obj = json_decode($result, true);
@@ -161,9 +161,9 @@ function get_oauth_identity($wpoa) {
 			$url = rtrim(URL_USER, "?");
 			$opts = array('http' =>
 				array(
-					'method'  => 'GET',
-					'user_agent' => $_SERVER['HTTP_USER_AGENT'], // PROVIDER SPECIFIC: Reddit requires a User-Agent
-					'header'  => "Authorization: bearer " . $_SESSION['WPOA']['ACCESS_TOKEN'], // PROVIDER SPECIFIC: the access token must be sent to Reddit as a bearer header
+					'method' => 'GET',
+					'user_agent' => $_SERVER['HTTP_USER_AGENT'], // PROVIDER NOTE: Github requires the useragent for all api requests
+					'header'  => "Authorization: token " . $_SESSION['WPOA']['ACCESS_TOKEN'],
 				)
 			);
 			$context = $context  = stream_context_create($opts);
@@ -177,8 +177,9 @@ function get_oauth_identity($wpoa) {
 	// parse and return the user's oauth identity:
 	$oauth_identity = array();
 	$oauth_identity['provider'] = $_SESSION['WPOA']['PROVIDER'];
-	$oauth_identity['id'] = $result_obj['id']; // PROVIDER SPECIFIC: this is how Reddit returns the user's unique id
-	//$oauth_identity['email'] = 'not_provided'; // PROVIDER SPECIFIC: Reddit never provides the user's email!
+	$oauth_identity['id'] = $result_obj['id']; // PROVIDER SPECIFIC: this is how Github returns the user's unique id
+	$oauth_identity['email'] = $result_obj['email']; //PROVIDER SPECIFIC: this is how Github returns the email address
+  $oauth_identity['login'] = $result_obj['login']; //PROVIDER SPECIFIC: this is how Github returns the login
 	if (!$oauth_identity['id']) {
 		$wpoa->wpoa_end_login("Sorry, we couldn't log you in. User identity was not found. Please notify the admin or try again later.");
 	}

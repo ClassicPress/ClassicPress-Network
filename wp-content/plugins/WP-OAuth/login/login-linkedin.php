@@ -6,16 +6,16 @@ if (!isset($_SESSION)) {
 }
 
 # DEFINE THE OAUTH PROVIDER AND SETTINGS TO USE #
-$_SESSION['WPOA']['PROVIDER'] = 'Battle.net';
+$_SESSION['WPOA']['PROVIDER'] = 'LinkedIn';
 define('HTTP_UTIL', get_option('wpoa_http_util'));
-define('CLIENT_ENABLED', get_option('wpoa_battlenet_api_enabled'));
-define('CLIENT_ID', get_option('wpoa_battlenet_api_id'));
-define('CLIENT_SECRET', get_option('wpoa_battlenet_api_secret'));
-define('REDIRECT_URI', rtrim(site_url('', 'https'), '/') . '/'); // PROVIDER SPECIFIC: Battle.net requires HTTPS
-define('SCOPE', ''); // PROVIDER SPECIFIC: Battle.net states that an empty scope will give us the user account ID
-define('URL_AUTH', "https://us.battle.net/oauth/authorize?");
-define('URL_TOKEN', "https://us.battle.net/oauth/token?");
-define('URL_USER', "https://us.api.battle.net/account/user/id?");
+define('CLIENT_ENABLED', get_option('wpoa_linkedin_api_enabled'));
+define('CLIENT_ID', get_option('wpoa_linkedin_api_id'));
+define('CLIENT_SECRET', get_option('wpoa_linkedin_api_secret'));
+define('REDIRECT_URI', rtrim(site_url(), '/') . '/');
+define('SCOPE', get_option('wpoa_linkedin_api_scope')); // PROVIDER SPECIFIC: 'r_basicprofile' is the minimum scope required to get the user's id from LinkedIn
+define('URL_AUTH', "https://www.linkedin.com/uas/oauth2/authorization?");
+define('URL_TOKEN', "https://www.linkedin.com/uas/oauth2/accessToken?");
+define('URL_USER', "https://api.linkedin.com/v1/people/~:(id,email-address)?");
 # END OF DEFINE THE OAUTH PROVIDER AND SETTINGS TO USE #
 
 // remember the user's last url so we can redirect them back to there after the login ends:
@@ -106,8 +106,8 @@ function get_oauth_token($wpoa) {
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($curl, CURLOPT_POST, 1);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
-			// PROVIDER NORMALIZATION: PayPal requires Accept and Accept-Language headers, Reddit requires sending a User-Agent header
-			// PROVIDER NORMALIZATION: PayPal/Reddit requires sending the client id/secret via http basic authentication
+			// PROVIDER NORMALIZATION: Reddit requires sending a User-Agent header...
+			// PROVIDER NORMALIZATION: Reddit requires sending the client id/secret via http basic authentication
 			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, (get_option('wpoa_http_util_verify_ssl') == 1 ? 1 : 0));
 			curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, (get_option('wpoa_http_util_verify_ssl') == 1 ? 2 : 0));
 			$result = curl_exec($curl);
@@ -129,9 +129,9 @@ function get_oauth_token($wpoa) {
 			break;
 	}
 	// parse the result:
-	$result_obj = json_decode($result, true); // PROVIDER SPECIFIC: Google encodes the access token result as json by default
-	$access_token = $result_obj['access_token']; // PROVIDER SPECIFIC: this is how Google returns the access token KEEP THIS PROTECTED!
-	$expires_in = $result_obj['expires_in']; // PROVIDER SPECIFIC: this is how Google returns the access token's expiration
+	$result_obj = json_decode($result, true); // PROVIDER SPECIFIC: LinkedIn encodes the access token result as json by default
+	$access_token = $result_obj['access_token']; // PROVIDER SPECIFIC: this is how LinkedIn returns the access token KEEP THIS PROTECTED!
+	$expires_in = $result_obj['expires_in']; // PROVIDER SPECIFIC: this is how LinkedIn returns the access token's expiration
 	$expires_at = time() + $expires_in;
 	// handle the result:
 	if (!$access_token || !$expires_in) {
@@ -150,7 +150,7 @@ function get_oauth_identity($wpoa) {
 	// here we exchange the access token for the user info...
 	// set the access token param:
 	$params = array(
-		'access_token' => $_SESSION['WPOA']['ACCESS_TOKEN'], // PROVIDER SPECIFIC: the access_token is passed to Google via POST param
+		'oauth2_access_token' => $_SESSION['WPOA']['ACCESS_TOKEN'], // PROVIDER SPECIFIC: the access token is passed to LinkedIn using this key name
 	);
 	$url_params = http_build_query($params);
 	// perform the http request:
@@ -160,7 +160,7 @@ function get_oauth_identity($wpoa) {
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, $url);
 			// PROVIDER NORMALIZATION: Github/Reddit require a User-Agent here...
-			// PROVIDER NORMALIZATION: PayPal/Reddit require that we send the access token via a bearer header, PayPal also requires a Content-Type: application/json header...
+			curl_setopt($curl, CURLOPT_HTTPHEADER, array('x-li-format: json')); // PROVIDER SPECIFIC: we must specify json or else LinkedIn will encode the result as xml by default // PROVIDER NORMALIZATION: PayPal/Reddit require that we send the access token via a bearer header, PayPal also requires a Content-Type: application/json header...
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			$result = curl_exec($curl);
 			$result_obj = json_decode($result, true);
@@ -170,8 +170,8 @@ function get_oauth_identity($wpoa) {
 			$opts = array('http' =>
 				array(
 					'method'  => 'GET',
-					// PROVIDER NORMALIZATION: Reddit/Github User-Agent
-					'header'  => "Authorization: Bearer " . $_SESSION['WPOA']['ACCESS_TOKEN'] . "\r\n" . "x-li-format: json\r\n", // PROVIDER SPECIFIC: i think only LinkedIn uses x-li-format...
+					// PROVIDER NORMALIZATION: Reddit/Github requires User-Agent here...
+					'header'  => "Authorization: Bearer " . $_SESSION['WPOA']['ACCESS_TOKEN'] . "\r\n" . "x-li-format: json\r\n", // PROVIDER SPECIFIC: we must specify json or else LinkedIn will encode the result as xml by default
 				)
 			);
 			$context = $context  = stream_context_create($opts);
@@ -185,8 +185,8 @@ function get_oauth_identity($wpoa) {
 	// parse and return the user's oauth identity:
 	$oauth_identity = array();
 	$oauth_identity['provider'] = $_SESSION['WPOA']['PROVIDER'];
-	$oauth_identity['id'] = $result_obj['id']; // PROVIDER SPECIFIC: Google returns the user's OAuth identity as id
-	//$oauth_identity['email'] = $result_obj['emails'][0]['value']; // PROVIDER SPECIFIC: Google returns an array of email addresses. To respect privacy we currently don't collect the user's email address.
+	$oauth_identity['id'] = $result_obj['id']; // PROVIDER SPECIFIC: this is how LinkedIn returns the user's unique id
+	//$oauth_identity['email'] = $result_obj['emailAddress']; //PROVIDER SPECIFIC: this is how LinkedIn returns the email address
 	if (!$oauth_identity['id']) {
 		$wpoa->wpoa_end_login("Sorry, we couldn't log you in. User identity was not found. Please notify the admin or try again later.");
 	}
