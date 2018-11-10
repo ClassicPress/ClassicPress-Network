@@ -31,6 +31,9 @@ $cpnet_redirects = [
 
 		'/article/classicpress-a-hard-fork-of-wordpress-without-gutenberg/'
 		=> '/2018/08/20/classicpress-a-fork-of-wordpress-without-gutenberg/',
+
+		'/blog/2018/08/28/wordpress-gutenberg%E2%80%8A-%E2%80%8Athe-500-million-cost-to-business/'
+		 => '/blog/2018/08/28/wordpress-gutenberg-the-500-million-cost-to-business/',
 	],
 ];
 function cpnet_process_redirects() {
