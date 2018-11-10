@@ -14,11 +14,6 @@ cd ClassicPress-Network
 2. Get a database dump and install it.  For now, you'll need to ask a site
    administrator for help with this.
 
-   _Note: Usually when preparing a multisite installation for local
-   development, you'll update the site URLs via `wp search-replace`.  **DO
-   NOT** do that here, it is handled for you in the site's code when you set
-   `WP_DEBUG=true`!_
-
 3. If you're working on the main site, you'll need to grab a copy of the
    `elementor-pro` plugin (for now, until we can remove it).  Ask a site
    administrator for help with this.
@@ -40,15 +35,26 @@ cd ClassicPress-Network
 127.0.0.1 translate.classicpress.local
 ```
 
-7. Run a development server on PHP 7.0 or greater:
+7. If you have
+   [WP-CLI](https://wp-cli.org/)
+   installed locally, which we highly recommend, you can replace the multisite
+   installation URLs in the database to fix some issues across the site:
+
+```
+for i in www translate docs; do
+   wp search-replace --network $i.classicpress.net $i.classicpress.local:8000
+done
+# if you are not using https locally:
+wp search-replace --network https: http:
+```
+
+8. Run a development server on PHP 7.0 or greater:
 
 ```
 php -S classicpress.local:8000
 ```
 
-8. If you have
-   [WP-CLI](https://wp-cli.org/) installed locally, which we highly recommend,
-   you can add yourself as a local, administrative user:
+9. Add yourself as a local, administrative user (also requires WP-CLI):
 
 ```
 bin/add-local-user.sh
@@ -56,5 +62,5 @@ bin/add-local-user.sh
 bin/add-local-user.sh mylocaluser mylocalpass
 ```
 
-9. Log in and use/develop the site!  Please submit issues or changes back to
-   this repository.
+10. Log in and use/develop the site!  Please submit issues or changes back to
+    this repository.

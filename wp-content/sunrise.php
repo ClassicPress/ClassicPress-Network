@@ -62,15 +62,33 @@ function cpnet_override_get_site( $site, $domain, $path, $segments, $paths ) {
 	}
 
 	$subdomain = $matches[1];
+	$GLOBALS['_cpnet_override_subdomain'] = $subdomain;
 	// Sites are stored in the database as `subdomain.classicpress.net`.
+	// or e.g. `subdomain.classicpress.local`.  Since we can't directly set the
+	// `domain` constraint we want (e.g. `LIKE 'www.%'`), use a filter there.
+	add_filter( 'sites_clauses', 'cpnet_override_sites_clauses' );
 	$sites = get_sites( array(
-		'domain' => $subdomain . '.classicpress.net',
 		'path'   => '/',
 		'number' => 1,
 	) );
+	remove_filter( 'sites_clauses', 'cpnet_override_sites_clauses' );
+	unset( $GLOBALS['_cpnet_override_subdomain'] );
 	return $sites[0] ?? false;
 }
 add_filter( 'pre_get_site_by_path', 'cpnet_override_get_site', 10, 5 );
+
+/**
+ * Add a `domain LIKE ...` clause to the `get_sites()` query.
+ *
+ * @param array         $pieces A compacted array of site query clauses.
+ * @param WP_Site_Query $this   Current instance of WP_Site_Query (passed by reference).
+ *
+ * @return Modified SQL clauses array.
+ */
+function cpnet_override_sites_clauses( $clauses ) {
+	$clauses['where'] .= "AND domain LIKE '$GLOBALS[_cpnet_override_subdomain]%'";
+	return $clauses;
+}
 
 /**
  * Overrides `site_url()` and `get_site_url()` for local development.
