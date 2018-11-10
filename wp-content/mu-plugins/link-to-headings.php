@@ -14,10 +14,10 @@ function cpnet_maybe_link_to_headings() {
 add_action( 'wp', 'cpnet_maybe_link_to_headings' );
 
 function cpnet_link_to_headings( $content ) {
-	error_log( $content );
-	return preg_replace_callback(
+	$sections = [];
+	$content = preg_replace_callback(
 		'#<(h[1-3])([^>]*)>([^<>]+)(</h*[1-3][^>]*>)#',
-		function( $matches ) {
+		function( $matches ) use ( &$sections ) {
 			$tag = $matches[1];
 			$open_extra = $matches[2];
 			$content = $matches[3];
@@ -37,6 +37,11 @@ function cpnet_link_to_headings( $content ) {
 				$slug = $parts[1];
 				$add_id = '';
 			}
+			$sections[] = [
+				'level'   => intval( substr( $tag, 1 ) ),
+				'slug'    => $slug,
+				'content' => wp_strip_all_tags( $content ),
+			];
 			return (
 				'<' . $tag . $add_id . ' ' . trim( $open_extra ) . '>'
 					. $content
@@ -49,4 +54,31 @@ function cpnet_link_to_headings( $content ) {
 		},
 		$content
 	);
+
+	if ( count( $sections ) >= 3 ) {
+		// Display a small table of contents at the top of the post
+		echo '<div class="cpnet-toc">';
+		echo 'Contents:';
+		$level = 1;
+		foreach ( $sections as $section ) {
+			while ( $level < $section['level'] ) {
+				echo '<ul>';
+				$level++;
+			}
+			while ( $level > $section['level'] ) {
+				echo '</ul>';
+				$level--;
+			}
+			echo '<li><a href="#' . $section['slug'] . '">'
+				. $section['content']
+				. '</a></li>';
+		}
+		while ( $level > 1 ) {
+			echo '</ul>';
+			$level--;
+		}
+		echo '</div>';
+	}
+
+	return $content;
 }

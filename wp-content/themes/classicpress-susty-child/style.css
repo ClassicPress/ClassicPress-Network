@@ -90,6 +90,11 @@ table.cp-file-list .cp-file-size {
 	padding-right: 1em;
 }
 
+.cpnet-toc > ul {
+	margin-bottom: 2em;
+	margin-top: 0.2em;
+}
+
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute !important;
