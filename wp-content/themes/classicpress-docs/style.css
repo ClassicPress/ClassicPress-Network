@@ -1,0 +1,126 @@
+/*!
+Theme Name: ClassicPress Docs
+Theme URI: https://docs.classicpress.net
+Author: ClassicPress
+Author URI: https://www.classicpress.net
+Template: susty-master
+Description: A theme for WordPress focused on performance and sustainability.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: susty
+Tags:
+
+This child theme is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+header#masthead {
+	margin: 0 0 45px 0;
+	max-width: unset;
+	padding: 45px;
+
+	/* Permalink - use to edit and share this gradient:
+	 * http://colorzilla.com/gradient-editor/#3ebca6+18,057f99+50,006b81+100
+	 */
+	/* Old browsers */
+	background: #3ebca6;
+	/* FF3.6-15 */
+	background: -moz-linear-gradient(-135deg, #3ebca6 18%, #057f99 50%, #006b81 100%);
+	/* Chrome10-25,Safari5.1-6 */
+	background: -webkit-linear-gradient(-135deg, #3ebca6 18%,#057f99 50%,#006b81 100%);
+	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	background: linear-gradient(-135deg, #3ebca6 18%,#057f99 50%,#006b81 100%);
+	/* IE6-9 fallback on horizontal gradient */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ebca6', endColorstr='#006b81',GradientType=1 );
+}
+
+#masthead a {
+	color: #fff;
+}
+
+#content {
+	max-width: 800px;
+	padding: 0 1em 0 1.5em;
+}
+
+#content ul li, #content ol li {
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+}
+
+article a, nav a {
+	background-color: transparent;
+}
+
+#content h1 {
+	font-size: 36px;
+}
+
+table.cp-file-list {
+	max-width: 600px;
+}
+
+table.cp-file-list {
+	border-spacing: 0 6px;
+}
+table.cp-file-list td {
+	padding: 0;
+	margin-bottom: 4px;
+}
+table.cp-file-list tr:hover td {
+	background: #ddd;
+}
+table.cp-file-list .cp-file-preview .cp-file-wrapper {
+	border: 6px solid #eee;
+	background: #ddd;
+	width: 132px;
+	height: 132px;
+}
+table.cp-file-list tr:hover .cp-file-preview .cp-file-wrapper {
+	border-color: #ddd;
+}
+table.cp-file-list .cp-file-preview .cp-file-thumbnail {
+	border: 6px solid #ddd;
+}
+table.cp-file-list .cp-file-name {
+	padding-left: 1em;
+}
+table.cp-file-list .cp-file-size {
+	padding-right: 1em;
+}
+
+.cpnet-toc > ul {
+	margin-bottom: 2em;
+	margin-top: 0.2em;
+}
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+}
+
+
+h1, h2, h3 {
+	position: relative;
+}
+a.cp-heading-link {
+	border-bottom: none;
+	font-weight: normal;
+	font-size: 0.85em;
+	display: block;
+	position: absolute;
+	top: 0.1em;
+	left: -1.2em;
+	color: #057f99;
+}
+@media (max-width: 800px) {
+	a.cp-heading-link {
+		left: -1em;
+	}
+}
+
+a.cp-heading-link:hover {
+	text-decoration: underline;
+	color: #3ebca6;
+}
