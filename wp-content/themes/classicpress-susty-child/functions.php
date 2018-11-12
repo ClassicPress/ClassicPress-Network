@@ -4,7 +4,7 @@
  * Stylesheet version (cache buster)
  */
 function cp_susty_get_asset_version() {
-	return '20181029.2';
+	return '20181111';
 }
 
 /**
@@ -17,7 +17,13 @@ function cp_susty_enqueue_parent_theme_styles() {
 		[],
 		cp_susty_get_asset_version()
 	);
-	wp_enqueue_script( 'menu', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), null, true );
+	wp_enqueue_script(
+		'cp-susty-menu',
+		get_stylesheet_directory_uri() . '/js/scripts.js',
+		[ 'jquery' ],
+		array( 'jquery' ),
+		cp_susty_get_asset_version()
+	);
 
 	# Add menu to first submenu
 	$searchform = '<li class="menu-item">'
@@ -28,7 +34,7 @@ function cp_susty_enqueue_parent_theme_styles() {
 		. '</label>'
 		. '</form>'
 		. '</li>';
-	wp_localize_script( 'menu', 'MENU_ITEM', array(
+	wp_localize_script( 'cp-susty-menu', 'MENU_ITEM', array(
 		'searchform' => $searchform,
 	) );
 
