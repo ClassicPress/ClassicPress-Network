@@ -328,6 +328,8 @@ table.cp-file-list .cp-file-size {
 		line-height: 3.5em;
 	}
 	.menu li a {
+		display: flex;
+		flex-grow: 1;
 		padding: 1.5em;
 	}
 	.menu ul li {
@@ -358,6 +360,7 @@ table.cp-file-list .cp-file-size {
 		content: '';
 		border: 6px solid transparent;
 		border-top: 6px solid #fff;
+		margin-top: 0.65em;
 		margin-left: 8px;
 		display: inline-block;
 		vertical-align: middle;
