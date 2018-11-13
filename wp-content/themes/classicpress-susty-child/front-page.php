@@ -9,11 +9,17 @@ get_header();
 
 <!--- opening <section> tag in header.php template --->
 	<div class="social">
-		<span class="github">
+		<span class="social-icon">
+			<a href="https://www.facebook.com/GetClassicPress/"><img src="<?php echo home_url( '/wp-content/themes/classicpress-susty-child/images/flogo-HexRBG-Wht-58.svg' ); ?>" alt="Facebook" width="32" height="32"></a>
+		</span>	
+		<span class="social-icon">
 			<a href="https://github.com/ClassicPress"><img src="<?php echo home_url( '/wp-content/themes/classicpress-susty-child/images/GitHub-Mark-Light-32px.png' ); ?>" alt="Github"></a>
 		</span>
-		<span class="twitter">
-			<a href="https://twitter.com/GetClassicPress"><img src="<?php echo home_url( '/wp-content/themes/classicpress-susty-child/images/Twitter_Social_Icon_Circle_White.svg' ); ?>" alt="Twitter" width="32" height="32"></a>
+		<span class="social-icon">
+			<a href="https://twitter.com/GetClassicPress"><img src="<?php echo home_url( '/wp-content/themes/classicpress-susty-child/images/Twitter_Social_Icon_Rounded_Square_White.svg' ); ?>" alt="Twitter" width="32" height="32"></a>
+		</span>	
+		<span class="social-icon">
+			<a href="https://www.linkedin.com/company/classicpress/"><img src="<?php echo home_url( '/wp-content/themes/classicpress-susty-child/images/LinkedIn-32px.png' ); ?>" alt="LinkedIn"></a>
 		</span>
 	</div>
 	<div class="home-hero">
@@ -33,7 +39,7 @@ get_header();
 		<div class="home-callout-panel">
 			<h2 class="h3"><?php esc_html_e( 'For Businesses', 'susty' ); ?></h2>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione asperiores perferendis, aliquam quidem, rem illo autem maiores placeat incidunt, natus facilis minima quasi dolor facere asperiores perferendis.</p>
-			<a href="" class="button button-purple"><?php esc_html_e( 'Continue Reading', 'susty' ); ?></a>
+			<a href="#" class="button button-purple"><?php esc_html_e( 'Continue Reading', 'susty' ); ?></a>
 		</div>
 		<div class="home-callout-panel">
 			<h2 class="h3"><?php esc_html_e( 'For Bloggers', 'susty' ); ?></h2>
@@ -92,28 +98,58 @@ get_header();
 	</div>
 	<div class="feature-checks">
 		<div class="feature-check">
-			<h4>Feature Title</h4>
-			<p>Lorem ipsum dolor sit amet, con- sectetur adipiscing elit. Nullam ullamcorper ante ut lectus feu- giat, sed semper diam placerat.</p>
+			<span class="checked-box">
+				<img src="<?php echo home_url( '/wp-content/themes/classicpress-susty-child/images/checked-box.png' ); ?>" alt="Circle with check mark" width="32" height="32">
+			</span>
+			<div class="feature-box">
+				<h4>Feature Title</h4>
+				<p>Lorem ipsum dolor sit amet, con- sectetur adipiscing elit. Nullam ullamcorper ante ut lectus feu- giat, sed semper diam placerat.</p>
+			</div>
 		</div>
 		<div class="feature-check">
-			<h4>Feature Title</h4>
-			<p>Lorem ipsum dolor sit amet, con- sectetur adipiscing elit. Nullam ullamcorper ante ut lectus feu- giat, sed semper diam placerat.</p>
+			<span class="checked-box">
+				<img src="<?php echo home_url( '/wp-content/themes/classicpress-susty-child/images/checked-box.png' ); ?>" alt="Circle with check mark" width="32" height="32">
+			</span>
+			<div class="feature-box">
+				<h4>Feature Title</h4>
+				<p>Lorem ipsum dolor sit amet, con- sectetur adipiscing elit. Nullam ullamcorper ante ut lectus feu- giat, sed semper diam placerat.</p>
+			</div>
 		</div>
 		<div class="feature-check">
-			<h4>Feature Title</h4>
-			<p>Lorem ipsum dolor sit amet, con- sectetur adipiscing elit. Nullam ullamcorper ante ut lectus feu- giat, sed semper diam placerat.</p>
+			<span class="checked-box">
+				<img src="<?php echo home_url( '/wp-content/themes/classicpress-susty-child/images/checked-box.png' ); ?>" alt="Circle with check mark" width="32" height="32">
+			</span>
+			<div class="feature-box">
+				<h4>Feature Title</h4>
+				<p>Lorem ipsum dolor sit amet, con- sectetur adipiscing elit. Nullam ullamcorper ante ut lectus feu- giat, sed semper diam placerat.</p>
+			</div>
 		</div>
 		<div class="feature-check">
-			<h4>Feature Title</h4>
-			<p>Lorem ipsum dolor sit amet, con- sectetur adipiscing elit. Nullam ullamcorper ante ut lectus feu- giat, sed semper diam placerat.</p>
+			<span class="checked-box">
+				<img src="<?php echo home_url( '/wp-content/themes/classicpress-susty-child/images/checked-box.png' ); ?>" alt="Circle with check mark" width="32" height="32">
+			</span>
+			<div class="feature-box">
+				<h4>Feature Title</h4>
+				<p>Lorem ipsum dolor sit amet, con- sectetur adipiscing elit. Nullam ullamcorper ante ut lectus feu- giat, sed semper diam placerat.</p>
+			</div>
 		</div>
 		<div class="feature-check">
-			<h4>Feature Title</h4>
-			<p>Lorem ipsum dolor sit amet, con- sectetur adipiscing elit. Nullam ullamcorper ante ut lectus feu- giat, sed semper diam placerat.</p>
+			<span class="checked-box">
+				<img src="<?php echo home_url( '/wp-content/themes/classicpress-susty-child/images/checked-box.png' ); ?>" alt="Circle with check mark" width="32" height="32">
+			</span>
+			<div class="feature-box">
+				<h4>Feature Title</h4>
+				<p>Lorem ipsum dolor sit amet, con- sectetur adipiscing elit. Nullam ullamcorper ante ut lectus feu- giat, sed semper diam placerat.</p>
+			</div>
 		</div>
 		<div class="feature-check">
-			<h4>Feature Title</h4>
-			<p>Lorem ipsum dolor sit amet, con- sectetur adipiscing elit. Nullam ullamcorper ante ut lectus feu- giat, sed semper diam placerat.</p>
+			<span class="checked-box">
+				<img src="<?php echo home_url( '/wp-content/themes/classicpress-susty-child/images/checked-box.png' ); ?>" alt="Circle with check mark" width="32" height="32">
+			</span>
+			<div class="feature-box">
+				<h4>Feature Title</h4>
+				<p>Lorem ipsum dolor sit amet, con- sectetur adipiscing elit. Nullam ullamcorper ante ut lectus feu- giat, sed semper diam placerat.</p>
+			</div>
 		</div>
 	</div>
 </section>
@@ -127,7 +163,7 @@ get_header();
 			<img src="https://via.placeholder.com/640x240" alt="Placeholder">
 		</figure>
 		<div class="classic-front">
-			<p>Made with ❤ with ClassicPress. © Copyright 2018 ClassicPress. All Rights Reserved.</br>
+			<p>© Copyright 2018 ClassicPress. All Rights Reserved.</br>
 			ClassicPress is a company limited by guarantee with registration number 11549088.</p>
 		</div>
 	</div>

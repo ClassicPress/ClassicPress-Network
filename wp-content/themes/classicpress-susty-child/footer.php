@@ -15,7 +15,7 @@
 		<?php if ( !is_front_page() ) { ?>
 
 			<div class="classic">
-				<p>Made with ❤ with ClassicPress. © Copyright 2018 ClassicPress. All Rights Reserved.</br>
+				<p>© Copyright 2018 ClassicPress. All Rights Reserved.</br>
 				ClassicPress is a company limited by guarantee with registration number 11549088.</p>
 			</div>
 
@@ -25,7 +25,7 @@
 			<a href="<?php echo esc_url( __( 'https://www.classicpress.net', 'susty' ) ); ?>">
 				<?php
 				/* translators: %s: CMS name, i.e. ClassicPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'susty' ), 'ClassicPress' );
+				printf( esc_html__( 'Made with ❤ with %s', 'susty' ), 'ClassicPress' );
 				?>
 			</a>
 			<span> | </span>

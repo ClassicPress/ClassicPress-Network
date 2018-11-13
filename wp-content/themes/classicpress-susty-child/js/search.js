@@ -13,25 +13,22 @@ jQuery(document).ready(function($) {
 					},
 					beforeSend: function(xhr) {
 						xhr.setRequestHeader('X-WP-Nonce', SEARCHCOMPLETE.search_nonce);
-					},
-					// https://stackoverflow.com/questions/9656523/jquery-autocomplete-with-callback-ajax-json
-					success: function(data) {
-						$('#s').attr('autocomplete','on');
-						response($.map(data, function(item) {
-							return {
-								label: item.title,
-								url: item.link
-							};
-						}));
-					},
-					error: function(error) {
-						var r = $.parseJSON(error.responseText);
-						alert(r.message, function() {
-							$('#s').focus();
-							return false;
-						});
 					}
+				}).then(function(data) { // https://stackoverflow.com/questions/9656523/jquery-autocomplete-with-callback-ajax-json
+					$('#s').attr('autocomplete','on');					
+					$('.live-search-error').remove();
+					response($.map(data, function(item) {
+						return {
+							label: item.title,
+							url: item.link
+						};
+					})); // https://stackoverflow.com/questions/25638661/how-to-display-error-messages-jquery-ajax
+				}, function(reason) { // no results
+					$('.live-search-error').remove();
+					$('.ui-menu').hide();
+					$('#s').after('<div class="live-search-error">No matches found</div>');
 				});
+				return false;
 			},
 			select: function(event, ui) {
 				window.location.href = ui.item.url;
@@ -40,7 +37,7 @@ jQuery(document).ready(function($) {
 			minLength: 3,
 			position: {
 				my: 'right top',
-				at: 'right+11 bottom+3'
+				at: 'right+16 bottom+0'
 			}
         });
         return false;

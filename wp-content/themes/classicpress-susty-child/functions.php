@@ -4,7 +4,7 @@
  * Stylesheet version (cache buster)
  */
 function cp_susty_get_asset_version() {
-	return '20181111';
+	return '20181112';
 }
 
 /**
@@ -25,7 +25,7 @@ function cp_susty_enqueue_parent_theme_styles() {
 		cp_susty_get_asset_version()
 	);
 
-	# Add menu to first submenu
+	# Add menu to first submenu or as last menu item on mobile
 	$searchform = '<li class="menu-item">'
 		. '<form role="search" method="get" class="search-form" action="' . home_url( '/' ) . '">'
 		. '<label>'
