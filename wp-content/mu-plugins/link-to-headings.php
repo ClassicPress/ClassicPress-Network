@@ -24,11 +24,11 @@ function cpnet_link_to_headings( $content ) {
 			$close = $matches[4];
 			if ( ! stristr( $matches[0], 'id=' ) ) {
 				// The heading doesn't have an ID yet; add one.
-				$slug = preg_replace(
+				$slug = trim( preg_replace(
 					'#[^a-z0-9]+#',
 					'-',
 					strtolower( $content )
-				);
+				), '-' );
 				$add_id = ' id="' . $slug . '"';
 			} else {
 				// The heading already has an ID; re-use it.
