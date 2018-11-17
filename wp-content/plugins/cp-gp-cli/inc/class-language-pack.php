@@ -269,14 +269,11 @@ class Language_Pack {
 			// Create PO file.
 			$last_modified = $this->build_po_file( $data->gp_project, $gp_locale, $set, $po_file );
 
-// 			if ( is_wp_error( $last_modified ) ) {
-// 				WP_CLI::warning( sprintf( "PO generation for {$wp_locale} failed: %s", $last_modified->get_error_message() ) );
-// 
-// 				// Clean up.
-// 				$this->execute_command( "rm -rf " . self::BUILD_DIR . "/{$data->domain}" );
-// 
-// 				continue;
-// 			}
+			if ( is_wp_error( $last_modified ) ) {
+ 				WP_CLI::warning( sprintf( "PO generation for {$wp_locale} failed: %s", $last_modified->get_error_message() ) );
+
+ 				continue;
+ 			}
 
 			// Create MO file.
 			$result = $this->execute_command( sprintf(
@@ -285,15 +282,12 @@ class Language_Pack {
 				escapeshellarg( $mo_file )
 			) );
 
-// 			if ( is_wp_error( $result ) ) {
-// 				WP_CLI::error_multi_line( $result->get_error_data() );
-// 				WP_CLI::warning( "MO generation for {$wp_locale} failed." );
-// 
-// 				// Clean up.
-// 				$this->execute_command( "rm -rf " . self::BUILD_DIR . "/{$data->domain}" );
-// 
-// 				continue;
-// 			}
+ 			if ( is_wp_error( $result ) ) {
+ 				WP_CLI::error_multi_line( $result->get_error_data() );
+ 				WP_CLI::warning( "MO generation for {$wp_locale} failed." );
+ 
+ 				continue;
+ 			}
 
 			// Create ZIP file.
 			$result = $this->execute_command( sprintf(
@@ -303,15 +297,12 @@ class Language_Pack {
 				escapeshellarg( $mo_file )
 			) );
 
-// 			if ( is_wp_error( $result ) ) {
-// 				WP_CLI::error_multi_line( $result->get_error_data() );
-// 				WP_CLI::warning( "ZIP generation for {$wp_locale} failed." );
-// 
-// 				// Clean up.
-// 				$this->execute_command( "rm -rf " . self::BUILD_DIR . "/{$data->domain}" );
-// 
-// 				continue;
-// 			}
+ 			if ( is_wp_error( $result ) ) {
+ 				WP_CLI::error_multi_line( $result->get_error_data() );
+ 				WP_CLI::warning( "ZIP generation for {$wp_locale} failed." );
+ 
+ 				continue;
+ 			}
 
 			// Create build directories.
 			$result = $this->execute_command( sprintf(
@@ -319,15 +310,12 @@ class Language_Pack {
 				escapeshellarg( $build_directory )
 			) );
 
-// 			if ( is_wp_error( $result ) ) {
-// 				WP_CLI::error_multi_line( $result->get_error_data() );
-// 				WP_CLI::warning( "Creating build directories for {$wp_locale} failed." );
-// 
-// 				// Clean up.
-// 				$this->execute_command( "rm -rf " . self::BUILD_DIR . "/{$data->domain}" );
-// 
-// 				continue;
-// 			}
+ 			if ( is_wp_error( $result ) ) {
+				WP_CLI::error_multi_line( $result->get_error_data() );
+ 				WP_CLI::warning( "Creating build directories for {$wp_locale} failed." );
+ 
+ 				continue;
+ 			}
 
 			// Move ZIP file to build directory.
 			$result = $this->execute_command( sprintf(
@@ -336,27 +324,21 @@ class Language_Pack {
 				escapeshellarg( $build_zip_file )
 			) );
 
-// 			if ( is_wp_error( $result ) ) {
-// 				WP_CLI::error_multi_line( $result->get_error_data() );
-// 				WP_CLI::warning( "Moving ZIP file for {$wp_locale} failed." );
-// 
-// 				// Clean up.
-// 				$this->execute_command( "rm -rf " . self::BUILD_DIR . "/{$data->domain}" );
-// 
-// 				continue;
-// 			}
+ 			if ( is_wp_error( $result ) ) {
+ 				WP_CLI::error_multi_line( $result->get_error_data() );
+ 				WP_CLI::warning( "Moving ZIP file for {$wp_locale} failed." );
+ 
+ 				continue;
+ 			}
 
 			// Insert language pack into database.
 			$result = $this->insert_language_pack( $data->domain, $wp_locale, $last_modified );
 
-// 			if ( is_wp_error( $result ) ) {
-// 				WP_CLI::warning( sprintf( "Language pack for {$wp_locale} failed: %s", $result->get_error_message() ) );
-// 
-// 				// Clean up.
-// 				$this->execute_command( "rm -rf " . self::BUILD_DIR . "/{$data->domain}" );
-// 
-// 				continue;
-// 			}
+ 			if ( is_wp_error( $result ) ) {
+ 				WP_CLI::warning( sprintf( "Language pack for {$wp_locale} failed: %s", $result->get_error_message() ) );
+ 
+ 				continue;
+ 			}
 
 			WP_CLI::success( "Language pack for {$wp_locale} generated." );
 		}
