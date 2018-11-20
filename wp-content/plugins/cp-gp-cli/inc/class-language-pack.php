@@ -169,6 +169,46 @@ class Language_Pack {
 	}
 
 	/**
+	 * Inserts a language pack into database.
+	 *
+	 * @param string $domain   Slug of the theme/plugin.
+	 * @param string $language Language the language pack is for.
+	 * @param string $updated  Last updated.
+	 * @return string|WP_Error 'updated' when language pack was updated, 'inserted' if it's a new
+	 *                         language pack. WP_Error on failure.
+	 */
+	private function insert_language_pack( $domain, $language, $updated ) {
+		global $wpdb;
+
+		$existing = $wpdb->get_var( $wpdb->prepare(
+			'SELECT id FROM language_packs WHERE domain = %s AND language = %s AND updated = %s AND active = 1',
+			$domain,
+			$language,
+			$updated
+		) );
+
+		$now = current_time( 'mysql', 1 );
+		$inserted = $wpdb->insert( 'language_packs', [
+			'domain'        => $domain,
+			'language'      => $language,
+			'updated'       => $updated,
+			'active'        => 1,
+			'date_added'    => $now,
+			'date_modified' => $now,
+		] );
+
+		if ( ! $inserted ) {
+			return new WP_Error( 'language_pack_not_inserted', 'The language pack was not inserted.' );
+		}
+
+		if ( $wpdb->rows_affected ) {
+			return 'updated';
+		} else {
+			return 'inserted';
+		}
+	}
+
+	/**
 	 * Builds a language pack.
 	 *
 	 * @param object $data The data of a language pack.
