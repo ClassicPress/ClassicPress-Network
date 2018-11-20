@@ -11,7 +11,7 @@ class Language_Pack {
      * @return void
     */
     public function __construct() {
-        WP_CLI::add_command( 'glotpress language-pack', array( $this, 'generate' ) );
+        WP_CLI::add_command( 'glotpress language-pack-endpoint', array( $this, 'generate' ) );
     }
 
 	/**
@@ -169,52 +169,13 @@ class Language_Pack {
 	}
 
 	/**
-	 * Inserts a language pack into database.
-	 *
-	 * @param string $domain   Slug of the theme/plugin.
-	 * @param string $language Language the language pack is for.
-	 * @param string $updated  Last updated.
-	 * @return string|WP_Error 'updated' when language pack was updated, 'inserted' if it's a new
-	 *                         language pack. WP_Error on failure.
-	 */
-	private function insert_language_pack( $domain, $language, $updated ) {
-		global $wpdb;
-
-		$existing = $wpdb->get_var( $wpdb->prepare(
-			'SELECT id FROM language_packs WHERE domain = %s AND language = %s AND updated = %s AND active = 1',
-			$domain,
-			$language,
-			$updated
-		) );
-
-		$now = current_time( 'mysql', 1 );
-		$inserted = $wpdb->insert( 'language_packs', [
-			'domain'        => $domain,
-			'language'      => $language,
-			'updated'       => $updated,
-			'active'        => 1,
-			'date_added'    => $now,
-			'date_modified' => $now,
-		] );
-
-		if ( ! $inserted ) {
-			return new WP_Error( 'language_pack_not_inserted', 'The language pack was not inserted.' );
-		}
-
-		if ( $wpdb->rows_affected ) {
-			return 'updated';
-		} else {
-			return 'inserted';
-		}
-	}
-
-	/**
 	 * Builds a language pack.
 	 *
 	 * @param object $data The data of a language pack.
 	 */
 	private function build_language_packs( $data ) {
 		$existing_packs = $this->get_active_language_packs( $data->domain );
+		$endpoint = array();
 
 		foreach ( $data->translation_sets as $set ) {
 			// Get WP locale.
@@ -330,18 +291,22 @@ class Language_Pack {
  
  				continue;
  			}
-
-			// Insert language pack into database.
-			$result = $this->insert_language_pack( $data->domain, $wp_locale, $last_modified );
-
- 			if ( is_wp_error( $result ) ) {
- 				WP_CLI::warning( sprintf( "Language pack for {$wp_locale} failed: %s", $result->get_error_message() ) );
- 
- 				continue;
- 			}
+ 			
+ 			$endpoint['translations'][] = array(
+                'language' => $wp_locale,
+                'version'  => '1.0.0',
+                'package'  => '%%path%%/' . $wp_locale . '.zip',
+                'english_name' => $gp_locale->english_name,
+                'native_name' => $gp_locale->native_name,
+                'iso' => array($gp_locale->lang_code_iso_639_1, $gp_locale->lang_code_iso_639_2, $gp_locale->lang_code_iso_639_3),
+                'updated' => date('Y-m-d h:i:s'),
+                'strings' => array('continue' => 'Continue'),
+ 			);
 
 			WP_CLI::success( "Language pack for {$wp_locale} generated." );
 		}
+		
+		file_put_contents(self::BUILD_DIR . '/translations.json', json_encode($endpoint));
 	}
 }
 
