@@ -4,6 +4,7 @@ class Language_Pack {
 
 	const BUILD_DIR = '/tmp/builds';
 	const PACKAGE_THRESHOLD = 95;
+	const VERSION = '1.0.0';
 	
 	/**
      * Initialize the commands
@@ -294,19 +295,30 @@ class Language_Pack {
  			
  			$endpoint['translations'][] = array(
                 'language' => $wp_locale,
-                'version'  => '1.0.0',
-                'package'  => '%%path%%/' . $wp_locale . '.zip',
+                'version'  => self::VERSION,
+                'package'  => 'https://translate.classicpress.net/wp-content/translations/' . $data->domain . '/' . self::VERSION . '/' . $wp_locale . '.zip',
                 'english_name' => $gp_locale->english_name,
                 'native_name' => $gp_locale->native_name,
                 'iso' => array($gp_locale->lang_code_iso_639_1, $gp_locale->lang_code_iso_639_2, $gp_locale->lang_code_iso_639_3),
-                'updated' => date('Y-m-d h:i:s'),
+                'updated' => $last_modified,
                 'strings' => array('continue' => 'Continue'),
  			);
 
 			WP_CLI::success( "Language pack for {$wp_locale} generated." );
 		}
 		
-		file_put_contents(self::BUILD_DIR . '/translations.json', json_encode($endpoint));
+		if (!file_exists('path/to/directory')) {
+            mkdir(WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION, 0777, true);
+        }
+		
+		file_put_contents(WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION . '/translations.json', json_encode($endpoint));
+		
+		$files = glob(self::BUILD_DIR . "/{$data->domain}/*.zip"); 
+        foreach($files as $file) {
+            if(is_file($file)) {
+                rename($file, WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION . '/' . basename($file));
+            }
+        }
 	}
 }
 
