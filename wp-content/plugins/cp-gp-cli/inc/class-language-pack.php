@@ -7,13 +7,13 @@ class Language_Pack {
 	const VERSION           = '1.0.0';
 
 	/**
-     * Initialize the commands
-     *
-     * @return void
-     */
-    public function __construct() {
-        WP_CLI::add_command( 'glotpress language-pack-endpoint', array( $this, 'generate' ) );
-    }
+	 * Initialize the commands
+	 *
+	 * @return void
+	 */
+	public function __construct() {
+		WP_CLI::add_command( 'glotpress language-pack-endpoint', array( $this, 'generate' ) );
+	}
 
 	/**
 	 * Generates a language pack.
@@ -33,14 +33,14 @@ class Language_Pack {
 		$slug = $args[0];
 
 		$args = wp_parse_args(
-             $assoc_args,
-            [
-			'locale'      => false,
-			'locale-slug' => 'default',
+			$assoc_args,
+			[
+				'locale'      => false,
+				'locale-slug' => 'default',
 			]
-            );
+		);
 
-        $this->generate_pack( $slug, $args );
+		$this->generate_pack( $slug, $args );
 	}
 
 	/**
@@ -74,12 +74,12 @@ class Language_Pack {
 
 		if ( $args['locale'] ) {
 			$translation_sets = wp_list_filter(
-                 $translation_sets,
-                [
-				'locale' => $args['locale'],
-				'slug'   => $args['locale-slug'],
+				$translation_sets,
+				[
+					'locale' => $args['locale'],
+					'slug'   => $args['locale-slug'],
 				]
-                );
+			);
 		}
 
 		if ( ! $translation_sets ) {
@@ -118,12 +118,12 @@ class Language_Pack {
 		global $wpdb;
 
 		$active_language_packs = $wpdb->get_results(
-            $wpdb->prepare(
-			'SELECT language, updated FROM language_packs WHERE domain = %s',
-			$domain
-		),
-            OBJECT_K
-            );
+			$wpdb->prepare(
+				'SELECT language, updated FROM language_packs WHERE domain = %s',
+				$domain
+			),
+			OBJECT_K
+		);
 
 		if ( ! $active_language_packs ) {
 			return [];
@@ -229,113 +229,113 @@ class Language_Pack {
 			// Create folders
 			if ( !file_exists( $export_directory ) ) {
 				WP_CLI::warning( 'Folder for ' . $export_directory . ' missing and created' );
-                mkdir( $export_directory, 0777, true );
+				mkdir( $export_directory, 0777, true );
 			}
 
 			if ( !file_exists( $build_directory ) ) {
 				WP_CLI::warning( 'Folder for ' . $build_directory . ' missing and created' );
-                mkdir( $build_directory, 0777, true );
+				mkdir( $build_directory, 0777, true );
 			}
 
 			// Create PO file.
 			$last_modified = $this->build_po_file( $data->gp_project, $gp_locale, $set, $po_file );
 
 			if ( is_wp_error( $last_modified ) ) {
- 				WP_CLI::warning( sprintf( "PO generation for {$wp_locale} failed: %s", $last_modified->get_error_message() ) );
+				WP_CLI::warning( sprintf( "PO generation for {$wp_locale} failed: %s", $last_modified->get_error_message() ) );
 
- 				continue;
- 			}
+				continue;
+			}
 
 			// Create MO file.
 			$result = $this->execute_command(
-                sprintf(
-				'msgfmt %s -o %s 2>&1',
-				escapeshellarg( $po_file ),
-				escapeshellarg( $mo_file )
-			)
-                );
+				sprintf(
+					'msgfmt %s -o %s 2>&1',
+					escapeshellarg( $po_file ),
+					escapeshellarg( $mo_file )
+				)
+			);
 
- 			if ( is_wp_error( $result ) ) {
- 				WP_CLI::error_multi_line( $result->get_error_data() );
- 				WP_CLI::warning( "MO generation for {$wp_locale} failed." );
+			if ( is_wp_error( $result ) ) {
+				WP_CLI::error_multi_line( $result->get_error_data() );
+				WP_CLI::warning( "MO generation for {$wp_locale} failed." );
 
- 				continue;
- 			}
+				continue;
+			}
 
 			// Create ZIP file.
 			$result = $this->execute_command(
-                sprintf(
-				'zip -9 -j %s %s %s 2>&1',
-				escapeshellarg( $zip_file ),
-				escapeshellarg( $po_file ),
-				escapeshellarg( $mo_file )
-			)
-                );
+				sprintf(
+					'zip -9 -j %s %s %s 2>&1',
+					escapeshellarg( $zip_file ),
+					escapeshellarg( $po_file ),
+					escapeshellarg( $mo_file )
+				)
+			);
 
- 			if ( is_wp_error( $result ) ) {
- 				WP_CLI::error_multi_line( $result->get_error_data() );
- 				WP_CLI::warning( "ZIP generation for {$wp_locale} failed." );
+			if ( is_wp_error( $result ) ) {
+				WP_CLI::error_multi_line( $result->get_error_data() );
+				WP_CLI::warning( "ZIP generation for {$wp_locale} failed." );
 
- 				continue;
- 			}
+				continue;
+			}
 
 			// Create build directories.
 			$result = $this->execute_command(
-                sprintf(
-				'mkdir -p %s 2>&1',
-				escapeshellarg( $build_directory )
-			)
-                );
+				sprintf(
+					'mkdir -p %s 2>&1',
+					escapeshellarg( $build_directory )
+				)
+			);
 
- 			if ( is_wp_error( $result ) ) {
+			if ( is_wp_error( $result ) ) {
 				WP_CLI::error_multi_line( $result->get_error_data() );
- 				WP_CLI::warning( "Creating build directories for {$wp_locale} failed." );
+				WP_CLI::warning( "Creating build directories for {$wp_locale} failed." );
 
- 				continue;
- 			}
+				continue;
+			}
 
 			// Move ZIP file to build directory.
 			$result = $this->execute_command(
-                sprintf(
-				'mv %s %s 2>&1',
-				escapeshellarg( $zip_file ),
-				escapeshellarg( $build_zip_file )
-			)
-                );
+				sprintf(
+					'mv %s %s 2>&1',
+					escapeshellarg( $zip_file ),
+					escapeshellarg( $build_zip_file )
+				)
+			);
 
- 			if ( is_wp_error( $result ) ) {
- 				WP_CLI::error_multi_line( $result->get_error_data() );
- 				WP_CLI::warning( "Moving ZIP file for {$wp_locale} failed." );
+			if ( is_wp_error( $result ) ) {
+				WP_CLI::error_multi_line( $result->get_error_data() );
+				WP_CLI::warning( "Moving ZIP file for {$wp_locale} failed." );
 
- 				continue;
- 			}
+				continue;
+			}
 
- 			$endpoint['translations'][] = array(
-                'language'     => $wp_locale,
-                'version'      => self::VERSION,
-                'package'      => 'https://translate.classicpress.net/wp-content/translations/' . $data->domain . '/' . self::VERSION . '/' . $wp_locale . '.zip',
-                'english_name' => $gp_locale->english_name,
-                'native_name'  => $gp_locale->native_name,
-                'iso'          => array( $gp_locale->lang_code_iso_639_1, $gp_locale->lang_code_iso_639_2, $gp_locale->lang_code_iso_639_3 ),
-                'updated'      => $last_modified,
-                'strings'      => array( 'continue' => 'Continue' ),
- 			);
+			$endpoint['translations'][] = array(
+				'language'     => $wp_locale,
+				'version'      => self::VERSION,
+				'package'      => 'https://translate.classicpress.net/wp-content/translations/' . $data->domain . '/' . self::VERSION . '/' . $wp_locale . '.zip',
+				'english_name' => $gp_locale->english_name,
+				'native_name'  => $gp_locale->native_name,
+				'iso'          => array( $gp_locale->lang_code_iso_639_1, $gp_locale->lang_code_iso_639_2, $gp_locale->lang_code_iso_639_3 ),
+				'updated'      => $last_modified,
+				'strings'      => array( 'continue' => 'Continue' ),
+			);
 
 			WP_CLI::success( "Language pack for {$wp_locale} generated." );
 		}
 
 		if ( !file_exists( 'path/to/directory' ) ) {
-            mkdir( WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION, 0777, true );
-        }
+			mkdir( WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION, 0777, true );
+		}
 
 		file_put_contents( WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION . '/translations.json', json_encode( $endpoint ) );
 
 		$files = glob( self::BUILD_DIR . "/{$data->domain}/*.zip" );
-        foreach ( $files as $file ) {
-            if ( is_file( $file ) ) {
-                rename( $file, WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION . '/' . basename( $file ) );
-            }
-        }
+		foreach ( $files as $file ) {
+			if ( is_file( $file ) ) {
+				rename( $file, WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION . '/' . basename( $file ) );
+			}
+		}
 	}
 
 }
