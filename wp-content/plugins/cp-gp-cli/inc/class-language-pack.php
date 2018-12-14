@@ -227,6 +227,7 @@ class Language_Pack {
 			}
 
 			// Create ZIP file.
+			// TODO install the real `zip` and use it instead
 			$result = $this->execute_command(
 				sprintf(
 					'zip-hack -9 -j %s %s %s 2>&1',
