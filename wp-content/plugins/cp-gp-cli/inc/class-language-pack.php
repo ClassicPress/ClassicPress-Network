@@ -229,7 +229,7 @@ class Language_Pack {
 			// Create ZIP file.
 			$result = $this->execute_command(
 				sprintf(
-					'zip -9 -j %s %s %s 2>&1',
+					'zip-hack -9 -j %s %s %s 2>&1',
 					escapeshellarg( $zip_file ),
 					escapeshellarg( $po_file ),
 					escapeshellarg( $mo_file )
