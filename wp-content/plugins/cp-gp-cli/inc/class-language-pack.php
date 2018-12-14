@@ -109,30 +109,6 @@ class Language_Pack {
 	}
 
 	/**
-	 * Retrieves activate language packs for a project.
-	 *
-	 * @param string $domain  Slug of a theme/plugin.
-	 * @return array Array of active language packs.
-	 */
-	private function get_active_language_packs( $domain ) {
-		global $wpdb;
-
-		$active_language_packs = $wpdb->get_results(
-			$wpdb->prepare(
-				'SELECT language, updated FROM language_packs WHERE domain = %s',
-				$domain
-			),
-			OBJECT_K
-		);
-
-		if ( ! $active_language_packs ) {
-			return [];
-		}
-
-		return $active_language_packs;
-	}
-
-	/**
 	 * Builds a PO file for translations.
 	 *
 	 * @param GP_Project         $gp_project The GlotPress project.
@@ -184,7 +160,6 @@ class Language_Pack {
 	 * @param object $data The data of a language pack.
 	 */
 	private function build_language_packs( $data ) {
-		$existing_packs = $this->get_active_language_packs( $data->domain );
 		$endpoint       = array();
 
 		foreach ( $data->translation_sets as $set ) {
@@ -205,17 +180,6 @@ class Language_Pack {
 			if ( $percent_translated < self::PACKAGE_THRESHOLD ) {
 				WP_CLI::log( "Skip {$wp_locale}, translations below threshold ({$percent_translated}%)." );
 				continue;
-			}
-
-			// Check if new translations are available since last build.
-			if ( isset( $existing_packs[ $wp_locale ] ) ) {
-				$pack_time      = strtotime( $existing_packs[ $wp_locale ]->updated );
-				$glotpress_time = strtotime( $set->last_modified() );
-
-				if ( $pack_time >= $glotpress_time ) {
-					WP_CLI::log( "Skip {$wp_locale}, no new translations." );
-					continue;
-				}
 			}
 
 			$export_directory = self::BUILD_DIR . "/{$data->domain}/export/{$wp_locale}";
@@ -263,9 +227,10 @@ class Language_Pack {
 			}
 
 			// Create ZIP file.
+			// TODO install the real `zip` and use it instead
 			$result = $this->execute_command(
 				sprintf(
-					'zip -9 -j %s %s %s 2>&1',
+					'zip-hack -9 -j %s %s %s 2>&1',
 					escapeshellarg( $zip_file ),
 					escapeshellarg( $po_file ),
 					escapeshellarg( $mo_file )
