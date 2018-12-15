@@ -230,7 +230,7 @@ class Language_Pack {
 			// TODO install the real `zip` and use it instead
 			$result = $this->execute_command(
 				sprintf(
-					'zip-hack -9 -j %s %s %s 2>&1',
+					'zip-hack %s %s %s 2>&1',
 					escapeshellarg( $zip_file ),
 					escapeshellarg( $po_file ),
 					escapeshellarg( $mo_file )
@@ -289,7 +289,7 @@ class Language_Pack {
 			WP_CLI::success( "Language pack for {$wp_locale} generated." );
 		}
 
-		if ( !file_exists( 'path/to/directory' ) ) {
+		if ( !file_exists( WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION ) ) {
 			mkdir( WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION, 0777, true );
 		}
 
