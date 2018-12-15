@@ -230,7 +230,7 @@ class Language_Pack {
 			// TODO install the real `zip` and use it instead
 			$result = $this->execute_command(
 				sprintf(
-					'zip-hack %s %s %s 2>&1',
+					'zip-hack -9 -j %s %s %s 2>&1',
 					escapeshellarg( $zip_file ),
 					escapeshellarg( $po_file ),
 					escapeshellarg( $mo_file )
