@@ -18,8 +18,6 @@ class WPorg_GP_Custom_Translation_Warnings {
 	private $allowed_domain_changes = array(
 		// Allow links to WordPress.org to be changed to a subdomain
 		'classicpress.net' => '[^.]+\.classicpress\.net',
-		// Allow links to WordPress.com to be changed to a subdomain
-		'classicpress.com' => '[^.]+\.classicpress\.com',
 		// Allow links to Gravatar.org to be changed to a subdomain
 		'en.gravatar.com' => '[^.]+\.gravatar\.com'
 	);
