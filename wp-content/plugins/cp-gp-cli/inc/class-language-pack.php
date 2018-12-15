@@ -278,7 +278,7 @@ class Language_Pack {
 			$endpoint['translations'][] = array(
 				'language'     => $wp_locale,
 				'version'      => self::VERSION,
-				'package'      => 'https://translate.classicpress.net/wp-content/translations/' . $data->domain . '/' . self::VERSION . '/' . $wp_locale . '.zip',
+				'package'      => 'https://api-v1.classicpress.net/translations/' . $data->domain . '/' . self::VERSION . '/' . $wp_locale . '.zip',
 				'english_name' => $gp_locale->english_name,
 				'native_name'  => $gp_locale->native_name,
 				'iso'          => array( $gp_locale->lang_code_iso_639_1, $gp_locale->lang_code_iso_639_2, $gp_locale->lang_code_iso_639_3 ),
