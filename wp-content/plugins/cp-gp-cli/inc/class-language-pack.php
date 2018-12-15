@@ -1,8 +1,8 @@
 <?php
 
 class Language_Pack {
-
-	const BUILD_DIR         = '/tmp/builds';
+	const BUILD_DIR         = '/tmp/cp-translations/build';
+	const OUTPUT_DIR        = '/tmp/cp-translations/output';
 	const PACKAGE_THRESHOLD = 95;
 	const VERSION           = '1.0.0';
 
@@ -289,20 +289,20 @@ class Language_Pack {
 			WP_CLI::success( "Language pack for {$wp_locale} generated." );
 		}
 
-		if ( !file_exists( WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION ) ) {
-			mkdir( WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION, 0777, true );
+		$output_dir = self::OUTPUT_DIR . "/{$data->domain}/" . self::VERSION;
+		if ( ! file_exists( $output_dir ) ) {
+			mkdir( $output_dir, 0755, true );
 		}
 
-		file_put_contents( WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION . '/translations.json', json_encode( $endpoint ) );
+		file_put_contents( $output_dir . '/translations.json', json_encode( $endpoint ) );
 
 		$files = glob( self::BUILD_DIR . "/{$data->domain}/*.zip" );
 		foreach ( $files as $file ) {
 			if ( is_file( $file ) ) {
-				rename( $file, WP_CONTENT_DIR . '/translations/' . $data->domain . '/' . self::VERSION . '/' . basename( $file ) );
+				rename( $file, $output_dir . '/' . basename( $file ) );
 			}
 		}
 	}
-
 }
 
 new Language_Pack();
