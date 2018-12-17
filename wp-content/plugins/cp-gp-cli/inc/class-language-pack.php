@@ -112,23 +112,28 @@ class Language_Pack {
 				WP_CLI::log( "\$$name: '$value'" );
 			}
 
-			// Create folders
-			if ( ! file_exists( $export_directory ) ) {
-				WP_CLI::warning( 'Folder for ' . $export_directory . ' missing and created' );
-				mkdir( $export_directory, 0755, true );
+			if ( ! file_exists( $build_directory ) ) {
+				WP_CLI::error( "Base output directory does not exist: $build_directory" );
 			}
 
-			if ( ! file_exists( $build_directory ) ) {
-				WP_CLI::warning( 'Folder for ' . $build_directory . ' missing and created' );
-				mkdir( $build_directory, 0755, true );
+			// Create folders
+			if ( ! file_exists( $export_directory ) ) {
+				mkdir( $export_directory, 0755, true );
+				WP_CLI::warning( "Output subdirectory created: $export_directory" );
+			}
+			if ( ! file_exists( $json_directory ) ) {
+				mkdir( $json_directory, 0755, true );
+				WP_CLI::warning( "Output subdirectory created: $json_directory" );
 			}
 
 			// Create PO file.
 			$last_modified = $this->build_po_file( $gp_project, $gp_locale, $set, $po_file );
 
 			if ( is_wp_error( $last_modified ) ) {
-				WP_CLI::warning( sprintf( "PO generation for {$wp_locale} failed: %s", $last_modified->get_error_message() ) );
-
+				WP_CLI::warning( sprintf(
+					"PO generation for {$wp_locale} failed: %s",
+					$last_modified->get_error_message()
+				) );
 				continue;
 			}
 
@@ -150,13 +155,11 @@ class Language_Pack {
 			WP_CLI::success( "Language data for {$wp_locale} generated." );
 		}
 
-		if ( ! file_exists( $json_directory ) ) {
-			mkdir( $json_directory, 0755, true );
-		}
-
 		$json_filename = $json_directory . '/translations.json';
 		WP_CLI::log( "write: $json_filename" );
-		file_put_contents( $json_filename, json_encode( $endpoint ) );
+		if ( ! file_put_contents( $json_filename, json_encode( $endpoint ) ) ) {
+			WP_CLI::error( "Failed to write: $json_filename" );
+		}
 	}
 
 	/**
@@ -184,7 +187,9 @@ class Language_Pack {
 		}
 
 		WP_CLI::log( "write: $dest" );
-		file_put_contents( $dest, $po_content );
+		if ( ! file_put_contents( $dest, $po_content ) ) {
+			WP_CLI::error( "Failed to write: $dest" );
+		}
 
 		return $match[1];
 	}
