@@ -94,21 +94,6 @@ class Language_Pack {
 	}
 
 	/**
-	 * Removes a directory.
-	 *
-	 * @param string $dir The directory which should be removed.
-	 *
-	 * @return bool False if directory is removed, false otherwise.
-	 */
-	public static function remove_temp_directory( $dir ) {
-		if ( trim( $dir, '/' ) ) {
-			exec( 'rm -rf ' . escapeshellarg( $dir ) );
-		}
-
-		return is_dir( $dir );
-	}
-
-	/**
 	 * Builds a PO file for translations.
 	 *
 	 * @param GP_Project         $gp_project The GlotPress project.
