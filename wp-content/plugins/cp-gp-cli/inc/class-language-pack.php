@@ -31,6 +31,16 @@ class Language_Pack {
 	public function generate( $args, $assoc_args ) {
 		$slug = $args[0];
 
+		switch ( $slug ) {
+			// Add new project slugs here
+			case 'core':
+				// OK
+				break;
+			default:
+				// Not OK
+				WP_CLI::error( 'Invalid project slug.' );
+		}
+
 		$args = wp_parse_args(
 			$assoc_args,
 			[
@@ -49,14 +59,6 @@ class Language_Pack {
 			WP_CLI::error( 'No translation sets available.' );
 		}
 
-		/**
-		 * Filters the arguments passed to the WP-CLI command.
-		 *
-		 * @param array  $args CLI arguments.
-		 * @param string $slug Slug of the theme.
-		 */
-		$args = apply_filters( 'wporg_translate_language_pack_plugin_args', $args, $slug );
-
 		if ( $args['locale'] ) {
 			$translation_sets = wp_list_filter(
 				$translation_sets,
@@ -71,24 +73,19 @@ class Language_Pack {
 			WP_CLI::error( 'No translation sets available.' );
 		}
 
-		$data                   = new stdClass();
-		$data->domain           = $slug;
-		$data->translation_sets = $translation_sets;
-		$data->gp_project       = $gp_project;
-
 		$endpoint = array();
 
-		foreach ( $data->translation_sets as $set ) {
+		foreach ( $translation_sets as $set ) {
 			// Get WP locale.
 			$gp_locale = GP_Locales::by_slug( $set->locale );
 			if ( ! isset( $gp_locale->wp_locale ) ) {
 				continue;
 			}
 
-			// Change wp_locale until GlotPress returns the correct wp_locale for variants.
+			// Validate the locale returned from GlotPress.
 			$wp_locale = $gp_locale->wp_locale;
-			if ( 'default' !== $set->slug ) {
-				$wp_locale = $wp_locale;
+			if ( preg_match( '#[^a-zA-Z_]#', $wp_locale ) ) {
+				WP_CLI::error( 'Invalid $wp_locale value.' );
 			}
 
 			// Check if percent translated is above threshold.
@@ -98,10 +95,10 @@ class Language_Pack {
 				continue;
 			}
 
-			$export_directory = self::BUILD_DIR . "/{$data->domain}/export/{$wp_locale}";
-			$build_directory  = self::BUILD_DIR . "/{$data->domain}";
-			$json_directory   = self::BUILD_DIR . "/{$data->domain}/" . self::VERSION;
-			$filename         = "{$data->domain}-{$wp_locale}";
+			$export_directory = self::BUILD_DIR . "/{$slug}/export/{$wp_locale}";
+			$build_directory  = self::BUILD_DIR . "/{$slug}";
+			$json_directory   = self::BUILD_DIR . "/{$slug}/" . self::VERSION;
+			$filename         = "{$slug}-{$wp_locale}";
 			$po_file          = "{$export_directory}/{$filename}.po";
 			$mo_file          = "{$export_directory}/{$filename}.mo";
 			$zip_file         = "{$export_directory}/{$filename}.zip";
@@ -127,7 +124,7 @@ class Language_Pack {
 			}
 
 			// Create PO file.
-			$last_modified = $this->build_po_file( $data->gp_project, $gp_locale, $set, $po_file );
+			$last_modified = $this->build_po_file( $gp_project, $gp_locale, $set, $po_file );
 
 			if ( is_wp_error( $last_modified ) ) {
 				WP_CLI::warning( sprintf( "PO generation for {$wp_locale} failed: %s", $last_modified->get_error_message() ) );
@@ -142,7 +139,7 @@ class Language_Pack {
 			$endpoint['translations'][] = array(
 				'language'     => $wp_locale,
 				'version'      => self::VERSION,
-				'package'      => 'https://api-v1.classicpress.net/translations/' . $data->domain . '/' . self::VERSION . '/' . $wp_locale . '.zip',
+				'package'      => 'https://api-v1.classicpress.net/translations/' . $slug . '/' . self::VERSION . '/' . $wp_locale . '.zip',
 				'english_name' => $gp_locale->english_name,
 				'native_name'  => $gp_locale->native_name,
 				'iso'          => array( $gp_locale->lang_code_iso_639_1, $gp_locale->lang_code_iso_639_2, $gp_locale->lang_code_iso_639_3 ),
