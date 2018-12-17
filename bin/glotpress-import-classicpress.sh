@@ -20,10 +20,11 @@ php /tmp/classicpress/tools/i18n/makepot.php generic \
 	/tmp/classicpress-core.pot
 
 pushd /home/forge/classicpress.net/
-	wp glotpress import-originals \
+	wp \
+		--url=https://translate.classicpress.net/ \
+		glotpress import-originals \
 		core \
-		/tmp/classicpress-core.pot \
-		--url=https://translate.classicpress.net/
+		/tmp/classicpress-core.pot
 popd
 
 # TODO: Generate and import the stable .pot file
