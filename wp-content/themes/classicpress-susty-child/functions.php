@@ -103,3 +103,57 @@ function cp_ajax_search( $request ) {
 	}
 	return rest_ensure_response( $results );
 }
+
+/* Add Twitter card tags for social sharing. */
+add_action( 'wp_head', 'cp_insert_twittercard_tags', 0 );
+function cp_insert_twittercard_tags() {
+
+	// Bring $post object into scope.
+	global $post;
+
+	// Set defaults for Twitter shares.
+	$url   = get_bloginfo( 'url' );
+	$title = get_bloginfo( 'name' );
+	$desc  = get_bloginfo( 'description' );
+	$image = 'https://docs.classicpress.net/wp-content/classicpress/logos/icon-gradient-600.png';
+
+	// If on a post or page, reset defaults.
+	if( is_single() || is_page() ) {
+
+		// Update URL to current post/page.
+		$url = get_permalink();
+
+		// Update title only if $post has non-empty title.
+		$title = ( get_the_title() ) ? get_the_title() : $title;
+
+		// Update description only if $post has non-empty excerpt.
+		if ( ! empty( $post->post_excerpt ) ) {
+			$desc = $post->post_excerpt;
+		}
+
+		// Update image if post/page has a thumbnail.
+		if ( has_post_thumbnail() ) {
+			$image_properties = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ) , 'medium_large' );
+			$image = $image_properties[0];
+		}
+
+	}
+
+	// Assemble the meta tag markup.
+	$markup  = '<meta name="twitter:card" value="summary_large_image" />' . "\n";
+	$markup .= '<meta name="twitter:url" value="' . $url . '" />' . "\n";
+	$markup .= '<meta name="twitter:title" value="' . $title . '" />' . "\n";
+	$markup .= '<meta name="twitter:description" value="' . $desc . '" />' . "\n";
+	$markup .= '<meta name="twitter:image" value="' . $image . '" />' . "\n";
+	$markup .= '<meta name="twitter:image:alt" value="' . $title . '" />' . "\n";
+	$markup .= '<meta name="twitter:site" value="@getclassicpress" />' . "\n";
+
+	// Add creator tag if author profile has a Twitter username.
+	if( get_the_author_meta( 'twitter' ) ) {
+		$markup .= '<meta name="twitter:creator" value="@'. str_replace( '@', '', get_the_author_meta( 'twitter' ) ) .'" />' . "\n";
+	}
+
+	// Print the tags.
+	echo $markup;
+
+}
