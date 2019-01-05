@@ -14,6 +14,7 @@ jQuery(document).ready(function($) {
 		}
 	}, false);
 
+	// FAQ entries are shown by default; hide them if JS enabled
 	$( '.faq_a' ).css( 'display', 'none' );
 
 	// Toggle Function
