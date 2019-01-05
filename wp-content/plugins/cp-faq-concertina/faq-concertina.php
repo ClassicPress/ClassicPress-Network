@@ -1,9 +1,9 @@
 <?php
 /* 
-Plugin Name: FAQ Concertina
-Plugin URI: http://www.zyriab.co.uk/faqconc/
+Plugin Name: ClassicPress FAQ Concertina
+Plugin URI: https://www.classicpress.net/
 Description: FAQs displayed as an expandable concertina using shortcode [faq-concertina]. FAQs can be categorised and displayed using shortcode [faq-concertina category='category-slug']. FAQs can also be ordered and the appearance customised.
-Version: 1.4.3
+Version: 999.upstream-1.4.3
 Author: Michael Burridge, Zyriab Ltd.
 Author URI: http://www.zyriab.co.uk/
 Text Domain: faq-concertina
