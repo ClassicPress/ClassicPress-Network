@@ -28,6 +28,12 @@ Copyright 2016  Michael Burridge, Zyriab Ltd.  (email : faqconc@zyriab.co.uk)
 defined( 'ABSPATH' ) or die( "Permission denied!" );
 
 
+function cp_faqconc_version() {
+  // Cache buster for this plugin's scripts and stylesheets.
+  return '20190104';
+}
+
+
 /*=======================================
   0 - ACTIVATION AND INTERNATIONALISATION
 =========================================*/
@@ -265,7 +271,7 @@ function faqconc_enqueue_color_picker( $hook ) {
     }
 
     wp_enqueue_style( 'wp-color-picker' );
-    wp_enqueue_script( 'faqconc-colorpicker-script', plugins_url('js/faq-concertina-colorpicker-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true );
+    wp_enqueue_script( 'faqconc-colorpicker-script', plugins_url('js/faq-concertina-colorpicker-script.js', __FILE__ ), array( 'wp-color-picker' ), cp_faqconc_version(), true );
 
 }
 add_action( 'admin_enqueue_scripts', 'faqconc_enqueue_color_picker' );
@@ -651,7 +657,7 @@ function faqconc_check_for_shortcode( $posts ) {
     if ( $faqconc_shortcode_found ){ // shortcode has been found so let's load the styles!
 
     	// load external stylesheet
-        wp_register_style( 'faqconc-styles', plugins_url( 'css/faq-concertina-styles.css', __FILE__ ) );
+        wp_register_style( 'faqconc-styles', plugins_url( 'css/faq-concertina-styles.css', __FILE__ ), array(), cp_faqconc_version() );
 		wp_enqueue_style( 'faqconc-styles' );
 
     	// if inline styles are not disabled....
@@ -754,7 +760,7 @@ function faqconc_show_faqs( $atts ) {
 		$hide_others = ( get_option( 'faqconc_hide_others' ) != '' ) ? get_option( 'faqconc_hide_others' ) : '0';
 		
 		// enqueue script and pass animation speed to javascript file
-		wp_register_script( 'faqconc-script', plugins_url( 'js/faq-concertina-script.js', __FILE__ ), array( 'jquery' ) );
+		wp_register_script( 'faqconc-script', plugins_url( 'js/faq-concertina-script.js', __FILE__ ), array( 'jquery' ), cp_faqconc_version() );
 		wp_enqueue_script( 'faqconc-script' );
 		wp_localize_script( 'faqconc-script', 'faqconcvars', array ( 'speed' => $speed, 'hideothers' => $hide_others, 'category' => $category ) );
 
