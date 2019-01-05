@@ -71,4 +71,16 @@ jQuery(document).ready(function($) {
 
 	});
 
+	// Expand FAQ item linked in hash fragment, if any
+	if ( document.location.hash ) {
+		var linkedItem = $( document.location.hash );
+		console.log( linkedItem );
+		if ( linkedItem.length === 1 && (
+			linkedItem.is( '.faq_item' ) ||
+			linkedItem.is( '.faq_q' ) ||
+			linkedItem.is( '.faq_a' )
+		) ) {
+			linkedItem.closest( '.faq_item' ).trigger( 'click' );
+		}
+	}
 });
