@@ -14,6 +14,8 @@ jQuery(document).ready(function($) {
 		}
 	}, false);
 
+	$( '.faq_a' ).css( 'display', 'none' );
+
 	// Toggle Function
 	$('.faq_item').on('click keyup', function(e) {
 

@@ -45,10 +45,9 @@ will OVERWRITE this file!
 }
 
 /* FAQ answer area - initial state is 'display:none' which is toggled by clicking on question link */
-.faq_a { 
+.faq_a {
 	color: #666;
-	padding: 12px 16px; 
-	display: none;
+	padding: 12px 16px;
 }
 .faq_a p {
 	margin-bottom: 8px;
