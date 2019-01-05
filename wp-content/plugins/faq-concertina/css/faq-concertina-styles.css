@@ -1,0 +1,65 @@
+/*
+===========================================
+CSS for the FAQ Concertina WordPress Plugin
+  
+Feel free to modify this file to change
+the appearance of the plugin to fit in
+with your theme.
+
+!!!!!IMPORTANT!!!!!
+If you modify this file ensure that you 
+keep a backup of it before updating to a
+new version of FAQ Concertina. Any updates 
+will OVERWRITE this file!
+===========================================
+*/
+
+/* the container div */
+.faqconc {
+	width: 100%;
+	margin: 20px auto;
+}
+
+/* the container div - small screen */
+@media screen and (max-width: 600px) {
+	.faqconc { width: 100%; margin: auto; }
+}
+
+/* individual FAQ item */
+.faq_item { 
+	background: #eee; 
+	border: 1px solid #666;
+	cursor: pointer;
+	margin-bottom: 30px;
+}
+
+/* FAQ question area and link */
+.faq_q { 
+	background: #666; 
+	color: #eee; 
+	padding: 6px 16px;
+}
+.faq_q:focus{
+	outline: none; 
+	box-shadow: 0px 0px 6px 4px #666;
+}
+
+/* FAQ answer area - initial state is 'display:none' which is toggled by clicking on question link */
+.faq_a { 
+	color: #666;
+	padding: 12px 16px; 
+	display: none;
+}
+.faq_a p {
+	margin-bottom: 8px;
+	line-height: 1.5em;
+}
+.faq_a p:last-child { margin-bottom: 0; }
+
+/* 
+===========================================
+Remember to make a BACKUP of this file if 
+you have changed it! Changes to this file 
+will NOT survive an update to the plugin!!!
+===========================================
+*/

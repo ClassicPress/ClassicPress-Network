@@ -1,0 +1,435 @@
+# Copyright (C) 2017 FAQ Concertina
+# This file is distributed under the same license as the FAQ Concertina package.
+msgid ""
+msgstr ""
+"Project-Id-Version: FAQ Concertina 1.4.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/faq-concertina\n"
+"POT-Creation-Date: 2017-01-09 13:56:31+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: faq-concertina.php:57 faq-concertina.php:59
+msgid "FAQs"
+msgstr ""
+
+#: faq-concertina.php:58
+msgid "FAQ"
+msgstr ""
+
+#: faq-concertina.php:60 faq-concertina.php:61
+msgid "Add new FAQ"
+msgstr ""
+
+#: faq-concertina.php:62
+msgid "Edit FAQ"
+msgstr ""
+
+#: faq-concertina.php:63
+msgid "New FAQ"
+msgstr ""
+
+#: faq-concertina.php:64 faq-concertina.php:609 faq-concertina.php:614
+msgid "View FAQ"
+msgstr ""
+
+#: faq-concertina.php:87
+msgid "FAQ Categories"
+msgstr ""
+
+#: faq-concertina.php:88 faq-concertina.php:138
+msgid "Category"
+msgstr ""
+
+#: faq-concertina.php:89
+msgid "Search Categories"
+msgstr ""
+
+#: faq-concertina.php:90
+msgid "All Categories"
+msgstr ""
+
+#: faq-concertina.php:91
+msgid "Edit Category"
+msgstr ""
+
+#: faq-concertina.php:92
+msgid "Update Category"
+msgstr ""
+
+#: faq-concertina.php:93
+msgid "Add New Category"
+msgstr ""
+
+#: faq-concertina.php:94
+msgid "New Category"
+msgstr ""
+
+#: faq-concertina.php:95
+msgid "Popular Categories"
+msgstr ""
+
+#: faq-concertina.php:96
+msgid "Categories"
+msgstr ""
+
+#: faq-concertina.php:97
+msgid "Choose from the most used Categories"
+msgstr ""
+
+#: faq-concertina.php:98
+msgid "No Categories found"
+msgstr ""
+
+#: faq-concertina.php:129
+msgid "Enter question here"
+msgstr ""
+
+#: faq-concertina.php:139 faq-concertina.php:171 faq-concertina.php:278
+#: faq-concertina.php:290
+msgid "Order"
+msgstr ""
+
+#: faq-concertina.php:140
+msgid "Help"
+msgstr ""
+
+#: faq-concertina.php:148
+msgid "FAQ Concertina provides an easy way for you to add FAQs to your page or blog post using the shortcode <em>[faq-concertina]</em>."
+msgstr ""
+
+#: faq-concertina.php:149
+msgid "Enter the question in the top box."
+msgstr ""
+
+#: faq-concertina.php:150
+msgid "Enter the answer in the editor pane. Here you can format your text, and even include links, images and lists just like in a regular post."
+msgstr ""
+
+#: faq-concertina.php:151
+msgid "If you wish you can assign an order number to your FAQ. This will determine the order that the FAQs appear in so you don't need to input them in the order that you want them to appear on your page or blog post."
+msgstr ""
+
+#: faq-concertina.php:152
+msgid "To enable you to change the order it is recommended that spaces be left in the numeric sequence thus: <em>10, 20, 30, etc...</em>. In this way the order of the FAQs can be easily changed. So to make 30 the second in the sequence rather than the third simply change the order number from 30 to 15 so that it now lies between 10 and 20, thus moving 20 from being the second to being the third item in the sequence."
+msgstr ""
+
+#: faq-concertina.php:153
+msgid "If you want to categorise your FAQs add one or more categories for the FAQ. <em>(Note that this is entirely optional and unnecessary if all you want is a single list of FAQs)</em>. You can manage your categories by selecting 'Categories' from the 'FAQs' menu. If you are using categories then your shortcode will look like this:<br /><em>[faq-concertina category=\"category-slug\"]</em>."
+msgstr ""
+
+#: faq-concertina.php:154
+msgid "Oh, and don't forget to click \"Publish\" below when you're done!"
+msgstr ""
+
+#: faq-concertina.php:253 faq-concertina.php:585
+msgid "FAQ Concertina Settings"
+msgstr ""
+
+#: faq-concertina.php:253
+msgid "Settings"
+msgstr ""
+
+#: faq-concertina.php:276
+msgid "Animation"
+msgstr ""
+
+#: faq-concertina.php:277
+msgid "Appearance"
+msgstr ""
+
+#: faq-concertina.php:281
+msgid "Speed"
+msgstr ""
+
+#: faq-concertina.php:282
+msgid "Hide Others"
+msgstr ""
+
+#: faq-concertina.php:283
+msgid "Width"
+msgstr ""
+
+#: faq-concertina.php:284
+msgid "Override Width"
+msgstr ""
+
+#: faq-concertina.php:285
+msgid "Colour Scheme"
+msgstr ""
+
+#: faq-concertina.php:286
+msgid "Negative"
+msgstr ""
+
+#: faq-concertina.php:287
+msgid "Corners"
+msgstr ""
+
+#: faq-concertina.php:288
+msgid "Show/Hide Indicators"
+msgstr ""
+
+#: faq-concertina.php:289
+msgid "Disable"
+msgstr ""
+
+#: faq-concertina.php:291
+msgid "Reverse"
+msgstr ""
+
+#: faq-concertina.php:313
+msgid "Sets the animation effects when Answer panel is opened or closed."
+msgstr ""
+
+#: faq-concertina.php:323
+msgid "Instant"
+msgstr ""
+
+#: faq-concertina.php:324
+msgid "Very fast"
+msgstr ""
+
+#: faq-concertina.php:325
+msgid "Fast"
+msgstr ""
+
+#: faq-concertina.php:326
+msgid "Medium"
+msgstr ""
+
+#: faq-concertina.php:327
+msgid "Slow"
+msgstr ""
+
+#: faq-concertina.php:328
+msgid "Very slow"
+msgstr ""
+
+#: faq-concertina.php:339
+msgid "Hide previously opened answer when new answer is opened (i.e. only one answer visible at a time)."
+msgstr ""
+
+#: faq-concertina.php:348
+msgid "Style the visual appearance of the FAQ Concertina to match your theme."
+msgstr ""
+
+#: faq-concertina.php:357
+msgid "(Min:50% Max:100%)"
+msgstr ""
+
+#: faq-concertina.php:367
+msgid "The value entered for <em>Width</em> is not valid. Enter a number between 50 and 100."
+msgstr ""
+
+#: faq-concertina.php:380
+msgid "Override the width setting above on small screen devices (e.g. smartphones)."
+msgstr ""
+
+#: faq-concertina.php:393
+msgid "Black & White"
+msgstr ""
+
+#: faq-concertina.php:395
+msgid "Shades of Grey"
+msgstr ""
+
+#: faq-concertina.php:397
+msgid "Jet"
+msgstr ""
+
+#: faq-concertina.php:400
+msgid "Denim"
+msgstr ""
+
+#: faq-concertina.php:402
+msgid "Strawberry"
+msgstr ""
+
+#: faq-concertina.php:404
+msgid "Seashell"
+msgstr ""
+
+#: faq-concertina.php:407
+msgid "Iceberg"
+msgstr ""
+
+#: faq-concertina.php:409
+msgid "Forest"
+msgstr ""
+
+#: faq-concertina.php:411
+msgid "Paella"
+msgstr ""
+
+#: faq-concertina.php:414
+msgid "Custom"
+msgstr ""
+
+#: faq-concertina.php:425
+msgid "Custom colour 1 cannot be empty."
+msgstr ""
+
+#: faq-concertina.php:430
+msgid "Custom colour 1 has no leading #."
+msgstr ""
+
+#: faq-concertina.php:436
+msgid "Invalid entry for custom colour 1. Custom colours must consist of exactly six hexadecimal characters (0-9, a-f)."
+msgstr ""
+
+#: faq-concertina.php:452
+msgid "Custom colour 2 cannot be empty."
+msgstr ""
+
+#: faq-concertina.php:457
+msgid "Custom colour 2 has no leading #."
+msgstr ""
+
+#: faq-concertina.php:463
+msgid "Invalid entry for custom colour 2. Custom colours must consist of exactly six hexadecimal characters (0-9, a-f)."
+msgstr ""
+
+#: faq-concertina.php:480
+msgid "Inverts the colour scheme (useful if your theme has a dark background)."
+msgstr ""
+
+#: faq-concertina.php:491
+msgid "Square"
+msgstr ""
+
+#: faq-concertina.php:493
+msgid "Rounded"
+msgstr ""
+
+#: faq-concertina.php:505
+msgid "None"
+msgstr ""
+
+#: faq-concertina.php:507
+msgid "signs"
+msgstr ""
+
+#: faq-concertina.php:509
+msgid "Arrows"
+msgstr ""
+
+#: faq-concertina.php:520
+msgid "Disable all appearance settings and only use .css file."
+msgstr ""
+
+#: faq-concertina.php:529
+msgid "Sets the order in which the FAQs are displayed."
+msgstr ""
+
+#: faq-concertina.php:530 faq-concertina.php:544
+msgid "Alphabetical"
+msgstr ""
+
+#: faq-concertina.php:530
+msgid "orders the FAQs alphabetically by question."
+msgstr ""
+
+#: faq-concertina.php:531 faq-concertina.php:546
+msgid "Chronological"
+msgstr ""
+
+#: faq-concertina.php:531
+msgid "orders the FAQs according to the order in which you created them."
+msgstr ""
+
+#: faq-concertina.php:532 faq-concertina.php:548
+msgid "Numerical"
+msgstr ""
+
+#: faq-concertina.php:532
+msgid "orders the FAQs according to the Order attribute (optionally defined when you add/edit an FAQ)."
+msgstr ""
+
+#: faq-concertina.php:533
+msgid "If you want drag and drop sorting of FAQs then install the"
+msgstr ""
+
+#: faq-concertina.php:533
+msgid "and set the Order below to Numerical."
+msgstr ""
+
+#: faq-concertina.php:559
+msgid "List FAQs in reverse order."
+msgstr ""
+
+#: faq-concertina.php:593
+msgid "Update Settings"
+msgstr ""
+
+#: faq-concertina.php:609 faq-concertina.php:612
+msgid "FAQ updated"
+msgstr ""
+
+#: faq-concertina.php:610
+msgid "Custom field updated"
+msgstr ""
+
+#: faq-concertina.php:611
+msgid "Custom field deleted"
+msgstr ""
+
+#: faq-concertina.php:613
+msgid "FAQ restored to revision from %s"
+msgstr ""
+
+#. translators: %s: date and time of the revision
+
+#: faq-concertina.php:614
+msgid "FAQ published"
+msgstr ""
+
+#: faq-concertina.php:615
+msgid "FAQ saved"
+msgstr ""
+
+#: faq-concertina.php:616
+msgid "FAQ submitted"
+msgstr ""
+
+#: faq-concertina.php:616 faq-concertina.php:617 faq-concertina.php:618
+msgid "Preview FAQ"
+msgstr ""
+
+#: faq-concertina.php:617
+msgid "FAQ scheduled for:"
+msgstr ""
+
+#: faq-concertina.php:617
+msgid "j M Y @ G:i"
+msgstr ""
+
+#: faq-concertina.php:618
+msgid "Draft FAQ updated"
+msgstr ""
+
+#: faq-concertina.php:782
+msgid "Sorry, no FAQs can be found!"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "FAQ Concertina"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.zyriab.co.uk/faqconc/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "FAQs displayed as an expandable concertina using shortcode [faq-concertina]. FAQs can be categorised and displayed using shortcode [faq-concertina category='category-slug']. FAQs can also be ordered and the appearance customised."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Michael Burridge, Zyriab Ltd."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.zyriab.co.uk/"
+msgstr ""
