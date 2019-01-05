@@ -768,7 +768,7 @@ function faqconc_show_faqs( $atts ) {
 			$faq_concertina .= '<div class="faq_item" id="faq' . $faqid . $category . '">';
 			$faq_concertina .= '<div class="faq_q" id="faq' . $faqid . $category . '_q" aria-selected="false" aria-expanded="false" aria-controls ="faq' . $faqid . $category . '_a" role="tab" tabindex="-1">';
 			$faq_concertina .= get_the_title();
-			$faq_concertina .= '<a class="alignright" href="#faq' . $faqid . '" tabindex="-1">&#x2693;</a></div>'; // .faq_q
+			$faq_concertina .= '<a class="faq_link" href="#faq' . $faqid . '" tabindex="-1">#</a></div>'; // .faq_q
 			$faq_concertina .= '<div class="faq_a" id="faq' . $faqid . $category . '_a" aria-labelledby="faq' . $faqid . $category . '_q" aria-hidden="true" role="tabpanel">';
 			$faq_concertina .=  wpautop( get_the_content() ); // ensure that the content is output with paragraph tags ( <p>...</p> )
 			$faq_concertina .= '</div>'; // .faq_a

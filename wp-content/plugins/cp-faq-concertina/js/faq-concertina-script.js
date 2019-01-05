@@ -18,6 +18,9 @@ jQuery(document).ready(function($) {
 
 	// Toggle Function
 	$('.faq_item').on('click keyup', function(e) {
+		// Note: this new logic with the '#' links doesn't quite work right
+		// with 'hideothers' set to true!
+		var isLinkClick = $( e.target ).is( 'a.faq_link' );
 
 		if (e.type == "click" || e.which == 13 || e.which == 32) {
 
@@ -26,9 +29,11 @@ jQuery(document).ready(function($) {
 			if ( parseInt( faqconcvars.hideothers, 10) ) { // if hideothers set, i.e. only one answer can be open at a time
 
 				if ( $('#'+$(this).attr("id")+'_q').hasClass("faq_is_open") ) { // if this answer is already open
-
-					$('#'+$(this).attr("id")+'_a').slideUp(speed).attr('aria-hidden','true'); // hide this answer
-					$('#'+$(this).attr("id")+'_q').removeClass("faq_is_open").attr('aria-expanded','false'); // set show/hide indicator to 'show' on this question
+					// Do not hide the answer if we clicked on a '#' link
+					if ( ! isLinkClick ) {
+						$('#'+$(this).attr("id")+'_a').slideUp(speed).attr('aria-hidden','true'); // hide this answer
+						$('#'+$(this).attr("id")+'_q').removeClass("faq_is_open").attr('aria-expanded','false'); // set show/hide indicator to 'show' on this question
+					}
 
 				} else { // if this answer is currently closed
 
@@ -39,7 +44,7 @@ jQuery(document).ready(function($) {
 
 				}
 
-			} else { // if hideothers not set	
+			} else if ( ! isLinkClick || ! $('#'+$(this).attr("id")+'_q').hasClass("faq_is_open") ) { // if hideothers not set and not a link clicked on an already-open answer
 
 				$('#'+$(this).attr("id")+'_a').slideToggle(speed); // toggle visibility of current answer
 				$('#'+$(this).attr("id")+'_q').toggleClass("faq_is_open"); // toggle show/hide indicator of current question
