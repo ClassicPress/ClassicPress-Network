@@ -64,36 +64,11 @@ jQuery(document).ready(function($) {
 			}
 
 			if ($(this).not('.faq_q')) {
-				$(e.target).closest('.faq_item').children('.faq_q:first').focus().attr('tabindex','0'); // restore focus to question when leaving answer
+				$(e.target).closest('.faq_item').children('.faq_q:first').focus(); // restore focus to question when leaving answer
 			}
 
 		}
 
 	});
 
-	//	Navigate between questions using arrow keys
-	$('.faq_q').on('keyup', function(e) {
-
-		if (e.which == 39 || e.which == 40) { // 'down' or 'right' arrow pressed
-			if ($(this).parent('.faq_item').is('.faq_item:last')) {
-				$(this).attr('tabindex','-1'); // set this faq_q tabindex to -1
-				$(this).parent('.faq_item').siblings().first().children('.faq_q').focus().attr('tabindex','0'); // set receiving faq_q tabindex to 0
-			} else {	
-				$(this).attr('tabindex','-1'); // set this faq_q tabindex to -1
-				$(this).parent('.faq_item').next().children('.faq_q').focus().attr('tabindex','0'); // set receiving faq_q tabindex to 0
-			}
-        }
-
-        if (e.which == 37 || e.which == 38) { // 'up' or 'left' arrow pressed
-			if ($(this).parent('.faq_item').is('.faq_item:first')) {	
-				$(this).attr('tabindex','-1'); // set this faq_q tabindex to -1
-				$(this).parent('.faq_item').siblings().last().children('.faq_q').focus().attr('tabindex','0'); // set receiving faq_q tabindex to 0
-			} else {
-				$(this).attr('tabindex','-1'); // set this faq_q tabindex to -1
-				$(this).parent('.faq_item').prev().children('.faq_q').focus().attr('tabindex','0'); // set receiving faq_q tabindex to 0
-			}
-		}
-
-	});
-	
 });

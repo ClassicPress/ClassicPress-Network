@@ -766,7 +766,7 @@ function faqconc_show_faqs( $atts ) {
 			$faqs->the_post();
 			$faqid = get_post()->post_name;
 			$faq_concertina .= '<div class="faq_item" id="' . $faqid . '">';
-			$faq_concertina .= '<div class="faq_q" id="' . $faqid . '_q" aria-selected="false" aria-expanded="false" aria-controls="' . $faqid . '_a" role="tab" tabindex="-1">';
+			$faq_concertina .= '<div class="faq_q" id="' . $faqid . '_q" aria-selected="false" aria-expanded="false" aria-controls="' . $faqid . '_a" role="tab" tabindex="0">';
 			$faq_concertina .= '<span class="faq_q_title">' . get_the_title() . '</span>';
 			$faq_concertina .= '<a class="faq_link" href="#' . $faqid . '" tabindex="-1">#</a></div>'; // .faq_q
 			$faq_concertina .= '<div class="faq_a" id="' . $faqid . '_a" aria-labelledby="faq' . $faqid . '_q" aria-hidden="true" role="tabpanel">';
