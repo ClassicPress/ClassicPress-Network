@@ -11,7 +11,7 @@
 class CP_GP_Sanitize {
 
 	function __construct() {
-		add_action( 'gp_translation_prepare_for_save', array( $this, 'apply_sanitize' ) );
+		add_action( 'gp_translation_prepare_for_save', array( $this, 'apply_sanitize' ), 2, 99999 );
 	}
 
 	function apply_sanitize( $args, $translation ) {
