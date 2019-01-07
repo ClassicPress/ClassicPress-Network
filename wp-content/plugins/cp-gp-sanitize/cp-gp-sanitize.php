@@ -25,7 +25,7 @@ class CP_GP_Sanitize {
 	}
 	
 	function sanitize( $text ) {
-        return preg_replace('#<script(.*?)>(.*?)</script>#is', '', $text);
+        	return wp_kses_post( $text );
 	}
 
 }
@@ -34,10 +34,10 @@ function cp_gp_sanitize() {
 	global $cp_gp_sanitize;
 
 	if ( ! isset( $cp_gp_sanitize ) ) {
-		$wporg_gp_sanitize = new CP_GP_Sanitize();
+		$cp_gp_sanitize = new CP_GP_Sanitize();
 	}
 
-	return $wporg_gp_sanitize;
+	return $cp_gp_sanitize;
 }
 
-add_action( 'plugins_loaded', 'wporg_gp_sanitize' );
+add_action( 'plugins_loaded', 'cp_gp_sanitize' );
