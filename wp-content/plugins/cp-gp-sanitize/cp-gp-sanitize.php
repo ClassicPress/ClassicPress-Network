@@ -17,7 +17,13 @@ class CP_GP_Sanitize {
 	function apply_sanitize( $args, $translation ) {
 		foreach( range( 0, $translation->get_static( 'number_of_plural_translations' ) - 1 ) as $i ) {
 			if ( isset( $args[ "translation_$i" ] ) ) {
-				$args[ "translation_$i" ] = $this->sanitize( $args[ "translation_$i" ] );
+				$temp = $this->sanitize( $args[ "translation_$i" ] );
+				
+				if( $args[ "translation_$i" ] !== $temp ) {
+					error_log( 'User ' . get_current_user_id() . ': ' . print_r( $args, true ) );
+				}
+				
+				$args[ "translation_$i" ] = $temp;
 			}
 		}
 
