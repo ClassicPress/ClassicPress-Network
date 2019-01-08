@@ -98,7 +98,7 @@ class Language_Pack {
 			$export_directory = self::BUILD_DIR . "/{$slug}/export/{$wp_locale}";
 			$build_directory  = self::BUILD_DIR . "/{$slug}";
 			$json_directory   = self::BUILD_DIR . "/{$slug}/" . self::VERSION;
-			$filename         = "{$slug}-{$wp_locale}";
+			$filename         = "{$wp_locale}";
 			$po_file          = "{$export_directory}/{$filename}.po";
 			$mo_file          = "{$export_directory}/{$filename}.mo";
 			$zip_file         = "{$export_directory}/{$filename}.zip";
