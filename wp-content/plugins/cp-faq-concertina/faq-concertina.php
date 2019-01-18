@@ -280,33 +280,15 @@ add_action( 'admin_enqueue_scripts', 'faqconc_enqueue_color_picker' );
 function faqconc_register_settings() {
 
 	add_settings_section( 'faqconc_animation_section', 	__( 'Animation',  'faq-concertina' ), 	'faqconc_animation_section', 	'faqconc_settings_page' );
-	add_settings_section( 'faqconc_appearance_section', __( 'Appearance', 'faq-concertina' ), 	'faqconc_appearance_section', 	'faqconc_settings_page' );
 	add_settings_section( 'faqconc_order_section', 		__( 'Order',      'faq-concertina' ), 	'faqconc_order_section', 		'faqconc_settings_page' );
-//	add_settings_section( 'faqconc_pagination_section', __( 'Pagination', 'faq-concertina' ), 	'faqconc_pagination_section', 	'faqconc_settings_page' );
 
 	add_settings_field( 'faqconc_speed', 			__( 'Speed', 				'faq-concertina' ), 'faqconc_speed', 			'faqconc_settings_page', 'faqconc_animation_section', 	array( 'label_for' => 'Speed') );
 	add_settings_field( 'faqconc_hide_others', 		__( 'Hide Others', 			'faq-concertina' ), 'faqconc_hide_others', 		'faqconc_settings_page', 'faqconc_animation_section', 	array( 'label_for' => 'Hide Others') );
-	add_settings_field( 'faqconc_width', 			__( 'Width',           		'faq-concertina' ), 'faqconc_width', 			'faqconc_settings_page', 'faqconc_appearance_section', 	array( 'label_for' => 'Width') );	
-	add_settings_field( 'faqconc_width_override', 	__( 'Override Width',  		'faq-concertina' ), 'faqconc_width_override', 	'faqconc_settings_page', 'faqconc_appearance_section', 	array( 'label_for' => 'Override Width') );	
-	add_settings_field( 'faqconc_colours', 			__( 'Colour Scheme',   		'faq-concertina' ), 'faqconc_colours', 			'faqconc_settings_page', 'faqconc_appearance_section', 	array( 'label_for' => 'Colour Scheme') );
-	add_settings_field( 'faqconc_invert_colours', 	__( 'Negative',        		'faq-concertina' ), 'faqconc_invert_colours', 	'faqconc_settings_page', 'faqconc_appearance_section', 	array( 'label_for' => 'Negative') );
-	add_settings_field( 'faqconc_corners', 			__( 'Corners',				'faq-concertina' ), 'faqconc_corners', 			'faqconc_settings_page', 'faqconc_appearance_section', 	array( 'label_for' => 'Corners') );
-	add_settings_field( 'faqconc_indicators', 		__( 'Show/Hide Indicators', 'faq-concertina' ), 'faqconc_indicators', 		'faqconc_settings_page', 'faqconc_appearance_section', 	array( 'label_for' => 'Show/Hide Indicators') );
-	add_settings_field( 'faqconc_disable_styles', 	__( 'Disable',         		'faq-concertina' ), 'faqconc_disable_styles', 	'faqconc_settings_page', 'faqconc_appearance_section', 	array( 'label_for' => 'Disable Styles') );
 	add_settings_field( 'faqconc_order', 			__( 'Order',         		'faq-concertina' ), 'faqconc_order', 			'faqconc_settings_page', 'faqconc_order_section', 		array( 'label_for' => 'Order') );	
 	add_settings_field( 'faqconc_reverse', 			__( 'Reverse',         		'faq-concertina' ), 'faqconc_reverse', 			'faqconc_settings_page', 'faqconc_order_section', 		array( 'label_for' => 'Reverse') );
 
 	register_setting( 'faqconc_settings', 'faqconc_animation_speed' );
 	register_setting( 'faqconc_settings', 'faqconc_hide_others' );
-	register_setting( 'faqconc_settings', 'faqconc_width', 'faqconc_width_validate' );
-	register_setting( 'faqconc_settings', 'faqconc_width_override' );
-	register_setting( 'faqconc_settings', 'faqconc_colour_scheme' );	
-	register_setting( 'faqconc_settings', 'faqconc_custom_colour1', 'faqconc_custcol1_validate' );	
-	register_setting( 'faqconc_settings', 'faqconc_custom_colour2', 'faqconc_custcol2_validate' );
-	register_setting( 'faqconc_settings', 'faqconc_negative' );	
-	register_setting( 'faqconc_settings', 'faqconc_corners' );	
-	register_setting( 'faqconc_settings', 'faqconc_indicators' );	
-	register_setting( 'faqconc_settings', 'faqconc_disable_styles' );	
 	register_setting( 'faqconc_settings', 'faqconc_order' );	
 	register_setting( 'faqconc_settings', 'faqconc_reverse' );
 
@@ -314,7 +296,7 @@ function faqconc_register_settings() {
 add_action( 'admin_init', 'faqconc_register_settings' );
 
 // Callback functions for speed
-function faqconc_animation_section() { 
+function faqconc_animation_section() {
 
 	$html  = '<p>' . __( 'Sets the animation effects when Answer panel is opened or closed.', 'faq-concertina' ) . '</p>';
 
@@ -348,189 +330,8 @@ function faqconc_hide_others() {
 
 }
 
-// Callback functions for appearance
-function faqconc_appearance_section() {
-
-	$html  = '<p>' . __( 'Style the visual appearance of the FAQ Concertina to match your theme.', 'faq-concertina' ) . '</p>';
-
-	echo $html;
-
-}
-function faqconc_width() {
-
-	$width = get_option( 'faqconc_width', '75' );
-
-	$html  = '<input type="text" name="faqconc_width" value="' . $width . '" size="3" /> % &nbsp;<span style="font-size:13px;">' . __( '(Min:50% Max:100%)', 'faq-concertina' ) . '</span>';
-
-	echo $html;
-
-}
-function faqconc_width_validate( $input ) {
-
-	$width = get_option( 'faqconc_width' );
-
-	if ( $input < '50' || $input > '100' ) { 
-		add_settings_error ( 'faqconc_width', 'faqconc_width_msg', __( 'The value entered for <em>Width</em> is not valid. Enter a number between 50 and 100.', 'faq-concertina' ) );
-	} else {
-		$width = intval( $input );
-	}
-
-	return $width; 
-
-}
-function faqconc_width_override() {
-
-	$override = get_option( 'faqconc_width_override', '1' );
-
-	$html  = '<input type="checkbox" id="faqconc_width_override" name="faqconc_width_override"  value="1" ' . checked( $override, 1, false ) .' />';
-    $html .= '<label for="faqconc_width_override"> ' . __( 'Override the width setting above on small screen devices (e.g. smartphones).', 'faq-concertina' ) . '</label>'; 
-
-    echo $html;
-
-}
-function faqconc_colours() {
-
-	$colours = get_option( 'faqconc_colour_scheme', '1' );
-	$custcol1 = get_option( 'faqconc_custom_colour1', '#3f6191' );
-	$custcol2 = get_option( 'faqconc_custom_colour2', '#fbf6e4' );
-
-	$html  = '<table><tr>';
-	$html .= '<td style="border:1px solid #ddd;width:160px;"><input type="radio" id="colour_scheme_one" name="faqconc_colour_scheme" value="1" ' . checked( 1, $colours, false ) . '/> ';
-	$html .= '<label for="colour_scheme_one"><img src="'    . plugins_url( 'assets/cs_blackandwhite.jpg', __FILE__ ) . '" align="top" height="20px" />&nbsp; ' . __( 'Black & White', 'faq-concertina' ) . '</label></td>';
-	$html .= '<td style="border:1px solid #ddd;width:160px;"><input type="radio" id="colour_scheme_two" name="faqconc_colour_scheme" value="2" ' . checked( 2, $colours, false ) . '/> ';
-	$html .= '<label for="colour_scheme_two"><img src="'    . plugins_url( 'assets/cs_shadesofgrey.jpg', __FILE__ )  . '" align="top" height="20px" />&nbsp; ' . __( 'Shades of Grey', 'faq-concertina' ) . '</label></td>';
-	$html .= '<td style="border:1px solid #ddd;width:160px;"><input type="radio" id="colour_scheme_three" name="faqconc_colour_scheme" value="3" ' . checked( 3, $colours, false ) . '/> ';
-	$html .= '<label for="colour_scheme_three"><img src="'  . plugins_url( 'assets/cs_jet.jpg', __FILE__ )           . '" align="top" height="20px" />&nbsp; ' . __( 'Jet', 'faq-concertina' ) . '</label></td>';
-	$html .= '</tr><tr>';
-	$html .= '<td style="border:1px solid #ddd;width:160px;"><input type="radio" id="colour_scheme_four" name="faqconc_colour_scheme" value="4" ' . checked( 4, $colours, false ) . '/> ';
-	$html .= '<label for="colour_scheme_four"><img src="'   . plugins_url( 'assets/cs_denim.jpg', __FILE__ )         . '" align="top" height="20px" />&nbsp; ' . __( 'Denim', 'faq-concertina' ) . '</label></td>';
-	$html .= '<td style="border:1px solid #ddd;width:160px;"><input type="radio" id="colour_scheme_five" name="faqconc_colour_scheme" value="5" ' . checked( 5, $colours, false ) . '/> ';
-	$html .= '<label for="colour_scheme_five"><img src="'   . plugins_url( 'assets/cs_strawberry.jpg', __FILE__ )    . '" align="top" height="20px" />&nbsp; ' . __( 'Strawberry', 'faq-concertina' ) . '</label></td>';
-	$html .= '<td style="border:1px solid #ddd;width:160px;"><input type="radio" id="colour_scheme_six" name="faqconc_colour_scheme" value="6" ' . checked( 6, $colours, false ) . '/> ';
-	$html .= '<label for="colour_scheme_six"><img src="'    . plugins_url( 'assets/cs_seashell.jpg', __FILE__ )      . '" align="top" height="20px" />&nbsp; ' . __( 'Seashell', 'faq-concertina' ) . '</label></td>';
-	$html .= '</tr><tr>';
-	$html .= '<td style="border:1px solid #ddd;width:160px;"><input type="radio" id="colour_scheme_seven" name="faqconc_colour_scheme" value="7" ' . checked( 7, $colours, false ) . '/> ';
-	$html .= '<label for="colour_scheme_seven"><img src="'  . plugins_url( 'assets/cs_iceberg.jpg', __FILE__ )       . '" align="top" height="20px" />&nbsp; ' . __( 'Iceberg', 'faq-concertina' ) . '</label></td>';
-	$html .= '<td style="border:1px solid #ddd;width:160px;"><input type="radio" id="colour_scheme_eight" name="faqconc_colour_scheme" value="8" ' . checked( 8, $colours, false ) . '/> ';
-	$html .= '<label for="colour_scheme_eight"><img src="'  . plugins_url( 'assets/cs_forest.jpg', __FILE__ )        . '" align="top" height="20px" />&nbsp; ' . __( 'Forest', 'faq-concertina' ) . '</label></td>';
-	$html .= '<td style="border:1px solid #ddd;width:160px;"><input type="radio" id="colour_scheme_nine" name="faqconc_colour_scheme" value="9" ' . checked( 9, $colours, false ) . '/> ';
-	$html .= '<label for="colour_scheme_nine"><img src="'   . plugins_url( 'assets/cs_paella.jpg', __FILE__ )        . '" align="top" height="20px" />&nbsp; ' . __( 'Paella', 'faq-concertina' ) . '</label></td>';
-	$html .= '</tr><tr>';
-	$html .= '<td style="border:1px solid #ddd;width:160px;" colspan="2"><input type="radio" id="colour_scheme_custom" name="faqconc_colour_scheme" value="0" ' . checked( 0, $colours, false ) . '/> ';
-	$html .= '<label for="colour_scheme_custom"><img src="' . plugins_url( 'assets/cs_custom.jpg', __FILE__ )        . '" align="top" height="20px" />&nbsp; ' . __( 'Custom', 'faq-concertina' ) . '</label>';
-	$html .= '<br /><br /><input name="faqconc_custom_colour1" type="text" value="' . $custcol1 . '" class="faqconc-color-field" /><br /><input name="faqconc_custom_colour2" type="text" value="' . $custcol2 . '" class="faqconc-color-field" /></td>';
-	$html .= '</tr></table>';
-
-	echo $html;
-
-}
-function faqconc_custcol1_validate( $input ) {
-
-	// check for empty string
-	if ( $input == "" ) {
-		add_settings_error( 'faqconc_custom_colour1', 'faqconc_custcol1_msg', __( 'Custom colour 1 cannot be empty.', 'faq-concertina' ) );
-		$custcol = get_option(  'faqconc_custom_colour1', '#3f6191' );
-	} else {
-		// check for leading # in string  
-		if ( substr_compare( $input, "#", 0, 1 ) ) {
-			add_settings_error( 'faqconc_custom_colour1', 'faqconc_custcol1_msg', __( 'Custom colour 1 has no leading #.', 'faq-concertina' ) );
-			$custcol = get_option(  'faqconc_custom_colour1', '#3f6191' );
-		} else {
-			$custcol = ltrim( $input, '#' ); // trim leading #...
-			// ...and check for valid hex code and that string is exactly six characters
-			if ( !ctype_xdigit( $custcol ) || strlen( $custcol ) != 6 ) { 
-				add_settings_error( 'faqconc_custom_colour1', 'faqconc_custcol1_msg', __( 'Invalid entry for custom colour 1. Custom colours must consist of exactly six hexadecimal characters (0-9, a-f).', 'faq-concertina' ) );
-				$custcol = get_option(  'faqconc_custom_colour1', '#3f6191' );
-			} else {
-				// all is good, we have a valid colour
-				$custcol = $input;
-			}
-		}
-	}
-
-	return $custcol;
-
-}
-function faqconc_custcol2_validate( $input ) {
-
-	// check for empty string
-	if ( $input == "" ) {
-		add_settings_error( 'faqconc_custom_colour2', 'faqconc_custcol2_msg', __( 'Custom colour 2 cannot be empty.', 'faq-concertina' ) );
-		$custcol = get_option(  'faqconc_custom_colour2', '#fbf6e4' );
-	} else {
-		// check for leading # in string
-		if ( substr_compare( $input, "#", 0, 1 ) ) {
-			add_settings_error( 'faqconc_custom_colour2', 'faqconc_custcol2_msg', __( 'Custom colour 2 has no leading #.', 'faq-concertina' ) );
-			$custcol = get_option(  'faqconc_custom_colour2', '#fbf6e4' );
-		} else {
-			$custcol = ltrim( $input, '#' ); // trim leading #...
-			// ...and check for valid hex code and that string is exactly six characters
-			if ( !ctype_xdigit( $custcol ) || strlen( $custcol ) != 6 ) { 
-				add_settings_error( 'faqconc_custom_colour2', 'faqconc_custcol2_msg', __( 'Invalid entry for custom colour 2. Custom colours must consist of exactly six hexadecimal characters (0-9, a-f).', 'faq-concertina' ) );
-				$custcol = get_option(  'faqconc_custom_colour2', '#fbf6e4' );
-			} else {
-				// all is good, we have a valid colour
-				$custcol = $input;
-			}
-		}
-	}
-		
-	return $custcol;
-
-}
-function faqconc_invert_colours() {
-
-	$invert = get_option( 'faqconc_negative', '0' );
-
-	$html  = '<input type="checkbox" id="faqconc_negative" name="faqconc_negative"  value="1" ' . checked( 1, $invert, false ) .' />';
-    $html .= '<label for="faqconc_negative"> ' . __( 'Inverts the colour scheme (useful if your theme has a dark background).', 'faq-concertina' ) . '</label>'; 
-
-    echo $html;
-
-}
-function faqconc_corners() {
-
-	$corners = get_option( 'faqconc_corners', '1' );
-
-	$html  = '<table><tr>';
-	$html .= '<td style="border:1px solid #ddd;width:126px;"><input type="radio" id="corners_one" name="faqconc_corners" value="1" ' . checked( 1, $corners, false ) . '/>';
-	$html .= '<label for="corners_one"> ' . __( 'Square', 'faq-concertina' ) . ' &nbsp;<img src="' . plugins_url( 'assets/corner_square.jpg', __FILE__ ) . '" align="top" /></label></td>';
-	$html .= '<td style="border:1px solid #ddd;width:126px;"><input type="radio" id="corners_two" name="faqconc_corners" value="2" ' . checked( 2, $corners, false ) . '/>';
-	$html .= '<label for="corners_two"> ' . __( 'Rounded', 'faq-concertina' ) . ' &nbsp;<img src="' . plugins_url( 'assets/corner_round.jpg', __FILE__ ) . '" align="top" /></label></td>';
-	$html .= '</tr></table>';
-
-	echo $html;
-
-}
-function faqconc_indicators() {
-
-	$indicators = get_option( 'faqconc_indicators', '0' );
-
-	$html  = '<table><tr>';
-	$html .= '<td style="border:1px solid #ddd;width:126px;"><input type="radio" id="indicators_none" name="faqconc_indicators" value="0" ' . checked( 0, $indicators, false ) . '/>';
-	$html .= '<label for="indicators_none"> ' . __( 'None', 'faq-concertina' ) . ' </label></td>';
-	$html .= '<td style="border:1px solid #ddd;width:126px;"><input type="radio" id="indicators_one" name="faqconc_indicators" value="1" ' . checked( 1, $indicators, false ) . '/>';
-	$html .= '<label for="corners_one"> +/- ' . __( 'signs', 'faq-concertina' ) . ' &nbsp;<img src="' . plugins_url( 'assets/ind_plusminussign.jpg', __FILE__ ) . '" align="top" height="18px" /></label></td>';
-	$html .= '<td style="border:1px solid #ddd;width:126px;"><input type="radio" id="indicators_two" name="faqconc_indicators" value="2" ' . checked( 2, $indicators, false ) . '/>';
-	$html .= '<label for="indicators_two"> ' . __( 'Arrows', 'faq-concertina' ) . ' &nbsp;<img src="' . plugins_url( 'assets/ind_arrow.jpg', __FILE__ ) . '" align="top" height="18px"/></label></td>';
-	$html .= '</tr></table>';
-
-	echo $html;
-
-}
-function faqconc_disable_styles() {
-
-	$disable = get_option( 'faqconc_disable_styles', '0' );
-
-	$html  = '<input type="checkbox" id="faqconc_disable_styles" name="faqconc_disable_styles"  value="1" ' . checked( $disable, 1, false ) . ' />';
-    $html .= '<label for="faqconc_disable_styles"> ' . __( 'Disable all appearance settings and only use .css file.', 'faq-concertina' ) . '</label>';
-
-    echo $html;
-
-}
-
 // Callback functions for order
-function faqconc_order_section() { 
+function faqconc_order_section() {
 
 	$html  = '<p>' . __( 'Sets the order in which the FAQs are displayed.', 'faq-concertina' ) . '</p>';
 	$html .= '<p><strong>' . __( 'Alphabetical', 'faq-concertina' ) . '</strong> ' . __( 'orders the FAQs alphabetically by question.', 'faq-concertina' ) . '<br />';
@@ -654,64 +455,12 @@ function faqconc_check_for_shortcode( $posts ) {
             break;
     } // end foreach
  
-    if ( $faqconc_shortcode_found ){ // shortcode has been found so let's load the styles!
+	if ( $faqconc_shortcode_found ) {
+		// shortcode has been found so let's load the styles!
 
     	// load external stylesheet
         wp_register_style( 'faqconc-styles', plugins_url( 'css/faq-concertina-styles.css', __FILE__ ), array(), cp_faqconc_version() );
 		wp_enqueue_style( 'faqconc-styles' );
-
-    	// if inline styles are not disabled....
-    	if ( get_option( 'faqconc_disable_styles' ) != 1 ) {
-    		// ... create the inline styles.
-	    	// get width and sanitise
-	    	$faq_width = get_option( 'faqconc_width', '75' );
-			// get colour scheme and custom colours
-			$faq_colours = get_option( 'faqconc_colour_scheme', '2' ); 
-			switch ( $faq_colours ) {
-				case "1": $faq_col1 = "#000000"; $faq_col2 = "#ffffff"; break; // Black & White
-				case "2": $faq_col1 = "#666666"; $faq_col2 = "#eeeeee"; break; // Shades of Grey
-				case "3": $faq_col1 = "#616d7e"; $faq_col2 = "#e5e4e2"; break; // Jet
-				case "4": $faq_col1 = "#357ec7"; $faq_col2 = "#c2dfff"; break; // Denim
-				case "5": $faq_col1 = "#e42217"; $faq_col2 = "#ffdfdd"; break; // Strawberry
-				case "6": $faq_col1 = "#7f5a58"; $faq_col2 = "#fff5ee"; break; // Seashell
-				case "7": $faq_col1 = "#3b9c9c"; $faq_col2 = "#ccffff"; break; // Iceberg
-				case "8": $faq_col1 = "#347235"; $faq_col2 = "#ccfb5d"; break; // Forest
-				case "9": $faq_col1 = "#e42217"; $faq_col2 = "#ffd801"; break; // Paella
-				case "0": $faq_col1 = get_option( 'faqconc_custom_colour1', '#3f6191' ); // Custom colours 
-						  $faq_col2 = get_option( 'faqconc_custom_colour2', '#fbf6e4' );
-						  break;
-				default:  $faq_col1 = "#666666"; $faq_col2 = "#eeeeee"; 		// default to Shades of Grey
-			}
-			// invert colours if 'negative' set
-			if ( get_option( 'faqconc_negative' ) == "1" ) { $faq_temp = $faq_col1; $faq_col1 = $faq_col2; $faq_col2 = $faq_temp; }
-			// get corner option
-			if ( get_option( 'faqconc_corners' ) == "2" ) { $corner = "border-radius: 4px; "; } else { $corner = ""; }
-			// get indicators option	
-			$faq_indicators = get_option( 'faqconc_indicators', '0' );
-			switch ( $faq_indicators ) {
-				case "0": $indicators = ''; break; // No indicators
-				case "1": $indicators = '.faq_q:before { content: "+"; font-size: 14px; border: 1px solid; border-radius: 1px; padding: 0 4px; margin-left: 6px; float:right; line-height: 16px; } .faq_is_open:before { content: "­−"; } .faq_q { padding-right: 8px; }'; break; // +/- indicators
-				case "2": $indicators = '.faq_q:before { content: "\25BD"; font-size: 14px; margin-left: 6px; float:right; } .faq_is_open:before { content: "\25B3"; } .faq_q { padding-right: 8px; }'; break; // Arrow indicators
-				default:  $indicators = '';
-			}
-			// construct inline CSS
-	     	$faq_css = "
-	    			.faqconc  	 { width: " . $faq_width . "%; } 
-	    			.faq_item 	 { background: " . $faq_col2 . "; border-color: " . $faq_col1 . "; " . $corner . "}
-	    			.faq_q    	 { background: " . $faq_col1 . "; color: " . $faq_col2 . "; } 
-	    			.faq_q:focus { outline: none; box-shadow: 0px 0px 6px 4px " . $faq_col1 . "; }
-	    			.faq_a    	 { color: " . $faq_col1 . "; }
-	    			" . $indicators;
-			// get width override option and add media query
-			if ( get_option( 'faqconc_width_override' ) == '1' ) {
-				$faq_css .= "
-					@media screen and (max-width: 600px) { .faqconc { width: 100%; } }
-				"; 
-			}
-			// put inline styles in <head>
-    		wp_add_inline_style( 'faqconc-styles', $faq_css );
-		}
-
     }
 
     return $posts;
