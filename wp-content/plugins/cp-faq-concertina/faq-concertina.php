@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) or die( "Permission denied!" );
 
 function cp_faqconc_version() {
   // Cache buster for this plugin's scripts and stylesheets.
-  return '20190105';
+  return '20190117';
 }
 
 
