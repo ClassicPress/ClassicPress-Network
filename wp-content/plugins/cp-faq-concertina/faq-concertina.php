@@ -513,29 +513,61 @@ function faqconc_show_faqs( $atts ) {
 		wp_enqueue_script( 'faqconc-script' );
 		wp_localize_script( 'faqconc-script', 'faqconcvars', array ( 'speed' => $speed, 'hideothers' => $hide_others, 'category' => $category ) );
 
-		// display the FAQs
+		// Begin FAQ container; add category (if any) in class and ID
 		$current_ver = '1_4_3';
-		$faq_concertina = $category ? '<div id="faqconc_' . $current_ver . '_' . $category . '" class="faqconc ' . $category . '" role="tablist" aria-multiselectable="true">' :'<div id="faqconc_' . $current_ver . '" class="faqconc" role="tablist" aria-multiselectable="true">'; // Add category as class if it exists
- 
- 		while ( $faqs->have_posts() ) {
+		$concertina_id = 'faqconc_' . $current_ver;
+		$concertina_class = 'faqconc';
+		if ( $category ) {
+			$concertina_id .= '_' . $category;
+			$concertina_class .= ' ' . $category;
+		}
+		$faq_concertina = (
+			'<dl id="' . $concertina_id . '"'
+			. ' class="' . $concertina_class . '"'
+			. ' role="presentation" aria-multiselectable="true"'
+			. '>'
+		);
+
+		while ( $faqs->have_posts() ) {
 			$faqs->the_post();
 			$faqid = get_post()->post_name;
-			$faq_concertina .= '<div class="faq_item" id="' . $faqid . '">';
-			$faq_concertina .= '<div class="faq_q" id="' . $faqid . '_q" aria-selected="false" aria-expanded="false" aria-controls="' . $faqid . '_a" role="tab" tabindex="0">';
-			$faq_concertina .= '<span class="faq_q_title">' . get_the_title() . '</span>';
-			$faq_concertina .= '<a class="faq_link" href="#' . $faqid . '" tabindex="-1">#</a></div>'; // .faq_q
-			$faq_concertina .= '<div class="faq_a" id="' . $faqid . '_a" aria-labelledby="faq' . $faqid . '_q" aria-hidden="true" role="tabpanel">';
-			$faq_concertina .=  wpautop( get_the_content() ); // ensure that the content is output with paragraph tags ( <p>...</p> )
-			$faq_concertina .= '</div>'; // .faq_a
-			$faq_concertina .= '</div>'; // .faq_item
-
-//			$faq_concertina .= '<div class="nav-previous alignleft">' . next_posts_link( 'Next page' ) . '</div>';
-//			$faq_concertina .= '<div class="nav-next alignright">' . previous_posts_link( 'Previous page' ) . '</div>'; 
+			$faq_concertina .= (
+				// Question: <dt class="faq_q">
+				'<dt class="faq_q" role="heading" aria-level="3" id="' . $faqid . '">'
+				// Hide/show trigger: <button class="faq_button">
+				. '<button class="faq_button"'
+				. ' id="' . $faqid . '_q"'
+				. ' aria-expanded="true"'
+				. ' aria-controls="' . $faqid . '_a"'
+				. ' type="button"'
+				. '>'
+				. '<span class="faq_q_title">'
+				. get_the_title()
+				. '</span>'
+				. '</button>'
+				. '<a class="faq_link" href="#' . $faqid . '" tabindex="0">'
+				. '#'
+				. '</a>'
+				. '</dt>'
+				// Answer: <dd class="faq_a">
+				. '<dd class="faq_a"'
+				. ' id="' . $faqid . '_a"'
+				. ' aria-labelledby="faq' . $faqid . '_q"'
+				. ' role="region">'
+				// print content with paragraph tags
+				. wpautop( get_the_content() )
+				. '</dd>'
+			);
 		}
-		$faq_concertina .= '</div>'; // .faqconc
+
+		$faq_concertina .= '</dl>'; // .faqconc
 	} else {
-		$faq_concertina = '<div id="faqconc_' . $current_ver . '" class="faqconc"><p><strong>' . __( 'Sorry, no FAQs can be found!', 'faq-concertina' ) . '</strong></p></div>';
-	} 
+		$faq_concertina = (
+			'<div class="faqconc"><p><strong>'
+			. __( 'Sorry, no FAQs can be found!', 'faq-concertina' )
+			. '</strong></p></div>'
+		);
+	}
 	
 	wp_reset_postdata();
 

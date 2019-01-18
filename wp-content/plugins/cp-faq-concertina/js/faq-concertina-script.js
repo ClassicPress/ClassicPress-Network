@@ -1,86 +1,135 @@
-jQuery(document).ready(function($) {
-
-	// Make first FAQ tabbable
-	$('.faqconc').find('.faq_q:first').attr('tabindex','0');
-
-	// Get the category 
-	var category = faqconcvars.category; 
-	if (category) { category = '_'+category}
-
+jQuery( document ).ready( function( $ ) {
 	// Prevent scroll down when spacebar pressed
-	document.getElementById('faqconc_1_4_3'+category).addEventListener('keydown', function(e) {
-		if ( (e.keycode || e.which) == 32) {
+	$( '.faqconc' ).on( 'keydown', function( e ) {
+		if ( e.keyCode === 32 || e.which === 32 ) {
 			e.preventDefault();
 		}
-	}, false);
+	} );
 
-	// FAQ entries are shown by default; hide them if JS enabled
-	$( '.faq_a' ).css( 'display', 'none' );
+	// FAQ entries are shown by default in case JS is disabled; hide them now
+	$( '.faq_q' ).attr( 'aria-expanded', 'false' );
+	$( '.faq_a' ).prop( 'hidden', true );
 
-	// Toggle Function
-	$('.faq_item').on('click keyup', function(e) {
-		// Note: this new logic with the '#' links doesn't quite work right
-		// with 'hideothers' set to true!
-		var isLinkClick = $( e.target ).is( 'a.faq_link' );
+	// Get the speed at which answers should open and close
+	var speed = parseInt( faqconcvars.speed, 10 );
+	// Get whether only one answer can be open at a time
+	var hideothers = Boolean( parseInt( faqconcvars.hideothers, 10 ) );
 
-		if (e.type == "click" || e.which == 13 || e.which == 32) {
-
-			var speed = parseInt( faqconcvars.speed, 10 ); // get the speed which answers should open and close
-
-			if ( parseInt( faqconcvars.hideothers, 10) ) { // if hideothers set, i.e. only one answer can be open at a time
-
-				if ( $('#'+$(this).attr("id")+'_q').hasClass("faq_is_open") ) { // if this answer is already open
-					// Do not hide the answer if we clicked on a '#' link
-					if ( ! isLinkClick ) {
-						$('#'+$(this).attr("id")+'_a').slideUp(speed).attr('aria-hidden','true'); // hide this answer
-						$('#'+$(this).attr("id")+'_q').removeClass("faq_is_open").attr('aria-expanded','false'); // set show/hide indicator to 'show' on this question
-					}
-
-				} else { // if this answer is currently closed
-
-					$('.faq_a').slideUp(speed).attr('aria-hidden','true'); // hide all answers
-					$('.faq_q').removeClass("faq_is_open").attr('aria-expanded','false'); // set show/hide indicators to 'show' on all questions
-					$('#'+$(this).attr("id")+'_a').slideDown(speed).attr('aria-hidden','false'); // show this answer
-					$('#'+$(this).attr("id")+'_q').addClass("faq_is_open").attr('aria-expanded','true'); // set show/hide indicator to 'hide' on this question
-
-				}
-
-			} else if ( ! isLinkClick || ! $('#'+$(this).attr("id")+'_q').hasClass("faq_is_open") ) { // if hideothers not set and not a link clicked on an already-open answer
-
-				$('#'+$(this).attr("id")+'_a').slideToggle(speed); // toggle visibility of current answer
-				$('#'+$(this).attr("id")+'_q').toggleClass("faq_is_open"); // toggle show/hide indicator of current question
-				
-				var ans = $('#'+$(this).attr("id")+'_q').next('.faq_a');
-				
-				if ( $('#'+$(this).attr("id")+'_q').hasClass("faq_is_open") ) {
-					 $('#'+$(this).attr("id")+'_q').attr('aria-expanded','true');
-					 $(ans).attr('aria-hidden','false');
-				}
-				else if ( !$('#'+$(this).attr("id")+'_q').hasClass("faq_is_open") ) {
-					 $('#'+$(this).attr("id")+'_q').attr('aria-expanded','false');
-					 $(ans).attr('aria-hidden','true');
-				}					 
-
-			}
-
-			if ($(this).not('.faq_q')) {
-				$(e.target).closest('.faq_item').children('.faq_q:first').focus(); // restore focus to question when leaving answer
-			}
-
+	// Set up show/hide event handler (toggle function)
+	$( '.faq_button, .faq_link' ).on( 'click keyup', function( e ) {
+		// Ignore keys other than 13 (Enter) and 32 (Space)
+		if ( e.type !== 'click' && e.which !== 13 && e.which !== 32 ) {
+			return;
 		}
 
-	});
+		var $this = $( this );
+		var $faq_conc = $this.closest( '.faqconc' );
+		var $faq_q = $this.closest( '.faq_q' );
+		var $faq_a = $faq_q.next( '.faq_a' );
+
+		// Clicks on '#' links get some special handling: ensure the relevant
+		// FAQ is expanded and scroll it to the top of the page
+		var isLinkClick = $( e.target ).is( '.faq_link' );
+
+		if ( hideothers ) {
+			var $toHide = $faq_conc.find( '.faq_a' ).not( $faq_a );
+			$toHide.slideUp( speed, function() {
+				$toHide.prop( 'hidden', true );
+				$faq_conc.find( '.faq_q' ).not( $faq_q )
+					.attr( 'aria-expanded', false );
+			} );
+		}
+
+		if ( hideothers || $faq_a.prop( 'hidden' ) ) {
+			// This answer is currently closed; open it.
+			$faq_a.slideDown( speed, function() {
+				$faq_q.attr( 'aria-expanded', true );
+				$faq_a.prop( 'hidden', false );
+			} );
+		} else if ( ! isLinkClick ) {
+			// This answer is currently open; close it.
+			$faq_a.slideUp( speed, function() {
+				$faq_q.attr( 'aria-expanded', false );
+				$faq_a.prop( 'hidden', true );
+			} );
+		}
+	} );
+
+	// Navigate between FAQ items using arrow keys
+	$( '.faq_q, .faq_a' ).on( 'keydown', function( e ) {
+		var $this = $( this ),
+			$faq_q = $this.closest( '.faq_q' ),
+			$next_q = null;
+		if ( ! $faq_q.length ) {
+			$faq_q = $this.closest( '.faq_a' ).prev( '.faq_q' );
+		}
+		if ( ! $faq_q.length ) {
+			return;
+		}
+		if ( e.which === 39 || e.which === 40 ) {
+			// Down or Right arrow pressed
+			$next_q = $faq_q.nextAll( '.faq_q:first' );
+			if ( ! $next_q.length ) {
+				// At bottom; wrap around to top
+				$next_q = $this.closest( '.faqconc' ).find( '.faq_q:first' );
+			}
+		} else if ( e.which === 37 || e.which === 38 ) {
+			// Up or Left arrow pressed
+			$next_q = $faq_q.prevAll( '.faq_q:first' );
+			if ( ! $next_q.length ) {
+				// At top; wrap around to bottom
+				$next_q = $this.closest( '.faqconc' ).find( '.faq_q:last' );
+			}
+		} else if ( e.which === 36 ) {
+			// Home key pressed
+			$next_q = $this.closest( '.faqconc' ).find( '.faq_q:first' );
+		} else if ( e.which === 35 ) {
+			// End key pressed
+			$next_q = $this.closest( '.faqconc' ).find( '.faq_q:last' );
+		}
+
+		if ( $next_q && $next_q.length === 1 ) {
+			$next_q.find( '.faq_button' ).focus();
+			// Scroll the element into view (with some margin, which is not
+			// supported by Element#scrollIntoView())
+			// Note: Works on this site, but may not work correctly for all
+			// pages / DOM structures!
+			var qOffsetTop = $next_q.offset().top;
+			var qHeight = $next_q.height();
+			var scrollTop = document.documentElement.scrollTop;
+			var scrollToOffset = null;
+			if ( qOffsetTop - 45 < scrollTop ) {
+				// Scroll up
+				scrollToOffset = qOffsetTop - 45;
+			} else if ( qOffsetTop + qHeight + 30 > scrollTop + window.innerHeight ) {
+				// Scroll down
+				scrollToOffset = qOffsetTop + qHeight + 30 - window.innerHeight;
+			}
+			if ( scrollToOffset !== null ) {
+				document.documentElement.scrollTop = scrollToOffset;
+			}
+			e.preventDefault();
+		}
+	} );
 
 	// Expand FAQ item linked in hash fragment, if any
 	if ( document.location.hash ) {
-		var linkedItem = $( document.location.hash );
-		console.log( linkedItem );
-		if ( linkedItem.length === 1 && (
-			linkedItem.is( '.faq_item' ) ||
-			linkedItem.is( '.faq_q' ) ||
-			linkedItem.is( '.faq_a' )
-		) ) {
-			linkedItem.closest( '.faq_item' ).trigger( 'click' );
+		var $linkedItem = $( document.location.hash ),
+			$expandButton = null;
+		if ( $linkedItem.length !== 1 ) {
+			return;
+		}
+		if ( $linkedItem.is( '.faq_a' ) ) {
+			// Note: Better not to link directly to answers, as this scrolls
+			// the question out of the viewport
+			$expandButton = $linkedItem.prev( '.faq_q' ).find( '.faq_button' );
+		} else if ( $linkedItem.is( '.faq_q' ) ) {
+			$expandButton = $linkedItem.find( '.faq_button' );
+		} else if ( $linkedItem.is( '.faq_button' ) ) {
+			$expandButton = $linkedItem;
+		}
+		if ( $expandButton ) {
+			$expandButton.trigger( 'click' );
 		}
 	}
-});
+} );
