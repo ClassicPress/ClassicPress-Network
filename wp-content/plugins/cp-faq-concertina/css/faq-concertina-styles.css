@@ -10,7 +10,7 @@ released in the WordPress plugin directory!
 
 /* the container div */
 .faqconc {
-	width: 100%;
+	max-width: 800px;
 	margin: 20px auto;
 }
 
