@@ -20,7 +20,10 @@ class CP_GP_Sanitize {
 				$temp = $this->sanitize( $args[ "translation_$i" ] );
 				
 				if( $args[ "translation_$i" ] !== $temp ) {
-					error_log( 'User ' . get_current_user_id() . ': ' . print_r( $args, true ) );
+					error_log(
+					    'Invalid translation by user ID ' . get_current_user_id() . ': '
+					    . json_encode( $args, JSON_UNESCAPED_SLASHES )
+					);
 				}
 				
 				$args[ "translation_$i" ] = $temp;
