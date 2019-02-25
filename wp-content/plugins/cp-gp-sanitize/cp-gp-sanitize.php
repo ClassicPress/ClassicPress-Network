@@ -15,11 +15,11 @@ class CP_GP_Sanitize {
 	}
 
 	function apply_sanitize( $args, $translation ) {
-		foreach( range( 0, $translation->get_static( 'number_of_plural_translations' ) - 1 ) as $i ) {
+		foreach ( range( 0, $translation->get_static( 'number_of_plural_translations' ) - 1 ) as $i ) {
 			if ( isset( $args[ "translation_$i" ] ) ) {
 				$temp = $this->sanitize( $args[ "translation_$i" ] );
 				
-				if( $args[ "translation_$i" ] !== $temp ) {
+				if ( $args[ "translation_$i" ] !== $temp ) {
 					error_log(
 					    'Invalid translation by user ID ' . get_current_user_id() . ': '
 					    . json_encode( $args, JSON_UNESCAPED_SLASHES )
