@@ -13,7 +13,7 @@ class CP_GP_Assign_Locale_Profile {
         $gp_project = GP::$project->by_path( "core" );
         $translation_sets = GP::$translation_set->by_project_id( $gp_project->id );
         $option = $selected = '';
-        $gp_locale_saved = get_the_author_meta( 'gp_locale', $user->ID );
+        $gp_locale_saved = get_the_user_meta( 'gp_locale', $user->ID, true );
         foreach ( $translation_sets as $set ) {
 			// Get WP locale.
 			$gp_locale = GP_Locales::by_slug( $set->locale );

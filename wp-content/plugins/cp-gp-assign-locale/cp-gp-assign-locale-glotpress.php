@@ -6,6 +6,14 @@ class CP_GP_Assign_Locale_GlotPress {
 		add_filter( 'gp_pre_can_user', array( $this, 'pre_can_user' ), 9 , 2 );
 	}
 
+	/**
+	 * Filter to check if the current user has permissions to approve strings, based
+	 * on a role on the Rosetta site.
+	 *
+	 * @param string $verdict Verdict.
+	 * @param array  $args    Array of arguments.
+	 * @return bool True if user has permissions, false if not.
+	 */
 	public function pre_can_user( $verdict, $args ) {
 		// Logged out users have no permissions.
 		if ( ! is_user_logged_in() ) {
@@ -13,7 +21,16 @@ class CP_GP_Assign_Locale_GlotPress {
 		}
 
         $locale_and_project_id = (object) $this->get_locale_and_project_id( $args['object_type'], $args['object_id'], $args );
-        // TODO compare locale with the one of the user
+        
+        if ( ! $locale_and_project_id ) {
+            return false;
+	    }
+        
+        $gp_locale_saved = get_the_user_meta( 'gp_locale', $args[ 'user_id' ], true );
+        if ( $locale_and_project_id->locale !== $gp_locale_saved ) {
+            return false;
+        }
+        
 		// No user is allowed to delete something.
 		if ( 'delete' === $args['action'] ) {
 			return false;
