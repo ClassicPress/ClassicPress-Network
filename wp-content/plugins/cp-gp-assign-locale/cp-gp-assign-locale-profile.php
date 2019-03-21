@@ -3,13 +3,13 @@
 class CP_GP_Assign_Locale_Profile {
 
 	function __construct() {
-		add_action( 'show_user_profile', array( $this, 'crf_show_extra_profile_fields' ) );
-        add_action( 'edit_user_profile', array( $this, 'crf_show_extra_profile_fields' ) );
-        add_action( 'personal_options_update',  array( $this, 'crf_update_profile_fields' ) );
-        add_action( 'edit_user_profile_update',  array( $this, 'crf_update_profile_fields' ) );
+		add_action( 'show_user_profile', array( $this, 'show_extra_profile_fields' ) );
+        add_action( 'edit_user_profile', array( $this, 'show_extra_profile_fields' ) );
+        add_action( 'personal_options_update',  array( $this, 'update_profile_fields' ) );
+        add_action( 'edit_user_profile_update',  array( $this, 'update_profile_fields' ) );
 	}
 
-	function crf_show_extra_profile_fields( $user ) {
+	function show_extra_profile_fields( $user ) {
         $gp_project = GP::$project->by_path( "core" );
         $translation_sets = GP::$translation_set->by_project_id( $gp_project->id );
         $option = $selected = '';
@@ -46,7 +46,7 @@ class CP_GP_Assign_Locale_Profile {
         <?php
     }
     
-    function crf_update_profile_fields( $user_id ) {
+    function update_profile_fields( $user_id ) {
         if ( ! current_user_can( 'edit_user', $user_id ) ) {
             return false;
         }
