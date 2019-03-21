@@ -42,6 +42,11 @@ class CP_GP_Assign_Locale_GlotPress {
             return true;
         }
         
+        // The next checks are only for the 'approve' action, no permissions for other actions.
+	    if ( 'approve' !== $args['action'] ) {
+	        return false;
+	    }
+        
         if ( current_user_can( 'editor' ) ) {
             // Check if the locale is different to block the permission
             $gp_locale_saved = get_user_meta( $args[ 'user_id' ], 'gp_locale', true );
