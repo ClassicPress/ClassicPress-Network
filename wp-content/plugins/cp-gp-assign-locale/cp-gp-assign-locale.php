@@ -20,3 +20,16 @@ function cp_gp_assign_locale_profile() {
 }
 
 add_action( 'plugins_loaded', 'cp_gp_assign_locale_profile' );
+
+function cp_gp_assign_locale_glotpress() {
+	global $cp_gp_assign_locale_glotpress;
+
+	if ( ! isset( $cp_gp_assign_locale_glotpress ) ) {
+		include_once 'cp-gp-assign-locale-glotpress.php';
+		$cp_gp_assign_locale_glotpress = new CP_GP_Assign_Locale_GlotPress();
+	}
+
+	return $cp_gp_assign_locale_glotpress;
+}
+
+add_action( 'plugins_loaded', 'cp_gp_assign_locale_glotpress' );

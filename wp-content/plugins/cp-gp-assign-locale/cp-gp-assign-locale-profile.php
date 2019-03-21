@@ -21,11 +21,11 @@ class CP_GP_Assign_Locale_Profile {
 				continue;
 			}
 			
-			if ( $gp_locale->wp_locale === $gp_locale_saved ) {
+			if ( $set->locale === $gp_locale_saved ) {
                 $selected = ' selected="selcted"';
 			}
 			
-			$option .= '<option value="' . $gp_locale->wp_locale . '"' . $selected .'>' . $gp_locale->english_name . '</option>' . "\n";
+			$option .= '<option value="' . $set->locale . '"' . $selected .'>' . $gp_locale->english_name . '</option>' . "\n";
 			$selected = '';
 			
         }
