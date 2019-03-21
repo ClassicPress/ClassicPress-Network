@@ -22,29 +22,37 @@ class CP_GP_Assign_Locale_GlotPress {
 
         $locale_and_project_id = (object) $this->get_locale_and_project_id( $args['object_type'], $args['object_id'], $args );
         
+        // Get locale and current project ID.
         if ( ! $locale_and_project_id ) {
-            return false;
+             return false;
 	    }
-        
-        $gp_locale_saved = get_the_user_meta( 'gp_locale', $args[ 'user_id' ], true );
-        if ( $locale_and_project_id->locale !== $gp_locale_saved ) {
-            return false;
-        }
-        
+    
+        // Get locale and current project ID.
+        if ( ! isset( $locale_and_project_id->locale ) ) {
+             return false;
+	    }
+      
 		// No user is allowed to delete something.
 		if ( 'delete' === $args['action'] ) {
 			return false;
 		}
-
-		// Allow logged in users to submit translations.
-		if ( 'edit' == $args['action'] && 'translation-set' === $args['object_type'] ) {
-			return is_user_logged_in();
-		}
-
-		// The next checks are only for the 'approve' action, no permissions for other actions.
-		if ( 'approve' !== $args['action'] ) {
-			return false;
-		}
+        
+        // If admin you can do everything you want
+        if( current_user_can( 'administrator' ) ) { 
+            return true;
+        }
+        
+        if ( current_user_can( 'editor' ) ) {
+            // Check if the locale is different to block the permission
+            $gp_locale_saved = get_user_meta( $args[ 'user_id' ], 'gp_locale', true );
+            if ( $locale_and_project_id->locale === $gp_locale_saved ) {
+                return true;
+            }
+        }
+        
+        if ( 'edit' == $args['action'] && 'translation-set' === $args['object_type'] ) {
+	        return is_user_logged_in();
+        }
 
 		return false;
 	}
@@ -89,9 +97,9 @@ class CP_GP_Assign_Locale_GlotPress {
 			case 'project' :
 			case 'locale' :
 			case 'set-slug' :
-                $r = parse_url( $_SERVER['REQUEST_URI'] );
-                $locale = explode( '/', $r['path'] );
-                $locale = $locale[count($locale)-2];
+                $r = parse_url( $_SERVER[ 'REQUEST_URI' ] );
+                $locale = explode( '/', $r[ 'path' ] );
+                $locale = $locale[ count( $locale )-2 ];
 				return array( 'locale' => $locale, 'project_id' => (int) $object_id );
 		}
 
